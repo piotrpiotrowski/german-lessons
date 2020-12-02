@@ -1,0 +1,27 @@
+<h2>Irregular verbs training</h2>
+<div>
+  <button mat-raised-button color="primary" (click)="setCommandToClear()" class="command-button">Clear</button>
+  <button mat-raised-button color="primary" (click)="setCommandToCheck()" class="command-button">Check</button>
+  <button mat-raised-button color="primary" (click)="setCommandToReveal()" class="command-button">Reveal</button>
+  <div class="languages-radio-group">
+    <label id="radio-group-label">Translation language</label>
+    <mat-radio-group aria-labelledby="radio-group-label" [(ngModel)]="translationLanguage" (change)="loadVerbsForms()">
+      <mat-radio-button class="language-radio-button" *ngFor="let language of languages" [value]="language">
+        {{language}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div *ngIf="!loading">
+  <div>
+    <span class="foreign-translation">Translation</span>
+    <span class="infinitive">Infinitive</span>
+    <span class="presentSimple">Present Simple</span>
+    <span class="pastSimple">Past Simple</span>
+    <span class="pastParticiple">Past Participle</span>
+    <div>
+      <app-verb-forms-row *ngFor="let verb of verbs" [command]="command" [verbForms]="verb"></app-verb-forms-row>
+    </div>
+  </div>
+</div>

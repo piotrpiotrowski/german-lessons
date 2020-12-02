@@ -1,0 +1,8 @@
+<mat-form-field [style.width.%]=widthInPercent>
+  <input matInput type="text" [(ngModel)]="value" (keyup)="onValueChanged($event)">
+  <span matSuffix class="icons-span">
+    <mat-icon *ngIf="state.toString() === 'UNCERTAIN'" aria-hidden="true" [ngClass]="state.toString()">fiber_manual_record</mat-icon>
+    <mat-icon *ngIf="state.toString() === 'CORRECT'" aria-hidden="true" [ngClass]="state.toString()">done</mat-icon>
+    <mat-icon *ngIf="state.toString() === 'INCORRECT'" aria-hidden="true" [ngClass]="state.toString()">clear</mat-icon>
+  </span>
+</mat-form-field>

@@ -1,0 +1,13 @@
+.content-toolbar {
+  color: #ffffff;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,34,1) 49%, rgba(255,244,0,1) 100%);
+}
+
+.router-outlet-content {
+  padding: 20px 80px;
+}
+
+.title {
+  font-size: 2em;
+}

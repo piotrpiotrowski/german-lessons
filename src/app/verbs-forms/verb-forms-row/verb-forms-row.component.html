@@ -1,0 +1,8 @@
+<div class="verb-forms-row">
+  <span class="foreign-translation">{{verbForms.foreignTranslation}}</span>
+  <app-input-cell class="infinitive" [command]="cellInputsCommand" [answer]="verbForms.infinitive" [widthInPercent]="19"></app-input-cell>
+  <app-input-cell class="presentSimple" [command]="cellInputsCommand" [answer]="verbForms.presentSimple" [widthInPercent]="19"></app-input-cell>
+  <app-input-cell class="pastSimple" [command]="cellInputsCommand" [answer]="verbForms.pastSimple" [widthInPercent]="19"></app-input-cell>
+  <app-input-cell class="pastParticiple" [command]="cellInputsCommand" [answer]="verbForms.pastParticiple" [widthInPercent]="19"></app-input-cell>
+  <button mat-raised-button (click)="setCommandToCheck()" class="check-button">Check</button>
+</div>

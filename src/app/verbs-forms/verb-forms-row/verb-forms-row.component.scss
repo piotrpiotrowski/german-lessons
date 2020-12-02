@@ -1,0 +1,31 @@
+.verb-forms-row {
+  width: 100%;
+
+  .foreign-translation {
+    width: 9%;
+    padding-right: 1%;
+    display: inline-block;
+  }
+
+  .infinitive {
+    padding-right: 1%;
+  }
+
+  .presentSimple {
+    padding-right: 1%;
+  }
+
+  .pastSimple {
+    padding-right: 1%;
+  }
+
+  .pastParticiple {
+    padding-right: 1%;
+  }
+
+  .check-button {
+    color: #ffffff;
+    background: #d77d24;
+    width: 10%;
+  }
+}
