@@ -19,7 +19,7 @@ salvage;kryć w sobie;bergen;birgt;barg;hat geborgen;3
 burst;pękać;bersten;birst;barst;hat geborsten;-4
 induce;nakłaniać, spowodować;bewegen;bewegt;bewog;hat bewogen;2
 cheat;oszukiwać;betrügen;betrügt;betrog;hat betrogen;4
-bend, turn;giąć;biegen;biegt;bog;hat/ist gebogen;4
+bend, turn;giąć;biegen;biegt;bog;ist gebogen;4
 offer;oferować;bieten;bietet;bot;hat geboten;1
 bind, tie;wiązać;binden;bindet;band;hat gebunden;3
 ask, request;prosić;bitten;bittet;bat;hat gebeten;2
