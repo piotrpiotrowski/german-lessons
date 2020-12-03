@@ -69,7 +69,7 @@ glide, slide;szybować;gleiten;gleiten;glitt;ist geglitten;4
 smoulder;tlić się;glimmen;glimmt;glomm;hat geglommen;4
 dig;kopać;graben;gräbt;grub;hat gegraben;3
 seize;chwytać;greifen;greift;griff;hat gegriffen;3
-have;mieć;haben;hat;hatte;hat gehabt;2
+have;mieć;haben;hat;hatte;hat gehabt;1
 hold;trzymać;halten;hält;hielt;hat gehalten;2
 be hanging;wisieć;hängen;hängt;hing;hat gehangen;2
 hit;bić, lać;hauen;haut;hieb;hat gehauen;3
