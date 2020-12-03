@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Predicate} from '@angular/core';
 import {VerbForms} from './verb-forms-row/verb-forms.model';
 import {Observable, of} from 'rxjs';
-import {map, mergeMap, shareReplay} from 'rxjs/operators';
+import {filter, map, mergeMap, shareReplay} from 'rxjs/operators';
 import {fromArray} from 'rxjs/internal/observable/fromArray';
 
 @Injectable({
@@ -30,9 +30,9 @@ break;łamać;brechen;bricht;brach;ist gebrochen;3
 burn;płonąć;brennen;brennt;brannte;hat gebrannt;3
 bring;przynosić;bringen;bringt;brachte;hat gebracht;2
 think;myśleć;denken;denkt;dachte;hat gedacht;1
-rent;wynajmować;dingen;dingt;dang;hat gedungen;3
+hire somebody;zatrudniać;dingen;dingt;dang;hat gedungen;3
 thresh;młócić, tłuc;dreschen;drischt;drosch;hat gedroschen;4
-persist;przedostawać się, żądać;drinngen;dringt;drang;ist gedrungen;3
+get through, insist;przedostawać się, żądać;dringen;dringt;drang;ist gedrungen;3
 may, be allowed;móc, mieć pozwolenie;dürfen;darf;durfte;hat gedurft;1
 recommend;polecać;empfehlen;empfiehlt;empfahl;hat empfohlen;1
 go out of light;wygasać;erlöschen;erlischt;erlosch;ist erloschen;4
@@ -205,7 +205,12 @@ force;zmuszać;zwingen;zwingt;zwang;hat gezwungen;3`;
       .pipe(shareReplay());
   }
 
-  find(predicate: () => boolean, translationLanguage: string): Observable<VerbForms> {
-    return this.parsedVerbsForms.pipe(map(columns => new VerbForms(columns[this.languagesMap.get(translationLanguage)], columns[2], columns[3], columns[4], columns[5])));
+  find(predicate: Predicate<VerbForms>, translationLanguage: string): Observable<VerbForms> {
+    return this.parsedVerbsForms.pipe(map(columns => {
+      let verbForms = new VerbForms(columns[this.languagesMap.get(translationLanguage)], columns[2], columns[3], columns[4], columns[5], +columns[6]);
+      console.log(verbForms);
+      return verbForms;
+    }))
+      .pipe(filter(predicate));
   }
 }
