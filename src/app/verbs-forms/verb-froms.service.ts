@@ -57,7 +57,7 @@ give birth;rodzić;gebären;gebiert;gebar;hat geboren;4
 give;dawać;geben;gibt;gab;hat gegeben;1
 thrive;rozwijać się;gedeihen;gedeiht;gedieh;ist gediehen;4
 walk, go;iść;gehen;geht;ging;ist gegangen;1
-succeed;udawać się;gelingen;gelingen;gelang;ist gelungen;3
+succeed;udawać się;gelingen;gelingt;gelang;ist gelungen;3
 count, be worth;obowiązywać;gelten;gilt;galt;hat gegolten;3
 recover;zdrowieć;genesen;genest;genas;ist genesen;4
 enjoy;rozkoszywać się;genießen;genießt;genoss;hat genossen;2
