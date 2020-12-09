@@ -38,13 +38,13 @@ export class InputCellComponent implements OnInit {
 
   private executeCommand(command: InputCellCommand): void {
     if (command === InputCellCommand.REVEAL) {
-      this.reveal();
+      return this.reveal();
     }
     if (command === InputCellCommand.CLEAR) {
-      this.clear();
+      return this.clear();
     }
     if (command === InputCellCommand.CHECK) {
-      this.check();
+      return this.check();
     }
   }
 

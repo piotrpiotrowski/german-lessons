@@ -6,6 +6,7 @@ import {By} from '@angular/platform-browser';
 import {InputCellCommand} from '../../input-cell/input-cell-command';
 import {VerbForms} from './verb-forms.model';
 import {BehaviorSubject} from 'rxjs';
+import {VerbFormsCommand} from './verb-forms-command';
 
 describe('VerbFormsRowComponent', () => {
   let component: VerbFormsRowComponent;
@@ -25,8 +26,8 @@ describe('VerbFormsRowComponent', () => {
 
   it('should have a check button', () => {
     // given
-    component.verbForms = new VerbForms('begin', 'beginnen', 'beginnt', 'begann', 'hat begonnen');
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.command = new BehaviorSubject<string>(null);
 
     // when
     fixture.detectChanges();
@@ -40,8 +41,8 @@ describe('VerbFormsRowComponent', () => {
   it('should emit a command to CHECK when a check button was clicked', () => {
     // given
     let expectedCellInputsCommand = null;
-    component.command = new BehaviorSubject<InputCellCommand>(null);
-    component.verbForms = new VerbForms('begin', 'beginnen', 'beginnt', 'begann', 'hat begonnen');
+    component.command = new BehaviorSubject<string>(null);
+    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
     // and
@@ -59,8 +60,8 @@ describe('VerbFormsRowComponent', () => {
   it('should set command to REVEAL', () => {
     // given
     let expectedCellInputsCommand = null;
-    component.verbForms = new VerbForms('begin', 'beginnen', 'beginnt', 'begann', 'hat begonnen');
-    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.REVEAL);
+    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.command = new BehaviorSubject<string>(InputCellCommand.REVEAL);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
 
@@ -74,8 +75,8 @@ describe('VerbFormsRowComponent', () => {
   it('should set command to CLEAR', () => {
     // given
     let expectedCellInputsCommand = null;
-    component.verbForms = new VerbForms('begin', 'beginnen', 'beginnt', 'begann', 'hat begonnen');
-    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
+    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.command = new BehaviorSubject<string>(InputCellCommand.CLEAR);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
     // when
@@ -85,24 +86,55 @@ describe('VerbFormsRowComponent', () => {
     expect(expectedCellInputsCommand).toEqual(InputCellCommand.CLEAR);
   });
 
-  it('should have a verb foreign translation as span label', () => {
+  it('should have a english label and polish tooltip by default', () => {
     // given
-    component.verbForms = new VerbForms('begin', 'beginnen', 'beginnt', 'begann', 'hat begonnen');
-    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
+    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.command = new BehaviorSubject<string>(InputCellCommand.CLEAR);
 
     // when
     fixture.detectChanges();
 
     // then
-    const button = fixture.nativeElement.querySelector('span');
-    expect(button).toBeTruthy();
-    expect(button.textContent).toEqual('begin');
+    const label = fixture.nativeElement.querySelector('span');
+    expect(label).toBeTruthy();
+    expect(label.textContent).toEqual('begin');
+    expect(label.attributes.title.value).toEqual('zaczybać');
+  });
+
+  it('should have a english label and polish tooltip when a CHANGE_LANGUAGE_TO_ENGLISH was emitted', () => {
+    // given
+    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.command = new BehaviorSubject<string>(VerbFormsCommand.CHANGE_LANGUAGE_TO_ENGLISH);
+
+    // when
+    fixture.detectChanges();
+
+    // then
+    const label = fixture.nativeElement.querySelector('span');
+    expect(label).toBeTruthy();
+    expect(label.textContent).toEqual('begin');
+    expect(label.attributes.title.value).toEqual('zaczybać');
+  });
+
+  it('should set a polish label and english tooltip when a CHANGE_LANGUAGE_TO_POLISH was emitted', () => {
+    // given
+    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.command = new BehaviorSubject<string>(VerbFormsCommand.CHANGE_LANGUAGE_TO_POLISH);
+
+    // when
+    fixture.detectChanges();
+
+    // then
+    const label = fixture.nativeElement.querySelector('span');
+    expect(label).toBeTruthy();
+    expect(label.textContent).toEqual('zaczybać');
+    expect(label.attributes.title.value).toEqual('begin');
   });
 
   it('should have four input-cells', () => {
     // given
-    component.verbForms = new VerbForms('begin', 'beginnen', 'beginnt', 'begann', 'hat begonnen');
-    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
+    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.command = new BehaviorSubject<string>(InputCellCommand.CLEAR);
 
     // when
     fixture.detectChanges();

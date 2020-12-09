@@ -11,12 +11,12 @@ describe('VerbsFromsService', () => {
     service = TestBed.inject(VerbFromsService);
   });
 
-  it('should take two from list with an english translation', () => {
+  it('should take two from list', () => {
     // given
     let verbs = null;
 
     // when
-    service.find(() => true, 'EN')
+    service.find(() => true)
       .pipe(take(2))
       .pipe(toArray())
       .subscribe(
@@ -25,26 +25,8 @@ describe('VerbsFromsService', () => {
 
     // then
     expect(verbs.length).toEqual(2);
-    expect(verbs[0].foreignTranslation).toEqual('bake');
-    expect(verbs[1].foreignTranslation).toEqual('command');
-  });
-
-  it('should take two from list with a polish translation', () => {
-    // given
-    let verbs = null;
-
-    // when
-    service.find(() => true, 'PL')
-      .pipe(take(2))
-      .pipe(toArray())
-      .subscribe(
-        value => verbs = value,
-        fail);
-
-    // then
-    expect(verbs.length).toEqual(2);
-    expect(verbs[0].foreignTranslation).toEqual('piec');
-    expect(verbs[1].foreignTranslation).toEqual('rozkazywać');
+    expect(verbs[0].englishTranslation).toEqual('bake');
+    expect(verbs[1].englishTranslation).toEqual('command');
   });
 
   it('should count elements on the list', () => {
@@ -52,7 +34,7 @@ describe('VerbsFromsService', () => {
     let counter = null;
 
     // when
-    service.find(() => true, 'PL')
+    service.find(() => true)
       .pipe(count())
       .subscribe(
         value => counter = value,

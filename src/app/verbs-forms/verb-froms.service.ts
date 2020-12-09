@@ -198,19 +198,15 @@ pull, move;ciągnąć;ziehen;zieht;zog;ist gezogen;2
 force;zmuszać;zwingen;zwingt;zwang;hat gezwungen;3`;
 
   constructor() {
-    this.languagesMap = new Map<string, number>([['EN', 0], ['PL', 1]]);
     this.parsedVerbsForms = of(this.rawVerbsForms)
       .pipe(mergeMap(csv => fromArray(csv.split('\n'))))
       .pipe(map(line => line.split(';')))
       .pipe(shareReplay());
   }
 
-  find(predicate: Predicate<VerbForms>, translationLanguage: string): Observable<VerbForms> {
-    return this.parsedVerbsForms.pipe(map(columns => {
-      let verbForms = new VerbForms(columns[this.languagesMap.get(translationLanguage)], columns[2], columns[3], columns[4], columns[5], +columns[6]);
-      console.log(verbForms);
-      return verbForms;
-    }))
+  find(predicate: Predicate<VerbForms>): Observable<VerbForms> {
+    return this.parsedVerbsForms
+      .pipe(map(columns => new VerbForms(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5], +columns[6])))
       .pipe(filter(predicate));
   }
 }

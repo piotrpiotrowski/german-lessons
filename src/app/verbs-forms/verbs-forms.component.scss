@@ -1,8 +1,10 @@
+.control-panel {
+  margin-bottom: 40px;
+}
+
 .languages-radio-group {
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
-  padding-bottom: 80px;
 }
 
 .language-radio-button {
@@ -46,4 +48,12 @@
   width: 20%;
   font-style: italic;
   color: #d77d24;
+}
+
+.lesson-description {
+  width: 100%;
+}
+
+.panel-description {
+  flex-grow: 0
 }
