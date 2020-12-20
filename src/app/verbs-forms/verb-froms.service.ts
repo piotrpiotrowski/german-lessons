@@ -22,7 +22,7 @@ bend, turn;giąć;biegen;biegt;bog;hat gebogen;4
 offer;oferować;bieten;bietet;bot;hat geboten;1
 bind, tie;wiązać;binden;bindet;band;hat gebunden;3
 ask, request;prosić;bitten;bittet;bat;hat gebeten;2
-blow;dmuchać;blasen;bläst;blies;hat geblasen;1
+blow;dmuchać;blasen;bläst;blies;hat geblasen;2
 stay;pozostawać;bleiben;bleibt;blieb;ist geblieben;1
 fry;smażyć, piec;braten;bratet;briet;hat gebraten;3
 break;łamać;brechen;bricht;brach;ist gebrochen;3
@@ -102,7 +102,7 @@ whistle;gwizdać;pfeifen;pfeift;pfiff;hat gepfiffen;3
 praise;chwalić;preisen;preist;pries;hat gepriesen;3
 gush, well up;tryskać;quellen;quillt;quoll;ist gequollen;3
 advise;radzić;raten;rät;riet;hat geraten;3
-rub;trzeć;reiben;reibt;rieb;hat gerieben;1
+rub;trzeć;reiben;reibt;rieb;hat gerieben;2
 rip, tear;rozrywać;reißen;reißt;riss;ist gerissen;3
 ride a horse;jeździć konno;reiten;reitet;ritt;ist geritten;3
 run;pędzić;rennen;rennt;rannte;ist gerannt;3
@@ -117,7 +117,7 @@ create;tworzyć;schaffen;schafft;schuf;hat geschaffen;2
 separate, depart;rozwodzić;scheiden;scheidet;schied;ist geschieden;3
 seem, shine;świecić;scheinen;scheint;schien;hat geschienen;3
 shit;srać;scheißen;scheißt;schiss;hat geschissen;4
-scold;zwymyślać;schelten;schilt;schalt;hat gescholten;1
+scold;zwymyślać;schelten;schilt;schalt;hat gescholten;2
 shear, clip;kosić, przycinać;scheren;schert;schor;hat geschoren;3
 push, shove;przesuwać;schieben;schiebt;schob;hat geschoben;3
 shoot;strzelać;schießen;schießt;schoss;hat geschossen;3
