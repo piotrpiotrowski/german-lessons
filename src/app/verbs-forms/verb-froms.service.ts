@@ -42,7 +42,7 @@ consider;rozważać;erwägen;erwägt;erwog;hat erwogen;2
 eat;jeść;essen;isst;aß;hat gegessen;1
 drive, go;jechać, zawozić;fahren;fährt;fuhr;ist gefahren;1
 fall;upadać;fallen;fällt;fiel;ist gefallen;1
-catch;łapać;fangen;fängt;fing;hat gefangen;3
+catch;łapać;fangen;fängt;fing;hat gefangen;2
 fight, fence;walczyć;fechten;ficht;focht;hat gefochten;2
 find;znajdować;finden;findet;fand;hat gefunden;1
 braid, plait;pleść;flechten;flicht;flocht;hat geflochten;4
@@ -76,7 +76,7 @@ lift;podnosić;heben;hebt;hob;hat gehoben;3
 be called;nazywać się;heißen;heißt;hieß;hat geheißen;2
 help;pomagać;helfen;hilft;half;hat geholfen;1
 know;znać;kennen;kennt;kannte;hat gekannt;1
-sound;brzmieć, dzwonić;klingen;klingt;klang;hat geklungen;3
+sound;brzmieć, dzwonić;klingen;klingt;klang;hat geklungen;2
 pinch;szczypać;kneifen;kneift;kniff;hat gekniffen;4
 come;przychodzić;kommen;kommt;kam;ist gekommen;1
 can, be able to;móc, umieć;können;kann;konnte;hat gekonnt;1
@@ -85,7 +85,7 @@ load;ładować;laden;lädt;lud;hat geladen;1
 let;kazać, zostawiać, pozwolić;lassen;lässt;ließ;hat gelassen;1
 run;biec;laufen;läuft;lief;ist gelaufen;2
 suffer;cierpieć;leiden;leidet;litt;hat gelitten;2
-lend;pożyczać;leihen;leiht;lieh;hat geliehen;3
+lend;pożyczać;leihen;leiht;lieh;hat geliehen;2
 read;czytać;lesen;liest;las;hat gelesen;1
 lie, be lying;leżeć;liegen;liegt;lag;hat gelegen;1
 tell a lie;kłamać;lügen;lügt;log;hat gelogen;3
@@ -121,7 +121,7 @@ scold;zwymyślać;schelten;schilt;schalt;hat gescholten;2
 shear, clip;kosić, przycinać;scheren;schert;schor;hat geschoren;3
 push, shove;przesuwać;schieben;schiebt;schob;hat geschoben;3
 shoot;strzelać;schießen;schießt;schoss;hat geschossen;3
-sleep;spać;schlafen;schläft;schlief;hat geschlafen;3
+sleep;spać;schlafen;schläft;schlief;hat geschlafen;2
 flay;łupić;schinden;schindet;schindete;hat geschunden;3
 hit, beat;bić;schlagen;schlägt;schlug;hat geschlagen;2
 creep, sneak;skradać się;schleichen;schleicht;schlich;ist geschlichen;4
@@ -181,14 +181,14 @@ vanish;znikać;verschwinden;verschwindet;verschwand;ist verschwunden;3
 excuse;wybaczać;verzeihen;verzeiht;verzieh;hat verziehen;4
 grow;rosnąć;wachsen;wächst;wuchs;ist gewachsen;3
 weigh;ważyć;wägen;wägt;wog;hat gewogen;2
-wash;myć, prać;waschen;wäscht;wusch;hat gewaschen;3
+wash;myć, prać;waschen;wäscht;wusch;hat gewaschen;2
 yield, give way;ustępować;weichen;weicht;wich;ist gewichen;2
 point;wskazywać;weisen;weist;wies;hat gewiesen;3
 turn;odwracać;wenden;wendet;wandte;hat gewandt;2
 advertise, recruit;werbować, reklamować;werben;wirbt;warb;hat geworben;3
 become;stać się, zostać;werden;wird;wurde;ist geworden;1
-throw;rzucać;werfen;wirft;warf;hat geworfen;3
-weigh;ważyć;wiegen;wiegt;wog;hat gewogen;3
+throw;rzucać;werfen;wirft;warf;hat geworfen;2
+weigh;ważyć;wiegen;wiegt;wog;hat gewogen;2
 wind;wić, wplatać;winden;windet;wand;hat gewunden;3
 know;wiedzieć;wissen;weiß;wusste;hat gewusst;1
 want;chcieć;wollen;will;wollte;hat gewollt;4
