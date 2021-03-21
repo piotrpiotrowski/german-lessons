@@ -1,32 +1,32 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {VerbFormsRowComponent} from './verb-forms-row.component';
+import {TrainingRowComponent} from './training-row.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {InputCellCommand} from '../../input-cell/input-cell-command';
-import {VerbForms} from './verb-forms.model';
+import {InputCellCommand} from '../input-cell/input-cell-command';
+import {TrainingRowModel} from './training-row.model';
 import {BehaviorSubject} from 'rxjs';
-import {VerbFormsCommand} from './verb-forms-command';
+import {TrainingRowCommand} from './training-row-command';
 
 describe('VerbFormsRowComponent', () => {
-  let component: VerbFormsRowComponent;
-  let fixture: ComponentFixture<VerbFormsRowComponent>;
+  let component: TrainingRowComponent;
+  let fixture: ComponentFixture<TrainingRowComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VerbFormsRowComponent],
+      declarations: [TrainingRowComponent],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VerbFormsRowComponent);
+    fixture = TestBed.createComponent(TrainingRowComponent);
     component = fixture.componentInstance;
   });
 
   it('should have a check button', () => {
     // given
-    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
     component.command = new BehaviorSubject<string>(null);
 
     // when
@@ -42,7 +42,7 @@ describe('VerbFormsRowComponent', () => {
     // given
     let expectedCellInputsCommand = null;
     component.command = new BehaviorSubject<string>(null);
-    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
     // and
@@ -60,7 +60,7 @@ describe('VerbFormsRowComponent', () => {
   it('should set command to REVEAL', () => {
     // given
     let expectedCellInputsCommand = null;
-    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
     component.command = new BehaviorSubject<string>(InputCellCommand.REVEAL);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
@@ -75,7 +75,7 @@ describe('VerbFormsRowComponent', () => {
   it('should set command to CLEAR', () => {
     // given
     let expectedCellInputsCommand = null;
-    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
     component.command = new BehaviorSubject<string>(InputCellCommand.CLEAR);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
@@ -88,7 +88,7 @@ describe('VerbFormsRowComponent', () => {
 
   it('should have a english label and polish tooltip by default', () => {
     // given
-    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
     component.command = new BehaviorSubject<string>(InputCellCommand.CLEAR);
 
     // when
@@ -103,8 +103,8 @@ describe('VerbFormsRowComponent', () => {
 
   it('should have a english label and polish tooltip when a CHANGE_LANGUAGE_TO_ENGLISH was emitted', () => {
     // given
-    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
-    component.command = new BehaviorSubject<string>(VerbFormsCommand.CHANGE_LANGUAGE_TO_ENGLISH);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
+    component.command = new BehaviorSubject<string>(TrainingRowCommand.CHANGE_LANGUAGE_TO_ENGLISH);
 
     // when
     fixture.detectChanges();
@@ -118,8 +118,8 @@ describe('VerbFormsRowComponent', () => {
 
   it('should set a polish label and english tooltip when a CHANGE_LANGUAGE_TO_POLISH was emitted', () => {
     // given
-    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
-    component.command = new BehaviorSubject<string>(VerbFormsCommand.CHANGE_LANGUAGE_TO_POLISH);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
+    component.command = new BehaviorSubject<string>(TrainingRowCommand.CHANGE_LANGUAGE_TO_POLISH);
 
     // when
     fixture.detectChanges();
@@ -133,7 +133,7 @@ describe('VerbFormsRowComponent', () => {
 
   it('should have four input-cells', () => {
     // given
-    component.verbForms = new VerbForms('begin', 'zaczybać', 'beginnen', 'beginnt', 'begann', 'hat begonnen', 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
     component.command = new BehaviorSubject<string>(InputCellCommand.CLEAR);
 
     // when

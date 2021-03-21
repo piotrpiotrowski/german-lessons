@@ -15,6 +15,10 @@ export class MenuComponent implements OnInit {
   }
 
   navigateToIrregularVerbs(): Promise<boolean> {
-    return this.router.navigateByUrl('/');
+    return this.router.navigateByUrl('/irregular-verbs');
+  }
+
+  navigateToPersonalPronouns(): Promise<boolean> {
+    return this.router.navigateByUrl('/personal-pronouns');
   }
 }

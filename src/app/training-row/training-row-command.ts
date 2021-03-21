@@ -1,4 +1,4 @@
-export enum VerbFormsCommand{
+export enum TrainingRowCommand{
   CHANGE_LANGUAGE_TO_POLISH = 'CHANGE_LANGUAGE_TO_POLISH',
   CHANGE_LANGUAGE_TO_ENGLISH = 'CHANGE_LANGUAGE_TO_ENGLISH',
 }

@@ -1,19 +1,19 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {InputCellCommand} from '../../input-cell/input-cell-command';
-import {VerbForms} from './verb-forms.model';
+import {InputCellCommand} from '../input-cell/input-cell-command';
+import {TrainingRowModel} from './training-row.model';
 import {BehaviorSubject} from 'rxjs';
-import {VerbFormsCommand} from './verb-forms-command';
+import {TrainingRowCommand} from './training-row-command';
 
 @Component({
-  selector: 'app-verb-forms-row',
-  templateUrl: './verb-forms-row.component.html',
-  styleUrls: ['./verb-forms-row.component.scss']
+  selector: 'app-training-row',
+  templateUrl: './training-row.component.html',
+  styleUrls: ['./training-row.component.scss']
 })
-export class VerbFormsRowComponent implements OnInit {
+export class TrainingRowComponent implements OnInit {
 
   externalCommand: BehaviorSubject<string>;
   cellInputsCommand: BehaviorSubject<InputCellCommand> = new BehaviorSubject<InputCellCommand>(null);
-  @Input() verbForms: VerbForms;
+  @Input() trainingRowModel: TrainingRowModel;
   label: string;
   tooltip: string;
 
@@ -31,23 +31,23 @@ export class VerbFormsRowComponent implements OnInit {
   }
 
   private executeCommand(command: string): void {
-    if (command === VerbFormsCommand.CHANGE_LANGUAGE_TO_ENGLISH) {
+    if (command === TrainingRowCommand.CHANGE_LANGUAGE_TO_ENGLISH) {
       return this.setEnglishLabelAndPolishTooltip();
     }
-    if (command === VerbFormsCommand.CHANGE_LANGUAGE_TO_POLISH) {
+    if (command === TrainingRowCommand.CHANGE_LANGUAGE_TO_POLISH) {
       return this.setPolishLabelAndEnglishTooltip();
     }
     this.cellInputsCommand.next(command as InputCellCommand);
   }
 
   private setEnglishLabelAndPolishTooltip(): void {
-    this.label = this.verbForms.englishTranslation;
-    this.tooltip = this.verbForms.polishTranslation;
+    this.label = this.trainingRowModel.englishTranslation;
+    this.tooltip = this.trainingRowModel.polishTranslation;
   }
 
   private setPolishLabelAndEnglishTooltip(): void {
-    this.label = this.verbForms.polishTranslation;
-    this.tooltip = this.verbForms.englishTranslation;
+    this.label = this.trainingRowModel.polishTranslation;
+    this.tooltip = this.trainingRowModel.englishTranslation;
   }
 
   setCommandToCheck(): void {

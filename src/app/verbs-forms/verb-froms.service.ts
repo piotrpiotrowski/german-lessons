@@ -1,5 +1,5 @@
 import {Injectable, Predicate} from '@angular/core';
-import {VerbForms} from './verb-forms-row/verb-forms.model';
+import {TrainingRowModel} from '../training-row/training-row.model';
 import {Observable, of} from 'rxjs';
 import {filter, map, mergeMap, shareReplay} from 'rxjs/operators';
 import {fromArray} from 'rxjs/internal/observable/fromArray';
@@ -203,9 +203,9 @@ force;zmuszać;zwingen;zwingt;zwang;hat gezwungen;3`;
       .pipe(shareReplay());
   }
 
-  find(predicate: Predicate<VerbForms>): Observable<VerbForms> {
+  find(predicate: Predicate<TrainingRowModel>): Observable<TrainingRowModel> {
     return this.parsedVerbsForms
-      .pipe(map(columns => new VerbForms(columns[0], columns[1], columns[2], columns[3], columns[4], columns[5], +columns[6])))
+      .pipe(map(columns => new TrainingRowModel(columns[0], columns[1], [columns[2], columns[3], columns[4], columns[5]], +columns[6])))
       .pipe(filter(predicate));
   }
 }

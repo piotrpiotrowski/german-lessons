@@ -1,10 +1,10 @@
 import {Component, OnInit, Predicate} from '@angular/core';
 import {InputCellCommand} from '../input-cell/input-cell-command';
-import {VerbForms} from './verb-forms-row/verb-forms.model';
+import {TrainingRowModel} from '../training-row/training-row.model';
 import {BehaviorSubject} from 'rxjs';
 import {VerbFromsService} from './verb-froms.service';
 import {finalize, toArray} from 'rxjs/operators';
-import {VerbFormsCommand} from './verb-forms-row/verb-forms-command';
+import {TrainingRowCommand} from '../training-row/training-row-command';
 
 @Component({
   selector: 'app-verbs-forms',
@@ -14,9 +14,9 @@ import {VerbFormsCommand} from './verb-forms-row/verb-forms-command';
 export class VerbsFormsComponent implements OnInit {
 
   command: BehaviorSubject<string> = new BehaviorSubject<string>(InputCellCommand.CLEAR);
-  verbs: VerbForms[];
+  verbs: TrainingRowModel[];
   loading: boolean;
-  difficultyLevel = '0';
+  difficultyLevel = '1';
   auxiliaryVerb = 'both';
   translationLanguage = 0;
 
@@ -38,17 +38,17 @@ export class VerbsFormsComponent implements OnInit {
       );
   }
 
-  private buildSearchPredicate(): Predicate<VerbForms> {
+  private buildSearchPredicate(): Predicate<TrainingRowModel> {
     return verbForm => this.difficultyLevelCondition(verbForm) && this.auxiliaryVerbCondition(verbForm);
   }
 
-  private difficultyLevelCondition(verbForm: VerbForms): boolean {
+  private difficultyLevelCondition(verbForm: TrainingRowModel): boolean {
     const classification = +this.difficultyLevel;
     return classification === 0 || verbForm.classification === classification;
   }
 
-  private auxiliaryVerbCondition(verbForm: VerbForms): boolean {
-    return this.auxiliaryVerb === 'both' || verbForm.pastParticiple.startsWith(this.auxiliaryVerb);
+  private auxiliaryVerbCondition(verbForm: TrainingRowModel): boolean {
+    return this.auxiliaryVerb === 'both' || verbForm.answers[3].startsWith(this.auxiliaryVerb);
   }
 
   setCommandToClear(): void {
@@ -64,10 +64,10 @@ export class VerbsFormsComponent implements OnInit {
   }
 
   setPolishLanguage(): void {
-    this.command.next(VerbFormsCommand.CHANGE_LANGUAGE_TO_POLISH);
+    this.command.next(TrainingRowCommand.CHANGE_LANGUAGE_TO_POLISH);
   }
 
   setEnglishLanguage(): void {
-    this.command.next(VerbFormsCommand.CHANGE_LANGUAGE_TO_ENGLISH);
+    this.command.next(TrainingRowCommand.CHANGE_LANGUAGE_TO_ENGLISH);
   }
 }

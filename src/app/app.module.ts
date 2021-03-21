@@ -16,12 +16,13 @@ import {MatListModule} from '@angular/material/list';
 import {InputCellComponent} from './input-cell/input-cell.component';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
-import {VerbFormsRowComponent} from './verbs-forms/verb-forms-row/verb-forms-row.component';
+import {TrainingRowComponent} from './training-row/training-row.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { PersonalPronounsComponent } from './personal-pronouns/personal-pronouns.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     VerbsFormsComponent,
     MenuComponent,
     InputCellComponent,
-    VerbFormsRowComponent
+    TrainingRowComponent,
+    PersonalPronounsComponent
   ],
   imports: [
     BrowserModule,
