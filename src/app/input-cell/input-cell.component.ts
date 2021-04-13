@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {InputCellState} from './input-cell-state';
 import {InputCellCommand} from './input-cell-command';
 import {isAsciiLetter} from 'codelyzer/angular/styles/chars';

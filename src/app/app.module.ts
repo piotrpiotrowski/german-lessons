@@ -23,6 +23,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { PersonalPronounsComponent } from './personal-pronouns/personal-pronouns.component';
+import { PossessivePronounsComponent } from './possessive-pronouns/possessive-pronouns.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PersonalPronounsComponent } from './personal-pronouns/personal-pronouns
     MenuComponent,
     InputCellComponent,
     TrainingRowComponent,
-    PersonalPronounsComponent
+    PersonalPronounsComponent,
+    PossessivePronounsComponent
   ],
   imports: [
     BrowserModule,

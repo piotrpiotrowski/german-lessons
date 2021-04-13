@@ -21,4 +21,8 @@ export class MenuComponent implements OnInit {
   navigateToPersonalPronouns(): Promise<boolean> {
     return this.router.navigateByUrl('/personal-pronouns');
   }
+
+  navigateToPossessivePronouns(): Promise<boolean> {
+    return this.router.navigateByUrl('/possessive-pronouns');
+  }
 }

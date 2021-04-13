@@ -14,7 +14,7 @@ export class VerbFromsService {
 command;rozkazywać;befehlen;befiehlt;befahl;hat befohlen;2
 begin;zaczynać;beginnen;beginnt;begann;hat begonnen;2
 bite;gryźć;beißen;beißt;biss;hat gebissen;3
-salvage;kryć w sobie;bergen;birgt;barg;hat geborgen;3
+salvage;zbawiać;bergen;birgt;barg;hat geborgen;3
 burst;pękać;bersten;birst;barst;ist geborsten;4
 induce;nakłaniać;bewegen;bewegt;bewog;hat bewogen;2
 cheat;oszukiwać;betrügen;betrügt;betrog;hat betrogen;4
@@ -73,7 +73,7 @@ hold;trzymać;halten;hält;hielt;hat gehalten;2
 be hanging;wisieć;hängen;hängt;hing;hat gehangen;2
 hit;bić, lać;hauen;haut;hieb;hat gehauen;3
 lift;podnosić;heben;hebt;hob;hat gehoben;3
-be called;nazywać się;heißen;heißt;hieß;hat geheißen;2
+be called;nazywać się;heißen;heißt;hieß;hat geheißen;1
 help;pomagać;helfen;hilft;half;hat geholfen;1
 know;znać;kennen;kennt;kannte;hat gekannt;1
 sound;brzmieć, dzwonić;klingen;klingt;klang;hat geklungen;2
@@ -83,7 +83,7 @@ can, be able to;móc, umieć;können;kann;konnte;hat gekonnt;1
 crawl, creep;pełzać;kriechen;kriecht;kroch;ist gekrochen;4
 load;ładować;laden;lädt;lud;hat geladen;1
 let;kazać, zostawiać, pozwolić;lassen;lässt;ließ;hat gelassen;1
-run;biec;laufen;läuft;lief;ist gelaufen;2
+run;biec;laufen;läuft;lief;ist gelaufen;1
 suffer;cierpieć;leiden;leidet;litt;hat gelitten;2
 lend;pożyczać;leihen;leiht;lieh;hat geliehen;2
 read;czytać;lesen;liest;las;hat gelesen;1
@@ -103,13 +103,13 @@ praise;chwalić;preisen;preist;pries;hat gepriesen;3
 gush, well up;tryskać;quellen;quillt;quoll;ist gequollen;3
 advise;radzić;raten;rät;riet;hat geraten;3
 rub;trzeć;reiben;reibt;rieb;hat gerieben;2
-rip, tear;rozrywać;reißen;reißt;riss;ist gerissen;3
+rip, tear;rozrywać;reißen;reißt;riss;ist gerissen;4
 ride a horse;jeździć konno;reiten;reitet;ritt;ist geritten;3
 run;pędzić;rennen;rennt;rannte;ist gerannt;3
 smell;pachnieć;riechen;riecht;roch;hat gerochen;4
 wrestle;walczyć;ringen;ringt;rang;hat gerungen;2
 flow, trickle;ciec;rinnen;rinnt;rann;ist geronnen;4
-call, cry out;wołać;rufen;ruft;rief;hat gerufen;2
+call, cry out;wołać;rufen;ruft;rief;hat gerufen;1
 salt;solić;salzen;salzt;salzte;hat gesalzen;3
 drink, booze;chlać;saufen;säuft;soff;hat gesoffen;4
 suck;ssać;saugen;saugt;sog;hat gesogen;4
@@ -121,19 +121,19 @@ scold;zwymyślać;schelten;schilt;schalt;hat gescholten;2
 shear, clip;kosić, przycinać;scheren;schert;schor;hat geschoren;3
 push, shove;przesuwać;schieben;schiebt;schob;hat geschoben;3
 shoot;strzelać;schießen;schießt;schoss;hat geschossen;3
-sleep;spać;schlafen;schläft;schlief;hat geschlafen;2
-flay;łupić;schinden;schindet;schindete;hat geschunden;3
+sleep;spać;schlafen;schläft;schlief;hat geschlafen;1
+flay;łupić;schinden;schindet;schindete;hat geschunden;4
 hit, beat;bić;schlagen;schlägt;schlug;hat geschlagen;2
 creep, sneak;skradać się;schleichen;schleicht;schlich;ist geschlichen;4
-grind, sharpen;ciągnąć, trzeć;schleifen;schleift;schliff;hat geschliffen;3
+grind, sharpen;ciągnąć, trzeć;schleifen;schleift;schliff;hat geschliffen;4
 close, shut;zamykać;schließen;schließt;schloss;hat geschlossen;1
 wind, wrap;połykać;schlingen;schlingt;schlang;hat geschlungen;4
-fling, chuck;wywalać, rzucać;schmeißen;schmeißt;schmiss;hat geschmissen;3
+fling, chuck;wywalać, rzucać;schmeißen;schmeißt;schmiss;hat geschmissen;4
 melt;topić, topnieć;schmelzen;schmilzt;schmolz;ist geschmolzen;3
 cut;kroić, ciąć;schneiden;schneidet;schnitt;hat geschnitten;3
 write;pisać;schreiben;schreibt;schrieb;hat geschrieben;1
 scream, shout;krzyczeć;schreien;schreit;schrie;hat geschrieen;3
-stride;kroczyć;schreiten;schreitet;schritt;ist geschritten;3
+stride;kroczyć;schreiten;schreitet;schritt;ist geschritten;4
 be silent;milczeć;schweigen;schweigt;schwieg;hat geschwiegen;3
 swell;puchnąć;schwellen;schwillt;schwoll;ist geschwollen;4
 swim;pływać;schwimmen;schwimmt;schwamm;ist geschwommen;2
@@ -146,10 +146,10 @@ send;wysyłać;senden;sendet;sandte;hat gesandt;1
 boil;gotować;sieden;siedet;sott;hat gesotten;4
 sing;śpiewać;singen;singt;sang;hat gesungen;2
 sink;tonąć;sinken;sinkt;sank;ist gesunken;3
-meditate;rozmyślać;sinnen;sinnt;sann;hat gesonnen;3
-sit, be sitting;siedzieć;sitzen;sitzt;saß;hat gesessen;2
+meditate;rozmyślać;sinnen;sinnt;sann;hat gesonnen;4
+sit, be sitting;siedzieć;sitzen;sitzt;saß;hat gesessen;1
 shall, be supposed to;mieć powinność;sollen;soll;sollte;hat gesollt;4
-split, cleave;dzielić, rozłupywać;spalten;spaltet;spaltete;hat gespalten;3
+split, cleave;dzielić, rozłupywać;spalten;spaltet;spaltete;hat gespalten;4
 spit;zionąć, buchać, pluć;speien;speit;spie;hat gespieen;4
 spin, be stupid;prząść, pleść;spinnen;spinnt;spann;hat gesponnen;4
 speak;mówić, rozmawiać;sprechen;spricht;sprach;hat gesprochen;1
@@ -160,21 +160,21 @@ stand;stać;stehen;steht;stand;hat gestanden;1
 steal;kraść;stehlen;stiehlt;stahl;hat gestohlen;3
 climb;wchodzić, wspinać się;steigen;steigt;stieg;ist gestiegen;3
 die;umierać;sterben;stirbt;starb;ist gestorben;3
-splashing;rozpryskiwać się;stieben;stiebt;stob;ist gestoben;3
+splashing;rozpryskiwać się;stieben;stiebt;stob;ist gestoben;4
 stink;śmierdzieć;stinken;stinkt;stank;hat gestunken;4
 bump, push;pchnąć, uderzyć;stoßen;stößt;stieß;ist gestoßen;2
-brash;malować;streichen;streicht;strich;hat gestrichen;3
+brash;malować;streichen;streicht;strich;hat gestrichen;4
 argue;kłócić się;streiten;streitet;stritt;hat gestritten;3
 wear, carry;nosić;tragen;trägt;trug;hat getragen;1
 meet;spotykać;treffen;trifft;traf;hat getroffen;1
 drive, drift;gnać, prowadzić, uprawiać;treiben;treibt;trieb;ist getrieben;3
 step;podejść, nadepnąć;treten;tritt;trat;ist getreten;2
-drink;pić;trinken;trinkt;trank;hat getrunken;2
+drink;pić;trinken;trinkt;trank;hat getrunken;1
 deceive;zwodzić;trügen;trügt;trog;hat getrogen;4
 do;robić, czynić;tun;tut;tat;hat getan;2
 fade;blaknąć;verbleichen;verbleicht;verblich;ist verblichen;4
 ruin;psuć, gnić;verderben;verdirbt;verdarb;ist verdorben;3
-vex;zagniewać;verdrießen;verdrießt;verdross;hat verdrossen;3
+vex;zagniewać;verdrießen;verdrießt;verdross;hat verdrossen;4
 forget;zapominać;vergessen;vergisst;vergaß;hat vergessen;1
 lose;gubić, tracić;verlieren;verliert;verlor;hat verloren;2
 vanish;znikać;verschwinden;verschwindet;verschwand;ist verschwunden;3
