@@ -1,11 +1,20 @@
 .content-toolbar {
   color: #ffffff;
-  background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,34,1) 49%, rgba(255,244,0,1) 100%);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(121, 9, 34, 1) 49%, rgba(255, 244, 0, 1) 100%);
 }
 
 .router-outlet-content {
-  padding: 20px 80px;
+  padding: 0 240px;
+  @media (max-width: 1920px) {
+    padding: 0 80px;
+  }
+  @media (max-width: 1300px) {
+    padding: 0 20px;
+  }
+  @media (max-width: 900px) {
+    padding: 0 10px;
+  }
 }
 
 .title {

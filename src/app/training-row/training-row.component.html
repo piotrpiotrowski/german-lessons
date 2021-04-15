@@ -1,8 +1,8 @@
 <div class="training-row">
-  <span class="foreign-translation" title="{{tooltip}}">{{label}}</span>
-  <app-input-cell *ngIf="trainingRowModel.answers[0]" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.answers[0]" [widthInPercent]="19"></app-input-cell>
-  <app-input-cell *ngIf="trainingRowModel.answers[1]" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.answers[1]" [widthInPercent]="19"></app-input-cell>
-  <app-input-cell *ngIf="trainingRowModel.answers[2]" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.answers[2]" [widthInPercent]="19"></app-input-cell>
-  <app-input-cell *ngIf="trainingRowModel.answers[3]" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.answers[3]" [widthInPercent]="19"></app-input-cell>
+  <div class="foreign-translation" title="{{tooltip}}">{{label}}</div>
+  <app-input-cell *ngIf="trainingRowModel.answers[0]" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.answers[0]"></app-input-cell>
+  <app-input-cell *ngIf="trainingRowModel.answers[1]" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.answers[1]"></app-input-cell>
+  <app-input-cell *ngIf="trainingRowModel.answers[2]" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.answers[2]"></app-input-cell>
+  <app-input-cell *ngIf="trainingRowModel.answers[3]" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.answers[3]"></app-input-cell>
   <button mat-raised-button (click)="setCommandToCheck()" class="check-button">Check</button>
 </div>

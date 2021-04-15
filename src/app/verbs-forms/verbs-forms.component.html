@@ -4,12 +4,12 @@
     <mat-panel-title style="padding-top: 10px">
       Current lesson contains {{verbs ? verbs.length : 0}} verbs
     </mat-panel-title>
-    <mat-panel-description class="panel-description">
-      <button mat-stroked-button color="primary" (click)="setCommandToClear()" class="command-button">Clear</button>
-      <button mat-stroked-button color="primary" (click)="setCommandToCheck()" class="command-button">Check</button>
-      <button mat-stroked-button color="primary" (click)="setCommandToReveal()" class="command-button">Reveal</button>
-    </mat-panel-description>
   </mat-expansion-panel-header>
+  <div class="control-buttons">
+    <button mat-stroked-button color="primary" (click)="setCommandToClear()" class="command-button">Clear</button>
+    <button mat-stroked-button color="primary" (click)="setCommandToCheck()" class="command-button">Check</button>
+    <button mat-stroked-button color="primary" (click)="setCommandToReveal()" class="command-button">Reveal</button>
+  </div>
   <div>
     <div class="languages-radio-group">
       <label id="radio-group-label">Translation language</label>
@@ -41,11 +41,13 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div *ngIf="!loading">
   <div>
-    <span class="foreign-translation">Translation</span>
-    <span class="infinitive">Infinitive</span>
-    <span class="presentSimple">Present Simple</span>
-    <span class="pastSimple">Past Simple</span>
-    <span class="pastParticiple">Past Participle</span>
+    <div class="forms-header">
+      <span class="foreign-translation">Translation</span>
+      <span class="infinitive">Infinitive</span>
+      <span class="presentSimple">Present Simple</span>
+      <span class="pastSimple">Past Simple</span>
+      <span class="pastParticiple">Past Participle</span>
+    </div>
     <div>
       <app-training-row *ngFor="let verb of verbs" [command]="command" [trainingRowModel]="verb"></app-training-row>
     </div>

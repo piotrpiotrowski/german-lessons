@@ -20,4 +20,9 @@
   color: #406ee3;
 }
 
-
+.mat-form-field {
+  width: 19%;
+  @media (max-width: 600px) {
+    width: 99%;
+  }
+}

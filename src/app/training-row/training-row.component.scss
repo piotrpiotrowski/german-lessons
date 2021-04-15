@@ -5,6 +5,9 @@
     width: 9%;
     padding-right: 1%;
     display: inline-block;
+    @media (max-width: 600px) {
+      padding-top: 20px;
+    }
   }
 
   .cell {
@@ -15,5 +18,9 @@
     color: #ffffff;
     background: #d77d24;
     width: 10%;
+    min-width: auto;
+    @media (max-width: 600px) {
+      width: 99%;
+    }
   }
 }
