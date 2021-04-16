@@ -24,6 +24,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { PersonalPronounsComponent } from './personal-pronouns/personal-pronouns.component';
 import { PossessivePronounsComponent } from './possessive-pronouns/possessive-pronouns.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PossessivePronounsComponent } from './possessive-pronouns/possessive-pr
     InputCellComponent,
     TrainingRowComponent,
     PersonalPronounsComponent,
-    PossessivePronounsComponent
+    PossessivePronounsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

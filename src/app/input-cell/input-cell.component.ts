@@ -85,7 +85,7 @@ export class InputCellComponent implements OnInit {
     this.state = InputCellState.UNCERTAIN;
   }
 
-  private reveal(): void {
+  public reveal(): void {
     this.state = InputCellState.CORRECT;
     this.value = this.answer;
   }

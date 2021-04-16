@@ -5,8 +5,11 @@
     width: 9%;
     padding-right: 1%;
     display: inline-block;
+    text-overflow: clip;
+    overflow-wrap: break-word;
     @media (max-width: 600px) {
-      padding-top: 20px;
+      padding-top: 30px;
+      width: 99%
     }
   }
 

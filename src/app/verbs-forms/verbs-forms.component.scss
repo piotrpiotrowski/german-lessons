@@ -1,5 +1,8 @@
 .control-panel {
   margin-bottom: 40px;
+  @media (max-width: 600px) {
+    margin-bottom: 0;
+  }
 }
 
 .languages-radio-group {

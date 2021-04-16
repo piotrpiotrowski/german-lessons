@@ -5,37 +5,39 @@
       Current lesson contains {{verbs ? verbs.length : 0}} verbs
     </mat-panel-title>
   </mat-expansion-panel-header>
-  <div class="control-buttons">
-    <button mat-stroked-button color="primary" (click)="setCommandToClear()" class="command-button">Clear</button>
-    <button mat-stroked-button color="primary" (click)="setCommandToCheck()" class="command-button">Check</button>
-    <button mat-stroked-button color="primary" (click)="setCommandToReveal()" class="command-button">Reveal</button>
-  </div>
   <div>
-    <div class="languages-radio-group">
-      <label id="radio-group-label">Translation language</label>
-      <mat-radio-group aria-labelledby="radio-group-label" [(ngModel)]="translationLanguage">
-        <mat-radio-button class="language-radio-button" (change)="setEnglishLanguage()" [value]="0">English</mat-radio-button>
-        <mat-radio-button class="language-radio-button" (change)="setPolishLanguage()" [value]="1">Polish</mat-radio-button>
-      </mat-radio-group>
+    <div class="control-buttons">
+      <button mat-stroked-button color="primary" (click)="setCommandToClear()" class="command-button">Clear</button>
+      <button mat-stroked-button color="primary" (click)="setCommandToCheck()" class="command-button">Check</button>
+      <button mat-stroked-button color="primary" (click)="setCommandToReveal()" class="command-button">Reveal</button>
     </div>
-    <p>
-      Choose your level
-      <mat-button-toggle-group name="difficultyLevel" aria-label="difficulty level" [(ngModel)]="difficultyLevel" (change)="loadVerbsForms()">
-        <mat-button-toggle value="0">None</mat-button-toggle>
-        <mat-button-toggle value="1">Beginner</mat-button-toggle>
-        <mat-button-toggle value="2">Intermediate</mat-button-toggle>
-        <mat-button-toggle value="3">Advanced</mat-button-toggle>
-        <mat-button-toggle value="4">Proficient</mat-button-toggle>
-      </mat-button-toggle-group>
-    </p>
-    <p>
-      Choose auxiliary verb
-      <mat-button-toggle-group name="difficultyLevel" aria-label="difficulty level" [(ngModel)]="auxiliaryVerb" (change)="loadVerbsForms()">
-        <mat-button-toggle value="both">Both</mat-button-toggle>
-        <mat-button-toggle value="hat">Haben</mat-button-toggle>
-        <mat-button-toggle value="ist">Sein</mat-button-toggle>
-      </mat-button-toggle-group>
-    </p>
+    <div>
+      <div class="languages-radio-group">
+        <label id="radio-group-label">Translation language</label>
+        <mat-radio-group aria-labelledby="radio-group-label" [(ngModel)]="translationLanguage">
+          <mat-radio-button class="language-radio-button" (change)="setEnglishLanguage()" [value]="0">English</mat-radio-button>
+          <mat-radio-button class="language-radio-button" (change)="setPolishLanguage()" [value]="1">Polish</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <p>
+        Choose your level
+        <mat-button-toggle-group name="difficultyLevel" aria-label="difficulty level" [(ngModel)]="difficultyLevel" (change)="loadVerbsForms()">
+          <mat-button-toggle value="0">None</mat-button-toggle>
+          <mat-button-toggle value="1">Beginner</mat-button-toggle>
+          <mat-button-toggle value="2">Intermediate</mat-button-toggle>
+          <mat-button-toggle value="3">Advanced</mat-button-toggle>
+          <mat-button-toggle value="4">Proficient</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
+      <p>
+        Choose auxiliary verb
+        <mat-button-toggle-group name="difficultyLevel" aria-label="difficulty level" [(ngModel)]="auxiliaryVerb" (change)="loadVerbsForms()">
+          <mat-button-toggle value="both">Both</mat-button-toggle>
+          <mat-button-toggle value="hat">Haben</mat-button-toggle>
+          <mat-button-toggle value="ist">Sein</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
+    </div>
   </div>
 </mat-expansion-panel>
 <mat-spinner *ngIf="loading"></mat-spinner>
