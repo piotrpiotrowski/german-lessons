@@ -15,6 +15,7 @@ export class InputCellComponent implements OnInit {
   value: string = null;
 
   @Input() answer: string;
+  @Input() label: string;
   @Input() command: BehaviorSubject<InputCellCommand>;
 
   constructor() {
@@ -33,6 +34,10 @@ export class InputCellComponent implements OnInit {
     } else {
       this.executeCommand(this.deductCommand(event));
     }
+  }
+
+  onDoubleClick(): void {
+    this.executeCommand(InputCellCommand.REVEAL);
   }
 
   private executeCommand(command: InputCellCommand): void {
@@ -85,7 +90,7 @@ export class InputCellComponent implements OnInit {
     this.state = InputCellState.UNCERTAIN;
   }
 
-  public reveal(): void {
+  private reveal(): void {
     this.state = InputCellState.CORRECT;
     this.value = this.answer;
   }

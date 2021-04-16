@@ -20,7 +20,7 @@ export class VerbsFormsComponent implements OnInit {
   auxiliaryVerb = 'both';
   translationLanguage = 0;
 
-  constructor(private verbFromsService: VerbFromsService) {
+  constructor(private verbFormsService: VerbFromsService) {
   }
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class VerbsFormsComponent implements OnInit {
 
   loadVerbsForms(): void {
     this.loading = true;
-    this.verbFromsService.find(this.buildSearchPredicate())
+    this.verbFormsService.find(this.buildSearchPredicate())
       .pipe(toArray())
       .pipe(finalize(() => this.loading = false))
       .subscribe(
@@ -48,7 +48,7 @@ export class VerbsFormsComponent implements OnInit {
   }
 
   private auxiliaryVerbCondition(verbForm: TrainingRowModel): boolean {
-    return this.auxiliaryVerb === 'both' || verbForm.answers[3].startsWith(this.auxiliaryVerb);
+    return this.auxiliaryVerb === 'both' || verbForm.getAnswer(3).startsWith(this.auxiliaryVerb);
   }
 
   setCommandToClear(): void {

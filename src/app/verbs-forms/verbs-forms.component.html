@@ -42,16 +42,5 @@
 </mat-expansion-panel>
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div *ngIf="!loading">
-  <div>
-    <div class="forms-header">
-      <span class="foreign-translation">Translation</span>
-      <span class="infinitive">Infinitive</span>
-      <span class="presentSimple">Present Simple</span>
-      <span class="pastSimple">Past Simple</span>
-      <span class="pastParticiple">Past Participle</span>
-    </div>
-    <div>
-      <app-training-row *ngFor="let verb of verbs" [command]="command" [trainingRowModel]="verb"></app-training-row>
-    </div>
-  </div>
+  <app-training-row *ngFor="let verb of verbs" [command]="command" [trainingRowModel]="verb"></app-training-row>
 </div>

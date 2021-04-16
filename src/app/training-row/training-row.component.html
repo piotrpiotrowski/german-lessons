@@ -1,8 +1,8 @@
 <div class="training-row">
   <div class="foreign-translation" title="{{tooltip}}">{{label}}</div>
-  <app-input-cell *ngIf="trainingRowModel.answers[0]" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.answers[0]"></app-input-cell>
-  <app-input-cell *ngIf="trainingRowModel.answers[1]" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.answers[1]"></app-input-cell>
-  <app-input-cell *ngIf="trainingRowModel.answers[2]" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.answers[2]"></app-input-cell>
-  <app-input-cell *ngIf="trainingRowModel.answers[3]" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.answers[3]"></app-input-cell>
+  <app-input-cell *ngIf="trainingRowModel.getAnswer(0)" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.getAnswer(0)" [label]="trainingRowModel.getLabel(0)"></app-input-cell>
+  <app-input-cell *ngIf="trainingRowModel.getAnswer(1)" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.getAnswer(1)" [label]="trainingRowModel.getLabel(1)"></app-input-cell>
+  <app-input-cell *ngIf="trainingRowModel.getAnswer(2)" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.getAnswer(2)" [label]="trainingRowModel.getLabel(2)"></app-input-cell>
+  <app-input-cell *ngIf="trainingRowModel.getAnswer(3)" class="cell" [command]="cellInputsCommand" [answer]="trainingRowModel.getAnswer(3)" [label]="trainingRowModel.getLabel(3)"></app-input-cell>
   <button mat-raised-button (click)="setCommandToCheck()" class="check-button">Check</button>
 </div>

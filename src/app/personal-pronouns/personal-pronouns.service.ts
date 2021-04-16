@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {TrainingRowModel} from '../training-row/training-row.model';
+import {Answer} from '../training-row/answer.model';
 import {Observable, of} from 'rxjs';
 import {map, mergeMap, shareReplay} from 'rxjs/operators';
 import {fromArray} from 'rxjs/internal/observable/fromArray';
@@ -29,6 +30,11 @@ they formal;PaĹ„stwo;Sie;Ihrer;Sie;Ihnen;0`;
 
   find(): Observable<TrainingRowModel> {
     return this.parsedPronouns
-      .pipe(map(columns => new TrainingRowModel(columns[0], columns[1], [columns[2], columns[3], columns[4], columns[5]], +columns[6])));
+      .pipe(map(columns => new TrainingRowModel(columns[0], columns[1], +columns[6], [
+      new Answer('Nominative', columns[2]),
+      new Answer('Genitive', columns[3]),
+      new Answer('Accusative', columns[4]),
+      new Answer('Dative', columns[5])
+      ])));
   }
 }

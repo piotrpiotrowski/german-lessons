@@ -5,6 +5,7 @@ import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from './training-row.model';
+import {Answer} from './answer.model';
 import {BehaviorSubject} from 'rxjs';
 import {TrainingRowCommand} from './training-row-command';
 
@@ -26,7 +27,7 @@ describe('VerbFormsRowComponent', () => {
 
   it('should have a check button', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')], 1);
     component.command = new BehaviorSubject<string>(null);
 
     // when
@@ -42,7 +43,7 @@ describe('VerbFormsRowComponent', () => {
     // given
     let expectedCellInputsCommand = null;
     component.command = new BehaviorSubject<string>(null);
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')], 1);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
     // and
@@ -60,7 +61,7 @@ describe('VerbFormsRowComponent', () => {
   it('should set command to REVEAL', () => {
     // given
     let expectedCellInputsCommand = null;
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')], 1);
     component.command = new BehaviorSubject<string>(InputCellCommand.REVEAL);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
@@ -75,7 +76,7 @@ describe('VerbFormsRowComponent', () => {
   it('should set command to CLEAR', () => {
     // given
     let expectedCellInputsCommand = null;
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')], 1);
     component.command = new BehaviorSubject<string>(InputCellCommand.CLEAR);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
@@ -88,7 +89,7 @@ describe('VerbFormsRowComponent', () => {
 
   it('should have a english label and polish tooltip by default', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')], 1);
     component.command = new BehaviorSubject<string>(InputCellCommand.CLEAR);
 
     // when
@@ -103,7 +104,7 @@ describe('VerbFormsRowComponent', () => {
 
   it('should have a english label and polish tooltip when a CHANGE_LANGUAGE_TO_ENGLISH was emitted', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')], 1);
     component.command = new BehaviorSubject<string>(TrainingRowCommand.CHANGE_LANGUAGE_TO_ENGLISH);
 
     // when
@@ -118,7 +119,7 @@ describe('VerbFormsRowComponent', () => {
 
   it('should set a polish label and english tooltip when a CHANGE_LANGUAGE_TO_POLISH was emitted', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')], 1);
     component.command = new BehaviorSubject<string>(TrainingRowCommand.CHANGE_LANGUAGE_TO_POLISH);
 
     // when
@@ -133,7 +134,7 @@ describe('VerbFormsRowComponent', () => {
 
   it('should have four input-cells', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać',[ 'beginnen', 'beginnt', 'begann', 'hat begonnen'], 1);
+    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')], 1);
     component.command = new BehaviorSubject<string>(InputCellCommand.CLEAR);
 
     // when

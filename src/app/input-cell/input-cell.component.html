@@ -1,5 +1,6 @@
 <mat-form-field>
-  <input matInput type="text" [(ngModel)]="value" (keyup)="onValueChanged($event)" (dblclick)="reveal()" autocomplete="off">
+  <mat-label >{{label}}</mat-label>
+  <input matInput type="text" [(ngModel)]="value" (keyup)="onValueChanged($event)" (dblclick)="onDoubleClick()" autocomplete="off">
   <span matSuffix class="icons-span">
     <mat-icon *ngIf="state.toString() === 'UNCERTAIN'" aria-hidden="true" [ngClass]="state.toString()">fiber_manual_record</mat-icon>
     <mat-icon *ngIf="state.toString() === 'CORRECT'" aria-hidden="true" [ngClass]="state.toString()">done</mat-icon>

@@ -32,12 +32,5 @@
 </mat-expansion-panel>
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div *ngIf="!loading">
-  <div class="forms-header">
-    <span class="foreign-translation">Translation</span>
-    <span class="infinitive">Nominative</span>
-    <span class="presentSimple">Genitive</span>
-    <span class="pastSimple">Accusative</span>
-    <span class="pastParticiple">Dative</span>
-  </div>
   <app-training-row *ngFor="let pronoun of pronouns" [command]="command" [trainingRowModel]="pronoun"></app-training-row>
 </div>
