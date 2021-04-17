@@ -197,6 +197,42 @@ describe('InputCellComponent', () => {
     expect(component.state).toEqual(InputCellState.UNCERTAIN);
   });
 
+  it('should update a state to UNCERTAIN from INCORRECT when a key changed event was emitted by a backspace', () => {
+    // given
+    component.answer = 'answer';
+    component.state = InputCellState.INCORRECT;
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CHECK);
+
+    // and
+    fixture.detectChanges();
+
+    // when
+    fixture.debugElement
+      .query(By.css('input'))
+      .triggerEventHandler('keyup', {keyCode: 8});
+
+    // then
+    expect(component.state).toEqual(InputCellState.UNCERTAIN);
+  });
+
+  it('should update a state to UNCERTAIN from INCORRECT when a key changed event was emitted by a delete', () => {
+    // given
+    component.answer = 'answer';
+    component.state = InputCellState.INCORRECT;
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CHECK);
+
+    // and
+    fixture.detectChanges();
+
+    // when
+    fixture.debugElement
+      .query(By.css('input'))
+      .triggerEventHandler('keyup', {keyCode: 46});
+
+    // then
+    expect(component.state).toEqual(InputCellState.UNCERTAIN);
+  });
+
   it('should update a state to UNCERTAIN from CORRECT when a key changed event was emitted by a letter', () => {
     // given
     component.answer = 'answer';

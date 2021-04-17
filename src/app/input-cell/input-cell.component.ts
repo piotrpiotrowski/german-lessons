@@ -29,7 +29,7 @@ export class InputCellComponent implements OnInit {
   }
 
   onValueChanged(event): void {
-    if (isAsciiLetter(event.keyCode)) {
+    if (isAsciiLetter(event.keyCode) || event.keyCode === 8 || event.keyCode === 46) {
       this.state = InputCellState.UNCERTAIN;
     } else {
       this.executeCommand(this.deductCommand(event));

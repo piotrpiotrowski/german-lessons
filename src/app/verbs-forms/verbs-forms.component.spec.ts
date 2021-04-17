@@ -19,4 +19,12 @@ describe('VerbsFormsComponent', () => {
     fixture = TestBed.createComponent(VerbsFormsComponent);
     component = fixture.componentInstance;
   });
+
+    it('should create', () => {
+      //when
+      fixture.detectChanges();
+
+      //then
+      expect(component).toBeTruthy();
+    });
 });
