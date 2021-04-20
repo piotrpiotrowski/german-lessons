@@ -1,54 +1,49 @@
 import {Component, OnInit, Predicate} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
-import {BehaviorSubject} from 'rxjs';
-import {VerbsFormsService} from './verbs-forms.service';
 import {finalize, toArray} from 'rxjs/operators';
 import {TrainingRowCommand} from '../training-row/training-row-command';
+import {VerbsConjunctionsService} from './verbs-conjunctions.service';
 
 @Component({
-  selector: 'app-verbs-forms',
-  templateUrl: './verbs-forms.component.html',
-  styleUrls: ['./verbs-forms.component.scss']
+  selector: 'app-verbs-conjunctions',
+  templateUrl: './verbs-conjunctions.component.html',
+  styleUrls: ['./verbs-conjunctions.component.scss']
 })
-export class VerbsFormsComponent implements OnInit {
+export class VerbsConjunctionsComponent implements OnInit {
 
   command: BehaviorSubject<string> = new BehaviorSubject<string>(InputCellCommand.CLEAR);
-  verbs: TrainingRowModel[];
+  verbsConjunctions: TrainingRowModel[];
   loading: boolean;
-  difficultyLevel = '1';
-  auxiliaryVerb = 'both';
   translationLanguage = 0;
+  difficultyLevel = '1';
 
-  constructor(private verbsFormsService: VerbsFormsService) {
+  constructor(private verbsConjunctionsService: VerbsConjunctionsService) {
   }
 
   ngOnInit(): void {
-    this.loadVerbsForms();
+    this.loadVerbsConjunctions();
   }
 
-  loadVerbsForms(): void {
+  loadVerbsConjunctions(): void {
     this.loading = true;
-    this.verbsFormsService.find(this.buildSearchPredicate())
+    this.verbsConjunctionsService.find(this.buildSearchPredicate())
       .pipe(toArray())
       .pipe(finalize(() => this.loading = false))
       .subscribe(
-        verbs => this.verbs = verbs,
+        verbsConjunctions => this.verbsConjunctions = verbsConjunctions,
         console.error
       );
   }
 
-  private buildSearchPredicate(): Predicate<TrainingRowModel> {
-    return verbForm => this.difficultyLevelCondition(verbForm) && this.auxiliaryVerbCondition(verbForm);
+ private buildSearchPredicate(): Predicate<TrainingRowModel> {
+    return verbConjunctions => this.difficultyLevelCondition(verbConjunctions);
   }
 
-  private difficultyLevelCondition(verbForm: TrainingRowModel): boolean {
+  private difficultyLevelCondition(verbConjunctions: TrainingRowModel): boolean {
     const classification = +this.difficultyLevel;
-    return classification === 0 || verbForm.classification === classification;
-  }
-
-  private auxiliaryVerbCondition(verbForm: TrainingRowModel): boolean {
-    return this.auxiliaryVerb === 'both' || verbForm.getAnswer(3).startsWith(this.auxiliaryVerb);
+    return classification === 0 || verbConjunctions.classification === classification;
   }
 
   setCommandToClear(): void {

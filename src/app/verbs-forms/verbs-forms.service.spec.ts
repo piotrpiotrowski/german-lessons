@@ -1,14 +1,14 @@
 import {TestBed} from '@angular/core/testing';
 
-import {VerbFromsService} from './verb-froms.service';
+import {VerbsFormsService} from './verbs-forms.service';
 import {count, take, toArray} from 'rxjs/operators';
 
-describe('VerbsFromsService', () => {
-  let service: VerbFromsService;
+describe('VerbsFormsService', () => {
+  let service: VerbsFormsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(VerbFromsService);
+    service = TestBed.inject(VerbsFormsService);
   });
 
   it('should take two from list', () => {

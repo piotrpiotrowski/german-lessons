@@ -1,0 +1,36 @@
+<h2>Conjunctions of verbs in present tense</h2>
+<mat-expansion-panel class="control-panel">
+  <mat-expansion-panel-header>
+    <mat-panel-title class="panel-title">
+      Current lesson contains {{verbsConjunctions ? verbsConjunctions.length : 0}} verbs
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div>
+    <div class="control-buttons">
+      <button mat-stroked-button color="primary" (click)="setCommandToClear()" class="command-button">Clear</button>
+      <button mat-stroked-button color="primary" (click)="setCommandToCheck()" class="command-button">Check</button>
+      <button mat-stroked-button color="primary" (click)="setCommandToReveal()" class="command-button">Reveal</button>
+    </div>
+    <div class="languages-radio-group">
+      <label id="radio-group-label">Translation language</label>
+      <mat-radio-group aria-labelledby="radio-group-label" [(ngModel)]="translationLanguage">
+        <mat-radio-button class="language-radio-button" (change)="setEnglishLanguage()" [value]="0">English</mat-radio-button>
+        <mat-radio-button class="language-radio-button" (change)="setPolishLanguage()" [value]="1">Polish</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <p>
+      Choose your level
+      <mat-button-toggle-group name="difficultyLevel" aria-label="difficulty level" [(ngModel)]="difficultyLevel" (change)="loadVerbsConjunctions()">
+        <mat-button-toggle value="0">All</mat-button-toggle>
+        <mat-button-toggle value="1">Beginner</mat-button-toggle>
+        <mat-button-toggle value="2">Intermediate</mat-button-toggle>
+        <mat-button-toggle value="3">Advanced</mat-button-toggle>
+        <mat-button-toggle value="4">Proficient</mat-button-toggle>
+      </mat-button-toggle-group>
+    </p>
+  </div>
+</mat-expansion-panel>
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div *ngIf="!loading">
+  <app-training-row *ngFor="let verbConjunctions of verbsConjunctions" [command]="command" [trainingRowModel]="verbConjunctions"></app-training-row>
+</div>

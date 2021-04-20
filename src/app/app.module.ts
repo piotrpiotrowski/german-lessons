@@ -25,6 +25,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { PersonalPronounsComponent } from './personal-pronouns/personal-pronouns.component';
 import { PossessivePronounsComponent } from './possessive-pronouns/possessive-pronouns.component';
 import { HomeComponent } from './home/home.component';
+import {VerbsConjunctionsComponent} from './verbs-conjunctions/verbs-conjunctions.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HomeComponent } from './home/home.component';
     TrainingRowComponent,
     PersonalPronounsComponent,
     PossessivePronounsComponent,
-    HomeComponent
+    HomeComponent,
+    VerbsConjunctionsComponent
   ],
   imports: [
     BrowserModule,

@@ -3,13 +3,15 @@ import {RouterModule, Routes} from '@angular/router';
 import {VerbsFormsComponent} from './verbs-forms/verbs-forms.component';
 import {PersonalPronounsComponent} from './personal-pronouns/personal-pronouns.component';
 import {PossessivePronounsComponent} from './possessive-pronouns/possessive-pronouns.component';
+import {VerbsConjunctionsComponent} from './verbs-conjunctions/verbs-conjunctions.component';
 import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'irregular-verbs', component: VerbsFormsComponent},
   {path: 'personal-pronouns', component: PersonalPronounsComponent},
-  {path: 'possessive-pronouns', component: PossessivePronounsComponent}
+  {path: 'possessive-pronouns', component: PossessivePronounsComponent},
+  {path: 'verb-conjunctions', component: VerbsConjunctionsComponent},
 ];
 
 @NgModule({

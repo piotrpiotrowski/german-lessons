@@ -8,7 +8,7 @@ import {fromArray} from 'rxjs/internal/observable/fromArray';
 @Injectable({
   providedIn: 'root'
 })
-export class VerbFromsService {
+export class VerbsFormsService {
 
   parsedVerbsForms: Observable<string[]>;
   rawVerbsForms = `bake;piec;backen;bäckt;backte;hat gebacken;2
