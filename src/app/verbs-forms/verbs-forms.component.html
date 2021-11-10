@@ -37,6 +37,15 @@
           <mat-button-toggle value="ist">Sein</mat-button-toggle>
         </mat-button-toggle-group>
       </p>
+      <p>
+        Show
+        <mat-button-toggle-group name="filteringCategory" aria-label="filtering category" [(ngModel)]="filteringCategory">
+          <mat-button-toggle value="ALL_AVAILABLE" (click)="loadVerbsForms()">all available</mat-button-toggle>
+          <mat-button-toggle value="BY_RANDOM_LETTER" (click)="loadVerbsForms()">random letter</mat-button-toggle>
+          <mat-button-toggle value="RANDOM_5" (click)="loadVerbsForms()">random 5</mat-button-toggle>
+          <mat-button-toggle value="RANDOM_10" (click)="loadVerbsForms()">random 10</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
     </div>
   </div>
 </mat-expansion-panel>

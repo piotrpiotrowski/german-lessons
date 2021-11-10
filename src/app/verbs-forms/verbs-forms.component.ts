@@ -18,7 +18,14 @@ export class VerbsFormsComponent implements OnInit {
   loading: boolean;
   difficultyLevel = '1';
   auxiliaryVerb = 'both';
+  filteringCategory = 'ALL_AVAILABLE';
   translationLanguage = 0;
+  filtersForCategories = new Map([
+    ['ALL_AVAILABLE', verbs => verbs],
+    ['BY_RANDOM_LETTER', verbs => this.filterByRandomLetter(verbs)],
+    ['RANDOM_5', verbs => this.filterRandomVerbs(5, verbs)],
+    ['RANDOM_10', verbs => this.filterRandomVerbs(10, verbs)]
+  ]);
 
   constructor(private verbsFormsService: VerbsFormsService) {
   }
@@ -33,22 +40,9 @@ export class VerbsFormsComponent implements OnInit {
       .pipe(toArray())
       .pipe(finalize(() => this.loading = false))
       .subscribe(
-        verbs => this.verbs = verbs,
+        verbs => this.verbs = this.filterByCategory(verbs),
         console.error
       );
-  }
-
-  private buildSearchPredicate(): Predicate<TrainingRowModel> {
-    return verbForm => this.difficultyLevelCondition(verbForm) && this.auxiliaryVerbCondition(verbForm);
-  }
-
-  private difficultyLevelCondition(verbForm: TrainingRowModel): boolean {
-    const classification = +this.difficultyLevel;
-    return classification === 0 || verbForm.classification === classification;
-  }
-
-  private auxiliaryVerbCondition(verbForm: TrainingRowModel): boolean {
-    return this.auxiliaryVerb === 'both' || verbForm.getAnswer(3).startsWith(this.auxiliaryVerb);
   }
 
   setCommandToClear(): void {
@@ -69,5 +63,41 @@ export class VerbsFormsComponent implements OnInit {
 
   setEnglishLanguage(): void {
     this.command.next(TrainingRowCommand.CHANGE_LANGUAGE_TO_ENGLISH);
+  }
+
+  private filterByCategory(verbs: TrainingRowModel[]): TrainingRowModel[] {
+    return this.filtersForCategories.get(this.filteringCategory)(verbs);
+  }
+
+  private filterByRandomLetter(verbs: TrainingRowModel[]): TrainingRowModel[] {
+    const firstLettersOfTranslations = Array.from(new Set(verbs.map(value => this.extractFirstLetterOfTranslation(value))));
+    const randomNumber = Math.floor(Math.random() * (firstLettersOfTranslations.length - 1));
+    return verbs.filter(value => this.extractFirstLetterOfTranslation(value) === firstLettersOfTranslations[randomNumber]);
+  }
+
+  private filterRandomVerbs(numberOfVerbs: number, verbs: TrainingRowModel[]): TrainingRowModel[] {
+    console.log(Array.from(Array(numberOfVerbs).keys())
+      .map(_ => Math.floor(Math.random() * (verbs.length - 1)))
+      .map(i => verbs[i]));
+    return Array.from(Array(numberOfVerbs).keys())
+      .map(_ => Math.floor(Math.random() * (verbs.length - 1)))
+      .map(i => verbs[i]);
+  }
+
+  private extractFirstLetterOfTranslation(value: TrainingRowModel): string {
+    return this.translationLanguage === 0 ? value.englishTranslation.charAt(0) : value.polishTranslation.charAt(0);
+  }
+
+  private buildSearchPredicate(): Predicate<TrainingRowModel> {
+    return verbForm => this.difficultyLevelCondition(verbForm) && this.auxiliaryVerbCondition(verbForm);
+  }
+
+  private difficultyLevelCondition(verbForm: TrainingRowModel): boolean {
+    const classification = +this.difficultyLevel;
+    return classification === 0 || verbForm.classification === classification;
+  }
+
+  private auxiliaryVerbCondition(verbForm: TrainingRowModel): boolean {
+    return this.auxiliaryVerb === 'both' || verbForm.getAnswer(3).startsWith(this.auxiliaryVerb);
   }
 }
