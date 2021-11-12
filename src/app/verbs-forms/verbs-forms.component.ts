@@ -71,17 +71,25 @@ export class VerbsFormsComponent implements OnInit {
 
   private filterByRandomLetter(verbs: TrainingRowModel[]): TrainingRowModel[] {
     const firstLettersOfTranslations = Array.from(new Set(verbs.map(value => this.extractFirstLetterOfTranslation(value))));
-    const randomNumber = Math.floor(Math.random() * (firstLettersOfTranslations.length - 1));
-    return verbs.filter(value => this.extractFirstLetterOfTranslation(value) === firstLettersOfTranslations[randomNumber]);
+    const randomFirstLetter = firstLettersOfTranslations[this.drawRandomNumber(firstLettersOfTranslations.length)];
+    return verbs.filter(value => this.extractFirstLetterOfTranslation(value) === randomFirstLetter);
   }
 
   private filterRandomVerbs(numberOfVerbs: number, verbs: TrainingRowModel[]): TrainingRowModel[] {
-    console.log(Array.from(Array(numberOfVerbs).keys())
-      .map(_ => Math.floor(Math.random() * (verbs.length - 1)))
-      .map(i => verbs[i]));
-    return Array.from(Array(numberOfVerbs).keys())
-      .map(_ => Math.floor(Math.random() * (verbs.length - 1)))
+    return this.createListOfRandomIndexes(Math.min(numberOfVerbs, verbs.length), verbs.length)
       .map(i => verbs[i]);
+  }
+
+  private createListOfRandomIndexes(listSize: number, maxValue: number): number[] {
+    const randomIndexes = new Set<number>();
+    while (randomIndexes.size !== listSize) {
+      randomIndexes.add(this.drawRandomNumber(maxValue));
+    }
+    return Array.from(randomIndexes.values());
+  }
+
+  private drawRandomNumber(length: number): number {
+    return Math.floor(Math.random() * length);
   }
 
   private extractFirstLetterOfTranslation(value: TrainingRowModel): string {
