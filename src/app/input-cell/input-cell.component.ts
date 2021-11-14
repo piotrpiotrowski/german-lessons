@@ -17,6 +17,14 @@ export class InputCellComponent implements OnInit {
   @Input() answer: string;
   @Input() label: string;
   @Input() command: BehaviorSubject<InputCellCommand>;
+  private strategies = new Map<InputCellCommand, () => void>(
+    [
+      [InputCellCommand.REVEAL, () => this.reveal()],
+      [InputCellCommand.CLEAR, () => this.clear()],
+      [InputCellCommand.CHECK, () => this.check()],
+      [null, () => null],
+    ]
+  );
 
   constructor() {
   }
@@ -41,15 +49,7 @@ export class InputCellComponent implements OnInit {
   }
 
   private executeCommand(command: InputCellCommand): void {
-    if (command === InputCellCommand.REVEAL) {
-      return this.reveal();
-    }
-    if (command === InputCellCommand.CLEAR) {
-      return this.clear();
-    }
-    if (command === InputCellCommand.CHECK) {
-      return this.check();
-    }
+    this.strategies.get(command)();
   }
 
   private deductCommand(event): InputCellCommand {

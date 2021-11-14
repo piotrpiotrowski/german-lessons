@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 
 import {VerbsFormsService} from './verbs-forms.service';
-import {count, take, toArray} from 'rxjs/operators';
+import {count, reduce, take, toArray} from 'rxjs/operators';
 
 describe('VerbsFormsService', () => {
   let service: VerbsFormsService;
@@ -41,6 +41,38 @@ describe('VerbsFormsService', () => {
         fail);
 
     // then
-    expect(counter).toEqual(185);
+    expect(counter).toEqual(184);
+  });
+
+  it('should not have duplicated english translations', () => {
+    // given
+    let occurrences: Map<string, number> = null;
+
+    // when
+    service.find(() => true)
+      .pipe(reduce((accumulator, value) => accumulator.set(value.englishTranslation, (accumulator.get(value.englishTranslation) || 0) + 1), new Map<string, number>()))
+      .subscribe(
+        value => occurrences = value,
+        fail);
+
+    // then
+    const duplicates = Array.from(occurrences.entries()).filter(value => value[1] > 1);
+    expect(duplicates).toEqual([]);
+  });
+
+  it('should not have duplicated polish translations', () => {
+    // given
+    let occurrences: Map<string, number> = null;
+
+    // when
+    service.find(() => true)
+      .pipe(reduce((accumulator, value) => accumulator.set(value.polishTranslation, (accumulator.get(value.polishTranslation) || 0) + 1), new Map<string, number>()))
+      .subscribe(
+        value => occurrences = value,
+        fail);
+
+    // then
+    const duplicates = Array.from(occurrences.entries()).filter(value => value[1] > 1);
+    expect(duplicates).toEqual([]);
   });
 });

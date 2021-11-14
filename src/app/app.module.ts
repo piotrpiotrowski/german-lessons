@@ -26,6 +26,10 @@ import { PersonalPronounsComponent } from './personal-pronouns/personal-pronouns
 import { PossessivePronounsComponent } from './possessive-pronouns/possessive-pronouns.component';
 import { HomeComponent } from './home/home.component';
 import {VerbsConjunctionsComponent} from './verbs-conjunctions/verbs-conjunctions.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatOptionModule} from '@angular/material/core';
+import { ResponsiveButtonToggleGroupComponent } from './responsive-button-toggle-group/responsive-button-toggle-group.component';
+import {CommandButtonsComponent} from './command-buttons/command-buttons.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,9 @@ import {VerbsConjunctionsComponent} from './verbs-conjunctions/verbs-conjunction
     PersonalPronounsComponent,
     PossessivePronounsComponent,
     HomeComponent,
-    VerbsConjunctionsComponent
+    VerbsConjunctionsComponent,
+    ResponsiveButtonToggleGroupComponent,
+    CommandButtonsComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,9 @@ import {VerbsConjunctionsComponent} from './verbs-conjunctions/verbs-conjunction
     MatRadioModule,
     MatProgressSpinnerModule,
     MatButtonToggleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

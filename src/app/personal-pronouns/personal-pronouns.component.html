@@ -1,26 +1,15 @@
-<h2>Personal pronouns training</h2>
+<h3>{{languageService.getLabel('personalPronounsTitle')}}</h3>
 <mat-expansion-panel class="control-panel">
   <mat-expansion-panel-header>
     <mat-panel-title style="padding-top: 10px">
-      Current lesson contains {{pronouns ? pronouns.length : 0}} pronouns
+      {{languageService.getLabel('lessonSummary') + (pronouns ? pronouns.length : 0) + ' ' + languageService.getLabel('pronouns')}}
     </mat-panel-title>
   </mat-expansion-panel-header>
   <div>
-    <div class="control-buttons">
-      <button mat-stroked-button color="primary" (click)="setCommandToClear()" class="command-button">Clear</button>
-      <button mat-stroked-button color="primary" (click)="setCommandToCheck()" class="command-button">Check</button>
-      <button mat-stroked-button color="primary" (click)="setCommandToReveal()" class="command-button">Reveal</button>
-    </div>
-    <div class="languages-radio-group">
-      <label id="radio-group-label">Translation language</label>
-      <mat-radio-group aria-labelledby="radio-group-label" [(ngModel)]="translationLanguage">
-        <mat-radio-button class="language-radio-button" (change)="setEnglishLanguage()" [value]="0">English</mat-radio-button>
-        <mat-radio-button class="language-radio-button" (change)="setPolishLanguage()" [value]="1">Polish</mat-radio-button>
-      </mat-radio-group>
-    </div>
+    <app-command-buttons (selectedCommand)="onCommandSelect($event)"></app-command-buttons>
   </div>
 </mat-expansion-panel>
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div *ngIf="!loading">
-  <app-training-row *ngFor="let pronoun of pronouns" [command]="command" [trainingRowModel]="pronoun"></app-training-row>
+  <app-training-row *ngFor="let pronoun of pronouns" [command]="command"  [trainingRowModel]="pronoun"></app-training-row>
 </div>

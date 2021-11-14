@@ -7,7 +7,7 @@ import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from './training-row.model';
 import {Answer} from './answer.model';
 import {BehaviorSubject} from 'rxjs';
-import {TrainingRowCommand} from './training-row-command';
+import {Language} from '../language/language';
 
 describe('TrainingRowComponent', () => {
   let component: TrainingRowComponent;
@@ -27,8 +27,13 @@ describe('TrainingRowComponent', () => {
 
   it('should have a check button', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')]);
-    component.command = new BehaviorSubject<string>(null);
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+      new Answer('infinitive', 'beginnen'),
+      new Answer('presentSimple', 'beginnt'),
+      new Answer('pastSimple', 'begann'),
+      new Answer('pastParticiple', 'hat begonnen')
+    ]);
+    component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
     fixture.detectChanges();
@@ -42,8 +47,13 @@ describe('TrainingRowComponent', () => {
   it('should emit a command to CHECK when a check button was clicked', () => {
     // given
     let expectedCellInputsCommand = null;
-    component.command = new BehaviorSubject<string>(null);
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')]);
+    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+      new Answer('infinitive', 'beginnen'),
+      new Answer('presentSimple', 'beginnt'),
+      new Answer('pastSimple', 'begann'),
+      new Answer('pastParticiple', 'hat begonnen')
+    ]);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
     // and
@@ -61,8 +71,13 @@ describe('TrainingRowComponent', () => {
   it('should set command to REVEAL', () => {
     // given
     let expectedCellInputsCommand = null;
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')]);
-    component.command = new BehaviorSubject<string>(InputCellCommand.REVEAL);
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+      new Answer('infinitive', 'beginnen'),
+      new Answer('presentSimple', 'beginnt'),
+      new Answer('pastSimple', 'begann'),
+      new Answer('pastParticiple', 'hat begonnen')
+    ]);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.REVEAL);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
 
@@ -76,8 +91,13 @@ describe('TrainingRowComponent', () => {
   it('should set command to CLEAR', () => {
     // given
     let expectedCellInputsCommand = null;
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')]);
-    component.command = new BehaviorSubject<string>(InputCellCommand.CLEAR);
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+      new Answer('infinitive', 'beginnen'),
+      new Answer('presentSimple', 'beginnt'),
+      new Answer('pastSimple', 'begann'),
+      new Answer('pastParticiple', 'hat begonnen')
+    ]);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
     // when
@@ -89,8 +109,13 @@ describe('TrainingRowComponent', () => {
 
   it('should have a english label and polish tooltip by default', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')]);
-    component.command = new BehaviorSubject<string>(InputCellCommand.CLEAR);
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+      new Answer('infinitive', 'beginnen'),
+      new Answer('presentSimple', 'beginnt'),
+      new Answer('pastSimple', 'begann'),
+      new Answer('pastParticiple', 'hat begonnen')
+    ]);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
 
     // when
     fixture.detectChanges();
@@ -104,8 +129,13 @@ describe('TrainingRowComponent', () => {
 
   it('should have a english label and polish tooltip when a CHANGE_LANGUAGE_TO_ENGLISH was emitted', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')]);
-    component.command = new BehaviorSubject<string>(TrainingRowCommand.CHANGE_LANGUAGE_TO_ENGLISH);
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+      new Answer('infinitive', 'beginnen'),
+      new Answer('presentSimple', 'beginnt'),
+      new Answer('pastSimple', 'begann'),
+      new Answer('pastParticiple', 'hat begonnen')
+    ]);
+    component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
     fixture.detectChanges();
@@ -119,8 +149,13 @@ describe('TrainingRowComponent', () => {
 
   it('should set a polish label and english tooltip when a CHANGE_LANGUAGE_TO_POLISH was emitted', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')]);
-    component.command = new BehaviorSubject<string>(TrainingRowCommand.CHANGE_LANGUAGE_TO_POLISH);
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+      new Answer('infinitive', 'beginnen'),
+      new Answer('presentSimple', 'beginnt'),
+      new Answer('pastSimple', 'begann'),
+      new Answer('pastParticiple', 'hat begonnen')
+    ]);
+    component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
     fixture.detectChanges();
@@ -134,8 +169,13 @@ describe('TrainingRowComponent', () => {
 
   it('should have four input-cells', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel('begin', 'zaczybać', 1, [new Answer('Infinitive', 'beginnen'), new Answer('Present Simple','beginnt'), new Answer('Past Simple','begann'), new Answer('Past Perfect', 'hat begonnen')]);
-    component.command = new BehaviorSubject<string>(InputCellCommand.CLEAR);
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+      new Answer('infinitive', 'beginnen'),
+      new Answer('presentSimple', 'beginnt'),
+      new Answer('pastSimple', 'begann'),
+      new Answer('pastParticiple', 'hat begonnen')
+    ]);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
 
     // when
     fixture.detectChanges();

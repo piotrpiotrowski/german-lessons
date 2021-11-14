@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Predicate} from '@angular/core';
 import {TrainingRowModel} from '../training-row/training-row.model';
 import {Answer} from '../training-row/answer.model';
 import {Observable, of} from 'rxjs';
 import {filter, map, mergeMap, shareReplay} from 'rxjs/operators';
 import {fromArray} from 'rxjs/internal/observable/fromArray';
-import {Predicate} from '@angular/core';
+import {Language} from '../language/language';
 
 @Injectable({
   providedIn: 'root'
@@ -86,14 +86,16 @@ want;chcieć;Indikativ Präsens;ich will;du willst;er/sie/es will;wir wollen;ihr
 
   find(predicate: Predicate<TrainingRowModel>): Observable<TrainingRowModel> {
     return this.parsedVerbConjunctions
-      .pipe(map(columns => new TrainingRowModel(columns[0], columns[1], +columns[9], [
-      new Answer('ich', this.extractVerb(columns[3])),
-      new Answer('du', this.extractVerb(columns[4])),
-      new Answer('er/sie/es', this.extractVerb(columns[5])),
-      new Answer('ihr', this.extractVerb(columns[7]))
-      ])))
+      .pipe(map(columns => new TrainingRowModel(new Map<Language, string>([[Language.ENGLISH, columns[0]], [Language.POLISH, columns[1]], [Language.GERMAN, this.extractVerb(columns[6])]]),
+        +columns[9],
+        [
+          new Answer('i', this.extractVerb(columns[3])),
+          new Answer('youSingular', this.extractVerb(columns[4])),
+          new Answer('heSheIt', this.extractVerb(columns[5])),
+          new Answer('youPlural', this.extractVerb(columns[7]))
+        ])))
       .pipe(filter(predicate));
   }
 
-  private extractVerb = (definition: string) => definition.substring(definition.indexOf(' ') + 1)
+  private extractVerb = (definition: string) => definition.substring(definition.indexOf(' ') + 1);
 }

@@ -1,0 +1,9 @@
+@media (max-width: 600px) {
+  .mat-button-toggle-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .mat-button-toggle {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+}

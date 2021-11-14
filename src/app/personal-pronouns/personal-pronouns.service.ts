@@ -4,6 +4,7 @@ import {Answer} from '../training-row/answer.model';
 import {Observable, of} from 'rxjs';
 import {map, mergeMap, shareReplay} from 'rxjs/operators';
 import {fromArray} from 'rxjs/internal/observable/fromArray';
+import {Language} from '../language/language';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ it;ono;es;seiner;es;ihm;0
 we;my;wir;unser;uns;uns;0
 you;wy;ihr;euer;euch;euch;0
 they;oni;sie;ihrer;sie;ihnen;0
-they formal;PaĹ„stwo;Sie;Ihrer;Sie;Ihnen;0`;
+they formal;Państwo;Sie;Ihrer;Sie;Ihnen;0`;
 
   constructor() {
     this.parsedPronouns = of(this.rawPronouns)
@@ -30,11 +31,14 @@ they formal;PaĹ„stwo;Sie;Ihrer;Sie;Ihnen;0`;
 
   find(): Observable<TrainingRowModel> {
     return this.parsedPronouns
-      .pipe(map(columns => new TrainingRowModel(columns[0], columns[1], +columns[6], [
-      new Answer('Nominative', columns[2]),
-      new Answer('Genitive', columns[3]),
-      new Answer('Accusative', columns[4]),
-      new Answer('Dative', columns[5])
-      ])));
+      .pipe(map(columns => new TrainingRowModel(
+        new Map<Language, string>([[Language.ENGLISH, columns[0]], [Language.POLISH, columns[1]], [Language.GERMAN, columns[2]]]),
+        +columns[6],
+        [
+          new Answer('nominative', columns[2]),
+          new Answer('genitive', columns[3]),
+          new Answer('accusative', columns[4]),
+          new Answer('dative', columns[5])
+        ])));
   }
 }

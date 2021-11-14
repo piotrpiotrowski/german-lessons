@@ -1,12 +1,13 @@
 import {Answer} from './answer.model';
+import {Language} from '../language/language';
 
 export class TrainingRowModel {
-  constructor(public englishTranslation: string,
-              public polishTranslation: string,
+  constructor(private translations: Map<Language, string>,
               public classification: number,
-              public answers: Answer[]) {
+              private answers: Answer[]) {
   }
 
   getAnswer = (index: number) => this.answers[index].value;
   getLabel = (index: number) => this.answers[index].name;
+  getTranslation = (language: Language) => this.translations.get(language);
 }

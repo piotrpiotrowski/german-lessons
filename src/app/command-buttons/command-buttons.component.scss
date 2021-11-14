@@ -1,0 +1,15 @@
+
+.command-button {
+  margin-right: 20px;
+  @media (max-width: 600px) {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
+
+.control-buttons {
+  padding-bottom: 20px;
+  @media (max-width: 600px) {
+    padding-bottom: 0;
+  }
+}

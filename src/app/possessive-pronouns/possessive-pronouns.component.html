@@ -1,33 +1,13 @@
-<h2>Possessive pronouns training</h2>
+<h3>{{languageService.getLabel('possessivePronounsTitle')}}</h3>
 <mat-expansion-panel class="control-panel">
   <mat-expansion-panel-header>
     <mat-panel-title style="padding-top: 10px">
-      Current lesson contains {{pronouns ? pronouns.length : 0}} pronouns
+      {{languageService.getLabel('lessonSummary') + (pronouns ? pronouns.length : 0) + ' ' + languageService.getLabel('pronouns')}}
     </mat-panel-title>
   </mat-expansion-panel-header>
   <div>
-    <div class="control-buttons">
-      <button mat-stroked-button color="primary" (click)="setCommandToClear()" class="command-button">Clear</button>
-      <button mat-stroked-button color="primary" (click)="setCommandToCheck()" class="command-button">Check</button>
-      <button mat-stroked-button color="primary" (click)="setCommandToReveal()" class="command-button">Reveal</button>
-    </div>
-    <div class="languages-radio-group">
-      <label id="radio-group-label">Translation language</label>
-      <mat-radio-group aria-labelledby="radio-group-label" [(ngModel)]="translationLanguage">
-        <mat-radio-button class="language-radio-button" (change)="setEnglishLanguage()" [value]="0">English</mat-radio-button>
-        <mat-radio-button class="language-radio-button" (change)="setPolishLanguage()" [value]="1">Polish</mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <p>
-      Choose form
-      <mat-button-toggle-group name="difficultyLevel" aria-label="difficulty level" [(ngModel)]="formType" (change)="loadPronouns()">
-        <mat-button-toggle value="0">All</mat-button-toggle>
-        <mat-button-toggle value="1">Singular Masculine</mat-button-toggle>
-        <mat-button-toggle value="2">Singular Feminine</mat-button-toggle>
-        <mat-button-toggle value="3">Singular Neutral</mat-button-toggle>
-        <mat-button-toggle value="4">Plural</mat-button-toggle>
-      </mat-button-toggle-group>
-    </p>
+    <app-command-buttons (selectedCommand)="onCommandSelect($event)"></app-command-buttons>
+    <app-responsive-button-toggle-group [title]="languageService.getLabel('formChoose')" [options]="formTypeOptions" [(model)]="formType" (selectOption)="loadPronouns()"></app-responsive-button-toggle-group>
   </div>
 </mat-expansion-panel>
 <mat-spinner *ngIf="loading"></mat-spinner>

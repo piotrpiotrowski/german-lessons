@@ -3,8 +3,8 @@ import {BehaviorSubject} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
 import {finalize, toArray} from 'rxjs/operators';
-import {TrainingRowCommand} from '../training-row/training-row-command';
 import {PersonalPronounsService} from './personal-pronouns.service';
+import {LanguageService} from '../language/language.service';
 
 @Component({
   selector: 'app-personal-pronouns',
@@ -13,12 +13,11 @@ import {PersonalPronounsService} from './personal-pronouns.service';
 })
 export class PersonalPronounsComponent implements OnInit {
 
-  command: BehaviorSubject<string> = new BehaviorSubject<string>(InputCellCommand.CLEAR);
+  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
   pronouns: TrainingRowModel[];
   loading: boolean;
-  translationLanguage = 0;
 
-  constructor(private personalPronounsService: PersonalPronounsService) {
+  constructor(private personalPronounsService: PersonalPronounsService, public languageService: LanguageService) {
   }
 
   ngOnInit(): void {
@@ -36,24 +35,7 @@ export class PersonalPronounsComponent implements OnInit {
       );
   }
 
-  setCommandToClear(): void {
-    this.command.next(InputCellCommand.CLEAR);
+  onCommandSelect(selectedCommand: InputCellCommand): void {
+    this.command.next(selectedCommand);
   }
-
-  setCommandToCheck(): void {
-    this.command.next(InputCellCommand.CHECK);
-  }
-
-  setCommandToReveal(): void {
-    this.command.next(InputCellCommand.REVEAL);
-  }
-
-  setPolishLanguage(): void {
-    this.command.next(TrainingRowCommand.CHANGE_LANGUAGE_TO_POLISH);
-  }
-
-  setEnglishLanguage(): void {
-    this.command.next(TrainingRowCommand.CHANGE_LANGUAGE_TO_ENGLISH);
-  }
-
 }

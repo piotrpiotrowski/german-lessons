@@ -3,8 +3,8 @@ import {BehaviorSubject} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
 import {finalize, toArray} from 'rxjs/operators';
-import {TrainingRowCommand} from '../training-row/training-row-command';
 import {PossessivePronounsService} from './possessive-pronouns.service';
+import {LanguageService} from '../language/language.service';
 
 @Component({
   selector: 'app-possessive-pronouns',
@@ -13,13 +13,19 @@ import {PossessivePronounsService} from './possessive-pronouns.service';
 })
 export class PossessivePronounsComponent implements OnInit {
 
-  command: BehaviorSubject<string> = new BehaviorSubject<string>(InputCellCommand.CLEAR);
+  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
   pronouns: TrainingRowModel[];
   loading: boolean;
-  translationLanguage = 0;
-  formType = '0';
+  formTypeOptions = [
+    new Option('all', '0'),
+    new Option('singularMasculine', '1'),
+    new Option('singularFeminine', '2'),
+    new Option('singularNeutral', '3'),
+    new Option('plural', '4')
+  ];
+  formType = this.formTypeOptions[0].value;
 
-  constructor(private possessivePronounsService: PossessivePronounsService) {
+  constructor(private possessivePronounsService: PossessivePronounsService, public languageService: LanguageService) {
   }
 
   ngOnInit(): void {
@@ -42,24 +48,7 @@ export class PossessivePronounsComponent implements OnInit {
     return pronoun => classification === 0 || pronoun.classification === classification;
   }
 
-  setCommandToClear(): void {
-    this.command.next(InputCellCommand.CLEAR);
+  onCommandSelect(selectedCommand: InputCellCommand): void {
+    this.command.next(selectedCommand);
   }
-
-  setCommandToCheck(): void {
-    this.command.next(InputCellCommand.CHECK);
-  }
-
-  setCommandToReveal(): void {
-    this.command.next(InputCellCommand.REVEAL);
-  }
-
-  setPolishLanguage(): void {
-    this.command.next(TrainingRowCommand.CHANGE_LANGUAGE_TO_POLISH);
-  }
-
-  setEnglishLanguage(): void {
-    this.command.next(TrainingRowCommand.CHANGE_LANGUAGE_TO_ENGLISH);
-  }
-
 }

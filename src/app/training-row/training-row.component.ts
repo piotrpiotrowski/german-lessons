@@ -2,7 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from './training-row.model';
 import {BehaviorSubject} from 'rxjs';
-import {TrainingRowCommand} from './training-row-command';
+import {Language} from '../language/language';
+import {LanguageService} from '../language/language.service';
 
 @Component({
   selector: 'app-training-row',
@@ -11,43 +12,28 @@ import {TrainingRowCommand} from './training-row-command';
 })
 export class TrainingRowComponent implements OnInit {
 
-  externalCommand: BehaviorSubject<string>;
+  private externalCommand: BehaviorSubject<InputCellCommand>;
   cellInputsCommand: BehaviorSubject<InputCellCommand> = new BehaviorSubject<InputCellCommand>(null);
   @Input() trainingRowModel: TrainingRowModel;
   label: string;
-  tooltip: string;
 
-  @Input() set command(command: BehaviorSubject<string>) {
+  @Input() set command(command: BehaviorSubject<InputCellCommand>) {
     this.externalCommand = command;
   }
 
-  constructor() {
+  constructor(public languageService: LanguageService) {
   }
 
   ngOnInit(): void {
-    this.setEnglishLabelAndPolishTooltip();
+    this.label = this.trainingRowModel.getTranslation(this.languageService.getCurrentLanguage());
     this.externalCommand
-      .subscribe(command => this.executeCommand(command));
+      .subscribe(command => this.cellInputsCommand.next(command));
+    this.languageService.getChangeLanguageNotification()
+      .subscribe(language => this.switchLanguage(language));
   }
 
-  private executeCommand(command: string): void {
-    if (command === TrainingRowCommand.CHANGE_LANGUAGE_TO_ENGLISH) {
-      return this.setEnglishLabelAndPolishTooltip();
-    }
-    if (command === TrainingRowCommand.CHANGE_LANGUAGE_TO_POLISH) {
-      return this.setPolishLabelAndEnglishTooltip();
-    }
-    this.cellInputsCommand.next(command as InputCellCommand);
-  }
-
-  private setEnglishLabelAndPolishTooltip(): void {
-    this.label = this.trainingRowModel.englishTranslation;
-    this.tooltip = this.trainingRowModel.polishTranslation;
-  }
-
-  private setPolishLabelAndEnglishTooltip(): void {
-    this.label = this.trainingRowModel.polishTranslation;
-    this.tooltip = this.trainingRowModel.englishTranslation;
+  private switchLanguage(language: Language): void {
+    this.label = this.trainingRowModel.getTranslation(language);
   }
 
   setCommandToCheck(): void {

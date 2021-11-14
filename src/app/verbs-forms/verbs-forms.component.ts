@@ -4,7 +4,8 @@ import {TrainingRowModel} from '../training-row/training-row.model';
 import {BehaviorSubject} from 'rxjs';
 import {VerbsFormsService} from './verbs-forms.service';
 import {finalize, toArray} from 'rxjs/operators';
-import {TrainingRowCommand} from '../training-row/training-row-command';
+import {LanguageService} from '../language/language.service';
+import {Option} from '../responsive-button-toggle-group/option.model';
 
 @Component({
   selector: 'app-verbs-forms',
@@ -13,13 +14,30 @@ import {TrainingRowCommand} from '../training-row/training-row-command';
 })
 export class VerbsFormsComponent implements OnInit {
 
-  command: BehaviorSubject<string> = new BehaviorSubject<string>(InputCellCommand.CLEAR);
+  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
   verbs: TrainingRowModel[];
   loading: boolean;
-  difficultyLevel = '1';
-  auxiliaryVerb = 'both';
-  filteringCategory = 'ALL_AVAILABLE';
-  translationLanguage = 0;
+  difficultyLevelOptions = [
+    new Option('all', '0'),
+    new Option('beginner', '1'),
+    new Option('intermediate', '2'),
+    new Option('advanced', '3'),
+    new Option('proficient', '4')
+  ];
+  difficultyLevel = this.difficultyLevelOptions[1].value;
+  auxiliaryVerbOptions = [
+    new Option('Haben & Sein', 'both'),
+    new Option('Haben', 'hat'),
+    new Option('Sein', 'ist')
+  ];
+  auxiliaryVerb = this.auxiliaryVerbOptions[0].value;
+  filteringCategoryOptions = [
+    new Option('allAvailable', 'ALL_AVAILABLE'),
+    new Option('randomLetter', 'BY_RANDOM_LETTER'),
+    new Option('random5', 'RANDOM_5'),
+    new Option('random10', 'RANDOM_10')
+  ];
+  filteringCategory = this.filteringCategoryOptions[0].value;
   filtersForCategories = new Map([
     ['ALL_AVAILABLE', verbs => verbs],
     ['BY_RANDOM_LETTER', verbs => this.filterByRandomLetter(verbs)],
@@ -27,7 +45,7 @@ export class VerbsFormsComponent implements OnInit {
     ['RANDOM_10', verbs => this.filterRandomVerbs(10, verbs)]
   ]);
 
-  constructor(private verbsFormsService: VerbsFormsService) {
+  constructor(private verbsFormsService: VerbsFormsService, public languageService: LanguageService) {
   }
 
   ngOnInit(): void {
@@ -43,26 +61,6 @@ export class VerbsFormsComponent implements OnInit {
         verbs => this.verbs = this.filterByCategory(verbs),
         console.error
       );
-  }
-
-  setCommandToClear(): void {
-    this.command.next(InputCellCommand.CLEAR);
-  }
-
-  setCommandToCheck(): void {
-    this.command.next(InputCellCommand.CHECK);
-  }
-
-  setCommandToReveal(): void {
-    this.command.next(InputCellCommand.REVEAL);
-  }
-
-  setPolishLanguage(): void {
-    this.command.next(TrainingRowCommand.CHANGE_LANGUAGE_TO_POLISH);
-  }
-
-  setEnglishLanguage(): void {
-    this.command.next(TrainingRowCommand.CHANGE_LANGUAGE_TO_ENGLISH);
   }
 
   private filterByCategory(verbs: TrainingRowModel[]): TrainingRowModel[] {
@@ -92,8 +90,8 @@ export class VerbsFormsComponent implements OnInit {
     return Math.floor(Math.random() * length);
   }
 
-  private extractFirstLetterOfTranslation(value: TrainingRowModel): string {
-    return this.translationLanguage === 0 ? value.englishTranslation.charAt(0) : value.polishTranslation.charAt(0);
+  private extractFirstLetterOfTranslation(trainingRowModel: TrainingRowModel): string {
+    return trainingRowModel.getTranslation(this.languageService.getCurrentLanguage()).charAt(0);
   }
 
   private buildSearchPredicate(): Predicate<TrainingRowModel> {
@@ -107,5 +105,9 @@ export class VerbsFormsComponent implements OnInit {
 
   private auxiliaryVerbCondition(verbForm: TrainingRowModel): boolean {
     return this.auxiliaryVerb === 'both' || verbForm.getAnswer(3).startsWith(this.auxiliaryVerb);
+  }
+
+  onCommandSelect(selectedCommand: InputCellCommand): void {
+    this.command.next(selectedCommand);
   }
 }

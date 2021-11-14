@@ -5,7 +5,7 @@
         <mat-icon>keyboard_backspace</mat-icon>
       </button>
     </mat-toolbar>
-      <app-menu></app-menu>
+    <app-menu></app-menu>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="content-toolbar">
@@ -13,7 +13,15 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span class="title">{{title}}</span>
-      <span></span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)=select.open() class="language-select">
+        <mat-select #select (selectionChange)="selectLanguage($event)" class="language-select-size">
+          <mat-option *ngFor="let language of languages" [value]="language">
+            {{language}}
+          </mat-option>
+        </mat-select>
+        <mat-icon>language</mat-icon>
+      </button>
     </mat-toolbar>
     <div class="router-outlet-content">
       <router-outlet></router-outlet>

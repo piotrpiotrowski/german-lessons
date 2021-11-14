@@ -4,6 +4,7 @@ import {Answer} from '../training-row/answer.model';
 import {Observable, of} from 'rxjs';
 import {filter, map, mergeMap, shareReplay} from 'rxjs/operators';
 import {fromArray} from 'rxjs/internal/observable/fromArray';
+import {Language} from '../language/language';
 
 @Injectable({
   providedIn: 'root'
@@ -44,13 +45,13 @@ eat;jeść;essen;isst;aß;hat gegessen;1
 drive, go;jechać, zawozić;fahren;fährt;fuhr;ist gefahren;1
 fall;upadać;fallen;fällt;fiel;ist gefallen;1
 catch;łapać;fangen;fängt;fing;hat gefangen;2
-fight, fence;walczyć;fechten;ficht;focht;hat gefochten;2
+fight, fence;walczyć szablą;fechten;ficht;focht;hat gefochten;2
 find;znajdować;finden;findet;fand;hat gefunden;1
 braid, plait;pleść;flechten;flicht;flocht;hat geflochten;4
 fly;latać;fliegen;fliegt;flog;ist geflogen;2
 flee;uciekać;fliehen;flieht;floh;ist geflohen;4
 flow;płynąć;fließen;fließt;floss;ist geflossen;3
-eat;żreć;fressen;frisst;fraß;hat gefressen;3
+eat up,feed;żreć;fressen;frisst;fraß;hat gefressen;3
 freeze;marznąć;frieren;friert;fror;hat gefroren;4
 ferment;fermentować;gären;gärt;gor;ist gegoren;4
 give birth;rodzić;gebären;gebärt;gebar;hat geboren;4
@@ -76,7 +77,7 @@ hit;bić, lać;hauen;haut;hieb;hat gehauen;3
 lift;podnosić;heben;hebt;hob;hat gehoben;3
 be called;nazywać się;heißen;heißt;hieß;hat geheißen;1
 help;pomagać;helfen;hilft;half;hat geholfen;1
-know;znać;kennen;kennt;kannte;hat gekannt;1
+know somebody;znać;kennen;kennt;kannte;hat gekannt;1
 sound;brzmieć, dzwonić;klingen;klingt;klang;hat geklungen;2
 pinch;szczypać;kneifen;kneift;kniff;hat gekniffen;4
 come;przychodzić;kommen;kommt;kam;ist gekommen;1
@@ -106,7 +107,7 @@ advise;radzić;raten;rät;riet;hat geraten;3
 rub;trzeć;reiben;reibt;rieb;hat gerieben;2
 rip, tear;rozrywać;reißen;reißt;riss;ist gerissen;4
 ride a horse;jeździć konno;reiten;reitet;ritt;ist geritten;3
-run;pędzić;rennen;rennt;rannte;ist gerannt;3
+race;pędzić;rennen;rennt;rannte;ist gerannt;3
 smell;pachnieć;riechen;riecht;roch;hat gerochen;4
 wrestle;walczyć;ringen;ringt;rang;hat gerungen;2
 flow, trickle;ciec;rinnen;rinnt;rann;ist geronnen;4
@@ -189,7 +190,6 @@ turn;odwracać;wenden;wendet;wandte;hat gewandt;2
 advertise, recruit;werbować, reklamować;werben;wirbt;warb;hat geworben;3
 become;stać się, zostać;werden;wird;wurde;ist geworden;1
 throw;rzucać;werfen;wirft;warf;hat geworfen;2
-weigh;ważyć;wiegen;wiegt;wog;hat gewogen;2
 wind;wić, wplatać;winden;windet;wand;hat gewunden;3
 know;wiedzieć;wissen;weiß;wusste;hat gewusst;1
 want;chcieć;wollen;will;wollte;hat gewollt;4
@@ -206,12 +206,14 @@ force;zmuszać;zwingen;zwingt;zwang;hat gezwungen;3`;
 
   find(predicate: Predicate<TrainingRowModel>): Observable<TrainingRowModel> {
     return this.parsedVerbsForms
-      .pipe(map(columns => new TrainingRowModel(columns[0], columns[1], +columns[6], [
-      new Answer('Infinitive', columns[2]),
-      new Answer('Present Simple', columns[3]),
-      new Answer('Past Simple', columns[4]),
-      new Answer('Past Participle', columns[5])
-      ])))
+      .pipe(map(columns => new TrainingRowModel(new Map<Language, string>([[Language.ENGLISH, columns[0]], [Language.POLISH, columns[1]], [Language.GERMAN, columns[2]]]),
+        +columns[6],
+        [
+          new Answer('infinitive', columns[2]),
+          new Answer('presentSimple', columns[3]),
+          new Answer('pastSimple', columns[4]),
+          new Answer('pastParticiple', columns[5])
+        ])))
       .pipe(filter(predicate));
   }
 }

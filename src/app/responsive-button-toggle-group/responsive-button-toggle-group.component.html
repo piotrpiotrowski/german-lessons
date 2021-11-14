@@ -1,0 +1,6 @@
+<p>
+  {{title}}
+  <mat-button-toggle-group name="responsive-button-toggle-group"  [ngModel]="model" (ngModelChange)="modelChange.emit($event)">
+    <mat-button-toggle *ngFor="let option of options" (click)="onChange()" value="{{option.value}}">{{languageService.getLabel(option.label)}}</mat-button-toggle>
+  </mat-button-toggle-group>
+</p>
