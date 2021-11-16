@@ -7,3 +7,14 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   }
 }
+
+@media (min-width: 600px) {
+  .responsive-button-toggle-group {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .responsive-button-toggle-button {
+    width: 100%;
+  }
+}

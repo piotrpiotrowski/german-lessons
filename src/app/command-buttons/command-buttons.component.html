@@ -1,5 +1,5 @@
 <div class="control-buttons">
-  <button mat-stroked-button color="primary" (click)="setCommandToClear()" class="command-button">{{languageService.getLabel('clear')}}</button>
-  <button mat-stroked-button color="primary" (click)="setCommandToCheck()" class="command-button">{{languageService.getLabel('check')}}</button>
-  <button mat-stroked-button color="primary" (click)="setCommandToReveal()" class="command-button">{{languageService.getLabel('reveal')}}</button>
+  <button mat-flat-button (click)="setCommandToClear()" class="command-button"><mat-icon>clear</mat-icon> {{languageService.getLabel('clear')}}</button>
+  <button mat-flat-button (click)="setCommandToCheck()" class="command-button"><mat-icon>check</mat-icon> {{languageService.getLabel('check')}}</button>
+  <button mat-flat-button (click)="setCommandToReveal()" class="command-button"><mat-icon>import_contacts</mat-icon> {{languageService.getLabel('reveal')}}</button>
 </div>
