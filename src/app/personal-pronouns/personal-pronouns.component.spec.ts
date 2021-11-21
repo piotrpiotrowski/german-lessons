@@ -20,10 +20,10 @@ describe('PersonalPronounsComponent', () => {
   });
 
   it('should create', () => {
-    //when
+    // when
     fixture.detectChanges();
 
-    //then
+    // then
     expect(component).toBeTruthy();
   });
 });

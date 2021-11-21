@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
 import {Language} from './language';
 
 @Injectable({
@@ -13,6 +12,7 @@ export class LanguageService {
       personalPronounsTitle: 'Personal pronouns training',
       possessivePronounsTitle: 'Possessive pronouns training',
       verbsConjunctionsTitle: 'Conjunctions of verbs in present tense',
+      pastSentenceComplementTitle: 'Past sentences completion training',
       homeTitle: 'Choose your lesson from menu',
       check: 'Check',
       clear: 'Clear',
@@ -49,12 +49,19 @@ export class LanguageService {
       genitive: 'Genitive',
       accusative: 'Accusative',
       dative: 'Dative',
+      irregularVerbs: 'Irregular verbs',
+      personalPronouns: 'Personal pronouns',
+      possessivePronouns: 'Possessive pronouns',
+      verbConjunctions: 'Verb conjunctions',
+      sentences: 'sentences',
+      sentenceComplement: 'Past sentences completion'
     },
     POLISH: {
       verbsFormsTitle: 'Trening czasowników nieregularnych',
       personalPronounsTitle: 'Trening zaimków osobowych',
       possessivePronounsTitle: 'Trening zaimków dzierżawczych',
       verbsConjunctionsTitle: 'Trenink domiany czasowników nieregularnych w czasie teraźniejszym',
+      pastSentenceComplementTitle: 'Trenink z uzupełniania zdań w czasie przeszłym',
       homeTitle: 'Wybierz lekcję z menu',
       check: 'Sprawdz',
       clear: 'Wyczyść',
@@ -91,36 +98,43 @@ export class LanguageService {
       genitive: 'Dopełniacz',
       accusative: 'Biernik',
       dative: 'Celownik',
+      irregularVerbs: 'Czasowniki nieregularne',
+      personalPronouns: 'Zaimki osobowe',
+      possessivePronouns: 'Zaimki dzierżawcze',
+      verbConjunctions: 'Odmiana czasowników',
+      sentences: 'zdań',
+      sentenceComplement: 'Uzupełnianie zdań w czasie przeszłym'
     },
     GERMAN: {
       verbsFormsTitle: 'Starke verben übungen',
       personalPronounsTitle: 'Personalpronomen übungen',
       possessivePronounsTitle: 'Possessivpronomen übungen',
       verbsConjunctionsTitle: 'Übungen Verbkonjugation',
-      homeTitle: 'Wähle einen Unterricht vom Menu',
+      pastSentenceComplementTitle: 'Trenink z uzupełniania zdań w czasie przeszłym',
+      homeTitle: 'Wählen einen Unterricht vom Menu aus',
       check: 'Überprüfen',
       clear: 'Alle entfernen',
       reveal: 'Verraten',
       lessonSummary: 'Die aktuelle Lektion beinhaltet ',
       verbs: 'Verben',
-      levelChoose: '',
+      levelChoose: 'Wählen das Niveau aus',
       all: 'alle Verfügbar',
       beginner: 'Anfänger',
       intermediate: 'Fortgeschrittener',
       advanced: 'Erfahrer',
       proficient: 'Fließend',
-      auxiliaryVerbChoose: ' Wähl das Hilfsverb aus',
+      auxiliaryVerbChoose: 'Wählen das Hilfsverb aus',
       show: 'Zeigen',
       random10: 'Willkürlichen 10',
       random5: 'Willkürlichen 5',
       randomLetter: 'Willkürlichen Buchstabe',
       allAvailable: 'alle',
       pronouns: 'Pronomen',
-      formChoose: ' Wähl das Form aus',
-      singularMasculine: '',
-      singularFeminine: '',
-      singularNeutral: '',
-      plural: '',
+      formChoose: ' Wählen das Form aus',
+      singularMasculine: 'Singular Maskulin',
+      singularFeminine: 'Singular Feminin',
+      singularNeutral: 'Singular Neutral',
+      plural: 'Plural',
       infinitive: 'Infinitiv',
       presentSimple: 'Präsens',
       pastSimple: 'Präteritum',
@@ -133,16 +147,16 @@ export class LanguageService {
       genitive: 'Genitiv',
       accusative: 'Accusativ',
       dative: 'Dativ',
+      irregularVerbs: 'Starke verben',
+      personalPronouns: 'Personalpronomen',
+      possessivePronouns: 'Possessivpronomen',
+      verbConjunctions: 'Verbkonjugation',
+      sentences: 'Sätze',
+      sentenceComplement: 'Perfect Sätze Vervollständigung'
     }
-
   };
 
-  private languageCommand: BehaviorSubject<Language> = new BehaviorSubject<Language>(Language.ENGLISH);
   private currentLanguage: Language = Language.ENGLISH;
-
-  public getChangeLanguageNotification(): BehaviorSubject<Language> {
-    return this.languageCommand;
-  }
 
   public getCurrentLanguage(): Language {
     return this.currentLanguage;
@@ -150,7 +164,6 @@ export class LanguageService {
 
   selectLanguage(language: Language): void {
     this.currentLanguage = language;
-    this.languageCommand.next(language);
   }
 
   getLabel(key: string): string {

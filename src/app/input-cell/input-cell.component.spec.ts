@@ -57,6 +57,21 @@ describe('InputCellComponent', () => {
     expect(fixture.nativeElement.querySelector('mat-icon').textContent).toEqual('done');
   });
 
+  it('should emit a correctlyAnswered event when the state is CORRECT', () => {
+    // given
+    let currentValue;
+    component.answer = 'geben';
+    component.value = 'geben';
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CHECK);
+    component.correctlyAnswered.subscribe(value => currentValue = value);
+
+    // when
+    fixture.detectChanges();
+
+    // then
+    expect(currentValue).toEqual(component.value);
+  });
+
   it('should display a done icon when the state is CORRECT', () => {
     // given
     component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.REVEAL);

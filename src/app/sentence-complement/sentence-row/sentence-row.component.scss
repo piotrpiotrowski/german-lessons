@@ -1,0 +1,52 @@
+.row-question {
+  padding-top: 30px;
+
+  .foreign-translation {
+    width: 100%;
+    padding-bottom: 10px;
+    display: inline-block;
+    text-overflow: clip;
+    overflow-wrap: break-word;
+    vertical-align: top;
+    font-weight: 600;
+  }
+
+  .sentence-row {
+    width: 100%;
+    display: inline-block;
+
+    .question-cell {
+      width: 150px;
+      display: inline-block;
+      margin-top: -30px;
+      margin-bottom: -30px;
+    }
+
+    .prefix-cell {
+      text-overflow: clip;
+      overflow-wrap: break-word;
+      line-height: 30px;
+    }
+
+    .suffix-cell {
+      text-overflow: clip;
+      overflow-wrap: break-word;
+      line-height: 30px;
+    }
+
+    .check-button {
+      color: #ffffff;
+      background: #d77d24;
+      width: 100%;
+    }
+  }
+}
+
+.answer-row {
+  padding: 5px;
+  margin-top: 10px;
+  border: 1px dashed #06b006;
+  border-radius: 5px;
+  background-color: #bdf1bd;
+  font-weight: 400;
+}

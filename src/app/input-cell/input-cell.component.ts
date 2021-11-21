@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {InputCellState} from './input-cell-state';
 import {InputCellCommand} from './input-cell-command';
 import {isAsciiLetter} from 'codelyzer/angular/styles/chars';
@@ -17,6 +17,8 @@ export class InputCellComponent implements OnInit {
   @Input() answer: string;
   @Input() label: string;
   @Input() command: BehaviorSubject<InputCellCommand>;
+  @Output() correctlyAnswered = new EventEmitter<string>();
+
   private strategies = new Map<InputCellCommand, () => void>(
     [
       [InputCellCommand.REVEAL, () => this.reveal()],
@@ -37,7 +39,8 @@ export class InputCellComponent implements OnInit {
   }
 
   onValueChanged(event): void {
-    if (isAsciiLetter(event.keyCode) || event.keyCode === 8 || event.keyCode === 46 || event.keyCode === 229) {
+    const keyCode = event.keyCode;
+    if (isAsciiLetter(keyCode) || keyCode === 8 || keyCode === 46 || keyCode === 229) {
       this.state = InputCellState.UNCERTAIN;
     } else {
       this.executeCommand(this.deductCommand(event));
@@ -79,6 +82,9 @@ export class InputCellComponent implements OnInit {
 
   private check(): void {
     this.state = this.value === this.answer ? InputCellState.CORRECT : InputCellState.INCORRECT;
+    if (this.state === InputCellState.CORRECT) {
+      this.correctlyAnswered.emit(this.value);
+    }
   }
 
   private clear(): void {

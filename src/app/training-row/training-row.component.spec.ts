@@ -8,15 +8,25 @@ import {TrainingRowModel} from './training-row.model';
 import {Answer} from './answer.model';
 import {BehaviorSubject} from 'rxjs';
 import {Language} from '../language/language';
+import {LanguageService} from '../language/language.service';
 
 describe('TrainingRowComponent', () => {
   let component: TrainingRowComponent;
   let fixture: ComponentFixture<TrainingRowComponent>;
+  let languageService;
 
   beforeEach(async () => {
+    languageService = jasmine.createSpyObj('languageService', ['getLabel', 'getCurrentLanguage']);
+
+    languageService.getLabel.and.returnValue(null);
+    languageService.getCurrentLanguage.and.returnValue(Language.ENGLISH);
+
     await TestBed.configureTestingModule({
       declarations: [TrainingRowComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        {provide: LanguageService, useValue: languageService}
+      ]
     }).compileComponents();
   });
 
@@ -27,13 +37,16 @@ describe('TrainingRowComponent', () => {
 
   it('should have a check button', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
       new Answer('presentSimple', 'beginnt'),
       new Answer('pastSimple', 'begann'),
       new Answer('pastParticiple', 'hat begonnen')
     ]);
     component.command = new BehaviorSubject<InputCellCommand>(null);
+
+    // and
+    languageService.getLabel.and.returnValue('Check');
 
     // when
     fixture.detectChanges();
@@ -48,7 +61,7 @@ describe('TrainingRowComponent', () => {
     // given
     let expectedCellInputsCommand = null;
     component.command = new BehaviorSubject<InputCellCommand>(null);
-    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
       new Answer('presentSimple', 'beginnt'),
       new Answer('pastSimple', 'begann'),
@@ -71,7 +84,7 @@ describe('TrainingRowComponent', () => {
   it('should set command to REVEAL', () => {
     // given
     let expectedCellInputsCommand = null;
-    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
       new Answer('presentSimple', 'beginnt'),
       new Answer('pastSimple', 'begann'),
@@ -91,7 +104,7 @@ describe('TrainingRowComponent', () => {
   it('should set command to CLEAR', () => {
     // given
     let expectedCellInputsCommand = null;
-    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
       new Answer('presentSimple', 'beginnt'),
       new Answer('pastSimple', 'begann'),
@@ -107,9 +120,9 @@ describe('TrainingRowComponent', () => {
     expect(expectedCellInputsCommand).toEqual(InputCellCommand.CLEAR);
   });
 
-  it('should have a english label and polish tooltip by default', () => {
+  it('should have a english label by default', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
       new Answer('presentSimple', 'beginnt'),
       new Answer('pastSimple', 'begann'),
@@ -124,18 +137,20 @@ describe('TrainingRowComponent', () => {
     const label = fixture.nativeElement.querySelector('.foreign-translation');
     expect(label).toBeTruthy();
     expect(label.textContent).toEqual('begin');
-    expect(label.attributes.title.value).toEqual('zaczybać');
   });
 
-  it('should have a english label and polish tooltip when a CHANGE_LANGUAGE_TO_ENGLISH was emitted', () => {
+  it('should have a english label when a selected language is ENGLISH', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
       new Answer('presentSimple', 'beginnt'),
       new Answer('pastSimple', 'begann'),
       new Answer('pastParticiple', 'hat begonnen')
     ]);
     component.command = new BehaviorSubject<InputCellCommand>(null);
+
+    // and
+    languageService.getCurrentLanguage.and.returnValue(Language.ENGLISH);
 
     // when
     fixture.detectChanges();
@@ -144,12 +159,11 @@ describe('TrainingRowComponent', () => {
     const label = fixture.nativeElement.querySelector('.foreign-translation');
     expect(label).toBeTruthy();
     expect(label.textContent).toEqual('begin');
-    expect(label.attributes.title.value).toEqual('zaczybać');
   });
 
-  it('should set a polish label and english tooltip when a CHANGE_LANGUAGE_TO_POLISH was emitted', () => {
+  it('should set a polish label when a selected language is  POLISH', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
       new Answer('presentSimple', 'beginnt'),
       new Answer('pastSimple', 'begann'),
@@ -157,19 +171,21 @@ describe('TrainingRowComponent', () => {
     ]);
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
+  // and
+    languageService.getCurrentLanguage.and.returnValue(Language.POLISH);
+
     // when
     fixture.detectChanges();
 
     // then
     const label = fixture.nativeElement.querySelector('.foreign-translation');
     expect(label).toBeTruthy();
-    expect(label.textContent).toEqual('zaczybać');
-    expect(label.attributes.title.value).toEqual('begin');
+    expect(label.textContent).toEqual('zacząć');
   });
 
   it('should have four input-cells', () => {
     // given
-    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zaczybać']]), 1, [
+    component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
       new Answer('presentSimple', 'beginnt'),
       new Answer('pastSimple', 'begann'),

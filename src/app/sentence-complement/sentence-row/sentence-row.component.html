@@ -1,0 +1,13 @@
+<div class="row-question">
+  <div class="foreign-translation">{{sentence.getInfinitiveTranslations(languageService.getCurrentLanguage())}} ({{sentence.getReferencesTranslations(languageService.getCurrentLanguage())}})</div>
+  <div class="sentence-row">
+    <span class="prefix-cell">{{sentence.prefix}}</span>
+    <div class="question-cell">
+      <app-input-cell [command]="cellInputsCommand" [answer]="sentence.hiddenVerb" [label]="" (correctlyAnswered)="showTranslation = true"></app-input-cell>
+    </div>
+    <span class="suffix-cell">{{sentence.suffix}}</span>
+  </div>
+</div>
+<div *ngIf="showTranslation" class="answer-row">
+  {{sentence.getTextTranslations(languageService.getCurrentLanguage())}}
+</div>

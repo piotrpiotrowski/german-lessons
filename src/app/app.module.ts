@@ -30,6 +30,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatOptionModule} from '@angular/material/core';
 import { ResponsiveButtonToggleGroupComponent } from './responsive-button-toggle-group/responsive-button-toggle-group.component';
 import {CommandButtonsComponent} from './command-buttons/command-buttons.component';
+import { SentenceComplementComponent } from './sentence-complement/sentence-complement.component';
+import { SentenceRowComponent } from './sentence-complement/sentence-row/sentence-row.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import {CommandButtonsComponent} from './command-buttons/command-buttons.compone
     HomeComponent,
     VerbsConjunctionsComponent,
     ResponsiveButtonToggleGroupComponent,
-    CommandButtonsComponent
+    CommandButtonsComponent,
+    SentenceComplementComponent,
+    SentenceRowComponent
   ],
   imports: [
     BrowserModule,

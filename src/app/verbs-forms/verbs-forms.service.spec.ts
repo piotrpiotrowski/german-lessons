@@ -2,6 +2,7 @@ import {TestBed} from '@angular/core/testing';
 
 import {VerbsFormsService} from './verbs-forms.service';
 import {count, reduce, take, toArray} from 'rxjs/operators';
+import {Language} from '../language/language';
 
 describe('VerbsFormsService', () => {
   let service: VerbsFormsService;
@@ -25,8 +26,8 @@ describe('VerbsFormsService', () => {
 
     // then
     expect(verbs.length).toEqual(2);
-    expect(verbs[0].englishTranslation).toEqual('bake');
-    expect(verbs[1].englishTranslation).toEqual('command');
+    expect(verbs[0].getTranslation(Language.ENGLISH)).toEqual('bake');
+    expect(verbs[1].getTranslation(Language.ENGLISH)).toEqual('command');
   });
 
   it('should count elements on the list', () => {
@@ -50,7 +51,7 @@ describe('VerbsFormsService', () => {
 
     // when
     service.find(() => true)
-      .pipe(reduce((accumulator, value) => accumulator.set(value.englishTranslation, (accumulator.get(value.englishTranslation) || 0) + 1), new Map<string, number>()))
+      .pipe(reduce((accumulator, value) => accumulator.set(value.getTranslation(Language.ENGLISH), (accumulator.get(value.getTranslation(Language.ENGLISH)) || 0) + 1), new Map<string, number>()))
       .subscribe(
         value => occurrences = value,
         fail);
@@ -66,7 +67,7 @@ describe('VerbsFormsService', () => {
 
     // when
     service.find(() => true)
-      .pipe(reduce((accumulator, value) => accumulator.set(value.polishTranslation, (accumulator.get(value.polishTranslation) || 0) + 1), new Map<string, number>()))
+      .pipe(reduce((accumulator, value) => accumulator.set(value.getTranslation(Language.POLISH), (accumulator.get(value.getTranslation(Language.POLISH)) || 0) + 1), new Map<string, number>()))
       .subscribe(
         value => occurrences = value,
         fail);

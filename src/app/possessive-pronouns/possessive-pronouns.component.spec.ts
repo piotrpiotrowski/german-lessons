@@ -20,10 +20,10 @@ describe('PossessivePronounsComponent', () => {
   });
 
   it('should create', () => {
-    //when
+    // when
     fixture.detectChanges();
 
-    //then
+    // then
     expect(component).toBeTruthy();
   });
 });

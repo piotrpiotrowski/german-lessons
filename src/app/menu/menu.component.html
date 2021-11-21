@@ -1,6 +1,7 @@
 <mat-action-list>
-  <button mat-list-item (click)="navigateToIrregularVerbs()">Irregular verbs</button>
-  <button mat-list-item (click)="navigateToPersonalPronouns()">Personal pronouns</button>
-  <button mat-list-item (click)="navigateToPossessivePronouns()">Possessive pronouns</button>
-  <button mat-list-item (click)="navigateToVerbConjunctions()">Verb conjunctions</button>
+  <button mat-list-item (click)="navigateToIrregularVerbs()">{{languageService.getLabel('irregularVerbs')}}</button>
+  <button mat-list-item (click)="navigateToPersonalPronouns()">{{languageService.getLabel('personalPronouns')}}</button>
+  <button mat-list-item (click)="navigateToPossessivePronouns()">{{languageService.getLabel('possessivePronouns')}}</button>
+  <button mat-list-item (click)="navigateToVerbConjunctions()">{{languageService.getLabel('verbConjunctions')}}</button>
+  <button mat-list-item (click)="navigateToSentenceComplements()">{{languageService.getLabel('sentenceComplement')}}</button>
 </mat-action-list>

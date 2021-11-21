@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ResponsiveButtonToggleGroupComponent } from './responsive-button-toggle-group.component';
+import {ResponsiveButtonToggleGroupComponent} from './responsive-button-toggle-group.component';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('ResponsiveButtonToggleGroupComponent', () => {
   let component: ResponsiveButtonToggleGroupComponent;
@@ -8,18 +9,23 @@ describe('ResponsiveButtonToggleGroupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResponsiveButtonToggleGroupComponent ]
+      declarations: [ResponsiveButtonToggleGroupComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ResponsiveButtonToggleGroupComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
+
   it('should create', () => {
+    // when
+    fixture.detectChanges();
+
+    // then
     expect(component).toBeTruthy();
   });
 });

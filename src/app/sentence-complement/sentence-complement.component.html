@@ -1,0 +1,19 @@
+<h3>{{languageService.getLabel('pastSentenceComplementTitle')}}</h3>
+<mat-expansion-panel class="control-panel">
+  <mat-expansion-panel-header>
+    <mat-panel-title style="padding-top: 10px">
+      {{languageService.getLabel('lessonSummary') + (sentences ? sentences.length : 0) + ' ' + languageService.getLabel('sentences')}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div>
+    <app-command-buttons (selectedCommand)="onCommandSelect($event)"></app-command-buttons>
+    <div>
+      <app-responsive-button-toggle-group [title]="languageService.getLabel('levelChoose')" [options]="difficultyLevelOptions" [(model)]="difficultyLevel" (selectOption)="loadSentences()"></app-responsive-button-toggle-group>
+      <app-responsive-button-toggle-group [title]="languageService.getLabel('show')" [options]="filteringCategoryOptions" [(model)]="filteringCategory" (selectOption)="loadSentences()"></app-responsive-button-toggle-group>
+    </div>
+  </div>
+</mat-expansion-panel>
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div *ngIf="!loading">
+  <app-sentence-row *ngFor="let sentence of sentences" [command]="command" [sentence]="sentence"></app-sentence-row>
+</div>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {LanguageService} from '../language/language.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public languageService: LanguageService) {
   }
 
   ngOnInit(): void {
@@ -28,5 +29,9 @@ export class MenuComponent implements OnInit {
 
   navigateToVerbConjunctions(): Promise<boolean> {
     return this.router.navigateByUrl('/verb-conjunctions');
+  }
+
+  navigateToSentenceComplements(): Promise<boolean> {
+    return this.router.navigateByUrl('/sentence-complement');
   }
 }

@@ -1,22 +1,21 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {VerbsFormsComponent} from './verbs-forms.component';
+import {SentenceComplementComponent} from './sentence-complement.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
-import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
 
-describe('VerbsFormsComponent', () => {
-  let component: VerbsFormsComponent;
-  let fixture: ComponentFixture<VerbsFormsComponent>;
+describe('SentenceComplementComponent', () => {
+  let component: SentenceComplementComponent;
+  let fixture: ComponentFixture<SentenceComplementComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VerbsFormsComponent, MatButtonToggle, MatButtonToggleGroup],
+      declarations: [SentenceComplementComponent],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VerbsFormsComponent);
+    fixture = TestBed.createComponent(SentenceComplementComponent);
     component = fixture.componentInstance;
   });
 
