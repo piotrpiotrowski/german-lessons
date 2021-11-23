@@ -32,6 +32,6 @@ export class MenuComponent implements OnInit {
   }
 
   navigateToSentenceComplements(): Promise<boolean> {
-    return this.router.navigateByUrl('/sentence-complement');
+    return this.router.navigateByUrl('/present-perfect-sentence-complement');
   }
 }

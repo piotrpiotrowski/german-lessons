@@ -26,7 +26,7 @@ export class PersonalPronounsComponent implements OnInit {
 
   loadPronouns(): void {
     this.loading = true;
-    this.personalPronounsService.find()
+    this.personalPronounsService.find(_ => true)
       .pipe(toArray())
       .pipe(finalize(() => this.loading = false))
       .subscribe(

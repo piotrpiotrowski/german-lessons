@@ -1,4 +1,4 @@
-export const rawVerbConjunctions = `bake;piec;Indikativ Präsens;ich backe;du bäckst;er/sie/es bäckt;wir backen;ihr backt;Sie backen;2
+export const rawVerbsConjunctions = `bake;piec;Indikativ Präsens;ich backe;du bäckst;er/sie/es bäckt;wir backen;ihr backt;Sie backen;2
 command;rozkazywać;Indikativ Präsens;ich befehle;du befiehlst;er/sie/es befiehlt;wir befehlen;ihr befehlt;Sie befehlen;2
 salvage;zbawiać;Indikativ Präsens;ich berge;du birgst;er/sie/es birgt;wir bergen;ihr bergt;Sie bergen;3
 burst;pękać;Indikativ Präsens;ich berste;du birst;er/sie/es birst;wir bersten;ihr berstet;Sie bersten;4

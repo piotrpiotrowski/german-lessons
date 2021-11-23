@@ -6,6 +6,7 @@ import {VerbsFormsService} from './verbs-forms.service';
 import {finalize, toArray} from 'rxjs/operators';
 import {LanguageService} from '../language/language.service';
 import {Option} from '../responsive-button-toggle-group/option.model';
+import {DrawingService} from '../shared/drawing.service';
 
 @Component({
   selector: 'app-verbs-forms',
@@ -40,12 +41,15 @@ export class VerbsFormsComponent implements OnInit {
   filteringCategory = this.filteringCategoryOptions[0].value;
   filtersForCategories = new Map([
     ['ALL_AVAILABLE', verbs => verbs],
-    ['BY_RANDOM_LETTER', verbs => this.filterByRandomLetter(verbs)],
-    ['RANDOM_5', verbs => this.filterRandomVerbs(5, verbs)],
-    ['RANDOM_10', verbs => this.filterRandomVerbs(10, verbs)]
+    ['BY_RANDOM_LETTER', verbs => this.drawingService.filterByRandomLetter(verbs)],
+    ['RANDOM_5', verbs => this.drawingService.filterRandomVerbs(5, verbs)],
+    ['RANDOM_10', verbs => this.drawingService.filterRandomVerbs(10, verbs)]
   ]);
 
+  private drawingService: DrawingService<TrainingRowModel>;
+
   constructor(private verbsFormsService: VerbsFormsService, public languageService: LanguageService) {
+    this.drawingService = new DrawingService(model => this.extractFirstLetterOfTranslation(model));
   }
 
   ngOnInit(): void {
@@ -65,29 +69,6 @@ export class VerbsFormsComponent implements OnInit {
 
   private filterByCategory(verbs: TrainingRowModel[]): TrainingRowModel[] {
     return this.filtersForCategories.get(this.filteringCategory)(verbs);
-  }
-
-  private filterByRandomLetter(verbs: TrainingRowModel[]): TrainingRowModel[] {
-    const firstLettersOfTranslations = Array.from(new Set(verbs.map(value => this.extractFirstLetterOfTranslation(value))));
-    const randomFirstLetter = firstLettersOfTranslations[this.drawRandomNumber(firstLettersOfTranslations.length)];
-    return verbs.filter(value => this.extractFirstLetterOfTranslation(value) === randomFirstLetter);
-  }
-
-  private filterRandomVerbs(numberOfVerbs: number, verbs: TrainingRowModel[]): TrainingRowModel[] {
-    return this.createListOfRandomIndexes(Math.min(numberOfVerbs, verbs.length), verbs.length)
-      .map(i => verbs[i]);
-  }
-
-  private createListOfRandomIndexes(listSize: number, maxValue: number): number[] {
-    const randomIndexes = new Set<number>();
-    while (randomIndexes.size !== listSize) {
-      randomIndexes.add(this.drawRandomNumber(maxValue));
-    }
-    return Array.from(randomIndexes.values());
-  }
-
-  private drawRandomNumber(length: number): number {
-    return Math.floor(Math.random() * length);
   }
 
   private extractFirstLetterOfTranslation(trainingRowModel: TrainingRowModel): string {

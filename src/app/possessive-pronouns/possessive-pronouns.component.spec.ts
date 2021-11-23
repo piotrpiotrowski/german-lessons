@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 
-import { PossessivePronounsComponent } from './possessive-pronouns.component';
+import {PossessivePronounsComponent} from './possessive-pronouns.component';
 
 describe('PossessivePronounsComponent', () => {
   let component: PossessivePronounsComponent;

@@ -5,7 +5,9 @@ import {PersonalPronounsComponent} from './personal-pronouns/personal-pronouns.c
 import {PossessivePronounsComponent} from './possessive-pronouns/possessive-pronouns.component';
 import {VerbsConjunctionsComponent} from './verbs-conjunctions/verbs-conjunctions.component';
 import {HomeComponent} from './home/home.component';
-import {SentenceComplementComponent} from './sentence-complement/sentence-complement.component';
+import {
+  PresentPerfectSentenceComplementComponent
+} from './present-perfect-sentence-complement/present-perfect-sentence-complement.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -13,7 +15,7 @@ const routes: Routes = [
   {path: 'personal-pronouns', component: PersonalPronounsComponent},
   {path: 'possessive-pronouns', component: PossessivePronounsComponent},
   {path: 'verb-conjunctions', component: VerbsConjunctionsComponent},
-  {path: 'sentence-complement', component: SentenceComplementComponent}
+  {path: 'present-perfect-sentence-complement', component: PresentPerfectSentenceComplementComponent}
 ];
 
 @NgModule({

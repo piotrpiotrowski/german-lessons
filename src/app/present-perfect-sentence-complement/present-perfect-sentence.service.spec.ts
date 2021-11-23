@@ -2,15 +2,15 @@ import {TestBed} from '@angular/core/testing';
 
 import {filter, map, take, toArray} from 'rxjs/operators';
 import {Language} from '../language/language';
-import {SentenceService} from './sentence.service';
-import {Sentence} from './sentence-row/sentence.model';
+import {PresentPerfectSentenceService} from './present-perfect-sentence.service';
+import {Sentence} from '../sentence-complement/sentence-row/sentence.model';
 
-describe('SentenceService', () => {
-  let service: SentenceService;
+describe('PresentPerfectSentenceService', () => {
+  let service: PresentPerfectSentenceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SentenceService);
+    service = TestBed.inject(PresentPerfectSentenceService);
   });
 
   it('should take two from list', () => {
@@ -31,7 +31,7 @@ describe('SentenceService', () => {
     expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('command');
   });
 
-  it('should find case sensitive hidden verb text', () => {
+  it('should find case sensitive hidden verb in text', () => {
     // given
     let sentences: string[][] = null;
 

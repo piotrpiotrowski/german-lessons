@@ -32,6 +32,7 @@ import { ResponsiveButtonToggleGroupComponent } from './responsive-button-toggle
 import {CommandButtonsComponent} from './command-buttons/command-buttons.component';
 import { SentenceComplementComponent } from './sentence-complement/sentence-complement.component';
 import { SentenceRowComponent } from './sentence-complement/sentence-row/sentence-row.component';
+import { PresentPerfectSentenceComplementComponent } from './present-perfect-sentence-complement/present-perfect-sentence-complement.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SentenceRowComponent } from './sentence-complement/sentence-row/sentenc
     ResponsiveButtonToggleGroupComponent,
     CommandButtonsComponent,
     SentenceComplementComponent,
-    SentenceRowComponent
+    SentenceRowComponent,
+    PresentPerfectSentenceComplementComponent
   ],
   imports: [
     BrowserModule,
