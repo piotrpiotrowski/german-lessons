@@ -33,6 +33,7 @@ import {CommandButtonsComponent} from './command-buttons/command-buttons.compone
 import { SentenceComplementComponent } from './sentence-complement/sentence-complement.component';
 import { SentenceRowComponent } from './sentence-complement/sentence-row/sentence-row.component';
 import { PresentPerfectSentenceComplementComponent } from './present-perfect-sentence-complement/present-perfect-sentence-complement.component';
+import { PastSimpleSentenceComplementComponent } from './past-simple-sentence-complement/past-simple-sentence-complement.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { PresentPerfectSentenceComplementComponent } from './present-perfect-sen
     CommandButtonsComponent,
     SentenceComplementComponent,
     SentenceRowComponent,
-    PresentPerfectSentenceComplementComponent
+    PresentPerfectSentenceComplementComponent,
+    PastSimpleSentenceComplementComponent
   ],
   imports: [
     BrowserModule,

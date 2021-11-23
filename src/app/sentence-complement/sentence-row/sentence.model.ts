@@ -7,6 +7,7 @@ export class Sentence {
               public text: string,
               public referencesTranslations: Map<Language, string>,
               public textTranslations: Map<Language, string>,
+              public bookId: string,
               public prefix: string = text.substring(0, text.indexOf(hiddenVerb)),
               public suffix: string = text.substring(prefix.length + hiddenVerb.length)) {
   }

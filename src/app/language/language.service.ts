@@ -12,7 +12,8 @@ export class LanguageService {
       personalPronounsTitle: 'Personal pronouns training',
       possessivePronounsTitle: 'Possessive pronouns training',
       verbsConjunctionsTitle: 'Conjunctions of verbs in present tense',
-      presentPerfectSentenceComplementTitle: 'Past sentences completion training',
+      presentPerfectSentenceComplementTitle: 'Present perfect sentences completion training',
+      pastSimpleSentenceComplementTitle: 'Past simple sentences completion training',
       homeTitle: 'Choose your lesson from menu',
       check: 'Check',
       clear: 'Clear',
@@ -54,14 +55,17 @@ export class LanguageService {
       possessivePronouns: 'Possessive pronouns',
       verbConjunctions: 'Verb conjunctions',
       sentences: 'sentences',
-      sentenceComplement: 'Past sentences completion'
+      presentPerfectSentenceComplements: 'Present perfect sentences completion',
+      pastSimpleSentenceComplements: 'Past simple sentences completion',
+      randomBookId: 'random book'
     },
     POLISH: {
       verbsFormsTitle: 'Trening czasowników nieregularnych',
       personalPronounsTitle: 'Trening zaimków osobowych',
       possessivePronounsTitle: 'Trening zaimków dzierżawczych',
-      verbsConjunctionsTitle: 'Trenink domiany czasowników nieregularnych w czasie teraźniejszym',
-      presentPerfectSentenceComplementTitle: 'Trenink z uzupełniania zdań w czasie przeszłym',
+      verbsConjunctionsTitle: 'Trening odmiany czasowników nieregularnych w czasie teraźniejszym',
+      presentPerfectSentenceComplementTitle: 'Trening z uzupełniania zdań w czasie przeszłym dokonanym',
+      pastSimpleSentenceComplementTitle: 'Trening z uzupełniania zdań w czasie przeszłym nie dokonanym',
       homeTitle: 'Wybierz lekcję z menu',
       check: 'Sprawdz',
       clear: 'Wyczyść',
@@ -103,14 +107,17 @@ export class LanguageService {
       possessivePronouns: 'Zaimki dzierżawcze',
       verbConjunctions: 'Odmiana czasowników',
       sentences: 'zdań',
-      sentenceComplement: 'Uzupełnianie zdań w czasie przeszłym'
+      presentPerfectSentenceComplements: 'Uzupełnianie zdań w czasie przeszłym dokonanym',
+      pastSimpleSentenceComplements: 'Uzupełnianie zdań w czasie przeszłym niedokonanym',
+      randomBookId: 'losowa księga'
     },
     GERMAN: {
       verbsFormsTitle: 'Starke verben übungen',
       personalPronounsTitle: 'Personalpronomen übungen',
       possessivePronounsTitle: 'Possessivpronomen übungen',
       verbsConjunctionsTitle: 'Übungen Verbkonjugation',
-      presentPerfectSentenceComplementTitle: 'Trenink z uzupełniania zdań w czasie przeszłym',
+      presentPerfectSentenceComplementTitle: 'Perfect Sätze Vervollständigung übungen',
+      pastSimpleSentenceComplementTitle: 'Präteritum Sätze Vervollständigung übungen',
       homeTitle: 'Wählen einen Unterricht vom Menu aus',
       check: 'Überprüfen',
       clear: 'Alle entfernen',
@@ -152,7 +159,9 @@ export class LanguageService {
       possessivePronouns: 'Possessivpronomen',
       verbConjunctions: 'Verbkonjugation',
       sentences: 'Sätze',
-      sentenceComplement: 'Perfect Sätze Vervollständigung'
+      presentPerfectSentenceComplements: 'Perfect Sätze Vervollständigung',
+      pastSimpleSentenceComplements: 'Präteritum Sätze Vervollständigung',
+      randomBookId: 'Willkürlichen Buch'
     }
   };
 

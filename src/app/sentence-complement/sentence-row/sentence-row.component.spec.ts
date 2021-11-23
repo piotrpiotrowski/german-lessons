@@ -37,7 +37,7 @@ describe('SentenceRowComponent', () => {
   it('should display a label', () => {
     // given
     component.sentence = new Sentence('gebacken', new Map([[Language.ENGLISH, 'bake']]), 2, 'Ich habe die Kuchen gebacken and gegessen.',
-      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>());
+      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
@@ -52,7 +52,7 @@ describe('SentenceRowComponent', () => {
   it('should display an input-cell', () => {
     // given
     component.sentence = new Sentence('gebacken', new Map([[Language.ENGLISH, 'bake']]), 2, 'Ich habe die Kuchen gebacken and gegessen.',
-      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>());
+      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
@@ -67,7 +67,7 @@ describe('SentenceRowComponent', () => {
   it('should display prefix from the sentence', () => {
     // given
     component.sentence = new Sentence('gebacken', new Map([[Language.ENGLISH, 'bake']]), 2, 'Ich habe die Kuchen gebacken and gegessen.',
-      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>());
+      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
@@ -82,7 +82,7 @@ describe('SentenceRowComponent', () => {
   it('should display suffix from the sentence', () => {
     // given
     component.sentence = new Sentence('gebacken', new Map([[Language.ENGLISH, 'bake']]), 2, 'Ich habe die Kuchen gebacken and gegessen.',
-      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>());
+      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
@@ -98,7 +98,7 @@ describe('SentenceRowComponent', () => {
     // given
     let expectedCellInputsCommand = null;
     component.sentence = new Sentence('gebacken', new Map([[Language.ENGLISH, 'bake']]), 2, 'Ich habe die Kuchen gebacken and gegessen.',
-      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>());
+      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
     component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.REVEAL);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 

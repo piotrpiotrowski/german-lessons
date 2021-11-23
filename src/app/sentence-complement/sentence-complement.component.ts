@@ -29,22 +29,21 @@ export class SentenceComplementComponent implements OnInit {
   filteringCategoryOptions = [
     new Option('random5', 'RANDOM_5'),
     new Option('random10', 'RANDOM_10'),
-    new Option('randomLetter', 'BY_RANDOM_LETTER')
+    new Option('randomLetter', 'BY_RANDOM_LETTER'),
+    new Option('randomBookId', 'RANDOM_BOOK_ID')
   ];
   filteringCategory = this.filteringCategoryOptions[0].value;
   filtersForCategories = new Map([
-    ['BY_RANDOM_LETTER', sentences => this.drawingService.filterByRandomLetter(sentences)],
-    ['RANDOM_5', sentences => this.drawingService.filterRandomVerbs(5, sentences)],
-    ['RANDOM_10', sentences => this.drawingService.filterRandomVerbs(10, sentences)]
+    ['BY_RANDOM_LETTER', sentences => this.drawingService.filterByRandomValueOfAttribute<Sentence>(sentences, model => this.extractFirstLetterOfTranslation(model))],
+    ['RANDOM_5', sentences => this.drawingService.filterRandomEntries<Sentence>(5, sentences)],
+    ['RANDOM_10', sentences => this.drawingService.filterRandomEntries<Sentence>(10, sentences)],
+    ['RANDOM_BOOK_ID', sentences => this.drawingService.filterByRandomValueOfAttribute<Sentence>(sentences, model => model.bookId)]
   ]);
-
-  private drawingService: DrawingService<Sentence>;
 
   @Input() finderService: FinderService<Sentence>;
   @Input() title: string;
 
-  constructor(public languageService: LanguageService) {
-    this.drawingService = new DrawingService<Sentence>(model => this.extractFirstLetterOfTranslation(model));
+  constructor(public languageService: LanguageService, private drawingService: DrawingService) {
   }
 
   ngOnInit(): void {

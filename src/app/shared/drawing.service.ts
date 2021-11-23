@@ -1,20 +1,22 @@
-export class DrawingService<T> {
+import {Injectable} from '@angular/core';
 
-  constructor(private firstLetterOfTranslationExtractor: (model: T) => string) {
+@Injectable({
+  providedIn: 'root'
+})
+export class DrawingService {
+
+  public filterRandomEntries<T>(numberOfEntries: number, models: T[]): T[] {
+    return this.createListOfRandomIndexes(Math.min(numberOfEntries, models.length), models.length)
+      .map(i => models[i]);
   }
 
-  public filterByRandomLetter(verbs: T[]): T[] {
-    const firstLettersOfTranslations = Array.from(new Set(verbs.map(value => this.firstLetterOfTranslationExtractor(value))));
-    const randomFirstLetter = firstLettersOfTranslations[this.drawRandomNumber(firstLettersOfTranslations.length)];
-    return verbs.filter(value => this.firstLetterOfTranslationExtractor(value) === randomFirstLetter);
+  public filterByRandomValueOfAttribute<T>(models: T[], attributeExtractor: (model: T) => string): T[] {
+    const extractedAttributesValues = Array.from(new Set(models.map(value => attributeExtractor(value))));
+    const selectedAttributeValue = extractedAttributesValues[this.drawRandomNumber(extractedAttributesValues.length)];
+    return models.filter(value => attributeExtractor(value) === selectedAttributeValue);
   }
 
-  public filterRandomVerbs(numberOfVerbs: number, verbs: T[]): T[] {
-    return this.createListOfRandomIndexes(Math.min(numberOfVerbs, verbs.length), verbs.length)
-      .map(i => verbs[i]);
-  }
-
-  private createListOfRandomIndexes(listSize: number, maxValue: number): number[] {
+  private createListOfRandomIndexes<T>(listSize: number, maxValue: number): number[] {
     const randomIndexes = new Set<number>();
     while (randomIndexes.size !== listSize) {
       randomIndexes.add(this.drawRandomNumber(maxValue));

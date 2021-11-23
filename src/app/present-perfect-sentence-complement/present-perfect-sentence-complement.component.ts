@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {LanguageService} from '../language/language.service';
 import {PresentPerfectSentenceService} from './present-perfect-sentence.service';
 
@@ -7,11 +7,8 @@ import {PresentPerfectSentenceService} from './present-perfect-sentence.service'
   templateUrl: './present-perfect-sentence-complement.component.html',
   styleUrls: ['./present-perfect-sentence-complement.component.scss']
 })
-export class PresentPerfectSentenceComplementComponent implements OnInit {
+export class PresentPerfectSentenceComplementComponent {
 
-  constructor(public languageService: LanguageService, public presentPerfectSentenceService: PresentPerfectSentenceService) { }
-
-  ngOnInit(): void {
+  constructor(public languageService: LanguageService, public presentPerfectSentenceService: PresentPerfectSentenceService) {
   }
-
 }

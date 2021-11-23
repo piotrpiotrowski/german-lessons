@@ -31,7 +31,11 @@ export class MenuComponent implements OnInit {
     return this.router.navigateByUrl('/verb-conjunctions');
   }
 
-  navigateToSentenceComplements(): Promise<boolean> {
+  navigateToPresentPerfectSentenceComplements(): Promise<boolean> {
     return this.router.navigateByUrl('/present-perfect-sentence-complement');
+  }
+
+  navigateToPastSimpleSentenceComplements(): Promise<boolean> {
+    return this.router.navigateByUrl('/past-simple-sentence-complement');
   }
 }

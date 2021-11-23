@@ -41,15 +41,12 @@ export class VerbsFormsComponent implements OnInit {
   filteringCategory = this.filteringCategoryOptions[0].value;
   filtersForCategories = new Map([
     ['ALL_AVAILABLE', verbs => verbs],
-    ['BY_RANDOM_LETTER', verbs => this.drawingService.filterByRandomLetter(verbs)],
-    ['RANDOM_5', verbs => this.drawingService.filterRandomVerbs(5, verbs)],
-    ['RANDOM_10', verbs => this.drawingService.filterRandomVerbs(10, verbs)]
+    ['BY_RANDOM_LETTER', verbs => this.drawingService.filterByRandomValueOfAttribute<TrainingRowModel>(verbs, model => this.extractFirstLetterOfTranslation(model))],
+    ['RANDOM_5', verbs => this.drawingService.filterRandomEntries<TrainingRowModel>(5, verbs)],
+    ['RANDOM_10', verbs => this.drawingService.filterRandomEntries<TrainingRowModel>(10, verbs)]
   ]);
 
-  private drawingService: DrawingService<TrainingRowModel>;
-
-  constructor(private verbsFormsService: VerbsFormsService, public languageService: LanguageService) {
-    this.drawingService = new DrawingService(model => this.extractFirstLetterOfTranslation(model));
+  constructor(private verbsFormsService: VerbsFormsService, public languageService: LanguageService, private drawingService: DrawingService) {
   }
 
   ngOnInit(): void {
