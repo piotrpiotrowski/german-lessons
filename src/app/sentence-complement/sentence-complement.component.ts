@@ -39,6 +39,16 @@ export class SentenceComplementComponent implements OnInit {
     ['RANDOM_10', sentences => this.drawingService.filterRandomEntries<Sentence>(10, sentences)],
     ['RANDOM_BOOK_ID', sentences => this.drawingService.filterByRandomValueOfAttribute<Sentence>(sentences, model => model.bookId)]
   ]);
+  partOptions = [
+    new Option('all', '0'),
+    new Option('oldPart', '1'),
+    new Option('newPart', '2')
+  ];
+  part = this.partOptions[0].value;
+  booksPerPart: Set<string>[] = [
+    new Set<string>(['GEN', 'EXO', 'LEV', 'NUM', 'DEU', 'JOS', 'JDG', 'RUT', '1SA', '2SA', '1KI', '2KI', '1CH', '2CH', 'EZR', 'NEH', 'EST', 'JOB', 'PSA', 'PRO', 'ECC', 'SNG', 'ISA', 'JER', 'LAM', 'EZK', 'DAN', 'HOS', 'JOL', 'AMO', 'OBA', 'JON', 'MIC', 'NAM', 'HAB', 'ZEP', 'HAG', 'ZEC', 'MAL']),
+    new Set<string>(['MAT', 'MRK', 'LUK', 'JHN', 'ACT', 'ROM', '1CO', '2CO', 'GAL', 'EPH', 'PHP', 'COL', '1TH', '2TH', '1TI', '2TI', 'TIT', 'PHM', 'HEB', 'JAS', '1PE', '2PE', '1JN', '2JN', '3JN', 'JUD', 'REV'])
+  ];
 
   @Input() finderService: FinderService<Sentence>;
   @Input() title: string;
@@ -74,11 +84,17 @@ export class SentenceComplementComponent implements OnInit {
   }
 
   private buildSearchPredicate(): Predicate<Sentence> {
-    return verbForm => this.difficultyLevelCondition(verbForm);
+    return sentence => this.difficultyLevelCondition(sentence) && this.partCondition(sentence);
   }
 
-  private difficultyLevelCondition(verbForm: Sentence): boolean {
+  private difficultyLevelCondition(sentence: Sentence): boolean {
     const classification = +this.difficultyLevel;
-    return classification === 0 || verbForm.classification === classification;
+    return classification === 0 || sentence.classification === classification;
+  }
+
+  private partCondition(sentence: Sentence): boolean {
+    const partNumber = +this.part;
+    const indexOfPart = partNumber - 1;
+    return partNumber === 0 || this.booksPerPart[indexOfPart].has(sentence.bookId);
   }
 }

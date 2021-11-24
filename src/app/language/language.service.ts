@@ -28,9 +28,9 @@ export class LanguageService {
       proficient: 'Proficient',
       auxiliaryVerbChoose: 'Choose auxiliary verb',
       show: 'Show',
-      random10: 'random 10',
-      random5: 'random 5',
-      randomLetter: 'random letter',
+      random10: 'Random 10',
+      random5: 'Random 5',
+      randomLetter: 'Random letter',
       allAvailable: 'all available',
       pronouns: 'pronouns',
       formChoose: 'Choose form',
@@ -57,7 +57,10 @@ export class LanguageService {
       sentences: 'sentences',
       presentPerfectSentenceComplements: 'Present perfect sentences completion',
       pastSimpleSentenceComplements: 'Past simple sentences completion',
-      randomBookId: 'random book'
+      randomBookId: 'Random book',
+      partChoose: 'Choose testament',
+      newPart: 'New testament',
+      oldPart: 'Old testament'
     },
     POLISH: {
       verbsFormsTitle: 'Trening czasowników nieregularnych',
@@ -109,7 +112,10 @@ export class LanguageService {
       sentences: 'zdań',
       presentPerfectSentenceComplements: 'Uzupełnianie zdań w czasie przeszłym dokonanym',
       pastSimpleSentenceComplements: 'Uzupełnianie zdań w czasie przeszłym niedokonanym',
-      randomBookId: 'losowa księga'
+      randomBookId: 'Losowa księga',
+      partChoose: 'Wybierz testament',
+      newPart: 'Nowy testament',
+      oldPart: 'Stary testament'
     },
     GERMAN: {
       verbsFormsTitle: 'Starke verben übungen',
@@ -161,7 +167,10 @@ export class LanguageService {
       sentences: 'Sätze',
       presentPerfectSentenceComplements: 'Perfect Sätze Vervollständigung',
       pastSimpleSentenceComplements: 'Präteritum Sätze Vervollständigung',
-      randomBookId: 'Willkürlichen Buch'
+      randomBookId: 'Willkürlichen Buch',
+      partChoose: 'Wählen das Testament aus',
+      newPart: 'Neues Testament',
+      oldPart: 'Altes Testament'
     }
   };
 

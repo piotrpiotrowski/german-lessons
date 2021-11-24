@@ -1,7 +1,7 @@
 <h3>{{title}}</h3>
 <mat-expansion-panel class="control-panel">
   <mat-expansion-panel-header>
-    <mat-panel-title style="padding-top: 10px">
+    <mat-panel-title>
       {{languageService.getLabel('lessonSummary') + (sentences ? sentences.length : 0) + ' ' + languageService.getLabel('sentences')}}
     </mat-panel-title>
   </mat-expansion-panel-header>
@@ -9,6 +9,7 @@
     <app-command-buttons (selectedCommand)="onCommandSelect($event)"></app-command-buttons>
     <div>
       <app-responsive-button-toggle-group [title]="languageService.getLabel('levelChoose')" [options]="difficultyLevelOptions" [(model)]="difficultyLevel" (selectOption)="loadSentences()"></app-responsive-button-toggle-group>
+      <app-responsive-button-toggle-group [title]="languageService.getLabel('partChoose')" [options]="partOptions" [(model)]="part" (selectOption)="loadSentences()"></app-responsive-button-toggle-group>
       <app-responsive-button-toggle-group [title]="languageService.getLabel('show')" [options]="filteringCategoryOptions" [(model)]="filteringCategory" (selectOption)="loadSentences()"></app-responsive-button-toggle-group>
     </div>
   </div>
