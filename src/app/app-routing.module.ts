@@ -9,6 +9,7 @@ import {
   PresentPerfectSentenceComplementComponent
 } from './present-perfect-sentence-complement/present-perfect-sentence-complement.component';
 import {PastSimpleSentenceComplementComponent} from './past-simple-sentence-complement/past-simple-sentence-complement.component';
+import {PresentSimpleSentenceComplementComponent} from './present-simple-sentence-complement/present-simple-sentence-complement.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'possessive-pronouns', component: PossessivePronounsComponent},
   {path: 'verb-conjunctions', component: VerbsConjunctionsComponent},
   {path: 'present-perfect-sentence-complement', component: PresentPerfectSentenceComplementComponent},
-  {path: 'past-simple-sentence-complement', component: PastSimpleSentenceComplementComponent}
+  {path: 'past-simple-sentence-complement', component: PastSimpleSentenceComplementComponent},
+  {path: 'present-simple-sentence-complement', component: PresentSimpleSentenceComplementComponent}
 ];
 
 @NgModule({

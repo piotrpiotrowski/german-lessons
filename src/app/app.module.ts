@@ -34,6 +34,7 @@ import { SentenceComplementComponent } from './sentence-complement/sentence-comp
 import { SentenceRowComponent } from './sentence-complement/sentence-row/sentence-row.component';
 import { PresentPerfectSentenceComplementComponent } from './present-perfect-sentence-complement/present-perfect-sentence-complement.component';
 import { PastSimpleSentenceComplementComponent } from './past-simple-sentence-complement/past-simple-sentence-complement.component';
+import { PresentSimpleSentenceComplementComponent } from './present-simple-sentence-complement/present-simple-sentence-complement.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { PastSimpleSentenceComplementComponent } from './past-simple-sentence-co
     SentenceComplementComponent,
     SentenceRowComponent,
     PresentPerfectSentenceComplementComponent,
-    PastSimpleSentenceComplementComponent
+    PastSimpleSentenceComplementComponent,
+    PresentSimpleSentenceComplementComponent
   ],
   imports: [
     BrowserModule,

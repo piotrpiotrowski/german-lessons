@@ -3,7 +3,7 @@
   <div class="sentence-row">
     <span class="prefix-cell">{{sentence.prefix}}</span>
     <div class="question-cell">
-      <app-input-cell [command]="cellInputsCommand" [answer]="sentence.hiddenVerb" [label]="" (correctlyAnswered)="showTranslation = true"></app-input-cell>
+      <app-input-cell [command]="cellInputsCommand" [answer]="sentence.hiddenWord" [label]="" (correctlyAnswered)="showTranslation = true"></app-input-cell>
     </div>
     <span class="suffix-cell">{{sentence.suffix}}</span>
   </div>

@@ -2,7 +2,7 @@ import {Injectable, Predicate} from '@angular/core';
 import {TrainingRowModel} from '../training-row/training-row.model';
 import {Answer} from '../training-row/answer.model';
 import {Language} from '../language/language';
-import {rawVerbsForms} from './verbs.datasource';
+import {rawVerbsForms} from './verbs-forms.datasource';
 import {CsvFinderService} from '../shared/csv-finder.service';
 import {FinderService} from '../shared/finder.service';
 

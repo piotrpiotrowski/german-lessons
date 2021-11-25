@@ -12,7 +12,7 @@ bind, tie;wiązać;binden;bindet;band;hat gebunden;3
 ask, request;prosić;bitten;bittet;bat;hat gebeten;2
 blow;dmuchać;blasen;bläst;blies;hat geblasen;2
 stay;pozostawać;bleiben;bleibt;blieb;ist geblieben;1
-fry;smażyć, piec;braten;bratet;briet;hat gebraten;3
+fry;smażyć, piec;braten;brät;briet;hat gebraten;3
 break;łamać;brechen;bricht;brach;ist gebrochen;3
 burn;płonąć;brennen;brennt;brannte;hat gebrannt;3
 bring;przynosić;bringen;bringt;brachte;hat gebracht;2

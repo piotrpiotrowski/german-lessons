@@ -38,4 +38,8 @@ export class MenuComponent implements OnInit {
   navigateToPastSimpleSentenceComplements(): Promise<boolean> {
     return this.router.navigateByUrl('/past-simple-sentence-complement');
   }
+
+  navigateToPresentSimpleSentenceComplements(): Promise<boolean> {
+    return this.router.navigateByUrl('/present-simple-sentence-complement');
+  }
 }

@@ -14,6 +14,7 @@ export class LanguageService {
       verbsConjunctionsTitle: 'Conjunctions of verbs in present tense',
       presentPerfectSentenceComplementTitle: 'Present perfect sentences completion training',
       pastSimpleSentenceComplementTitle: 'Past simple sentences completion training',
+      presentSimpleSentenceComplementTitle: 'Present simple sentences completion training',
       homeTitle: 'Choose your lesson from menu',
       check: 'Check',
       clear: 'Clear',
@@ -57,10 +58,11 @@ export class LanguageService {
       sentences: 'sentences',
       presentPerfectSentenceComplements: 'Present perfect sentences completion',
       pastSimpleSentenceComplements: 'Past simple sentences completion',
+      presentSimpleSentenceComplements: 'Present simple sentences completion',
       randomBookId: 'Random book',
       partChoose: 'Choose testament',
       newPart: 'New testament',
-      oldPart: 'Old testament'
+      oldPart: 'Old testament',
     },
     POLISH: {
       verbsFormsTitle: 'Trening czasowników nieregularnych',
@@ -69,6 +71,7 @@ export class LanguageService {
       verbsConjunctionsTitle: 'Trening odmiany czasowników nieregularnych w czasie teraźniejszym',
       presentPerfectSentenceComplementTitle: 'Trening z uzupełniania zdań w czasie przeszłym dokonanym',
       pastSimpleSentenceComplementTitle: 'Trening z uzupełniania zdań w czasie przeszłym nie dokonanym',
+      presentSimpleSentenceComplementTitle: 'Trening z uzupełniania zdań w czasie teraźniejszym',
       homeTitle: 'Wybierz lekcję z menu',
       check: 'Sprawdz',
       clear: 'Wyczyść',
@@ -112,10 +115,11 @@ export class LanguageService {
       sentences: 'zdań',
       presentPerfectSentenceComplements: 'Uzupełnianie zdań w czasie przeszłym dokonanym',
       pastSimpleSentenceComplements: 'Uzupełnianie zdań w czasie przeszłym niedokonanym',
+      presentSimpleSentenceComplements: 'Uzupełnianie zdań w czasie teraźniejszym',
       randomBookId: 'Losowa księga',
       partChoose: 'Wybierz testament',
       newPart: 'Nowy testament',
-      oldPart: 'Stary testament'
+      oldPart: 'Stary testament',
     },
     GERMAN: {
       verbsFormsTitle: 'Starke verben übungen',
@@ -124,6 +128,7 @@ export class LanguageService {
       verbsConjunctionsTitle: 'Übungen Verbkonjugation',
       presentPerfectSentenceComplementTitle: 'Perfect Sätze Vervollständigung übungen',
       pastSimpleSentenceComplementTitle: 'Präteritum Sätze Vervollständigung übungen',
+      presentSimpleSentenceComplementTitle: 'Präsens Sätze Vervollständigung übungen',
       homeTitle: 'Wählen einen Unterricht vom Menu aus',
       check: 'Überprüfen',
       clear: 'Alle entfernen',
@@ -167,10 +172,11 @@ export class LanguageService {
       sentences: 'Sätze',
       presentPerfectSentenceComplements: 'Perfect Sätze Vervollständigung',
       pastSimpleSentenceComplements: 'Präteritum Sätze Vervollständigung',
+      presentSimpleSentenceComplements: 'Präsens Sätze Vervollständigung',
       randomBookId: 'Willkürlichen Buch',
       partChoose: 'Wählen das Testament aus',
       newPart: 'Neues Testament',
-      oldPart: 'Altes Testament'
+      oldPart: 'Altes Testament',
     }
   };
 
