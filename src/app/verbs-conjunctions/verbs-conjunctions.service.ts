@@ -22,6 +22,7 @@ export class VerbsConjunctionsService implements FinderService<TrainingRowModel>
         new Answer('i', this.extractVerb(columns[3])),
         new Answer('youSingular', this.extractVerb(columns[4])),
         new Answer('heSheIt', this.extractVerb(columns[5])),
+        new Answer('we', this.extractVerb(columns[6])),
         new Answer('youPlural', this.extractVerb(columns[7]))
       ])
 

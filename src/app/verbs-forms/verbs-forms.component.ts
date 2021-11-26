@@ -82,7 +82,7 @@ export class VerbsFormsComponent implements OnInit {
   }
 
   private auxiliaryVerbCondition(verbForm: TrainingRowModel): boolean {
-    return this.auxiliaryVerb === 'both' || verbForm.getAnswer(3).startsWith(this.auxiliaryVerb);
+    return this.auxiliaryVerb === 'both' || verbForm.answers[3].value.startsWith(this.auxiliaryVerb);
   }
 
   onCommandSelect(selectedCommand: InputCellCommand): void {
