@@ -1,11 +1,14 @@
 <div class="row-question">
   <div class="foreign-translation">{{sentence.getInfinitiveTranslations(languageService.getCurrentLanguage())}} ({{sentence.getReferencesTranslations(languageService.getCurrentLanguage())}})</div>
   <div class="sentence-row">
-    <span class="prefix-cell">{{sentence.prefix}}</span>
-    <div class="question-cell">
-      <app-input-cell [command]="cellInputsCommand" [answer]="sentence.hiddenWord" [label]="" (correctlyAnswered)="showTranslation = true"></app-input-cell>
-    </div>
-    <span class="suffix-cell">{{sentence.suffix}}</span>
+    <ng-container *ngFor="let part of sentence.parts">
+      <ng-container [ngSwitch]="part.type">
+        <span *ngSwitchCase="'TEXT'" class="text-cell">{{part.value}}</span>
+        <div *ngSwitchCase="'RIDDLE'" class="riddle-cell">
+          <app-input-cell [command]="cellInputsCommand" [answer]="part.value" [label]="" (correctlyAnswered)="showTranslation = true"></app-input-cell>
+        </div>
+      </ng-container>
+    </ng-container>
   </div>
 </div>
 <div *ngIf="showTranslation" class="answer-row">

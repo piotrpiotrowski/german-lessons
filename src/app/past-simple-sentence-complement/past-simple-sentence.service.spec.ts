@@ -37,7 +37,7 @@ describe('PastSimpleSentenceService', () => {
 
     // when
     service.find(() => true)
-      .pipe(map(sentence => [sentence.hiddenWord, sentence.text]))
+      .pipe(map(sentence => [sentence.parts[1].value, sentence.parts[0].value + sentence.parts[1].value + sentence.parts[2].value]))
       .pipe(filter(pair => !pair[1].includes(pair[0])))
       .pipe(toArray())
       .subscribe(

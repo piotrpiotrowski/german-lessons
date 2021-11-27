@@ -63,6 +63,7 @@ export class LanguageService {
       partChoose: 'Choose testament',
       newPart: 'New testament',
       oldPart: 'Old testament',
+      we: 'we'
     },
     POLISH: {
       verbsFormsTitle: 'Trening czasowników nieregularnych',
@@ -120,6 +121,7 @@ export class LanguageService {
       partChoose: 'Wybierz testament',
       newPart: 'Nowy testament',
       oldPart: 'Stary testament',
+      we: 'my'
     },
     GERMAN: {
       verbsFormsTitle: 'Starke verben übungen',
@@ -177,6 +179,7 @@ export class LanguageService {
       partChoose: 'Wählen das Testament aus',
       newPart: 'Neues Testament',
       oldPart: 'Altes Testament',
+      we: 'wir'
     }
   };
 

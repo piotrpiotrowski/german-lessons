@@ -7,6 +7,8 @@ import {BehaviorSubject} from 'rxjs';
 import {InputCellCommand} from '../../input-cell/input-cell-command';
 import {Sentence} from './sentence.model';
 import {LanguageService} from '../../language/language.service';
+import {SentencePart} from './part.model';
+import {SentencePartType} from './sentence-part-type.enum';
 
 describe('SentenceRowComponent', () => {
   let component: SentenceRowComponent;
@@ -36,8 +38,12 @@ describe('SentenceRowComponent', () => {
 
   it('should display a label', () => {
     // given
-    component.sentence = new Sentence('gebacken', new Map([[Language.ENGLISH, 'bake']]), 2, 'Ich habe die Kuchen gebacken and gegessen.',
-      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
+    const sentenceParts = [
+      new SentencePart('Ich habe die Kuchen ', SentencePartType.TEXT),
+      new SentencePart('gebacken', SentencePartType.RIDDLE),
+      new SentencePart(' and gegessen.', SentencePartType.TEXT)
+    ];
+    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
@@ -51,8 +57,12 @@ describe('SentenceRowComponent', () => {
 
   it('should display an input-cell', () => {
     // given
-    component.sentence = new Sentence('gebacken', new Map([[Language.ENGLISH, 'bake']]), 2, 'Ich habe die Kuchen gebacken and gegessen.',
-      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
+    const sentenceParts = [
+      new SentencePart('Ich habe die Kuchen ', SentencePartType.TEXT),
+      new SentencePart('gebacken', SentencePartType.RIDDLE),
+      new SentencePart(' and gegessen.', SentencePartType.TEXT)
+    ];
+    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
@@ -66,39 +76,51 @@ describe('SentenceRowComponent', () => {
 
   it('should display prefix from the sentence', () => {
     // given
-    component.sentence = new Sentence('gebacken', new Map([[Language.ENGLISH, 'bake']]), 2, 'Ich habe die Kuchen gebacken and gegessen.',
-      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
+    const sentenceParts = [
+      new SentencePart('Ich habe die Kuchen ', SentencePartType.TEXT),
+      new SentencePart('gebacken', SentencePartType.RIDDLE),
+      new SentencePart(' and gegessen.', SentencePartType.TEXT)
+    ];
+    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
     fixture.detectChanges();
 
     // then
-    const prefix = fixture.nativeElement.querySelector('.prefix-cell');
+    const prefix = fixture.nativeElement.querySelector('.text-cell');
     expect(prefix).toBeTruthy();
     expect(prefix.textContent).toEqual('Ich habe die Kuchen ');
   });
 
   it('should display suffix from the sentence', () => {
     // given
-    component.sentence = new Sentence('gebacken', new Map([[Language.ENGLISH, 'bake']]), 2, 'Ich habe die Kuchen gebacken and gegessen.',
-      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
+    const sentenceParts = [
+      new SentencePart('Ich habe die Kuchen ', SentencePartType.TEXT),
+      new SentencePart('gebacken', SentencePartType.RIDDLE),
+      new SentencePart(' and gegessen.', SentencePartType.TEXT)
+    ];
+    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
     fixture.detectChanges();
 
     // then
-    const prefix = fixture.nativeElement.querySelector('.suffix-cell');
-    expect(prefix).toBeTruthy();
-    expect(prefix.textContent).toEqual(' and gegessen.');
+    const textCells = fixture.nativeElement.querySelectorAll('.text-cell');
+    expect(textCells[1]).toBeTruthy();
+    expect(textCells[1].textContent).toEqual(' and gegessen.');
   });
 
   it('should set command to REVEAL', () => {
     // given
+    const sentenceParts = [
+      new SentencePart('Ich habe die Kuchen ', SentencePartType.TEXT),
+      new SentencePart('gebacken', SentencePartType.RIDDLE),
+      new SentencePart(' and gegessen.', SentencePartType.TEXT)
+    ];
     let expectedCellInputsCommand = null;
-    component.sentence = new Sentence('gebacken', new Map([[Language.ENGLISH, 'bake']]), 2, 'Ich habe die Kuchen gebacken and gegessen.',
-      new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
+    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
     component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.REVEAL);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 
@@ -109,5 +131,4 @@ describe('SentenceRowComponent', () => {
     // then
     expect(expectedCellInputsCommand).toEqual(InputCellCommand.REVEAL);
   });
-
 });

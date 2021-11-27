@@ -2,6 +2,10 @@
   color: #ffffff;
   background: rgb(2, 0, 36);
   background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(121, 9, 34, 1) 49%, rgba(255, 244, 0, 1) 100%);
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .router-outlet-content {

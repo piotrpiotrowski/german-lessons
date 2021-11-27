@@ -15,20 +15,14 @@
     width: 100%;
     display: inline-block;
 
-    .question-cell {
+    .riddle-cell {
       width: 150px;
       display: inline-block;
       margin-top: -30px;
       margin-bottom: -30px;
     }
 
-    .prefix-cell {
-      text-overflow: clip;
-      overflow-wrap: break-word;
-      line-height: 30px;
-    }
-
-    .suffix-cell {
+    .text-cell {
       text-overflow: clip;
       overflow-wrap: break-word;
       line-height: 30px;
