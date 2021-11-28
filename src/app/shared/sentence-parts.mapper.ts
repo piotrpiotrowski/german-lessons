@@ -7,14 +7,26 @@ import {Injectable} from '@angular/core';
 })
 export class SentencePartsMapper {
 
-  public map(hiddenWord: string, text: string): SentencePart[] {
-    const prefix = text.substring(0, text.indexOf(hiddenWord));
-    const suffix = text.substring(prefix.length + hiddenWord.length);
-    return [
-      new SentencePart(prefix, SentencePartType.TEXT),
-      new SentencePart(hiddenWord, SentencePartType.RIDDLE),
-      new SentencePart(suffix, SentencePartType.TEXT)
-    ];
+  public map(hiddenWords: string[], text: string): SentencePart[] {
+    const result = [];
+    let startOfSection = 0;
+    const indexes = this.findIndexesOfHiddenWords(hiddenWords, text);
+    for (let i = 0; i < indexes.length; i++) {
+      const beforeWord = text.substring(startOfSection, indexes[i]);
+      if (beforeWord !== '') {
+        result.push(new SentencePart(beforeWord, SentencePartType.TEXT));
+      }
+      result.push(new SentencePart(text.substring(indexes[i], indexes[i] + hiddenWords[i].length), SentencePartType.RIDDLE));
+      startOfSection = indexes[i] + hiddenWords[i].length;
+    }
+    const afterLastWord = text.substring(startOfSection);
+    if (afterLastWord !== '') {
+      result.push(new SentencePart(afterLastWord, SentencePartType.TEXT));
+    }
+    return result;
   }
 
+  private findIndexesOfHiddenWords(hiddenWords: string[], text: string): number[] {
+    return hiddenWords.map(hiddenWord => text.indexOf(hiddenWord));
+  }
 }

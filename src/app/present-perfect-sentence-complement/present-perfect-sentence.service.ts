@@ -20,7 +20,7 @@ export class PresentPerfectSentenceService implements FinderService<Sentence> {
 
   private mapToSentence = (columns: string[]) =>
     new Sentence(
-      this.sentencePartsMapper.map(columns[0], columns[2]),
+      this.sentencePartsMapper.map([columns[0]], columns[2]),
       new Map<Language, string>([[Language.ENGLISH, columns[6]], [Language.POLISH, columns[7]], [Language.GERMAN, columns[8]]]),
       +columns[9],
       new Map<Language, string>([[Language.GERMAN, columns[3]], [Language.POLISH, columns[4]], [Language.ENGLISH, columns[5]]]),

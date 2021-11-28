@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../language/language.service';
+import {MatSidenav} from '@angular/material/sidenav';
+import {MatDrawerToggleResult} from '@angular/material/sidenav/drawer';
 
 @Component({
   selector: 'app-menu',
@@ -12,34 +14,39 @@ export class MenuComponent implements OnInit {
   constructor(private router: Router, public languageService: LanguageService) {
   }
 
+  @Input() nav: MatSidenav;
   ngOnInit(): void {
   }
 
-  navigateToIrregularVerbs(): Promise<boolean> {
-    return this.router.navigateByUrl('/irregular-verbs');
+  navigateToIrregularVerbs(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/irregular-verbs');
   }
 
-  navigateToPersonalPronouns(): Promise<boolean> {
-    return this.router.navigateByUrl('/personal-pronouns');
+  navigateToPersonalPronouns(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/personal-pronouns');
   }
 
-  navigateToPossessivePronouns(): Promise<boolean> {
-    return this.router.navigateByUrl('/possessive-pronouns');
+  navigateToPossessivePronouns(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/possessive-pronouns');
   }
 
-  navigateToVerbConjunctions(): Promise<boolean> {
-    return this.router.navigateByUrl('/verb-conjunctions');
+  navigateToVerbConjunctions(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/verb-conjunctions');
   }
 
-  navigateToPresentPerfectSentenceComplements(): Promise<boolean> {
-    return this.router.navigateByUrl('/present-perfect-sentence-complement');
+  navigateToPresentPerfectSentenceComplements(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/present-perfect-sentence-complement');
   }
 
-  navigateToPastSimpleSentenceComplements(): Promise<boolean> {
-    return this.router.navigateByUrl('/past-simple-sentence-complement');
+  navigateToPastSimpleSentenceComplements(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/past-simple-sentence-complement');
   }
 
-  navigateToPresentSimpleSentenceComplements(): Promise<boolean> {
-    return this.router.navigateByUrl('/present-simple-sentence-complement');
+  navigateToPresentSimpleSentenceComplements(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/present-simple-sentence-complement');
+  }
+
+  private routeTo(path: string): Promise<MatDrawerToggleResult> {
+    return this.router.navigateByUrl(path).then(_ => this.nav.close());
   }
 }

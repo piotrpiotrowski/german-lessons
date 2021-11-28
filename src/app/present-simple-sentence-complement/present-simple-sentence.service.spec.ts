@@ -4,6 +4,7 @@ import {filter, map, take, toArray} from 'rxjs/operators';
 import {Language} from '../language/language';
 import {Sentence} from '../sentence-complement/sentence-row/sentence.model';
 import {PresentSimpleSentenceService} from './present-simple-sentence.service';
+import {SentencePart} from '../sentence-complement/sentence-row/part.model';
 
 describe('PresentSimpleSentenceService', () => {
   let service: PresentSimpleSentenceService;
@@ -37,7 +38,7 @@ describe('PresentSimpleSentenceService', () => {
 
     // when
     service.find(() => true)
-      .pipe(map(sentence => [sentence.parts[1].value, sentence.parts[0].value + sentence.parts[1].value + sentence.parts[2].value]))
+      .pipe(map(sentence => [sentence.parts[1].value, extractValue(sentence.parts[0]) + extractValue(sentence.parts[1]) + extractValue(sentence.parts[2])]))
       .pipe(filter(pair => !pair[1].includes(pair[0])))
       .pipe(toArray())
       .subscribe(
@@ -47,4 +48,8 @@ describe('PresentSimpleSentenceService', () => {
     // then
     expect(sentences).toEqual([]);
   });
+
+  function extractValue(sentencePart: SentencePart): string {
+    return sentencePart ? sentencePart.value : '';
+  }
 });

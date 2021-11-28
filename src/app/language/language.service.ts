@@ -46,7 +46,7 @@ export class LanguageService {
       i: 'I',
       youSingular: 'you',
       heSheIt: 'he/she/it',
-      youPlural: 'you',
+      youPlural: 'you pl.',
       nominative: 'Nominative',
       genitive: 'Genitive',
       accusative: 'Accusative',
