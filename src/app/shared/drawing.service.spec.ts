@@ -9,9 +9,9 @@ describe('DrawingService', () => {
   it('should select single sentence by random book id', () => {
     // given
     const sentences = [
-      new Sentence([], new Map<Language, string>(), 2, new Map<Language, string>(), new Map<Language, string>(), 'A'),
-      new Sentence([], new Map<Language, string>(), 2, new Map<Language, string>(), new Map<Language, string>(), 'B'),
-      new Sentence([], new Map<Language, string>(), 2, new Map<Language, string>(), new Map<Language, string>(), 'C'),
+      new Sentence([], new Map<Language, string>(), 2, new Map<Language, string>(), new Map<Language, string>(), 'A', 1.2),
+      new Sentence([], new Map<Language, string>(), 2, new Map<Language, string>(), new Map<Language, string>(), 'B', 1.2),
+      new Sentence([], new Map<Language, string>(), 2, new Map<Language, string>(), new Map<Language, string>(), 'C', 1.2),
     ];
 
     // when

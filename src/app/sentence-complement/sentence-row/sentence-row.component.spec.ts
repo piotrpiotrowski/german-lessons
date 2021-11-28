@@ -43,7 +43,7 @@ describe('SentenceRowComponent', () => {
       new SentencePart('gebacken', SentencePartType.RIDDLE),
       new SentencePart(' and gegessen.', SentencePartType.TEXT)
     ];
-    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
+    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC', 1.1);
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
@@ -62,7 +62,7 @@ describe('SentenceRowComponent', () => {
       new SentencePart('gebacken', SentencePartType.RIDDLE),
       new SentencePart(' and gegessen.', SentencePartType.TEXT)
     ];
-    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
+    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC', 1.1);
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
@@ -81,7 +81,7 @@ describe('SentenceRowComponent', () => {
       new SentencePart('gebacken', SentencePartType.RIDDLE),
       new SentencePart(' and gegessen.', SentencePartType.TEXT)
     ];
-    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
+    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC', 1.1);
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
@@ -100,7 +100,7 @@ describe('SentenceRowComponent', () => {
       new SentencePart('gebacken', SentencePartType.RIDDLE),
       new SentencePart(' and gegessen.', SentencePartType.TEXT)
     ];
-    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
+    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC', 1.1);
     component.command = new BehaviorSubject<InputCellCommand>(null);
 
     // when
@@ -120,7 +120,7 @@ describe('SentenceRowComponent', () => {
       new SentencePart(' and gegessen.', SentencePartType.TEXT)
     ];
     let expectedCellInputsCommand = null;
-    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC');
+    component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC', 1.1);
     component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.REVEAL);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
 

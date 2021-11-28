@@ -25,6 +25,7 @@ export class PresentSimpleSentenceService implements FinderService<Sentence> {
       +columns[11],
       new Map<Language, string>([[Language.GERMAN, columns[3]], [Language.POLISH, columns[4]], [Language.ENGLISH, columns[5]]]),
       new Map<Language, string>([[Language.GERMAN, columns[2]], [Language.POLISH, columns[13]], [Language.ENGLISH, columns[12]]]),
-      columns[1].substring(0, 3)
+      columns[1].substring(0, 3),
+      parseFloat(columns[1].substring(4))
     )
 }

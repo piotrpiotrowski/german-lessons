@@ -28,8 +28,8 @@ describe('PresentPerfectSentenceService', () => {
 
     // then
     expect(sentences.length).toEqual(2);
-    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('command');
-    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('command');
+    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('begin');
+    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('be startled | see');
   });
 
   it('should find case sensitive hidden verb in text', () => {
