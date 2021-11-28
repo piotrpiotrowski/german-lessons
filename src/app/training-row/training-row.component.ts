@@ -1,20 +1,23 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from './training-row.model';
 import {BehaviorSubject, fromEvent, Subscription} from 'rxjs';
 import {LanguageService} from '../language/language.service';
 import {distinctUntilChanged, map} from 'rxjs/operators';
+import {Answer} from './answer.model';
 
 @Component({
   selector: 'app-training-row',
   templateUrl: './training-row.component.html',
-  styleUrls: ['./training-row.component.scss']
+  styleUrls: ['./training-row.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TrainingRowComponent implements OnInit, OnDestroy {
 
   private externalCommand: BehaviorSubject<InputCellCommand>;
   cellInputsCommand: BehaviorSubject<InputCellCommand> = new BehaviorSubject<InputCellCommand>(null);
   cellWidth: string;
+  subscription: Subscription;
   resizeSubscription: Subscription;
   @Input() trainingRowModel: TrainingRowModel;
 
@@ -26,13 +29,13 @@ export class TrainingRowComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.updateCellWith();
-    this.externalCommand
+    this.updateCellWith(this.isDesktop());
+    this.subscription = this.externalCommand
       .subscribe(command => this.cellInputsCommand.next(command));
     this.resizeSubscription = fromEvent(window, 'resize')
-      .pipe(map(_ => Math.floor(window.innerWidth / 100)))
+      .pipe(map(_ => this.isDesktop()))
       .pipe(distinctUntilChanged())
-      .subscribe(_ => this.updateCellWith());
+      .subscribe(desktop => this.updateCellWith(desktop));
   }
 
   setCommandToCheck(): void {
@@ -41,13 +44,22 @@ export class TrainingRowComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.resizeSubscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
-  private updateCellWith(): void {
-    this.cellWidth = this.calculateCellWidth() + '%';
+  trackAnswers(index: number, answer: Answer): any {
+    return answer.name;
   }
 
-  private calculateCellWidth(): number {
-    return window.innerWidth > 600 ? (80 - this.trainingRowModel.getNumberOfAnswers()) / this.trainingRowModel.getNumberOfAnswers() : 99;
+  private isDesktop(): boolean {
+    return window.innerWidth > 600;
+  }
+
+  private updateCellWith(desktop: boolean): void {
+    this.cellWidth = this.calculateCellWidth(desktop) + '%';
+  }
+
+  private calculateCellWidth(desktop: boolean): number {
+    return desktop ? (80 - this.trainingRowModel.getNumberOfAnswers()) / this.trainingRowModel.getNumberOfAnswers() : 99;
   }
 }

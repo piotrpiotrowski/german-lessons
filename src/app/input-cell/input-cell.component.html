@@ -1,9 +1,11 @@
 <mat-form-field>
-  <mat-label >{{label}}</mat-label>
+  <mat-label>{{label}}</mat-label>
   <input matInput type="text" [(ngModel)]="value" (keyup)="onValueChanged($event)" (dblclick)="onDoubleClick()" autocomplete="off">
   <span matSuffix class="icons-span">
-    <mat-icon *ngIf="state.toString() === 'UNCERTAIN'" aria-hidden="true" [ngClass]="state.toString()">fiber_manual_record</mat-icon>
-    <mat-icon *ngIf="state.toString() === 'CORRECT'" aria-hidden="true" [ngClass]="state.toString()">done</mat-icon>
-    <mat-icon *ngIf="state.toString() === 'INCORRECT'" aria-hidden="true" [ngClass]="state.toString()">clear</mat-icon>
+    <ng-container [ngSwitch]="state">
+    <mat-icon *ngSwitchCase="'UNCERTAIN'" aria-hidden="true" [ngClass]="state">fiber_manual_record</mat-icon>
+    <mat-icon *ngSwitchCase="'CORRECT'" aria-hidden="true" [ngClass]="state">done</mat-icon>
+    <mat-icon *ngSwitchCase="'INCORRECT'" aria-hidden="true" [ngClass]="state">clear</mat-icon>
+    </ng-container>
   </span>
 </mat-form-field>

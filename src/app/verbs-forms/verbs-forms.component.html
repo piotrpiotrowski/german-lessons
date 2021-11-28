@@ -14,7 +14,6 @@
     </div>
   </div>
 </mat-expansion-panel>
-<mat-spinner *ngIf="loading"></mat-spinner>
-<div *ngIf="!loading">
-  <app-training-row *ngFor="let verb of verbs" [command]="command" [trainingRowModel]="verb"></app-training-row>
+<div>
+  <app-training-row *ngFor="let verb of verbs; trackBy: trackVerbs" [command]="command" [trainingRowModel]="verb"></app-training-row>
 </div>

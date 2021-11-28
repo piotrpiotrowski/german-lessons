@@ -1,23 +1,24 @@
-import {Component, OnInit, Predicate} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, Predicate} from '@angular/core';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
 import {BehaviorSubject} from 'rxjs';
 import {VerbsFormsService} from './verbs-forms.service';
-import {finalize, toArray} from 'rxjs/operators';
+import {toArray} from 'rxjs/operators';
 import {LanguageService} from '../language/language.service';
 import {Option} from '../responsive-button-toggle-group/option.model';
 import {DrawingService} from '../shared/drawing.service';
+import {Language} from '../language/language';
 
 @Component({
   selector: 'app-verbs-forms',
   templateUrl: './verbs-forms.component.html',
-  styleUrls: ['./verbs-forms.component.scss']
+  styleUrls: ['./verbs-forms.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VerbsFormsComponent implements OnInit {
 
   command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
   verbs: TrainingRowModel[];
-  loading: boolean;
   difficultyLevelOptions = [
     new Option('all', '0'),
     new Option('beginner', '1'),
@@ -54,14 +55,16 @@ export class VerbsFormsComponent implements OnInit {
   }
 
   loadVerbsForms(): void {
-    this.loading = true;
     this.verbsFormsService.find(this.buildSearchPredicate())
       .pipe(toArray())
-      .pipe(finalize(() => this.loading = false))
       .subscribe(
         verbs => this.verbs = this.filterByCategory(verbs),
         console.error
       );
+  }
+
+  trackVerbs(index: number, item: TrainingRowModel): any {
+    return item.getTranslation(Language.GERMAN);
   }
 
   private filterByCategory(verbs: TrainingRowModel[]): TrainingRowModel[] {

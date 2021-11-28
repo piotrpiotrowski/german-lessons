@@ -1,15 +1,16 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {InputCellState} from './input-cell-state';
 import {InputCellCommand} from './input-cell-command';
 import {isAsciiLetter} from 'codelyzer/angular/styles/chars';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-input-cell',
   templateUrl: './input-cell.component.html',
-  styleUrls: ['./input-cell.component.scss']
+  styleUrls: ['./input-cell.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class InputCellComponent implements OnInit {
+export class InputCellComponent implements OnInit, OnDestroy {
 
   state: InputCellState = InputCellState.UNCERTAIN;
   value: string = null;
@@ -19,6 +20,7 @@ export class InputCellComponent implements OnInit {
   @Input() command: BehaviorSubject<InputCellCommand>;
   @Output() correctlyAnswered = new EventEmitter<string>();
 
+  private subscription: Subscription;
   private strategies = new Map<InputCellCommand, () => void>(
     [
       [InputCellCommand.REVEAL, () => this.reveal()],
@@ -32,10 +34,14 @@ export class InputCellComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.command.subscribe(
+    this.subscription = this.command.subscribe(
       command => this.executeCommand(command),
       error => console.error(error)
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   onValueChanged(event): void {
