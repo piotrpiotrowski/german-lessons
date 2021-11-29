@@ -12,8 +12,7 @@ import {Language} from '../language/language';
 @Component({
   selector: 'app-verbs-forms',
   templateUrl: './verbs-forms.component.html',
-  styleUrls: ['./verbs-forms.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./verbs-forms.component.scss']
 })
 export class VerbsFormsComponent implements OnInit {
 

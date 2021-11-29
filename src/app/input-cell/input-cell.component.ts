@@ -7,8 +7,7 @@ import {BehaviorSubject, Subscription} from 'rxjs';
 @Component({
   selector: 'app-input-cell',
   templateUrl: './input-cell.component.html',
-  styleUrls: ['./input-cell.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./input-cell.component.scss']
 })
 export class InputCellComponent implements OnInit, OnDestroy {
 

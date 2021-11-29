@@ -9,8 +9,7 @@ import {Answer} from './answer.model';
 @Component({
   selector: 'app-training-row',
   templateUrl: './training-row.component.html',
-  styleUrls: ['./training-row.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./training-row.component.scss']
 })
 export class TrainingRowComponent implements OnInit, OnDestroy {
 
