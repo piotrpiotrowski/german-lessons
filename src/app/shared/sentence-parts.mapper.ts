@@ -27,6 +27,17 @@ export class SentencePartsMapper {
   }
 
   private findIndexesOfHiddenWords(hiddenWords: string[], text: string): number[] {
-    return hiddenWords.map(hiddenWord => text.indexOf(hiddenWord));
+    const indexes = [];
+    let offset = 0;
+    const patterns = hiddenWords.map(word => new RegExp('([^a-zA-ZäÄöÖüÜß]|^)' + word + '([^a-zA-ZäÄöÖüÜß]|$)'));
+    for (let i = 0; i < hiddenWords.length; i++) {
+      let index = text.search(patterns[i]);
+      index = index + (text[index] === hiddenWords[i][0] ? 0 : 1);
+      offset = offset + index;
+      indexes.push(offset);
+      offset = offset + hiddenWords[i].length;
+      text = text.substring(index + hiddenWords[i].length);
+    }
+    return indexes;
   }
 }

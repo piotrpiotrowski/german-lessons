@@ -1,7 +1,7 @@
 <div class="row-question">
-  <div class="foreign-translation">{{sentence.getInfinitiveTranslations(languageService.getCurrentLanguage())}} ({{sentence.getReferencesTranslations(languageService.getCurrentLanguage())}})</div>
+  <div class="foreign-translation">{{currentSentence.getInfinitiveTranslations(languageService.getCurrentLanguage())}} ({{currentSentence.getReferencesTranslations(languageService.getCurrentLanguage())}})</div>
   <div class="sentence-row">
-    <ng-container *ngFor="let part of sentence.parts">
+    <ng-container *ngFor="let part of currentSentence.parts">
       <ng-container [ngSwitch]="part.type">
         <span *ngSwitchCase="'TEXT'" class="text-cell">{{part.value}}</span>
         <div *ngSwitchCase="'RIDDLE'" class="riddle-cell">
@@ -12,5 +12,5 @@
   </div>
 </div>
 <div *ngIf="showTranslation" class="answer-row">
-  {{sentence.getTextTranslations(languageService.getCurrentLanguage())}}
+  {{currentSentence.getTextTranslations(languageService.getCurrentLanguage())}}
 </div>

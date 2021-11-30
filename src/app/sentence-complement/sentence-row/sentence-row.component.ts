@@ -12,11 +12,15 @@ import {SentencePartType} from './sentence-part-type.enum';
 })
 export class SentenceRowComponent implements OnInit {
 
-  foundAnswers = 0;
+  foundAnswers;
   showTranslation = false;
   private externalCommand: BehaviorSubject<InputCellCommand>;
+  currentSentence: Sentence;
 
-  @Input() sentence: Sentence;
+  @Input() set sentence(sentence: Sentence) {
+    this.currentSentence = sentence;
+    this.foundAnswers = this.currentSentence.parts.filter(part => part.type === SentencePartType.RIDDLE).length;
+  }
 
   @Input() set command(command: BehaviorSubject<InputCellCommand>) {
     this.externalCommand = command;
@@ -33,7 +37,7 @@ export class SentenceRowComponent implements OnInit {
   }
 
   shouldShowTransaction(): void {
-    this.foundAnswers++;
-    this.showTranslation = this.foundAnswers === this.sentence.parts.filter(part => part.type === SentencePartType.RIDDLE).length;
+    this.foundAnswers--;
+    this.showTranslation = this.foundAnswers <= 0;
   }
 }

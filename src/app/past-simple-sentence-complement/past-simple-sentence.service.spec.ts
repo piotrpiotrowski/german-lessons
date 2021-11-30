@@ -28,8 +28,8 @@ describe('PastSimpleSentenceService', () => {
 
     // then
     expect(sentences.length).toEqual(2);
-    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('eat');
-    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('eat');
+    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('bind, tie');
+    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('bind, tie');
   });
 
   it('should find case sensitive hidden verb in text', () => {

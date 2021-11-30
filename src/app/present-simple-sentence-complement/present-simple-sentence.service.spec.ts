@@ -28,7 +28,7 @@ describe('PresentSimpleSentenceService', () => {
 
     // then
     expect(sentences.length).toEqual(2);
-    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('bake');
+    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('bake | hit, beat | hold | bake');
     expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('bake');
   });
 
