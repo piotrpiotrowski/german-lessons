@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit, Predicate} from '@angular/core';
+import {Component, OnInit, Predicate} from '@angular/core';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
 import {BehaviorSubject} from 'rxjs';
@@ -54,6 +54,7 @@ export class VerbsFormsComponent implements OnInit {
   }
 
   loadVerbsForms(): void {
+    this.command.next(InputCellCommand.CLEAR);
     this.verbsFormsService.find(this.buildSearchPredicate())
       .pipe(toArray())
       .subscribe(

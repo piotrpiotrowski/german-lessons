@@ -4,14 +4,14 @@ import {Answer} from '../training-row/answer.model';
 import {Language} from '../language/language';
 import {CsvFinderService} from '../shared/csv-finder.service';
 import {FinderService} from '../shared/finder.service';
-import {rawVerbsConjunctions} from './verbs-conjunctions.datasource';
+import {rawPresentSimpleVerbsConjunctions} from './present-simple-verbs-conjunctions.datasource';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VerbsConjunctionsService implements FinderService<TrainingRowModel> {
+export class PresentSimpleVerbsConjunctionsService implements FinderService<TrainingRowModel> {
 
-  private finderService = new CsvFinderService<TrainingRowModel>(rawVerbsConjunctions, columns => this.mapToTrainingRowModel(columns));
+  private finderService = new CsvFinderService<TrainingRowModel>(rawPresentSimpleVerbsConjunctions, columns => this.mapToTrainingRowModel(columns));
 
   find = (predicate: Predicate<TrainingRowModel>) => this.finderService.find(predicate);
 

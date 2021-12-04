@@ -30,8 +30,12 @@ export class MenuComponent implements OnInit {
     return this.routeTo('/possessive-pronouns');
   }
 
-  navigateToVerbConjunctions(): Promise<MatDrawerToggleResult> {
-    return this.routeTo('/verb-conjunctions');
+  navigateToPresentSimpleVerbConjunctions(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/present-simple-verb-conjunctions');
+  }
+
+  navigateToPastSimpleVerbConjunctions(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/past-simple-verb-conjunctions');
   }
 
   navigateToPresentPerfectSentenceComplements(): Promise<MatDrawerToggleResult> {

@@ -1,11 +1,11 @@
-import {Component, OnInit, Predicate} from '@angular/core';
+import {Component, Input, OnInit, Predicate} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
 import {finalize, toArray} from 'rxjs/operators';
-import {VerbsConjunctionsService} from './verbs-conjunctions.service';
 import {LanguageService} from '../language/language.service';
 import {Option} from '../responsive-button-toggle-group/option.model';
+import {FinderService} from '../shared/finder.service';
 
 @Component({
   selector: 'app-verbs-conjunctions',
@@ -38,16 +38,18 @@ export class VerbsConjunctionsComponent implements OnInit {
     ['RANDOM_5', verbs => this.filterRandomVerbs(5, verbs)],
     ['RANDOM_10', verbs => this.filterRandomVerbs(10, verbs)]
   ]);
-  constructor(private verbsConjunctionsService: VerbsConjunctionsService, public languageService: LanguageService) {
+  constructor(public languageService: LanguageService) {
   }
 
-  ngOnInit(): void {
+  @Input() finderService: FinderService<TrainingRowModel>;
+  @Input() title: string;  ngOnInit(): void {
     this.loadVerbsConjunctions();
   }
 
   loadVerbsConjunctions(): void {
     this.loading = true;
-    this.verbsConjunctionsService.find(this.buildSearchPredicate())
+    this.command.next(InputCellCommand.CLEAR);
+    this.finderService.find(this.buildSearchPredicate())
       .pipe(toArray())
       .pipe(finalize(() => this.loading = false))
       .subscribe(
