@@ -11,6 +11,8 @@ import {PastSimpleSentenceComplementComponent} from './past-simple-sentence-comp
 import {PresentSimpleSentenceComplementComponent} from './present-simple-sentence-complement/present-simple-sentence-complement.component';
 import {PresentSimpleVerbsConjunctionsComponent} from './present-simple-verbs-conjunctions/present-simple-verbs-conjunctions.component';
 import {PastSimpleVerbsConjunctionsComponent} from './past-simple-verbs-conjunctions/past-simple-verbs-conjunctions.component';
+import {NounSentenceComplementComponent} from './noun-sentence-complement/noun-sentence-complement.component';
+import {NounsPluralFormComponent} from './nouns-plural-form/nouns-plural-form.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path: 'past-simple-verb-conjunctions', component: PastSimpleVerbsConjunctionsComponent},
   {path: 'present-perfect-sentence-complement', component: PresentPerfectSentenceComplementComponent},
   {path: 'past-simple-sentence-complement', component: PastSimpleSentenceComplementComponent},
-  {path: 'present-simple-sentence-complement', component: PresentSimpleSentenceComplementComponent}
+  {path: 'present-simple-sentence-complement', component: PresentSimpleSentenceComplementComponent},
+  {path: 'noun-sentence-complement', component: NounSentenceComplementComponent},
+  {path: 'noun-forms', component: NounsPluralFormComponent},
 ];
 
 @NgModule({

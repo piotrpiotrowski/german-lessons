@@ -12,31 +12,46 @@ import {SentencePartType} from './sentence-part-type.enum';
 })
 export class SentenceRowComponent implements OnInit {
 
-  foundAnswers = new Set<string>();
-  numberOfAnswers: number;
-  private externalCommand: BehaviorSubject<InputCellCommand>;
-  currentSentence: Sentence;
-
   @Input() set sentence(sentence: Sentence) {
     this.currentSentence = sentence;
-    this.numberOfAnswers = this.currentSentence.parts.filter(part => part.type === SentencePartType.RIDDLE).length;
+    this.numberOfAnswers = this.extractAnswers().length;
   }
 
   @Input() set command(command: BehaviorSubject<InputCellCommand>) {
     this.externalCommand = command;
   }
 
-  cellInputsCommand: BehaviorSubject<InputCellCommand> = new BehaviorSubject<InputCellCommand>(null);
-
   constructor(public languageService: LanguageService) {
   }
 
+  foundAnswers = [];
+  numberOfAnswers: number;
+  private externalCommand: BehaviorSubject<InputCellCommand>;
+  currentSentence: Sentence;
+
+  cellInputsCommand: BehaviorSubject<InputCellCommand> = new BehaviorSubject<InputCellCommand>(null);
+
   ngOnInit(): void {
     this.externalCommand
-      .subscribe(command => this.cellInputsCommand.next(command));
+      .subscribe(command => this.handleCommand(command));
+  }
+
+  private handleCommand(command: InputCellCommand): void {
+    if (command === InputCellCommand.CLEAR) {
+      this.foundAnswers = [];
+    }
+    if (command === InputCellCommand.REVEAL) {
+      this.foundAnswers = this.extractAnswers();
+    }
+    this.cellInputsCommand.next(command);
   }
 
   appendAnswerValue(answerValue: string): void {
-    this.foundAnswers.add(answerValue);
+    this.foundAnswers.push(answerValue);
   }
+
+  private extractAnswers = (): string[] =>
+    this.currentSentence.parts
+      .filter(part => part.type === SentencePartType.RIDDLE)
+      .map(sentencePart => sentencePart.value)
 }

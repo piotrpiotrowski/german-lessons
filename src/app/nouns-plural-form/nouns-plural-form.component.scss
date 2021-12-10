@@ -1,0 +1,17 @@
+.control-panel {
+  margin-bottom: 40px;
+  @media (max-width: 600px) {
+    margin-bottom: 0;
+  }
+}
+
+.command-button {
+  margin-right: 20px;
+}
+
+.control-buttons {
+  padding-bottom: 20px;
+}
+
+.panel-title {
+}

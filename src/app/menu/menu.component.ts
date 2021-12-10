@@ -15,6 +15,7 @@ export class MenuComponent implements OnInit {
   }
 
   @Input() nav: MatSidenav;
+
   ngOnInit(): void {
   }
 
@@ -48,6 +49,14 @@ export class MenuComponent implements OnInit {
 
   navigateToPresentSimpleSentenceComplements(): Promise<MatDrawerToggleResult> {
     return this.routeTo('/present-simple-sentence-complement');
+  }
+
+  navigateToNounSentenceComplements(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/noun-sentence-complement');
+  }
+
+  navigateToNounsForms(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/noun-forms');
   }
 
   private routeTo(path: string): Promise<MatDrawerToggleResult> {

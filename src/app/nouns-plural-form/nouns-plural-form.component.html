@@ -1,0 +1,17 @@
+<h3>{{languageService.getLabel('nounsFormsTitle')}}</h3>
+<mat-expansion-panel class="control-panel">
+  <mat-expansion-panel-header>
+    <mat-panel-title class="panel-title">
+      {{languageService.getLabel('lessonSummary') + (nounsForms ? nounsForms.length : 0) + ' ' + languageService.getLabel('nouns')}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div>
+    <app-command-buttons (selectedCommand)="onCommandSelect($event)"></app-command-buttons>
+    <app-responsive-button-toggle-group [title]="languageService.getLabel('levelChoose')" [options]="difficultyLevelOptions" [(model)]="difficultyLevel" (selectOption)="loadNounsForms()"></app-responsive-button-toggle-group>
+    <app-responsive-button-toggle-group [title]="languageService.getLabel('show')" [options]="filteringCategoryOptions" [(model)]="filteringCategory" (selectOption)="loadNounsForms()"></app-responsive-button-toggle-group>
+  </div>
+</mat-expansion-panel>
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div *ngIf="!loading">
+  <app-training-row *ngFor="let nounForms of nounsForms" [command]="command" [trainingRowModel]="nounForms"></app-training-row>
+</div>

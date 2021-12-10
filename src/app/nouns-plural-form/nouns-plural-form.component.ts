@@ -1,22 +1,22 @@
-import {Component, Input, OnInit, Predicate} from '@angular/core';
+import {Component, OnInit, Predicate} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
-import {finalize, toArray} from 'rxjs/operators';
-import {LanguageService} from '../language/language.service';
 import {Option} from '../responsive-button-toggle-group/option.model';
-import {FinderService} from '../shared/finder.service';
+import {LanguageService} from '../language/language.service';
 import {DrawingService} from '../shared/drawing.service';
+import {finalize, toArray} from 'rxjs/operators';
+import {NounsFormsService} from './nouns-forms.service';
 
 @Component({
-  selector: 'app-verbs-conjunctions',
-  templateUrl: './verbs-conjunctions.component.html',
-  styleUrls: ['./verbs-conjunctions.component.scss']
+  selector: 'app-nouns-plural-form',
+  templateUrl: './nouns-plural-form.component.html',
+  styleUrls: ['./nouns-plural-form.component.scss']
 })
-export class VerbsConjunctionsComponent implements OnInit {
+export class NounsPluralFormComponent implements OnInit {
 
   command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
-  verbsConjunctions: TrainingRowModel[];
+  nounsForms: TrainingRowModel[];
   loading: boolean;
   difficultyLevelOptions = [
     new Option('all', '0'),
@@ -34,39 +34,39 @@ export class VerbsConjunctionsComponent implements OnInit {
   ];
   filteringCategory = this.filteringCategoryOptions[0].value;
   filtersForCategories = new Map([
-    ['ALL_AVAILABLE', verbs => verbs],
-    ['BY_RANDOM_LETTER', verbs => this.drawingService.filterByRandomValueOfAttribute<TrainingRowModel>(verbs, model => this.extractFirstLetterOfTranslation(model))],
-    ['RANDOM_5', verbs => this.drawingService.filterRandomEntries(5, verbs)],
-    ['RANDOM_10', verbs => this.drawingService.filterRandomEntries(10, verbs)]
+    ['ALL_AVAILABLE', nouns => nouns],
+    ['BY_RANDOM_LETTER', nouns => this.drawingService.filterByRandomValueOfAttribute<TrainingRowModel>(nouns, model => this.extractFirstLetterOfTranslation(model))],
+    ['RANDOM_5', nouns => this.drawingService.filterRandomEntries(5, nouns)],
+    ['RANDOM_10', nouns => this.drawingService.filterRandomEntries(10, nouns)]
   ]);
-  constructor(public languageService: LanguageService, private drawingService: DrawingService) {
+  constructor(private nounsFormsService: NounsFormsService, public languageService: LanguageService, private drawingService: DrawingService) {
   }
 
-  @Input() finderService: FinderService<TrainingRowModel>;
-  @Input() title: string;  ngOnInit(): void {
-    this.loadVerbsConjunctions();
+  ngOnInit(): void {
+    this.loadNounsForms();
   }
 
-  loadVerbsConjunctions(): void {
+  loadNounsForms(): void {
     this.loading = true;
     this.command.next(InputCellCommand.CLEAR);
-    this.finderService.find(this.buildSearchPredicate())
+    this.nounsFormsService.find(this.buildSearchPredicate())
       .pipe(toArray())
       .pipe(finalize(() => this.loading = false))
       .subscribe(
-        verbsConjunctions => this.verbsConjunctions = this.filterByCategory(verbsConjunctions),
+        nounsForms => this.nounsForms = this.filterByCategory(nounsForms),
         console.error
       );
   }
-  private filterByCategory(verbsConjunctions: TrainingRowModel[]): TrainingRowModel[] {
-    return this.filtersForCategories.get(this.filteringCategory)(verbsConjunctions);
+
+  private filterByCategory(nounsForms: TrainingRowModel[]): TrainingRowModel[] {
+    return this.filtersForCategories.get(this.filteringCategory)(nounsForms);
   }
 
   private extractFirstLetterOfTranslation(trainingRowModel: TrainingRowModel): string {
     return trainingRowModel.getTranslation(this.languageService.getCurrentLanguage()).charAt(0);
   }
 
- private buildSearchPredicate(): Predicate<TrainingRowModel> {
+  private buildSearchPredicate(): Predicate<TrainingRowModel> {
     return verbConjunctions => this.difficultyLevelCondition(verbConjunctions);
   }
 
@@ -78,4 +78,5 @@ export class VerbsConjunctionsComponent implements OnInit {
   onCommandSelect(selectedCommand: InputCellCommand): void {
     this.command.next(selectedCommand);
   }
+
 }

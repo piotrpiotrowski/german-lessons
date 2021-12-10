@@ -11,6 +11,6 @@
     </ng-container>
   </div>
 </div>
-<div *ngIf="foundAnswers.size === numberOfAnswers" class="answer-row">
+<div *ngIf="foundAnswers.length >= numberOfAnswers" class="answer-row">
   {{currentSentence.getTextTranslations(languageService.getCurrentLanguage())}}
 </div>

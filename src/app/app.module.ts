@@ -31,12 +31,14 @@ import {MatOptionModule} from '@angular/material/core';
 import { ResponsiveButtonToggleGroupComponent } from './responsive-button-toggle-group/responsive-button-toggle-group.component';
 import {CommandButtonsComponent} from './command-buttons/command-buttons.component';
 import { SentenceComplementComponent } from './sentence-complement/sentence-complement.component';
-import { SentenceRowComponent } from './sentence-complement/sentence-row/sentence-row.component';
 import { PresentPerfectSentenceComplementComponent } from './present-perfect-sentence-complement/present-perfect-sentence-complement.component';
 import { PastSimpleSentenceComplementComponent } from './past-simple-sentence-complement/past-simple-sentence-complement.component';
 import { PresentSimpleSentenceComplementComponent } from './present-simple-sentence-complement/present-simple-sentence-complement.component';
 import {PresentSimpleVerbsConjunctionsComponent} from './present-simple-verbs-conjunctions/present-simple-verbs-conjunctions.component';
 import {PastSimpleVerbsConjunctionsComponent} from './past-simple-verbs-conjunctions/past-simple-verbs-conjunctions.component';
+import {NounSentenceComplementComponent} from './noun-sentence-complement/noun-sentence-complement.component';
+import {SentenceRowComponent} from './sentence-complement/sentence-row/sentence-row.component';
+import { NounsPluralFormComponent } from './nouns-plural-form/nouns-plural-form.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import {PastSimpleVerbsConjunctionsComponent} from './past-simple-verbs-conjunct
     PastSimpleSentenceComplementComponent,
     PresentSimpleSentenceComplementComponent,
     PresentSimpleVerbsConjunctionsComponent,
-    PastSimpleVerbsConjunctionsComponent
+    PastSimpleVerbsConjunctionsComponent,
+    NounSentenceComplementComponent,
+    NounsPluralFormComponent
   ],
   imports: [
     BrowserModule,
