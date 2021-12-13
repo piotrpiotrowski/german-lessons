@@ -42,6 +42,9 @@ import {NounSentenceComplementComponent} from './noun-sentence-complement/noun-s
 import {SentenceRowComponent} from './sentence-complement/sentence-row/sentence-row.component';
 import {NounsPluralFormComponent} from './nouns-plural-form/nouns-plural-form.component';
 import {PrepositionsSentenceComplementComponent} from './prepositions-sentence-complement/prepositions-sentence-complement.component';
+import {
+  PossessivePronounsSentenceComplementComponent
+} from './possessive-pronouns-sentence-complement/possessive-pronouns-sentence-complement.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,8 @@ import {PrepositionsSentenceComplementComponent} from './prepositions-sentence-c
     PastSimpleVerbsConjunctionsComponent,
     NounSentenceComplementComponent,
     NounsPluralFormComponent,
-    PrepositionsSentenceComplementComponent
+    PrepositionsSentenceComplementComponent,
+    PossessivePronounsSentenceComplementComponent
   ],
   imports: [
     BrowserModule,

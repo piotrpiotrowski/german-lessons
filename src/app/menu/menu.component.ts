@@ -63,6 +63,10 @@ export class MenuComponent implements OnInit {
     return this.routeTo('/prepositions-sentence-complement');
   }
 
+  navigateToPossessivePronounsSentenceComplements(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/possessive-pronouns-sentence-complement');
+  }
+
   private routeTo(path: string): Promise<MatDrawerToggleResult> {
     return this.router.navigateByUrl(path).then(_ => this.nav.close());
   }
