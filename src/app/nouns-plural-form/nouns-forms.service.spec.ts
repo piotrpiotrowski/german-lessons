@@ -3,6 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {NounsFormsService} from './nouns-forms.service';
 import {count, reduce, take, toArray} from 'rxjs/operators';
 import {Language} from '../language/language';
+import {from} from 'rxjs';
 
 describe('NounsFormsService', () => {
   let service: NounsFormsService;
@@ -17,7 +18,7 @@ describe('NounsFormsService', () => {
     let verbs = null;
 
     // when
-    service.find(() => true)
+    from(service.find(() => true))
       .pipe(take(2))
       .pipe(toArray())
       .subscribe(
@@ -35,7 +36,7 @@ describe('NounsFormsService', () => {
     let counter = null;
 
     // when
-    service.find(() => true)
+    from(service.find(() => true))
       .pipe(count())
       .subscribe(
         value => counter = value,
@@ -50,7 +51,7 @@ describe('NounsFormsService', () => {
     let occurrences: Map<string, number> = null;
 
     // when
-    service.find(() => true)
+    from(service.find(() => true))
       .pipe(reduce((accumulator, value) => accumulator.set(value.getTranslation(Language.ENGLISH), (accumulator.get(value.getTranslation(Language.ENGLISH)) || 0) + 1), new Map<string, number>()))
       .subscribe(
         value => occurrences = value,
@@ -66,7 +67,7 @@ describe('NounsFormsService', () => {
     let occurrences: Map<string, number> = null;
 
     // when
-    service.find(() => true)
+    from(service.find(() => true))
       .pipe(reduce((accumulator, value) => accumulator.set(value.getTranslation(Language.POLISH), (accumulator.get(value.getTranslation(Language.POLISH)) || 0) + 1), new Map<string, number>()))
       .subscribe(
         value => occurrences = value,

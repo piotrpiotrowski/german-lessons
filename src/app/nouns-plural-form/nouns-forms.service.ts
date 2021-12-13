@@ -11,11 +11,7 @@ import {rawNounsForms} from './nouns-forms.datasource';
 })
 export class NounsFormsService implements FinderService<TrainingRowModel> {
 
-  private finderService = new CsvFinderService<TrainingRowModel>(rawNounsForms, columns => this.mapToTrainingRowModel(columns));
-
-  find = (predicate: Predicate<TrainingRowModel>) => this.finderService.find(predicate);
-
-  private mapToTrainingRowModel = (columns: string[]): TrainingRowModel =>
+  private finderService = new CsvFinderService<TrainingRowModel>(rawNounsForms, (columns: string[]): TrainingRowModel =>
     new TrainingRowModel(
       new Map<Language, string>([[Language.ENGLISH, columns[2].toLowerCase()], [Language.POLISH, columns[4].toLowerCase()], [Language.GERMAN, columns[1].substring(4).toLowerCase()]]),
       +columns[3],
@@ -23,4 +19,8 @@ export class NounsFormsService implements FinderService<TrainingRowModel> {
         new Answer('singular', columns[0]),
         new Answer('plural', columns[1])
       ])
+  );
+
+  find = (predicate: Predicate<TrainingRowModel>) => this.finderService.find(predicate);
+
 }

@@ -9,11 +9,16 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
+      require('karma-verbose-reporter'),
+      require('karma-spec-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false, // leave Jasmine Spec Runner output visible in browser
+      jasmine: {
+        random: true,
+      }
     },
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
@@ -22,11 +27,11 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/german-lessons'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
+        {type: 'html'},
+        {type: 'text-summary'}
       ]
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: [/*'spec',*/'progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

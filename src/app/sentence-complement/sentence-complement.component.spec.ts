@@ -2,7 +2,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {SentenceComplementComponent} from './sentence-complement.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
-import {NEVER} from 'rxjs';
 
 describe('SentenceComplementComponent', () => {
   let component: SentenceComplementComponent;
@@ -12,7 +11,7 @@ describe('SentenceComplementComponent', () => {
   beforeEach(async () => {
     finderService = jasmine.createSpyObj('FinderService', ['find']);
 
-    finderService.find.and.returnValue(NEVER);
+    finderService.find.and.returnValue([]);
 
     await TestBed.configureTestingModule({
       declarations: [SentenceComplementComponent],

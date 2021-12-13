@@ -12,11 +12,7 @@ import {rawPossessivePronouns} from './possessive-pronouns.datasource';
 export class PossessivePronounsService implements FinderService<TrainingRowModel> {
 
 
-  private finderService = new CsvFinderService<TrainingRowModel>(rawPossessivePronouns, columns => this.mapToTrainingRowModel(columns));
-
-  find = (predicate: Predicate<TrainingRowModel>) => this.finderService.find(predicate);
-
-  private mapToTrainingRowModel = (columns) =>
+  private finderService = new CsvFinderService<TrainingRowModel>(rawPossessivePronouns, (columns) =>
     new TrainingRowModel(new Map<Language, string>([[Language.ENGLISH, columns[0]], [Language.POLISH, columns[1]], [Language.GERMAN, columns[7]]]),
       +columns[6], [
         new Answer('nominative', columns[2]),
@@ -24,4 +20,7 @@ export class PossessivePronounsService implements FinderService<TrainingRowModel
         new Answer('accusative', columns[4]),
         new Answer('dative', columns[5])
       ])
+  );
+
+  find = (predicate: Predicate<TrainingRowModel>) => this.finderService.find(predicate);
 }

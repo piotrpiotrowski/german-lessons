@@ -22,23 +22,26 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { PersonalPronounsComponent } from './personal-pronouns/personal-pronouns.component';
-import { PossessivePronounsComponent } from './possessive-pronouns/possessive-pronouns.component';
-import { HomeComponent } from './home/home.component';
+import {PersonalPronounsComponent} from './personal-pronouns/personal-pronouns.component';
+import {PossessivePronounsComponent} from './possessive-pronouns/possessive-pronouns.component';
+import {HomeComponent} from './home/home.component';
 import {VerbsConjunctionsComponent} from './verbs-conjunctions/verbs-conjunctions.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatOptionModule} from '@angular/material/core';
-import { ResponsiveButtonToggleGroupComponent } from './responsive-button-toggle-group/responsive-button-toggle-group.component';
+import {ResponsiveButtonToggleGroupComponent} from './responsive-button-toggle-group/responsive-button-toggle-group.component';
 import {CommandButtonsComponent} from './command-buttons/command-buttons.component';
-import { SentenceComplementComponent } from './sentence-complement/sentence-complement.component';
-import { PresentPerfectSentenceComplementComponent } from './present-perfect-sentence-complement/present-perfect-sentence-complement.component';
-import { PastSimpleSentenceComplementComponent } from './past-simple-sentence-complement/past-simple-sentence-complement.component';
-import { PresentSimpleSentenceComplementComponent } from './present-simple-sentence-complement/present-simple-sentence-complement.component';
+import {SentenceComplementComponent} from './sentence-complement/sentence-complement.component';
+import {
+  PresentPerfectSentenceComplementComponent
+} from './present-perfect-sentence-complement/present-perfect-sentence-complement.component';
+import {PastSimpleSentenceComplementComponent} from './past-simple-sentence-complement/past-simple-sentence-complement.component';
+import {PresentSimpleSentenceComplementComponent} from './present-simple-sentence-complement/present-simple-sentence-complement.component';
 import {PresentSimpleVerbsConjunctionsComponent} from './present-simple-verbs-conjunctions/present-simple-verbs-conjunctions.component';
 import {PastSimpleVerbsConjunctionsComponent} from './past-simple-verbs-conjunctions/past-simple-verbs-conjunctions.component';
 import {NounSentenceComplementComponent} from './noun-sentence-complement/noun-sentence-complement.component';
 import {SentenceRowComponent} from './sentence-complement/sentence-row/sentence-row.component';
-import { NounsPluralFormComponent } from './nouns-plural-form/nouns-plural-form.component';
+import {NounsPluralFormComponent} from './nouns-plural-form/nouns-plural-form.component';
+import {PrepositionsSentenceComplementComponent} from './prepositions-sentence-complement/prepositions-sentence-complement.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,8 @@ import { NounsPluralFormComponent } from './nouns-plural-form/nouns-plural-form.
     PresentSimpleVerbsConjunctionsComponent,
     PastSimpleVerbsConjunctionsComponent,
     NounSentenceComplementComponent,
-    NounsPluralFormComponent
+    NounsPluralFormComponent,
+    PrepositionsSentenceComplementComponent
   ],
   imports: [
     BrowserModule,

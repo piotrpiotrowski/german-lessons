@@ -59,6 +59,10 @@ export class MenuComponent implements OnInit {
     return this.routeTo('/noun-forms');
   }
 
+  navigateToPrepositionsSentenceComplements(): Promise<MatDrawerToggleResult> {
+    return this.routeTo('/prepositions-sentence-complement');
+  }
+
   private routeTo(path: string): Promise<MatDrawerToggleResult> {
     return this.router.navigateByUrl(path).then(_ => this.nav.close());
   }

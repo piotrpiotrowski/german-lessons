@@ -1,9 +1,9 @@
 import {Component, Input, OnInit, Predicate} from '@angular/core';
 import {Sentence} from './sentence-row/sentence.model';
 import {LanguageService} from '../language/language.service';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, of} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
-import {finalize, toArray} from 'rxjs/operators';
+import {finalize} from 'rxjs/operators';
 import {Option} from '../responsive-button-toggle-group/option.model';
 import {DrawingService} from '../shared/drawing.service';
 import {FinderService} from '../shared/finder.service';
@@ -62,8 +62,7 @@ export class SentenceComplementComponent implements OnInit {
 
   loadSentences(): void {
     this.loading = true;
-    this.finderService.find(this.buildSearchPredicate())
-      .pipe(toArray())
+    of(this.finderService.find(this.buildSearchPredicate()))
       .pipe(finalize(() => this.loading = false))
       .subscribe(
         sentences => this.sentences = this.filterByCategory(sentences),

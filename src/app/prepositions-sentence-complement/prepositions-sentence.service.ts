@@ -3,20 +3,20 @@ import {Sentence} from '../sentence-complement/sentence-row/sentence.model';
 import {FinderService} from '../shared/finder.service';
 import {SentenceMapper} from '../shared/sentence.mapper';
 import {WordDefinitionsFactory} from '../shared/word-definitions.factory';
-import {rawPerfectVerbs} from './perfect-verbs.datasource';
+import {rawPrepositions} from './prepositions.datasource';
 import {InmemoryFinderService} from '../shared/inmemory-finder.service';
 import {sentences} from '../shared/sentences.datasource';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PresentPerfectSentenceService implements FinderService<Sentence> {
+export class PrepositionsSentenceService implements FinderService<Sentence> {
 
   private finderService: FinderService<Sentence>;
   private wordDefinitionsFactory: WordDefinitionsFactory;
 
   constructor(private sentenceMapper: SentenceMapper) {
-    this.wordDefinitionsFactory = new WordDefinitionsFactory(rawPerfectVerbs);
+    this.wordDefinitionsFactory = new WordDefinitionsFactory(rawPrepositions);
     this.finderService = new InmemoryFinderService<Sentence>(sentences, columns => this.sentenceMapper.map(columns, this.wordDefinitionsFactory.create()));
   }
 

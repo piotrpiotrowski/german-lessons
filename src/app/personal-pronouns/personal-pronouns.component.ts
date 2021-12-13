@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, of} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
-import {finalize, toArray} from 'rxjs/operators';
+import {finalize} from 'rxjs/operators';
 import {PersonalPronounsService} from './personal-pronouns.service';
 import {LanguageService} from '../language/language.service';
 
@@ -26,8 +26,7 @@ export class PersonalPronounsComponent implements OnInit {
 
   loadPronouns(): void {
     this.loading = true;
-    this.personalPronounsService.find(_ => true)
-      .pipe(toArray())
+    of(this.personalPronounsService.find(_ => true))
       .pipe(finalize(() => this.loading = false))
       .subscribe(
         pronouns => this.pronouns = pronouns,

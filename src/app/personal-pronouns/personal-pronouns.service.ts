@@ -11,11 +11,7 @@ import {rawPersonalPronouns} from './personal-pronouns.datasource';
 })
 export class PersonalPronounsService implements FinderService<TrainingRowModel> {
 
-  private finderService = new CsvFinderService<TrainingRowModel>(rawPersonalPronouns, columns => this.mapToTrainingRowModel(columns));
-
-  find = (predicate: Predicate<TrainingRowModel>) => this.finderService.find(predicate);
-
-  private mapToTrainingRowModel = (columns) =>
+  private finderService = new CsvFinderService<TrainingRowModel>(rawPersonalPronouns, (columns) =>
     new TrainingRowModel(
       new Map<Language, string>([[Language.ENGLISH, columns[0]], [Language.POLISH, columns[1]], [Language.GERMAN, columns[2]]]),
       +columns[6],
@@ -25,4 +21,7 @@ export class PersonalPronounsService implements FinderService<TrainingRowModel> 
         new Answer('accusative', columns[4]),
         new Answer('dative', columns[5])
       ])
+  );
+
+  find = (predicate: Predicate<TrainingRowModel>) => this.finderService.find(predicate);
 }

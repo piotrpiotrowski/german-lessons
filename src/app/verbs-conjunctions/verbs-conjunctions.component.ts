@@ -1,8 +1,8 @@
 import {Component, Input, OnInit, Predicate} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, of} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
-import {finalize, toArray} from 'rxjs/operators';
+import {finalize} from 'rxjs/operators';
 import {LanguageService} from '../language/language.service';
 import {Option} from '../responsive-button-toggle-group/option.model';
 import {FinderService} from '../shared/finder.service';
@@ -50,8 +50,7 @@ export class VerbsConjunctionsComponent implements OnInit {
   loadVerbsConjunctions(): void {
     this.loading = true;
     this.command.next(InputCellCommand.CLEAR);
-    this.finderService.find(this.buildSearchPredicate())
-      .pipe(toArray())
+    of(this.finderService.find(this.buildSearchPredicate()))
       .pipe(finalize(() => this.loading = false))
       .subscribe(
         verbsConjunctions => this.verbsConjunctions = this.filterByCategory(verbsConjunctions),

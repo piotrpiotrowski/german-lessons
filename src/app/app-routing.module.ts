@@ -13,6 +13,7 @@ import {PresentSimpleVerbsConjunctionsComponent} from './present-simple-verbs-co
 import {PastSimpleVerbsConjunctionsComponent} from './past-simple-verbs-conjunctions/past-simple-verbs-conjunctions.component';
 import {NounSentenceComplementComponent} from './noun-sentence-complement/noun-sentence-complement.component';
 import {NounsPluralFormComponent} from './nouns-plural-form/nouns-plural-form.component';
+import {PrepositionsSentenceComplementComponent} from './prepositions-sentence-complement/prepositions-sentence-complement.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'present-simple-sentence-complement', component: PresentSimpleSentenceComplementComponent},
   {path: 'noun-sentence-complement', component: NounSentenceComplementComponent},
   {path: 'noun-forms', component: NounsPluralFormComponent},
+  {path: 'prepositions-sentence-complement', component: PrepositionsSentenceComplementComponent}
 ];
 
 @NgModule({

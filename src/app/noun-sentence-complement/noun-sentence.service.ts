@@ -1,24 +1,24 @@
 import {Injectable, Predicate} from '@angular/core';
 import {Sentence} from '../sentence-complement/sentence-row/sentence.model';
-import {CsvFinderService} from '../shared/csv-finder.service';
 import {FinderService} from '../shared/finder.service';
-import {rawNounSentences} from './noun-sentence.datasource';
 import {SentenceMapper} from '../shared/sentence.mapper';
+import {WordDefinitionsFactory} from '../shared/word-definitions.factory';
+import {rawNounDictionary} from './nouns.datasource';
+import {InmemoryFinderService} from '../shared/inmemory-finder.service';
+import {sentences} from '../shared/sentences.datasource';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NounSentenceService implements FinderService<Sentence> {
 
-  private finderService = new CsvFinderService<Sentence>(rawNounSentences, columns => this.map(columns));
+  private finderService: FinderService<Sentence>;
+  private wordDefinitionsFactory: WordDefinitionsFactory;
 
   constructor(private sentenceMapper: SentenceMapper) {
+    this.wordDefinitionsFactory = new WordDefinitionsFactory(rawNounDictionary);
+    this.finderService = new InmemoryFinderService<Sentence>(sentences, columns => this.sentenceMapper.map(columns, this.wordDefinitionsFactory.create()));
   }
 
   find = (predicate: Predicate<Sentence>) => this.finderService.find(predicate);
-
-  private map(columns: string[]): Sentence {
-    columns[8] = columns[8].replace(new RegExp('die |der |das |den |dem '), '');
-    return this.sentenceMapper.map(columns);
-  }
 }

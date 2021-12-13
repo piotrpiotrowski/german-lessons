@@ -1,5 +1,6 @@
 import {SentencePartsMapper} from './sentence-parts.mapper';
 import {SentencePartType} from '../sentence-complement/sentence-row/sentence-part-type.enum';
+import {WordIndex} from './word-index.model';
 
 describe('Sentence', () => {
 
@@ -8,7 +9,7 @@ describe('Sentence', () => {
   it('should extract prefix', () => {
     // given
     const text = 'Ich habe die Kuchen gebacken and gegessen.';
-    const hiddenWord = 'gebacken';
+    const hiddenWord = new WordIndex('gebacken', 20);
 
     // when
     const sentenceParts = sentencePartsMapper.map([hiddenWord], text);
@@ -20,7 +21,7 @@ describe('Sentence', () => {
   it('should skip empty prefix when a hidden verb starts the sentence', () => {
     // given
     const text = 'gebacken haben wir.';
-    const hiddenWord = 'gebacken';
+    const hiddenWord = new WordIndex('gebacken', 0);
 
     // when
     const sentenceParts = sentencePartsMapper.map([hiddenWord], text);
@@ -36,7 +37,7 @@ describe('Sentence', () => {
   it('should extract suffix', () => {
     // given
     const text = 'Ich habe die Kuchen gebacken and gegessen.';
-    const hiddenWord = 'gebacken';
+    const hiddenWord = new WordIndex('gebacken', 20);
 
     // when
     const sentenceParts = sentencePartsMapper.map([hiddenWord], text);
@@ -48,7 +49,7 @@ describe('Sentence', () => {
   it('should skip empty suffix when a hidden verb ends the sentence', () => {
     // given
     const text = 'Ich habe die Kuchen gebacken and gegessen';
-    const hiddenWord = 'gegessen';
+    const hiddenWord = new WordIndex('gegessen', 33);
 
     // when
     const sentenceParts = sentencePartsMapper.map([hiddenWord], text);
@@ -66,7 +67,7 @@ describe('Sentence', () => {
     const text = 'Wie immer setzte er sich auf seinen Platz an der Wand. Jonatan saßen ihm gegenüber und Abner saß neben Saul . Davids Platz aber blieb leer stand';
 
     // when
-    const sentenceParts = sentencePartsMapper.map(['Wand', 'saßen', 'saß', 'blieb', 'stand'], text);
+    const sentenceParts = sentencePartsMapper.map([new WordIndex('Wand', 49), new WordIndex('saßen', 63), new WordIndex('saß', 93), new WordIndex('blieb', 128), new WordIndex('stand', 139)], text);
 
     // then
     expect(sentenceParts.length).toEqual(10);
@@ -97,7 +98,12 @@ describe('Sentence', () => {
     const text = 'Elija entgegnete: Diese Bitte ist schwer zu erfüllen. Doch wenn du siehst, wie ich von dir weggenommen werde, wirst du die beiden Anteile bekommen. Siehst du das nicht, bekommst du sie nicht.';
 
     // when
-    const sentenceParts = sentencePartsMapper.map(['Bitte', 'ist', 'siehst', 'werde', 'wirst', 'Siehst'], text);
+    const sentenceParts = sentencePartsMapper.map([new WordIndex('Bitte', 24),
+      new WordIndex('ist', 30),
+      new WordIndex('siehst', 67),
+      new WordIndex('werde', 103),
+      new WordIndex('wirst', 110),
+      new WordIndex('Siehst', 148)], text);
 
     // then
     expect(sentenceParts.length).toEqual(13);
@@ -134,7 +140,9 @@ describe('Sentence', () => {
     const text = 'Bitte ist siehst werde wirst Siehst.';
 
     // when
-    const sentenceParts = sentencePartsMapper.map(['Bitte', 'ist', 'siehst', 'werde', 'wirst', 'Siehst'], text);
+    const sentenceParts = sentencePartsMapper.map([new WordIndex('Bitte', 0), new WordIndex('ist', 6),
+      new WordIndex('siehst', 10), new WordIndex('werde', 17), new WordIndex('wirst', 23),
+      new WordIndex('Siehst', 29)], text);
 
     // then
     expect(sentenceParts.length).toEqual(12);

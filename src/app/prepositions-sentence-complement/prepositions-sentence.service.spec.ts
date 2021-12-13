@@ -2,17 +2,17 @@ import {TestBed} from '@angular/core/testing';
 
 import {filter, map, mergeMap, take, toArray} from 'rxjs/operators';
 import {Language} from '../language/language';
+import {PrepositionsSentenceService} from './prepositions-sentence.service';
 import {Sentence} from '../sentence-complement/sentence-row/sentence.model';
-import {PastSimpleSentenceService} from './past-simple-sentence.service';
 import {from, Observable} from 'rxjs';
 import {SentencePartType} from '../sentence-complement/sentence-row/sentence-part-type.enum';
 
-describe('PastSimpleSentenceService', () => {
-  let service: PastSimpleSentenceService;
+describe('PrepositionsSentenceService', () => {
+  let service: PrepositionsSentenceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PastSimpleSentenceService);
+    service = TestBed.inject(PrepositionsSentenceService);
   });
 
   it('should take two from list', () => {
@@ -29,8 +29,8 @@ describe('PastSimpleSentenceService', () => {
 
     // then
     expect(sentences.length).toEqual(2);
-    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('be | load');
-    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('flee | stay');
+    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('from');
+    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('against | behind | into, onto, up');
   });
 
   it('should find sentences with only single part', () => {

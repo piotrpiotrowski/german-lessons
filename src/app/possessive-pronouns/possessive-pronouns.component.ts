@@ -1,8 +1,8 @@
 import {Component, OnInit, Predicate} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, of} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
-import {finalize, toArray} from 'rxjs/operators';
+import {finalize} from 'rxjs/operators';
 import {PossessivePronounsService} from './possessive-pronouns.service';
 import {LanguageService} from '../language/language.service';
 
@@ -34,8 +34,7 @@ export class PossessivePronounsComponent implements OnInit {
 
   loadPronouns(): void {
     this.loading = true;
-    this.possessivePronounsService.find(this.buildSearchPredicate())
-      .pipe(toArray())
+    of(this.possessivePronounsService.find(this.buildSearchPredicate()))
       .pipe(finalize(() => this.loading = false))
       .subscribe(
         pronouns => this.pronouns = pronouns,
