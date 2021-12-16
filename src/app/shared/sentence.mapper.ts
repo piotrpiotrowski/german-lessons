@@ -21,14 +21,16 @@ export class SentenceMapper {
     }
     const hiddenWordsIndexes = words.map(tuple => tuple[0]);
     const hiddenWordsDefinitions = words.map(tuple => tuple[1]);
+    const parts = columns[0].split('.');
     return new Sentence(
       this.sentencePartsMapper.map(hiddenWordsIndexes, columns[1]),
       this.buildInfinitiveTranslations(hiddenWordsDefinitions),
       this.calculateClassification(hiddenWordsDefinitions),
       new Map<Language, string>([[Language.GERMAN, columns[2]], [Language.POLISH, columns[3]], [Language.ENGLISH, columns[4]]]),
       new Map<Language, string>([[Language.GERMAN, columns[1]], [Language.POLISH, columns[6]], [Language.ENGLISH, columns[5]]]),
-      columns[0].substring(0, 3),
-      parseFloat(columns[0].substring(4))
+      parts[0],
+      +parts[1],
+      +parts[2]
     );
   };
 

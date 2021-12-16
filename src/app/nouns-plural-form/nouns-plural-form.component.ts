@@ -32,7 +32,7 @@ export class NounsPluralFormComponent implements OnInit {
     new Option('random5', 'RANDOM_5'),
     new Option('random10', 'RANDOM_10')
   ];
-  filteringCategory = this.filteringCategoryOptions[0].value;
+  filteringCategory = this.filteringCategoryOptions[3].value;
   filtersForCategories = new Map([
     ['ALL_AVAILABLE', nouns => nouns],
     ['BY_RANDOM_LETTER', nouns => this.drawingService.filterByRandomValueOfAttribute<TrainingRowModel>(nouns, model => this.extractFirstLetterOfTranslation(model))],

@@ -432,7 +432,6 @@ der Ehemann;die Ehemänner;Husband;3;mąż
 der Eimer;die Eimer;Bucket;2;Wiaderko
 der Eindringling;die Eindringlinge;Intruder;4;Intruz
 der Eindruck;die Eindrücke;Impression;4;Wrażenie
-der Eine;die Einen;One;1;Jeden
 der Einfluss;die Einflüsse;Influence;4;Wpływ
 der Einheimische;die Eingeborenen;Native;4;Rodzinny
 der Einsatz;die Einsätze;Stake;3;Stawka

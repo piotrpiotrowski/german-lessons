@@ -8,7 +8,8 @@ export class Sentence {
               public referencesTranslations: Map<Language, string>,
               public textTranslations: Map<Language, string>,
               public bookId: string,
-              public addressId: number) {
+              public chapterNumer: number,
+              public verseNumer: number) {
   }
 
   getInfinitiveTranslations = (currentLanguage: Language) => this.infinitiveTranslations.get(currentLanguage);

@@ -1,48 +1,42 @@
-export const rawPossessivePronouns = `mein;mój;mine (m);mein;1
-meines;mój;mine (m);meines;1
-meinen;mój;mine (m);meinen;1
-meinem;mój;mine (m);meinem;1
-dein;twój;yours (m);dein;1
-deines;twój;yours (m);deines;1
-deinen;twój;yours (m);deinen;1
-deinem;twój;yours (m);deinem;1
-sein;jego (m);his (m);sein;2
-seines;jego (m);his (m);seines;2
-seinen;jego (m);his (m);seinen;2
-seinem;jego (m);his (m);seinem;2
-ihr;jej (m);hers (m);ihr;2
-ihres;jej (m);hers (m);ihres;2
-ihren;jej (m);hers (m);ihren;2
-ihrem;jej (m);hers (m);ihrem;2
-unser;nasz;ours (m);unser;3
-unseres;nasz;ours (m);unseres;3
-unseren;nasz;ours (m);unseren;3
-unserem;nasz;ours (m);unserem;3
-euer;wasz;yours (m);euer;4
-eures;wasz;yours (m);eures;4
-euren;wasz;yours (m);euren;4
-eurem;wasz;yours (m);eurem;4
-ihr;ich (m);theirs (m);ihr;3
-ihres;ich (m);theirs (m);ihres;3
-ihren;ich (m);theirs (m);ihren;3
-ihrem;ich (m);theirs (m);ihrem;3
-Ihr;Państwa (m);Theirs (m);Ihr;3
-Ihres;Państwa (m);Theirs (m);Ihres;3
-Ihren;Państwa (m);Theirs (m);Ihren;3
-Ihrem;Państwa (m);Theirs (m);Ihrem;3
-meine;moja;mine (f);meine;1
-meiner;moja;mine (f);meiner;1
-deine;twoja;yours (f);deine;1
-deiner;twoja;yours (f);deiner;1
-seine;jego (ż);his (f);seine;2
-seiner;jego (ż);his (f);seiner;2
-ihre;jej (ż);hers (f);ihre;2
-ihrer;jej (ż);hers (f);ihrer;2
-unsere;nasza;ours (f);unsere;3
-unserer;nasza;ours (f);unserer;3
-eure;wasza;yours (f);eure;4
-eurer;wasza;yours (f);eurer;4
-ihre;ich (ż);theirs (f);ihre;3
-ihrer;ich (ż);theirs (f);ihrer;3
-Ihre;Państwa (ż);Theirs (f);Ihre;3
-Ihrer;Państwa (ż);Theirs (f);Ihrer;3 `;
+export const rawPossessivePronouns = `mein;mine (m);mój;mein;1
+meines;mine (m);mój;meines;1
+meinen;mine (m);mój;meinen;1
+meinem;mine (m);mój;meinem;1
+dein;yours (m);twój;dein;1
+deines;yours (m);twój;deines;1
+deinen;yours (m);twój;deinen;1
+deinem;yours (m);twój;deinem;1
+sein;his (m);jego (m);sein;2
+seines;his (m);jego (m);seines;2
+seinen;his (m);jego (m);seinen;2
+seinem;his (m);jego (m);seinem;2
+ihr;hers (m);jej (m);ihr;2
+ihres;hers (m);jej (m);ihres;2
+ihren;hers (m);jej (m);ihren;2
+ihrem;hers (m);jej (m);ihrem;2
+unser;ours (m);nasz;unser;3
+unseres;ours (m);nasz;unseres;3
+unseren;ours (m);nasz;unseren;3
+unserem;ours (m);nasz;unserem;3
+euer;yours (m);wasz;euer;4
+eures;yours (m);wasz;eures;4
+euren;yours (m);wasz;euren;4
+eurem;yours (m);wasz;eurem;4
+ihr;theirs (m);ich (m);ihr;3
+ihres;theirs (m);ich (m);ihres;3
+ihren;theirs (m);ich (m);ihren;3
+ihrem;theirs (m);ich (m);ihrem;3
+meine;mine (f);moja;meine;1
+meiner;mine (f);moja;meiner;1
+deine;yours (f);twoja;deine;1
+deiner;yours (f);twoja;deiner;1
+seine;his (f);jego (ż);seine;2
+seiner;his (f);jego (ż);seiner;2
+ihre;hers (f);jej (ż);ihre;2
+ihrer;hers (f);jej (ż);ihrer;2
+unsere;ours (f);nasza;unsere;3
+unserer;ours (f);nasza;unserer;3
+eure;yours (f);wasza;eure;4
+eurer;yours (f);wasza;eurer;4
+ihre;theirs (f);ich (ż);ihre;3
+ihrer;theirs (f);ich (ż);ihrer;3`;

@@ -37,7 +37,7 @@ export class SentenceComplementComponent implements OnInit {
     ['BY_RANDOM_LETTER', sentences => this.drawingService.filterByRandomValueOfAttribute<Sentence>(sentences, model => this.extractFirstLetterOfTranslation(model))],
     ['RANDOM_5', sentences => this.drawingService.filterRandomEntries<Sentence>(5, sentences)],
     ['RANDOM_10', sentences => this.drawingService.filterRandomEntries<Sentence>(10, sentences)],
-    ['RANDOM_BOOK_ID', sentences => this.sortByChapterId(this.drawingService.filterByRandomValueOfAttribute<Sentence>(sentences, model => model.bookId))]
+    ['RANDOM_BOOK_ID', sentences => this.sortByChapterNumberAndVerseNumer(this.drawingService.filterByRandomValueOfAttribute<Sentence>(sentences, model => model.bookId))]
   ]);
   partOptions = [
     new Option('all', '0'),
@@ -97,7 +97,15 @@ export class SentenceComplementComponent implements OnInit {
     return partNumber === 0 || this.booksPerPart[indexOfPart].has(sentence.bookId);
   }
 
-  private sortByChapterId(sentences: Sentence[]): Sentence[] {
-    return sentences.sort((s1, s2) => s1.addressId - s2.addressId);
+  private sortByChapterNumberAndVerseNumer(sentences: Sentence[]): Sentence[] {
+    return sentences.sort((s1, s2) => {
+      if (s1.chapterNumer > s2.chapterNumer) {
+        return 1;
+      } else if (s1.chapterNumer < s2.chapterNumer) {
+        return -1;
+      } else {
+        return s1.verseNumer - s2.verseNumer;
+      }
+    });
   }
 }
