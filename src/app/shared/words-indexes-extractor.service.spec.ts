@@ -5,20 +5,6 @@ describe('WordsIndexesExtractorService', () => {
 
   const service = new WordsIndexesExtractorService();
 
-  it('should ', () => {
-    // given
-    const text = 'der, Hund';
-
-    // when
-    const words = service.extract(text);
-
-    // then
-    expect(words).toEqual([
-      new WordIndex('der', 0),
-      new WordIndex('Hund', 5)
-    ]);
-  });
-
   it('should extract all words 1', () => {
     // given
     const text = 'Niemand darf ihn mit der Hand berühren! Sonst wird er mit Steinen oder Pfeilen getötet. Das gilt für Mensch und Tier. Erst wenn das Widderhorn geblasen wird, dürfen sie auf den Berg steigen.';

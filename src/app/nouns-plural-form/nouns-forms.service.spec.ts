@@ -43,7 +43,7 @@ describe('NounsFormsService', () => {
         fail);
 
     // then
-    expect(counter).toEqual(1711);
+    expect(counter).toEqual(1710);
   });
 
   it('should not have duplicated english translations', () => {

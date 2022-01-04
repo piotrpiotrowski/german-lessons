@@ -29,8 +29,8 @@ describe('PresentPerfectSentenceService', () => {
 
     // then
     expect(sentences.length).toEqual(2);
-    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('flee | die');
-    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('step');
+    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('become');
+    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('flee | die');
   });
 
   it('should find sentences with only single part', () => {
@@ -40,7 +40,7 @@ describe('PresentPerfectSentenceService', () => {
     // when
     from(service.find(() => true))
       .pipe(filter(sentence => sentence.parts.length === 1))
-      .pipe(map(sentence => sentence.bookId + ' ' + sentence.addressId))
+      .pipe(map(sentence => sentence.bookId + ' ' + sentence.chapterNumer + '.' + sentence.verseNumer))
       .pipe(toArray())
       .subscribe(
         value => sentences = value,

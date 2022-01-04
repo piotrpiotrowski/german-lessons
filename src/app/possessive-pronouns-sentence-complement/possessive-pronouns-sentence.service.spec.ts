@@ -29,8 +29,8 @@ describe('PossessivePronounsSentenceService', () => {
 
     // then
     expect(sentences.length).toEqual(2);
-    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('jego (ż) | jego (m)');
-    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('jego (ż) | Państwa (ż)');
+    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('his (f)');
+    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('theirs (m)');
   });
 
   it('should find sentences with only single part', () => {
@@ -40,7 +40,7 @@ describe('PossessivePronounsSentenceService', () => {
     // when
     from(service.find(() => true))
       .pipe(filter(sentence => sentence.parts.length === 1))
-      .pipe(map(sentence => sentence.bookId + ' ' + sentence.addressId))
+      .pipe(map(sentence => sentence.bookId + ' ' + sentence.chapterNumer + '.' + sentence.verseNumer))
       .pipe(toArray())
       .subscribe(
         value => sentences = value,

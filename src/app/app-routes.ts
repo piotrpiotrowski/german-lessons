@@ -16,6 +16,7 @@ import {PrepositionsSentenceComplementComponent} from './prepositions-sentence-c
 import {
   PossessivePronounsSentenceComplementComponent
 } from './possessive-pronouns-sentence-complement/possessive-pronouns-sentence-complement.component';
+import {AdjectiveSentenceComplementComponent} from './adjective-sentence-complement/adjective-sentence-complement.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -30,5 +31,6 @@ export const routes: Routes = [
   {path: 'noun-sentence-complement', component: NounSentenceComplementComponent},
   {path: 'noun-forms', component: NounsPluralFormComponent},
   {path: 'prepositions-sentence-complement', component: PrepositionsSentenceComplementComponent},
-  {path: 'possessive-pronouns-sentence-complement', component: PossessivePronounsSentenceComplementComponent}
+  {path: 'possessive-pronouns-sentence-complement', component: PossessivePronounsSentenceComplementComponent},
+  {path: 'adjective-complement', component: AdjectiveSentenceComplementComponent}
 ];

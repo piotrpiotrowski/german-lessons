@@ -45,6 +45,7 @@ import {PrepositionsSentenceComplementComponent} from './prepositions-sentence-c
 import {
   PossessivePronounsSentenceComplementComponent
 } from './possessive-pronouns-sentence-complement/possessive-pronouns-sentence-complement.component';
+import {AdjectiveSentenceComplementComponent} from './adjective-sentence-complement/adjective-sentence-complement.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import {
     NounSentenceComplementComponent,
     NounsPluralFormComponent,
     PrepositionsSentenceComplementComponent,
-    PossessivePronounsSentenceComplementComponent
+    PossessivePronounsSentenceComplementComponent,
+    AdjectiveSentenceComplementComponent
   ],
   imports: [
     BrowserModule,

@@ -3,16 +3,16 @@ import {TestBed} from '@angular/core/testing';
 import {filter, map, mergeMap, take, toArray} from 'rxjs/operators';
 import {Language} from '../language/language';
 import {Sentence} from '../sentence-complement/sentence-row/sentence.model';
-import {NounSentenceService} from './noun-sentence.service';
+import {AdjectiveSentenceService} from './adjective-sentence.service';
 import {from, Observable} from 'rxjs';
 import {SentencePartType} from '../sentence-complement/sentence-row/sentence-part-type.enum';
 
-describe('NounSentenceService', () => {
-  let service: NounSentenceService;
+describe('AdjectiveSentenceService', () => {
+  let service: AdjectiveSentenceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NounSentenceService);
+    service = TestBed.inject(AdjectiveSentenceService);
   });
 
   it('should take two from list', () => {
@@ -29,8 +29,8 @@ describe('NounSentenceService', () => {
 
     // then
     expect(sentences.length).toEqual(2);
-    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('father,dad | father,dad');
-    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('country,land');
+    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('unfaithful');
+    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('solid, strong, firm');
   });
 
   it('should find sentences with only single part', () => {

@@ -30,7 +30,7 @@ describe('PrepositionsSentenceService', () => {
     // then
     expect(sentences.length).toEqual(2);
     expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('from');
-    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('against | behind | into, onto, up');
+    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('from | from');
   });
 
   it('should find sentences with only single part', () => {
@@ -40,7 +40,7 @@ describe('PrepositionsSentenceService', () => {
     // when
     from(service.find(() => true))
       .pipe(filter(sentence => sentence.parts.length === 1))
-      .pipe(map(sentence => sentence.bookId + ' ' + sentence.addressId))
+      .pipe(map(sentence => sentence.bookId + ' ' + sentence.chapterNumer + '.' + sentence.verseNumer))
       .pipe(toArray())
       .subscribe(
         value => sentences = value,
