@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {InputCellState} from './input-cell-state';
 import {InputCellCommand} from './input-cell-command';
-import {isAsciiLetter} from 'codelyzer/angular/styles/chars';
 import {BehaviorSubject, Subscription} from 'rxjs';
 
 @Component({
@@ -11,6 +10,7 @@ import {BehaviorSubject, Subscription} from 'rxjs';
 })
 export class InputCellComponent implements OnInit, OnDestroy {
 
+  private germanLetters = ['ö', 'ä','ü','Ö', 'Ä', 'Ü'];
   state: InputCellState = InputCellState.UNCERTAIN;
   value: string = null;
 
@@ -45,7 +45,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
 
   onValueChanged(event): void {
     const keyCode = event.keyCode;
-    if (isAsciiLetter(keyCode) || keyCode === 8 || keyCode === 46 || keyCode === 229) {
+    if (this.isAsciiLetter(keyCode) || keyCode === 8 || keyCode === 46 || keyCode === 229) {
       this.state = InputCellState.UNCERTAIN;
     } else {
       this.executeCommand(this.deductCommand(event));
@@ -104,5 +104,9 @@ export class InputCellComponent implements OnInit, OnDestroy {
   private reveal(): void {
     this.state = InputCellState.CORRECT;
     this.value = this.answer;
+  }
+
+  private isAsciiLetter(code) {
+      return (code >= 'a' && code <= 'z') || (code >= 'A' && code <= 'Z') || this.germanLetters.includes(code);
   }
 }

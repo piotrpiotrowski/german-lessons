@@ -2,7 +2,6 @@ import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import {LanguageService} from '../language/language.service';
 import {MatSidenav} from '@angular/material/sidenav';
-import {MatDrawerToggleResult} from '@angular/material/sidenav/drawer';
 import {routes} from '../app-routes';
 
 @Component({
@@ -20,7 +19,7 @@ export class MenuComponent {
 
   @Input() nav: MatSidenav;
 
-  public routeTo(path: string): Promise<MatDrawerToggleResult> {
+  public routeTo(path: string): any {
     return this.router.navigateByUrl(path).then(_ => this.nav.close());
   }
 

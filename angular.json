@@ -96,34 +96,12 @@
             ],
             "scripts": []
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "german-lessons:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "german-lessons:serve:production"
-            }
-          }
         }
       }
     }
   },
-  "defaultProject": "german-lessons"
+  "defaultProject": "german-lessons",
+  "cli": {
+    "analytics": "b5313b49-b442-4a48-a32f-504e305d0075"
+  }
 }
