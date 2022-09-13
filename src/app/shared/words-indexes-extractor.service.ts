@@ -10,7 +10,7 @@ export class WordsIndexesExtractorService {
   private articles = ['der', 'Der', 'das', 'Das', 'die', 'Die', 'den', 'Den', 'dem', 'Dem', 'des', 'Des', 'ein', 'Ein', 'eine', 'Eine', 'einen', 'Einen', 'einer', 'Einer', 'einen', 'Einen', 'einem', 'Einem', 'eines', 'Eines'];
 
   public extract(text: string): WordIndex[] {
-    const words = [];
+    const words: WordIndex[] = [];
     let article = '';
     let articleIndex = -1;
     for (let match = this.pattern.exec(text); match !== null; match = this.pattern.exec(text)) {

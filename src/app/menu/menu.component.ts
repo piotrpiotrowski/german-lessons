@@ -14,10 +14,10 @@ export class MenuComponent {
   paths: string[];
 
   constructor(private router: Router, public languageService: LanguageService) {
-    this.paths = routes.slice(1).map(route => route.path);
+    this.paths = routes.slice(1).map(route => route.path as string);
   }
 
-  @Input() nav: MatSidenav;
+  @Input() nav!: MatSidenav;
 
   public routeTo(path: string): any {
     return this.router.navigateByUrl(path).then(_ => this.nav.close());

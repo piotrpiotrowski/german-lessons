@@ -24,12 +24,12 @@ export class SentenceRowComponent implements OnInit {
   constructor(public languageService: LanguageService) {
   }
 
-  foundAnswers = [];
-  numberOfAnswers: number;
-  private externalCommand: BehaviorSubject<InputCellCommand>;
-  currentSentence: Sentence;
+  foundAnswers: string[] = [];
+  numberOfAnswers: number = 0;
+  private externalCommand!: BehaviorSubject<InputCellCommand>;
+  currentSentence!: Sentence;
 
-  cellInputsCommand: BehaviorSubject<InputCellCommand> = new BehaviorSubject<InputCellCommand>(null);
+  cellInputsCommand: BehaviorSubject<InputCellCommand> = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
   ngOnInit(): void {
     this.externalCommand

@@ -15,9 +15,9 @@ import {DrawingService} from '../shared/drawing.service';
 })
 export class VerbsConjunctionsComponent implements OnInit {
 
-  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
-  verbsConjunctions: TrainingRowModel[];
-  loading: boolean;
+  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
+  verbsConjunctions: TrainingRowModel[] = [];
+  loading: boolean = false;
   difficultyLevelOptions = [
     new Option('all', '0'),
     new Option('beginner', '1'),
@@ -33,17 +33,20 @@ export class VerbsConjunctionsComponent implements OnInit {
     new Option('random10', 'RANDOM_10')
   ];
   filteringCategory = this.filteringCategoryOptions[0].value;
-  filtersForCategories = new Map([
+  filtersForCategories = new Map<string, (verbs: TrainingRowModel[]) => TrainingRowModel[]>([
     ['ALL_AVAILABLE', verbs => verbs],
     ['BY_RANDOM_LETTER', verbs => this.drawingService.filterByRandomValueOfAttribute<TrainingRowModel>(verbs, model => this.extractFirstLetterOfTranslation(model))],
     ['RANDOM_5', verbs => this.drawingService.filterRandomEntries(5, verbs)],
     ['RANDOM_10', verbs => this.drawingService.filterRandomEntries(10, verbs)]
   ]);
+
   constructor(public languageService: LanguageService, private drawingService: DrawingService) {
   }
 
-  @Input() finderService: FinderService<TrainingRowModel>;
-  @Input() title: string;  ngOnInit(): void {
+  @Input() finderService!: FinderService<TrainingRowModel>;
+  @Input() title: string = '';
+
+  ngOnInit(): void {
     this.loadVerbsConjunctions();
   }
 
@@ -52,20 +55,21 @@ export class VerbsConjunctionsComponent implements OnInit {
     this.command.next(InputCellCommand.CLEAR);
     of(this.finderService.find(this.buildSearchPredicate()))
       .pipe(finalize(() => this.loading = false))
-      .subscribe(
-        verbsConjunctions => this.verbsConjunctions = this.filterByCategory(verbsConjunctions),
-        console.error
-      );
+      .subscribe({
+        next: verbsConjunctions => this.verbsConjunctions = this.filterByCategory(verbsConjunctions),
+        error: console.error
+      });
   }
+
   private filterByCategory(verbsConjunctions: TrainingRowModel[]): TrainingRowModel[] {
-    return this.filtersForCategories.get(this.filteringCategory)(verbsConjunctions);
+    return this.filtersForCategories.get(this.filteringCategory)!(verbsConjunctions);
   }
 
   private extractFirstLetterOfTranslation(trainingRowModel: TrainingRowModel): string {
     return trainingRowModel.getTranslation(this.languageService.getCurrentLanguage()).charAt(0);
   }
 
- private buildSearchPredicate(): Predicate<TrainingRowModel> {
+  private buildSearchPredicate(): Predicate<TrainingRowModel> {
     return verbConjunctions => this.difficultyLevelCondition(verbConjunctions);
   }
 

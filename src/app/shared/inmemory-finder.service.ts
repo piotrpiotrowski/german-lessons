@@ -6,9 +6,9 @@ export class InmemoryFinderService<T> implements FinderService<T> {
 
   rows: T[];
 
-  constructor(matrix: string[][], private mapper: (columns: string[]) => T) {
+  constructor(matrix: string[][], private mapper: (columns: string[]) => T | null) {
     this.rows = matrix.map(columns => this.mapper(columns))
-      .filter(value => value !== null);
+      .filter(value => value !== null) as T[];
   }
 
   find(predicate: Predicate<T>): T[] {

@@ -19,4 +19,9 @@ describe('CommandButtonsComponent', () => {
     fixture = TestBed.createComponent(CommandButtonsComponent);
     component = fixture.componentInstance;
   });
+
+  it('should create', () => {
+    //expect
+    expect(component.languageService).toBeTruthy();
+  });
 });

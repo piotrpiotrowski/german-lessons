@@ -9,9 +9,9 @@ import {LanguageService} from '../language/language.service';
 })
 export class ResponsiveButtonToggleGroupComponent {
 
-  @Input() title: string;
-  @Input() options: Option[];
-  @Input() model: string;
+  @Input() title: string = '';
+  @Input() options: Option[] = [];
+  @Input() model: string = '';
   @Output() modelChange = new EventEmitter<string>();
 
   @Output() selectOption = new EventEmitter<void>();

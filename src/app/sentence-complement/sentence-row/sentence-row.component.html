@@ -5,7 +5,7 @@
       <ng-container [ngSwitch]="part.type">
         <span *ngSwitchCase="'TEXT'" class="text-cell">{{part.value}}</span>
         <div *ngSwitchCase="'RIDDLE'" class="riddle-cell">
-          <app-input-cell [command]="cellInputsCommand" [answer]="part.value" [label]="" (correctlyAnswered)="appendAnswerValue($event)"></app-input-cell>
+          <app-input-cell [command]="cellInputsCommand" [answer]="part.value" [label]="''" (correctlyAnswered)="appendAnswerValue($event)"></app-input-cell>
         </div>
       </ng-container>
     </ng-container>

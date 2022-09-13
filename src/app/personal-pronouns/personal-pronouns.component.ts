@@ -13,9 +13,9 @@ import {LanguageService} from '../language/language.service';
 })
 export class PersonalPronounsComponent implements OnInit {
 
-  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
-  pronouns: TrainingRowModel[];
-  loading: boolean;
+  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
+  pronouns: TrainingRowModel[] = [];
+  loading: boolean = false;
 
   constructor(private personalPronounsService: PersonalPronounsService, public languageService: LanguageService) {
   }
@@ -28,9 +28,10 @@ export class PersonalPronounsComponent implements OnInit {
     this.loading = true;
     of(this.personalPronounsService.find(_ => true))
       .pipe(finalize(() => this.loading = false))
-      .subscribe(
-        pronouns => this.pronouns = pronouns,
-        console.error
+      .subscribe({
+          next: pronouns => this.pronouns = pronouns,
+          error: console.error
+        }
       );
   }
 

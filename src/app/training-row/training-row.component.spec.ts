@@ -6,17 +6,17 @@ import {By} from '@angular/platform-browser';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from './training-row.model';
 import {Answer} from './answer.model';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, skip} from 'rxjs';
 import {Language} from '../language/language';
 import {LanguageService} from '../language/language.service';
 
 describe('TrainingRowComponent', () => {
   let component: TrainingRowComponent;
   let fixture: ComponentFixture<TrainingRowComponent>;
-  let languageService;
+  let languageService: any;
 
   beforeEach(async () => {
-    languageService = jasmine.createSpyObj('languageService', ['getLabel', 'getCurrentLanguage']);
+    languageService = jasmine.createSpyObj('LanguageService', ['getLabel', 'getCurrentLanguage']);
 
     languageService.getLabel.and.returnValue(null);
     languageService.getCurrentLanguage.and.returnValue(Language.ENGLISH);
@@ -43,7 +43,7 @@ describe('TrainingRowComponent', () => {
       new Answer('pastSimple', 'begann'),
       new Answer('pastParticiple', 'hat begonnen')
     ]);
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
     // and
     languageService.getLabel.and.returnValue('Check');
@@ -59,8 +59,8 @@ describe('TrainingRowComponent', () => {
 
   it('should emit a command to CHECK when a check button was clicked', () => {
     // given
-    let expectedCellInputsCommand = null;
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    let expectedCellInputsCommand = InputCellCommand.CHECK;
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
     component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
       new Answer('presentSimple', 'beginnt'),
@@ -83,7 +83,7 @@ describe('TrainingRowComponent', () => {
 
   it('should set command to REVEAL', () => {
     // given
-    let expectedCellInputsCommand = null;
+    let expectedCellInputsCommand = InputCellCommand.REVEAL;
     component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
       new Answer('presentSimple', 'beginnt'),
@@ -101,9 +101,8 @@ describe('TrainingRowComponent', () => {
     expect(expectedCellInputsCommand).toEqual(InputCellCommand.REVEAL);
   });
 
-  it('should set command to CLEAR', () => {
+  it('should set command to CLEAR', (done: DoneFn) => {
     // given
-    let expectedCellInputsCommand = null;
     component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
       new Answer('presentSimple', 'beginnt'),
@@ -111,13 +110,19 @@ describe('TrainingRowComponent', () => {
       new Answer('pastParticiple', 'hat begonnen')
     ]);
     component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
-    component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
+    component.cellInputsCommand
+      .pipe(skip(1))
+      .subscribe({
+        // then
+        next: expectedCellInputsCommand => {
+          expect(expectedCellInputsCommand).toEqual(InputCellCommand.CLEAR);
+          done();
+        },
+        error: done.fail
+      });
 
     // when
     fixture.detectChanges();
-
-    // then
-    expect(expectedCellInputsCommand).toEqual(InputCellCommand.CLEAR);
   });
 
   it('should have a english label by default', () => {
@@ -128,7 +133,7 @@ describe('TrainingRowComponent', () => {
       new Answer('pastSimple', 'begann'),
       new Answer('pastParticiple', 'hat begonnen')
     ]);
-    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
     // when
     fixture.detectChanges();
@@ -147,7 +152,7 @@ describe('TrainingRowComponent', () => {
       new Answer('pastSimple', 'begann'),
       new Answer('pastParticiple', 'hat begonnen')
     ]);
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
     // and
     languageService.getCurrentLanguage.and.returnValue(Language.ENGLISH);
@@ -169,9 +174,9 @@ describe('TrainingRowComponent', () => {
       new Answer('pastSimple', 'begann'),
       new Answer('pastParticiple', 'hat begonnen')
     ]);
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
-  // and
+    // and
     languageService.getCurrentLanguage.and.returnValue(Language.POLISH);
 
     // when
@@ -191,7 +196,7 @@ describe('TrainingRowComponent', () => {
       new Answer('pastSimple', 'begann'),
       new Answer('pastParticiple', 'hat begonnen')
     ]);
-    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
     // when
     fixture.detectChanges();

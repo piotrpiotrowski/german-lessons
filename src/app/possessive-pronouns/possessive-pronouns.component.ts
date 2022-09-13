@@ -13,9 +13,9 @@ import {LanguageService} from '../language/language.service';
 })
 export class PossessivePronounsComponent implements OnInit {
 
-  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
-  pronouns: TrainingRowModel[];
-  loading: boolean;
+  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
+  pronouns: TrainingRowModel[] = [];
+  loading: boolean = false;
   formTypeOptions = [
     new Option('all', '0'),
     new Option('singularMasculine', '1'),
@@ -36,10 +36,10 @@ export class PossessivePronounsComponent implements OnInit {
     this.loading = true;
     of(this.possessivePronounsService.find(this.buildSearchPredicate()))
       .pipe(finalize(() => this.loading = false))
-      .subscribe(
-        pronouns => this.pronouns = pronouns,
-        console.error
-      );
+      .subscribe({
+        next: pronouns => this.pronouns = pronouns,
+        error: console.error
+      });
   }
 
   private buildSearchPredicate(): Predicate<TrainingRowModel> {

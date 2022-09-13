@@ -13,7 +13,7 @@ import {SentencePartType} from './sentence-part-type.enum';
 describe('SentenceRowComponent', () => {
   let component: SentenceRowComponent;
   let fixture: ComponentFixture<SentenceRowComponent>;
-  let languageService;
+  let languageService: any;
 
   beforeEach(async () => {
     languageService = jasmine.createSpyObj('languageService', ['getLabel', 'getCurrentLanguage']);
@@ -44,7 +44,7 @@ describe('SentenceRowComponent', () => {
       new SentencePart(' and gegessen.', SentencePartType.TEXT)
     ];
     component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC', 1, 1);
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
     // when
     fixture.detectChanges();
@@ -63,7 +63,7 @@ describe('SentenceRowComponent', () => {
       new SentencePart(' and gegessen.', SentencePartType.TEXT)
     ];
     component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC', 1, 1);
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
     // when
     fixture.detectChanges();
@@ -82,7 +82,7 @@ describe('SentenceRowComponent', () => {
       new SentencePart(' and gegessen.', SentencePartType.TEXT)
     ];
     component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC', 1, 1);
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
     // when
     fixture.detectChanges();
@@ -101,7 +101,7 @@ describe('SentenceRowComponent', () => {
       new SentencePart(' and gegessen.', SentencePartType.TEXT)
     ];
     component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC', 1, 1);
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
     // when
     fixture.detectChanges();
@@ -119,7 +119,7 @@ describe('SentenceRowComponent', () => {
       new SentencePart('gebacken', SentencePartType.RIDDLE),
       new SentencePart(' and gegessen.', SentencePartType.TEXT)
     ];
-    let expectedCellInputsCommand = null;
+    let expectedCellInputsCommand = InputCellCommand.REVEAL;
     component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC', 1, 1);
     component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.REVEAL);
     component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);

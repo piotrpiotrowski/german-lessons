@@ -12,7 +12,7 @@ export class Sentence {
               public verseNumer: number) {
   }
 
-  getInfinitiveTranslations = (currentLanguage: Language) => this.infinitiveTranslations.get(currentLanguage);
-  getReferencesTranslations = (currentLanguage: Language) => this.referencesTranslations.get(currentLanguage);
-  getTextTranslations = (currentLanguage: Language) => this.textTranslations.get(currentLanguage);
+  getInfinitiveTranslations = (currentLanguage: Language) => this.infinitiveTranslations.get(currentLanguage)!;
+  getReferencesTranslations = (currentLanguage: Language) => this.referencesTranslations.get(currentLanguage)!;
+  getTextTranslations = (currentLanguage: Language) => this.textTranslations.get(currentLanguage)!;
 }

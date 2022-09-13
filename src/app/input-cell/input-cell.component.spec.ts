@@ -26,7 +26,7 @@ describe('InputCellComponent', () => {
 
   it('should display input', () => {
     // given
-    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
     // when
     fixture.detectChanges();
@@ -37,7 +37,7 @@ describe('InputCellComponent', () => {
 
   it('should display a fiber_manual_record icon when the state is UNCERTAIN', () => {
     // given
-    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
     // when
     fixture.detectChanges();
@@ -57,19 +57,23 @@ describe('InputCellComponent', () => {
     expect(fixture.nativeElement.querySelector('mat-icon').textContent).toEqual('done');
   });
 
-  it('should emit a correctlyAnswered event when the state is CORRECT', () => {
+  it('should emit a correctlyAnswered event when the state is CORRECT', (done: DoneFn) => {
     // given
-    let currentValue;
     component.answer = 'geben';
     component.value = 'geben';
     component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CHECK);
-    component.correctlyAnswered.subscribe(value => currentValue = value);
+    component.correctlyAnswered
+      .subscribe({
+        // then
+        next: (currentValue: string) => {
+          expect(currentValue).toEqual(component.value);
+          done();
+        },
+        error: done.fail
+      });
 
     // when
     fixture.detectChanges();
-
-    // then
-    expect(currentValue).toEqual(component.value);
   });
 
   it('should display a done icon when the state is CORRECT', () => {
@@ -284,6 +288,24 @@ describe('InputCellComponent', () => {
     expect(component.state).toEqual(InputCellState.UNCERTAIN);
   });
 
+  it('should update a state to UNCERTAIN from CORRECT when a key changed event was emitted by a german letter', () => {
+    // given
+    component.answer = 'answer';
+    component.state = InputCellState.CORRECT;
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.REVEAL);
+
+    // and
+    fixture.detectChanges();
+
+    // when
+    fixture.debugElement
+      .query(By.css('input'))
+      .triggerEventHandler('keyup', {keyCode: 252});
+
+    // then
+    expect(component.state).toEqual(InputCellState.UNCERTAIN);
+  });
+
   it('should not update a state when a key changed event was emitted by a non letter', () => {
     // given
     component.answer = 'answer';
@@ -306,7 +328,7 @@ describe('InputCellComponent', () => {
     // given
     component.answer = 'answer';
     component.state = InputCellState.UNCERTAIN;
-    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
 
     // and
     fixture.detectChanges();
@@ -340,7 +362,7 @@ describe('InputCellComponent', () => {
 
   it('should copy an answer to a value when a key changed event was emitted by a arrow up', () => {
     // given
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
     component.answer = 'answer';
     component.value = 'not an answer';
 
@@ -358,7 +380,7 @@ describe('InputCellComponent', () => {
 
   it('should update a state to UNCERTAIN from CORRECT when a key changed event was emitted by a arrow down', () => {
     // given
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
     component.answer = 'answer';
     component.state = InputCellState.CORRECT;
 
@@ -376,7 +398,7 @@ describe('InputCellComponent', () => {
 
   it('should update a state to UNCERTAIN from INCORRECT when a key changed event was emitted by a arrow down', () => {
     // given
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
     component.answer = 'answer';
     component.state = InputCellState.INCORRECT;
 
@@ -394,7 +416,7 @@ describe('InputCellComponent', () => {
 
   it('should set a value to empty when a key changed event was emitted by a arrow down', () => {
     // given
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
     component.answer = 'answer';
     component.value = 'not an answer';
 
@@ -412,7 +434,7 @@ describe('InputCellComponent', () => {
 
   it('should update a state to INCORRECT when a key changed event was emitted by a enter and a value is different than the answer', () => {
     // given
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
     component.answer = 'answer';
     component.value = 'different than answer';
 
@@ -430,7 +452,7 @@ describe('InputCellComponent', () => {
 
   it('should update a state to CORRECT when a key changed event was emitted by a enter and a value the same a the answer', () => {
     // given
-    component.command = new BehaviorSubject<InputCellCommand>(null);
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
     component.answer = 'answer';
     component.value = component.answer;
 

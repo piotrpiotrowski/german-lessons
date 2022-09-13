@@ -6,7 +6,7 @@ import {Language} from './language';
 })
 export class LanguageService {
 
-  private labels = {
+  private labels: any = {
     ENGLISH: {
       verbsFormsTitle: 'Irregular verbs training',
       personalPronounsTitle: 'Personal pronouns training',

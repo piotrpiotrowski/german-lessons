@@ -7,6 +7,6 @@ export class TrainingRowModel {
               public answers: Answer[]) {
   }
 
-  getTranslation = (language: Language) => this.translations.get(language);
+  getTranslation = (language: Language): string => this.translations.get(language)!;
   getNumberOfAnswers = () => this.answers.length;
 }

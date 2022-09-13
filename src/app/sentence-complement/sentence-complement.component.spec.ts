@@ -6,7 +6,7 @@ import {NO_ERRORS_SCHEMA} from '@angular/core';
 describe('SentenceComplementComponent', () => {
   let component: SentenceComplementComponent;
   let fixture: ComponentFixture<SentenceComplementComponent>;
-  let finderService;
+  let finderService: any;
 
   beforeEach(async () => {
     finderService = jasmine.createSpyObj('FinderService', ['find']);

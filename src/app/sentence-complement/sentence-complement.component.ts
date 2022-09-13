@@ -15,9 +15,9 @@ import {FinderService} from '../shared/finder.service';
 })
 export class SentenceComplementComponent implements OnInit {
 
-  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
-  sentences: Sentence[];
-  loading: boolean;
+  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
+  sentences: Sentence[] = [];
+  loading: boolean = false;
   difficultyLevelOptions = [
     new Option('all', '0'),
     new Option('beginner', '1'),
@@ -33,7 +33,7 @@ export class SentenceComplementComponent implements OnInit {
     new Option('randomBookId', 'RANDOM_BOOK_ID')
   ];
   filteringCategory = this.filteringCategoryOptions[0].value;
-  filtersForCategories = new Map([
+  filtersForCategories = new Map<string, (sentences: Sentence[]) => Sentence[]>([
     ['BY_RANDOM_LETTER', sentences => this.drawingService.filterByRandomValueOfAttribute<Sentence>(sentences, model => this.extractFirstLetterOfTranslation(model))],
     ['RANDOM_5', sentences => this.drawingService.filterRandomEntries<Sentence>(5, sentences)],
     ['RANDOM_10', sentences => this.drawingService.filterRandomEntries<Sentence>(10, sentences)],
@@ -50,8 +50,8 @@ export class SentenceComplementComponent implements OnInit {
     new Set<string>(['MAT', 'MRK', 'LUK', 'JHN', 'ACT', 'ROM', '1CO', '2CO', 'GAL', 'EPH', 'PHP', 'COL', '1TH', '2TH', '1TI', '2TI', 'TIT', 'PHM', 'HEB', 'JAS', '1PE', '2PE', '1JN', '2JN', '3JN', 'JUD', 'REV'])
   ];
 
-  @Input() finderService: FinderService<Sentence>;
-  @Input() title: string;
+  @Input() finderService!: FinderService<Sentence>;
+  @Input() title: string = '';
 
   constructor(public languageService: LanguageService, private drawingService: DrawingService) {
   }
@@ -75,7 +75,7 @@ export class SentenceComplementComponent implements OnInit {
   }
 
   private filterByCategory(sentences: Sentence[]): Sentence[] {
-    return this.filtersForCategories.get(this.filteringCategory)(sentences);
+    return this.filtersForCategories.get(this.filteringCategory)!(sentences);
   }
 
   private extractFirstLetterOfTranslation(sentence: Sentence): string {

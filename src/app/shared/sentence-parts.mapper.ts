@@ -9,7 +9,7 @@ import {WordIndex} from './word-index.model';
 export class SentencePartsMapper {
 
   public map(hiddenWords: WordIndex[], text: string): SentencePart[] {
-    const result = [];
+    const result: SentencePart[] = [];
     let startOfSection = 0;
     for (const hiddenWord of hiddenWords) {
       const beforeWord = text.substring(startOfSection, hiddenWord.index);

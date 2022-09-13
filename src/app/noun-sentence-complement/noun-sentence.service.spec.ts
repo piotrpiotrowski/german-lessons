@@ -15,43 +15,41 @@ describe('NounSentenceService', () => {
     service = TestBed.inject(NounSentenceService);
   });
 
-  it('should take two from list', () => {
-    // given
-    let sentences: Sentence[] = null;
-
+  it('should take two from list', (done: DoneFn) => {
     // when
     from(service.find(() => true))
       .pipe(take(2))
       .pipe(toArray())
-      .subscribe(
-        value => sentences = value,
-        fail);
-
-    // then
-    expect(sentences.length).toEqual(2);
-    expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('father,dad | father,dad');
-    expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('country,land');
+      .subscribe({
+        // then
+        next: sentences => {
+          expect(sentences.length).toEqual(2);
+          expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('father,dad | father,dad');
+          expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('country,land');
+          done();
+        },
+        error: done.fail
+      });
   });
 
-  it('should find sentences with only single part', () => {
-    // given
-    let sentences: string[] = null;
+  it('should find sentences with only single part', (done: DoneFn) => {
 
     // when
     from(service.find(() => true))
       .pipe(filter(sentence => sentence.parts.length === 1))
       .pipe(map(sentence => sentence.bookId + ' ' + sentence.chapterNumer + '.' + sentence.verseNumer))
       .pipe(toArray())
-      .subscribe(
-        value => sentences = value,
-        fail);
-
-    // then
-    expect(sentences).toEqual([]);
+      .subscribe({
+        // then
+        next: sentences => {
+          expect(sentences).toEqual([]);
+          done();
+        },
+        error: done.fail
+      });
   });
 
-  it('should find case sensitive hidden word in text', () => {
-    // given
+  it('should find case sensitive hidden word in text', (done: DoneFn) => {
     const findRiddlesNotExistingInText = (sentence: Sentence): Observable<string[]> => {
       const riddles = sentence.parts.filter(sentencePart => sentencePart.type === SentencePartType.RIDDLE)
         .map(sentencePart => sentencePart.value);
@@ -61,18 +59,19 @@ describe('NounSentenceService', () => {
       return from(missingRiddlesInText);
     };
 
-    let sentences: string[][] = null;
 
     // when
     from(service.find(() => true))
       .pipe(mergeMap(sentence => findRiddlesNotExistingInText(sentence)))
       .pipe(filter(pair => !pair[1].includes(pair[0])))
       .pipe(toArray())
-      .subscribe(
-        value => sentences = value,
-        fail);
-
-    // then
-    expect(sentences).toEqual([]);
+      .subscribe({
+        // then
+        next: sentences => {
+          expect(sentences).toEqual([]);
+          done();
+        },
+        error: done.fail
+      });
   });
 });

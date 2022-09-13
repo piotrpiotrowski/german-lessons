@@ -15,8 +15,8 @@ import {Language} from '../language/language';
 })
 export class VerbsFormsComponent implements OnInit {
 
-  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
-  verbs: TrainingRowModel[];
+  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
+  verbs: TrainingRowModel[] = [];
   difficultyLevelOptions = [
     new Option('all', '0'),
     new Option('beginner', '1'),
@@ -38,7 +38,7 @@ export class VerbsFormsComponent implements OnInit {
     new Option('random10', 'RANDOM_10')
   ];
   filteringCategory = this.filteringCategoryOptions[0].value;
-  filtersForCategories = new Map([
+  filtersForCategories = new Map<string, (verbs: TrainingRowModel[]) => TrainingRowModel[]>([
     ['ALL_AVAILABLE', verbs => verbs],
     ['BY_RANDOM_LETTER', verbs => this.drawingService.filterByRandomValueOfAttribute<TrainingRowModel>(verbs, model => this.extractFirstLetterOfTranslation(model))],
     ['RANDOM_5', verbs => this.drawingService.filterRandomEntries<TrainingRowModel>(5, verbs)],
@@ -55,10 +55,10 @@ export class VerbsFormsComponent implements OnInit {
   loadVerbsForms(): void {
     this.command.next(InputCellCommand.CLEAR);
     of(this.verbsFormsService.find(this.buildSearchPredicate()))
-      .subscribe(
-        verbs => this.verbs = this.filterByCategory(verbs),
-        console.error
-      );
+      .subscribe({
+        next: verbs => this.verbs = this.filterByCategory(verbs),
+        error: console.error
+      });
   }
 
   trackVerbs(index: number, item: TrainingRowModel): any {
@@ -66,7 +66,7 @@ export class VerbsFormsComponent implements OnInit {
   }
 
   private filterByCategory(verbs: TrainingRowModel[]): TrainingRowModel[] {
-    return this.filtersForCategories.get(this.filteringCategory)(verbs);
+    return this.filtersForCategories.get(this.filteringCategory)!(verbs);
   }
 
   private extractFirstLetterOfTranslation(trainingRowModel: TrainingRowModel): string {

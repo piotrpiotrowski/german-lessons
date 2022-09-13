@@ -15,9 +15,9 @@ import {NounsFormsService} from './nouns-forms.service';
 })
 export class NounsPluralFormComponent implements OnInit {
 
-  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
-  nounsForms: TrainingRowModel[];
-  loading: boolean;
+  command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
+  nounsForms: TrainingRowModel[] = [];
+  loading: boolean = false;
   difficultyLevelOptions = [
     new Option('all', '0'),
     new Option('beginner', '1'),
@@ -33,12 +33,13 @@ export class NounsPluralFormComponent implements OnInit {
     new Option('random10', 'RANDOM_10')
   ];
   filteringCategory = this.filteringCategoryOptions[3].value;
-  filtersForCategories = new Map([
+  filtersForCategories = new Map<string, (nouns: TrainingRowModel[]) => TrainingRowModel[]>([
     ['ALL_AVAILABLE', nouns => nouns],
     ['BY_RANDOM_LETTER', nouns => this.drawingService.filterByRandomValueOfAttribute<TrainingRowModel>(nouns, model => this.extractFirstLetterOfTranslation(model))],
     ['RANDOM_5', nouns => this.drawingService.filterRandomEntries(5, nouns)],
     ['RANDOM_10', nouns => this.drawingService.filterRandomEntries(10, nouns)]
   ]);
+
   constructor(private nounsFormsService: NounsFormsService, public languageService: LanguageService, private drawingService: DrawingService) {
   }
 
@@ -51,14 +52,15 @@ export class NounsPluralFormComponent implements OnInit {
     this.command.next(InputCellCommand.CLEAR);
     of(this.nounsFormsService.find(this.buildSearchPredicate()))
       .pipe(finalize(() => this.loading = false))
-      .subscribe(
-        nounsForms => this.nounsForms = this.filterByCategory(nounsForms),
-        console.error
+      .subscribe({
+          next: nounsForms => this.nounsForms = this.filterByCategory(nounsForms),
+          error: console.error
+        }
       );
   }
 
   private filterByCategory(nounsForms: TrainingRowModel[]): TrainingRowModel[] {
-    return this.filtersForCategories.get(this.filteringCategory)(nounsForms);
+    return this.filtersForCategories.get(this.filteringCategory)!(nounsForms);
   }
 
   private extractFirstLetterOfTranslation(trainingRowModel: TrainingRowModel): string {
@@ -77,5 +79,4 @@ export class NounsPluralFormComponent implements OnInit {
   onCommandSelect(selectedCommand: InputCellCommand): void {
     this.command.next(selectedCommand);
   }
-
 }

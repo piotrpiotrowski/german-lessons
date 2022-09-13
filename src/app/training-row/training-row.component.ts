@@ -1,10 +1,11 @@
-import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from './training-row.model';
 import {BehaviorSubject, fromEvent, Subscription} from 'rxjs';
 import {LanguageService} from '../language/language.service';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {Answer} from './answer.model';
+import {Language} from '../language/language';
 
 @Component({
   selector: 'app-training-row',
@@ -13,12 +14,12 @@ import {Answer} from './answer.model';
 })
 export class TrainingRowComponent implements OnInit, OnDestroy {
 
-  private externalCommand: BehaviorSubject<InputCellCommand>;
-  cellInputsCommand: BehaviorSubject<InputCellCommand> = new BehaviorSubject<InputCellCommand>(null);
-  cellWidth: string;
-  subscription: Subscription;
-  resizeSubscription: Subscription;
-  @Input() trainingRowModel: TrainingRowModel;
+  private externalCommand!: BehaviorSubject<InputCellCommand>;
+  cellInputsCommand: BehaviorSubject<InputCellCommand> = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
+  cellWidth: string = '0';
+  subscription!: Subscription;
+  resizeSubscription!: Subscription;
+  @Input() trainingRowModel: TrainingRowModel = new TrainingRowModel(new Map<Language, string>(), 0, []);
 
   @Input() set command(command: BehaviorSubject<InputCellCommand>) {
     this.externalCommand = command;

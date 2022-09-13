@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {InputCellState} from './input-cell-state';
 import {InputCellCommand} from './input-cell-command';
 import {BehaviorSubject, Subscription} from 'rxjs';
@@ -10,40 +10,38 @@ import {BehaviorSubject, Subscription} from 'rxjs';
 })
 export class InputCellComponent implements OnInit, OnDestroy {
 
-  private germanLetters = ['ö', 'ä','ü','Ö', 'Ä', 'Ü'];
+  private germanLetters = ['ö', 'ä', 'ü', 'Ö', 'Ä', 'Ü'];
   state: InputCellState = InputCellState.UNCERTAIN;
-  value: string = null;
+  value: string = '';
 
-  @Input() answer: string;
-  @Input() label: string;
-  @Input() command: BehaviorSubject<InputCellCommand>;
+  @Input() answer: string = '';
+  @Input() label: string = '';
+  @Input() command!: BehaviorSubject<InputCellCommand>;
   @Output() correctlyAnswered = new EventEmitter<string>();
 
-  private subscription: Subscription;
+  private subscription!: Subscription;
   private strategies = new Map<InputCellCommand, () => void>(
     [
       [InputCellCommand.REVEAL, () => this.reveal()],
       [InputCellCommand.CLEAR, () => this.clear()],
       [InputCellCommand.CHECK, () => this.check()],
-      [null, () => null],
+      [InputCellCommand.NOOP, () => {
+      }],
     ]
   );
 
-  constructor() {
-  }
-
   ngOnInit(): void {
-    this.subscription = this.command.subscribe(
-      command => this.executeCommand(command),
-      error => console.error(error)
-    );
+    this.subscription = this.command.subscribe({
+      next: command => this.executeCommand(command),
+      error: error => console.error(error)
+    });
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  onValueChanged(event): void {
+  onValueChanged(event: any): void {
     const keyCode = event.keyCode;
     if (this.isAsciiLetter(keyCode) || keyCode === 8 || keyCode === 46 || keyCode === 229) {
       this.state = InputCellState.UNCERTAIN;
@@ -57,10 +55,10 @@ export class InputCellComponent implements OnInit, OnDestroy {
   }
 
   private executeCommand(command: InputCellCommand): void {
-    this.strategies.get(command)();
+    this.strategies.get(command)!();
   }
 
-  private deductCommand(event): InputCellCommand {
+  private deductCommand(event: any): InputCellCommand {
     if (this.isArrowUpPressed(event)) {
       return InputCellCommand.REVEAL;
     }
@@ -70,18 +68,18 @@ export class InputCellComponent implements OnInit, OnDestroy {
     if (this.isEnterPressed(event)) {
       return InputCellCommand.CHECK;
     }
-    return null;
+    return InputCellCommand.NOOP;
   }
 
-  private isArrowUpPressed(event): boolean {
+  private isArrowUpPressed(event: any): boolean {
     return event.keyCode === 38;
   }
 
-  private isArrowDownPressed(event): boolean {
+  private isArrowDownPressed(event: any): boolean {
     return event.keyCode === 40;
   }
 
-  private isEnterPressed(event): boolean {
+  private isEnterPressed(event: any): boolean {
     return event.keyCode === 13;
   }
 
@@ -106,7 +104,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
     this.value = this.answer;
   }
 
-  private isAsciiLetter(code) {
-      return (code >= 'a' && code <= 'z') || (code >= 'A' && code <= 'Z') || this.germanLetters.includes(code);
+  private isAsciiLetter(code: number) {
+    return (code >= 'a'.charCodeAt(0) && code <= 'z'.charCodeAt(0)) || (code >= 'A'.charCodeAt(0) && code <= 'Z'.charCodeAt(0)) || this.germanLetters.includes(String.fromCharCode(code));
   }
 }

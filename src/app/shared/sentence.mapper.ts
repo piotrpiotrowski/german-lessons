@@ -44,7 +44,7 @@ export class SentenceMapper {
   private findHiddenWordsIndexes = (text: string, dictionary: Map<string, WordDefinition>): [WordIndex, WordDefinition][] =>
     this.wordsIndexesExtractorService.extract(text)
       .filter(wordIndex => dictionary.get(wordIndex.value.toLowerCase()))
-      .map(wordIndex => [wordIndex, dictionary.get(wordIndex.value.toLowerCase())]);
+      .map(wordIndex => [wordIndex, dictionary.get(wordIndex.value.toLowerCase())!]);
 
   private calculateClassification(wordDefinitions: WordDefinition[]): number {
     const sum = wordDefinitions.reduce((accumulator, wordDefinition) => accumulator + wordDefinition.classification, 0);
