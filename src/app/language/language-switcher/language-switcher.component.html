@@ -1,0 +1,8 @@
+<button mat-icon-button (click)=select.open() class="language-select">
+  <mat-select #select (selectionChange)="selectLanguage($event)" class="language-select-size">
+    <mat-option *ngFor="let language of languages" [value]="language">
+      {{language}}
+    </mat-option>
+  </mat-select>
+  <mat-icon>language</mat-icon>
+</button>

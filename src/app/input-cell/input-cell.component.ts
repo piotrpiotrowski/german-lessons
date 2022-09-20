@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angula
 import {InputCellState} from './input-cell-state';
 import {InputCellCommand} from './input-cell-command';
 import {BehaviorSubject, Subscription} from 'rxjs';
+import {UsageMode} from '../usage-mode/usage-mode';
 
 @Component({
   selector: 'app-input-cell',
@@ -13,6 +14,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
   private germanLetters = ['ö', 'ä', 'ü', 'Ö', 'Ä', 'Ü'];
   state: InputCellState = InputCellState.UNCERTAIN;
   value: string = '';
+  usageMode: UsageMode = UsageMode.UNLIMITED;
 
   @Input() answer: string = '';
   @Input() label: string = '';
@@ -25,6 +27,8 @@ export class InputCellComponent implements OnInit, OnDestroy {
       [InputCellCommand.REVEAL, () => this.reveal()],
       [InputCellCommand.CLEAR, () => this.clear()],
       [InputCellCommand.CHECK, () => this.check()],
+      [InputCellCommand.SWITCH_MODE_TO_SINGLE, () => this.switchModeToSingle()],
+      [InputCellCommand.SWITCH_MODE_TO_UNLIMITED, () => this.switchModeToUnlimited()],
       [InputCellCommand.NOOP, () => {
       }],
     ]
@@ -52,6 +56,10 @@ export class InputCellComponent implements OnInit, OnDestroy {
 
   onDoubleClick(): void {
     this.executeCommand(InputCellCommand.REVEAL);
+  }
+
+  isReadOnly(): boolean {
+    return this.usageMode === UsageMode.SINGLE && this.state !== InputCellState.UNCERTAIN;
   }
 
   private executeCommand(command: InputCellCommand): void {
@@ -88,6 +96,14 @@ export class InputCellComponent implements OnInit, OnDestroy {
     if (this.state === InputCellState.CORRECT) {
       this.correctlyAnswered.emit(this.value);
     }
+  }
+
+  private switchModeToSingle(): void {
+    this.usageMode = UsageMode.SINGLE;
+  }
+
+  private switchModeToUnlimited(): void {
+    this.usageMode = UsageMode.UNLIMITED;
   }
 
   private clear(): void {

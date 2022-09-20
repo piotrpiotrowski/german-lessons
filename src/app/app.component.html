@@ -13,15 +13,9 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span class="title">{{title}}</span>
+      <app-usage-mode-switcher></app-usage-mode-switcher>
       <span class="spacer"></span>
-      <button mat-icon-button (click)=select.open() class="language-select">
-        <mat-select #select (selectionChange)="selectLanguage($event)" class="language-select-size">
-          <mat-option *ngFor="let language of languages" [value]="language">
-            {{language}}
-          </mat-option>
-        </mat-select>
-        <mat-icon>language</mat-icon>
-      </button>
+      <app-language-switcher></app-language-switcher>
     </mat-toolbar>
     <div class="router-outlet-content">
       <router-outlet></router-outlet>

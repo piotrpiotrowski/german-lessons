@@ -6,6 +6,8 @@ import {LanguageService} from '../language/language.service';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {Answer} from './answer.model';
 import {Language} from '../language/language';
+import {UsageModeService} from '../usage-mode/usage-mode.service';
+import {UsageMode} from '../usage-mode/usage-mode';
 
 @Component({
   selector: 'app-training-row',
@@ -25,7 +27,7 @@ export class TrainingRowComponent implements OnInit, OnDestroy {
     this.externalCommand = command;
   }
 
-  constructor(public languageService: LanguageService) {
+  constructor(public languageService: LanguageService, private usageModeService: UsageModeService) {
   }
 
   ngOnInit(): void {
@@ -36,6 +38,8 @@ export class TrainingRowComponent implements OnInit, OnDestroy {
       .pipe(map(_ => this.isDesktop()))
       .pipe(distinctUntilChanged())
       .subscribe(desktop => this.updateCellWith(desktop));
+    this.usageModeService.getCurrentUsageMode()
+      .subscribe(usageMode => this.dispatchUsageModeCommand(usageMode));
   }
 
   setCommandToCheck(): void {
@@ -49,6 +53,11 @@ export class TrainingRowComponent implements OnInit, OnDestroy {
 
   trackAnswers(index: number, answer: Answer): any {
     return answer.name;
+  }
+
+  private dispatchUsageModeCommand(usageMode: UsageMode) {
+    let command = usageMode === UsageMode.SINGLE ? InputCellCommand.SWITCH_MODE_TO_SINGLE : InputCellCommand.SWITCH_MODE_TO_UNLIMITED;
+    this.cellInputsCommand.next(command);
   }
 
   private isDesktop(): boolean {

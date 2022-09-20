@@ -7,6 +7,7 @@ import {InputCellState} from './input-cell-state';
 import {InputCellCommand} from './input-cell-command';
 import {By} from '@angular/platform-browser';
 import {BehaviorSubject} from 'rxjs';
+import {UsageMode} from '../usage-mode/usage-mode';
 
 describe('InputCellComponent', () => {
   let component: InputCellComponent;
@@ -74,6 +75,62 @@ describe('InputCellComponent', () => {
 
     // when
     fixture.detectChanges();
+  });
+
+  it('should disable input when the command is CHECK and an usage mode is SINGLE and the answer is correct', () => {
+    // given
+    component.answer = 'geben';
+    component.value = 'geben';
+    component.usageMode = UsageMode.SINGLE;
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CHECK);
+
+    // when
+    fixture.detectChanges();
+
+    // then
+    expect(fixture.nativeElement.querySelector('input').attributes['ng-reflect-disabled'].value).toEqual('true');
+  });
+
+  it('should disable input when the command is CHECK and an usage mode is SINGLE and the answer is wrong', () => {
+    // given
+    component.answer = 'geben';
+    component.value = 'wrong';
+    component.usageMode = UsageMode.SINGLE;
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CHECK);
+
+    // when
+    fixture.detectChanges();
+
+    // then
+    expect(fixture.nativeElement.querySelector('input').attributes['ng-reflect-disabled'].value).toEqual('true');
+  });
+
+  it('should switch an usage mode to SINGLE', () => {
+    // given
+    component.answer = 'geben';
+    component.value = 'geben';
+    component.usageMode = UsageMode.UNLIMITED;
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.SWITCH_MODE_TO_SINGLE);
+
+    // when
+    fixture.detectChanges();
+
+    // then
+    expect(component.usageMode).toEqual(UsageMode.SINGLE);
+  });
+
+  it('should switch an usage mode to UNLIMITED', () => {
+    // given
+    component.answer = 'geben';
+    component.value = 'geben';
+    component.usageMode = UsageMode.SINGLE;
+    component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.SWITCH_MODE_TO_UNLIMITED);
+
+    // when
+    fixture.detectChanges();
+
+    // then
+    expect(component.usageMode).toEqual(UsageMode.UNLIMITED);
   });
 
   it('should display a done icon when the state is CORRECT', () => {

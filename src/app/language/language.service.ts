@@ -249,7 +249,7 @@ export class LanguageService {
     return this.currentLanguage;
   }
 
-  selectLanguage(language: Language): void {
+  select(language: Language): void {
     this.currentLanguage = language;
   }
 

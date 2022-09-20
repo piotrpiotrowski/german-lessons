@@ -4,6 +4,8 @@ import {LanguageService} from '../../language/language.service';
 import {BehaviorSubject} from 'rxjs';
 import {InputCellCommand} from '../../input-cell/input-cell-command';
 import {SentencePartType} from './sentence-part-type.enum';
+import {UsageModeService} from '../../usage-mode/usage-mode.service';
+import {UsageMode} from '../../usage-mode/usage-mode';
 
 @Component({
   selector: 'app-sentence-row',
@@ -21,7 +23,7 @@ export class SentenceRowComponent implements OnInit {
     this.externalCommand = command;
   }
 
-  constructor(public languageService: LanguageService) {
+  constructor(public languageService: LanguageService, private usageModeService: UsageModeService) {
   }
 
   foundAnswers: string[] = [];
@@ -34,6 +36,12 @@ export class SentenceRowComponent implements OnInit {
   ngOnInit(): void {
     this.externalCommand
       .subscribe(command => this.handleCommand(command));
+    this.usageModeService.getCurrentUsageMode()
+      .subscribe(usageMode => this.dispatchUsageModeCommand(usageMode));
+  }
+
+  appendAnswerValue(answerValue: string): void {
+    this.foundAnswers.push(answerValue);
   }
 
   private handleCommand(command: InputCellCommand): void {
@@ -46,12 +54,13 @@ export class SentenceRowComponent implements OnInit {
     this.cellInputsCommand.next(command);
   }
 
-  appendAnswerValue(answerValue: string): void {
-    this.foundAnswers.push(answerValue);
-  }
-
   private extractAnswers = (): string[] =>
     this.currentSentence.parts
       .filter(part => part.type === SentencePartType.RIDDLE)
-      .map(sentencePart => sentencePart.value)
+      .map(sentencePart => sentencePart.value);
+
+  private dispatchUsageModeCommand(usageMode: UsageMode) {
+    let command = usageMode === UsageMode.SINGLE ? InputCellCommand.SWITCH_MODE_TO_SINGLE : InputCellCommand.SWITCH_MODE_TO_UNLIMITED;
+    this.cellInputsCommand.next(command);
+  }
 }
