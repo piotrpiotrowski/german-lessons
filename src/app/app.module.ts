@@ -48,6 +48,7 @@ import {
 import {AdjectiveSentenceComplementComponent} from './adjective-sentence-complement/adjective-sentence-complement.component';
 import {UsageModeSwitcherComponent} from './usage-mode/usage-mode-switcher/usage-mode-switcher.component';
 import {LanguageSwitcherComponent} from './language/language-switcher/language-switcher.component';
+import {VocabularyComponent} from './vocabulary/vocabulary.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import {LanguageSwitcherComponent} from './language/language-switcher/language-s
     PossessivePronounsSentenceComplementComponent,
     AdjectiveSentenceComplementComponent,
     UsageModeSwitcherComponent,
-    LanguageSwitcherComponent
+    LanguageSwitcherComponent,
+    VocabularyComponent
   ],
   imports: [
     BrowserModule,
