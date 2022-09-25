@@ -22,7 +22,7 @@ export class TrainingRowComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   resizeSubscription!: Subscription;
   @Input() trainingRowModel: TrainingRowModel = new TrainingRowModel(new Map<Language, string>(), 0, []);
-
+  @Input() showButton? = true;
   @Input() set command(command: BehaviorSubject<InputCellCommand>) {
     this.externalCommand = command;
   }

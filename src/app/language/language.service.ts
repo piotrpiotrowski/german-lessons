@@ -72,12 +72,15 @@ export class LanguageService {
       prepositionssentencecomplementMenuItem: 'Prepositions in sentence completion training',
       possessivepronounssentencecomplementMenuItem: 'Possessive pronouns in sentence completion training',
       adjectivecomplementMenuItem: 'Adjectives in sentence completion training',
+      vocabularyMenuItem: 'Vocabulary',
       sentences: 'sentences',
       randomBookId: 'Random book',
       partChoose: 'Choose testament',
       newPart: 'New testament',
       oldPart: 'Old testament',
-      we: 'we'
+      we: 'we',
+      words: 'words',
+      vocabularyTitle: 'Vocabulary training'
     },
     POLISH: {
       verbsFormsTitle: 'Trening czasowników nieregularnych',
@@ -153,12 +156,15 @@ export class LanguageService {
       prepositionssentencecomplementMenuItem: 'Przyimki w zdaniach',
       possessivepronounssentencecomplementMenuItem: 'Zaimki dzierżawcze w zdaniach',
       adjectivecomplementMenuItem: 'Przymiotniki w zdaniach',
+      vocabularyMenuItem: 'Słownictwo',
       sentences: 'zdań',
       randomBookId: 'Losowa księga',
       partChoose: 'Wybierz testament',
       newPart: 'Nowy testament',
       oldPart: 'Stary testament',
-      we: 'my'
+      we: 'my',
+      words: 'słowa',
+      vocabularyTitle: 'Słownictwo trening'
     },
     GERMAN: {
       verbsFormsTitle: 'Starke verben übungen',
@@ -234,12 +240,15 @@ export class LanguageService {
       prepositionssentencecomplementMenuItem: 'Präpositionen in den Sätze',
       possessivepronounssentencecomplementMenuItem: 'Possessivpronomen in den Sätze',
       adjectivecomplementMenuItem: 'Adjective in den Sätze',
+      vocabularyMenuItem: 'Wortschatz',
       sentences: 'Sätze',
       randomBookId: 'Willkürlichen Buch',
       partChoose: 'Wählen das Testament aus',
       newPart: 'Neues Testament',
       oldPart: 'Altes Testament',
-      we: 'wir'
+      we: 'wir',
+      words: 'Wörter',
+      vocabularyTitle: 'Wortschatz übungen'
     }
   };
 

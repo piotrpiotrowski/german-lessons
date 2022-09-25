@@ -1,1 +1,19 @@
-<p>vocabulary works!</p>
+<h3>{{languageService.getLabel('vocabularyTitle')}}</h3>
+<mat-expansion-panel class="control-panel">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{languageService.getLabel('lessonSummary') + (words ? words.length : 0) + ' ' + languageService.getLabel('words')}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div>
+    <app-command-buttons (selectedCommand)="onCommandSelect($event)"></app-command-buttons>
+    <div>
+      <app-responsive-button-toggle-group [title]="languageService.getLabel('levelChoose')" [options]="difficultyLevelOptions" [(model)]="difficultyLevel" (selectOption)="loadVocabulary()"></app-responsive-button-toggle-group>
+      <app-responsive-button-toggle-group [title]="languageService.getLabel('show')" [options]="filteringCategoryOptions" [(model)]="filteringCategory" (selectOption)="loadVocabulary()"></app-responsive-button-toggle-group>
+    </div>
+  </div>
+</mat-expansion-panel>
+<div>
+  <app-training-row *ngFor="let word of words; trackBy: trackWords" [command]="command" [trainingRowModel]="word" [showButton]="true"></app-training-row>
+</div>
+

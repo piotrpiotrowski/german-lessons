@@ -3,7 +3,7 @@
   <div class="question-cell" *ngFor="let answer of trainingRowModel.answers; trackBy: trackAnswers" [style.width]="cellWidth">
     <app-input-cell [command]="cellInputsCommand" [answer]="answer.value" [label]="languageService.getLabel(answer.name)"></app-input-cell>
   </div>
-  <div class="check-button-cell">
+  <div *ngIf="showButton" class="check-button-cell">
     <button mat-raised-button (click)="setCommandToCheck()" class="check-button">{{languageService.getLabel('check')}}</button>
   </div>
 </div>

@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 
-import { PersonalPronounsComponent } from './personal-pronouns.component';
+import {PersonalPronounsComponent} from './personal-pronouns.component';
 
 describe('PersonalPronounsComponent', () => {
   let component: PersonalPronounsComponent;
@@ -12,9 +12,7 @@ describe('PersonalPronounsComponent', () => {
       declarations: [PersonalPronounsComponent],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(PersonalPronounsComponent);
     component = fixture.componentInstance;
   });
