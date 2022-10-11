@@ -1,6 +1,17 @@
 <p>
-  {{title}}
-  <mat-button-toggle-group name="responsive-button-toggle-group"  [ngModel]="model" (ngModelChange)="modelChange.emit($event)" class="responsive-button-toggle-group">
-    <mat-button-toggle *ngFor="let option of options" (click)="onChange()" value="{{option.value}}" class="responsive-button-toggle-button">{{languageService.getLabel(option.label)}}</mat-button-toggle>
+  {{ title }}
+  <mat-button-toggle-group
+    name="responsive-button-toggle-group"
+    [ngModel]="model"
+    (ngModelChange)="modelChange.emit($event)"
+    class="responsive-button-toggle-group"
+  >
+    <mat-button-toggle
+      *ngFor="let option of options"
+      (click)="onChange()"
+      value="{{ option.value }}"
+      class="responsive-button-toggle-button"
+    >{{ languageService.getLabel(option.label) }}</mat-button-toggle
+    >
   </mat-button-toggle-group>
 </p>

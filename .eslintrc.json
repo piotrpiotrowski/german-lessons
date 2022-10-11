@@ -6,7 +6,8 @@
   "globals": {
     "localStorage": true,
     "fetch": true,
-    "console": true
+    "console": true,
+    "window": true
   },
   "overrides": [
     {

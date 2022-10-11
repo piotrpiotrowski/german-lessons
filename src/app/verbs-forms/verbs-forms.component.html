@@ -1,19 +1,45 @@
-<h3>{{languageService.getLabel('verbsFormsTitle')}}</h3>
+<h3>{{ languageService.getLabel("verbsFormsTitle") }}</h3>
 <mat-expansion-panel class="control-panel">
   <mat-expansion-panel-header>
     <mat-panel-title>
-      {{languageService.getLabel('lessonSummary') + (verbs ? verbs.length : 0) + ' ' + languageService.getLabel('verbs')}}
+      {{
+      languageService.getLabel("lessonSummary") +
+      (verbs ? verbs.length : 0) +
+      " " +
+      languageService.getLabel("verbs")
+      }}
     </mat-panel-title>
   </mat-expansion-panel-header>
   <div>
-    <app-command-buttons (selectedCommand)="onCommandSelect($event)"></app-command-buttons>
+    <app-command-buttons
+      (selectedCommand)="onCommandSelect($event)"
+    ></app-command-buttons>
     <div>
-      <app-responsive-button-toggle-group [title]="languageService.getLabel('levelChoose')" [options]="difficultyLevelOptions" [(model)]="difficultyLevel" (selectOption)="loadVerbsForms()"></app-responsive-button-toggle-group>
-      <app-responsive-button-toggle-group [title]="languageService.getLabel('auxiliaryVerbChoose')" [options]="auxiliaryVerbOptions" [(model)]="auxiliaryVerb" (selectOption)="loadVerbsForms()"></app-responsive-button-toggle-group>
-      <app-responsive-button-toggle-group [title]="languageService.getLabel('show')" [options]="filteringCategoryOptions" [(model)]="filteringCategory" (selectOption)="loadVerbsForms()"></app-responsive-button-toggle-group>
+      <app-responsive-button-toggle-group
+        [title]="languageService.getLabel('levelChoose')"
+        [options]="difficultyLevelOptions"
+        [(model)]="difficultyLevel"
+        (selectOption)="loadVerbsForms()"
+      ></app-responsive-button-toggle-group>
+      <app-responsive-button-toggle-group
+        [title]="languageService.getLabel('auxiliaryVerbChoose')"
+        [options]="auxiliaryVerbOptions"
+        [(model)]="auxiliaryVerb"
+        (selectOption)="loadVerbsForms()"
+      ></app-responsive-button-toggle-group>
+      <app-responsive-button-toggle-group
+        [title]="languageService.getLabel('show')"
+        [options]="filteringCategoryOptions"
+        [(model)]="filteringCategory"
+        (selectOption)="loadVerbsForms()"
+      ></app-responsive-button-toggle-group>
     </div>
   </div>
 </mat-expansion-panel>
 <div>
-  <app-training-row *ngFor="let verb of verbs; trackBy: trackVerbs" [command]="command" [trainingRowModel]="verb"></app-training-row>
+  <app-training-row
+    *ngFor="let verb of verbs; trackBy: trackVerbs"
+    [command]="command"
+    [trainingRowModel]="verb"
+  ></app-training-row>
 </div>

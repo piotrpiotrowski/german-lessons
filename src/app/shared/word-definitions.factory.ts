@@ -8,7 +8,7 @@ export class WordDefinitionsFactory {
 
   constructor(private csvContent: string, private multiplier: (wordDefinition: WordDefinition) => WordDefinition[] = wordDefinition => [wordDefinition]) {
     this.map = new CsvFinderService<WordDefinition>(csvContent, columns => this.mapToWordDefinition(columns))
-      .find((_) => true)
+      .find(() => true)
       .reduce((accumulator, wordDefinition) => this.appendToMap(accumulator, wordDefinition), new Map<string, WordDefinition>());
   }
 

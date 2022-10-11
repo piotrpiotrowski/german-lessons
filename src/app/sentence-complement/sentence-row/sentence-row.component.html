@@ -1,16 +1,34 @@
 <div class="row-question">
-  <div class="foreign-translation">{{currentSentence.getInfinitiveTranslations(languageService.getCurrentLanguage())}} ({{currentSentence.getReferencesTranslations(languageService.getCurrentLanguage())}})</div>
+  <div class="foreign-translation">
+    {{
+    currentSentence.getInfinitiveTranslations(
+      languageService.getCurrentLanguage()
+    )
+    }}
+    ({{
+    currentSentence.getReferencesTranslations(
+      languageService.getCurrentLanguage()
+    )
+    }})
+  </div>
   <div class="sentence-row">
     <ng-container *ngFor="let part of currentSentence.parts">
       <ng-container [ngSwitch]="part.type">
-        <span *ngSwitchCase="'TEXT'" class="text-cell">{{part.value}}</span>
+        <span *ngSwitchCase="'TEXT'" class="text-cell">{{ part.value }}</span>
         <div *ngSwitchCase="'RIDDLE'" class="riddle-cell">
-          <app-input-cell [command]="cellInputsCommand" [answer]="part.value" [label]="''" (correctlyAnswered)="appendAnswerValue($event)"></app-input-cell>
+          <app-input-cell
+            [command]="cellInputsCommand"
+            [answer]="part.value"
+            [label]="''"
+            (correctlyAnswered)="appendAnswerValue($event)"
+          ></app-input-cell>
         </div>
       </ng-container>
     </ng-container>
   </div>
 </div>
 <div *ngIf="foundAnswers.length >= numberOfAnswers" class="answer-row">
-  {{currentSentence.getTextTranslations(languageService.getCurrentLanguage())}}
+  {{
+  currentSentence.getTextTranslations(languageService.getCurrentLanguage())
+  }}
 </div>

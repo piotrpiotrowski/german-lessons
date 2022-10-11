@@ -1,15 +1,26 @@
-<h3>{{languageService.getLabel('personalPronounsTitle')}}</h3>
+<h3>{{ languageService.getLabel("personalPronounsTitle") }}</h3>
 <mat-expansion-panel class="control-panel">
   <mat-expansion-panel-header>
     <mat-panel-title>
-      {{languageService.getLabel('lessonSummary') + (pronouns ? pronouns.length : 0) + ' ' + languageService.getLabel('pronouns')}}
+      {{
+      languageService.getLabel("lessonSummary") +
+      (pronouns ? pronouns.length : 0) +
+      " " +
+      languageService.getLabel("pronouns")
+      }}
     </mat-panel-title>
   </mat-expansion-panel-header>
   <div>
-    <app-command-buttons (selectedCommand)="onCommandSelect($event)"></app-command-buttons>
+    <app-command-buttons
+      (selectedCommand)="onCommandSelect($event)"
+    ></app-command-buttons>
   </div>
 </mat-expansion-panel>
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div *ngIf="!loading">
-  <app-training-row *ngFor="let pronoun of pronouns" [command]="command"  [trainingRowModel]="pronoun"></app-training-row>
+  <app-training-row
+    *ngFor="let pronoun of pronouns"
+    [command]="command"
+    [trainingRowModel]="pronoun"
+  ></app-training-row>
 </div>

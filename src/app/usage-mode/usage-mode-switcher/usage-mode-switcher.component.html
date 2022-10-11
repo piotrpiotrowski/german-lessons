@@ -1,5 +1,20 @@
 <div class="usage-mode-select">
-  <mat-icon aria-hidden="true" (click)="switchToUsageModeUnlimited()" [ngClass]="{'unlimited': !isUsageModeUnlimited(), 'selected': isUsageModeUnlimited()}">model_training</mat-icon>
+  <mat-icon
+    aria-hidden="true"
+    (click)="switchToUsageModeUnlimited()"
+    [ngClass]="{
+      unlimited: !isUsageModeUnlimited(),
+      selected: isUsageModeUnlimited()
+    }"
+  >model_training
+  </mat-icon
+  >
   <span class="spliter">|</span>
-  <mat-icon aria-hidden="true" (click)="switchToUsageModeSingle()" [ngClass]="{'single': !isUsageModeSingle(), 'selected': isUsageModeSingle()}">casino</mat-icon>
+  <mat-icon
+    aria-hidden="true"
+    (click)="switchToUsageModeSingle()"
+    [ngClass]="{ single: !isUsageModeSingle(), selected: isUsageModeSingle() }"
+  >casino
+  </mat-icon
+  >
 </div>

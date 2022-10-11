@@ -16,7 +16,7 @@ export class DrawingService {
     return models.filter(value => attributeExtractor(value) === selectedAttributeValue);
   }
 
-  private createListOfRandomIndexes<T>(listSize: number, maxValue: number): number[] {
+  private createListOfRandomIndexes(listSize: number, maxValue: number): number[] {
     const randomIndexes = new Set<number>();
     while (randomIndexes.size !== listSize) {
       randomIndexes.add(this.drawRandomNumber(maxValue));

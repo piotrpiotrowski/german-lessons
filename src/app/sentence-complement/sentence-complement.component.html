@@ -1,20 +1,46 @@
-<h3>{{title}}</h3>
+<h3>{{ title }}</h3>
 <mat-expansion-panel class="control-panel">
   <mat-expansion-panel-header>
     <mat-panel-title>
-      {{languageService.getLabel('lessonSummary') + (sentences ? sentences.length : 0) + ' ' + languageService.getLabel('sentences')}}
+      {{
+      languageService.getLabel("lessonSummary") +
+      (sentences ? sentences.length : 0) +
+      " " +
+      languageService.getLabel("sentences")
+      }}
     </mat-panel-title>
   </mat-expansion-panel-header>
   <div>
-    <app-command-buttons (selectedCommand)="onCommandSelect($event)"></app-command-buttons>
+    <app-command-buttons
+      (selectedCommand)="onCommandSelect($event)"
+    ></app-command-buttons>
     <div>
-      <app-responsive-button-toggle-group [title]="languageService.getLabel('levelChoose')" [options]="difficultyLevelOptions" [(model)]="difficultyLevel" (selectOption)="loadSentences()"></app-responsive-button-toggle-group>
-      <app-responsive-button-toggle-group [title]="languageService.getLabel('partChoose')" [options]="partOptions" [(model)]="part" (selectOption)="loadSentences()"></app-responsive-button-toggle-group>
-      <app-responsive-button-toggle-group [title]="languageService.getLabel('show')" [options]="filteringCategoryOptions" [(model)]="filteringCategory" (selectOption)="loadSentences()"></app-responsive-button-toggle-group>
+      <app-responsive-button-toggle-group
+        [title]="languageService.getLabel('levelChoose')"
+        [options]="difficultyLevelOptions"
+        [(model)]="difficultyLevel"
+        (selectOption)="loadSentences()"
+      ></app-responsive-button-toggle-group>
+      <app-responsive-button-toggle-group
+        [title]="languageService.getLabel('partChoose')"
+        [options]="partOptions"
+        [(model)]="part"
+        (selectOption)="loadSentences()"
+      ></app-responsive-button-toggle-group>
+      <app-responsive-button-toggle-group
+        [title]="languageService.getLabel('show')"
+        [options]="filteringCategoryOptions"
+        [(model)]="filteringCategory"
+        (selectOption)="loadSentences()"
+      ></app-responsive-button-toggle-group>
     </div>
   </div>
 </mat-expansion-panel>
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div *ngIf="!loading">
-  <app-sentence-row *ngFor="let sentence of sentences" [command]="command" [sentence]="sentence"></app-sentence-row>
+  <app-sentence-row
+    *ngFor="let sentence of sentences"
+    [command]="command"
+    [sentence]="sentence"
+  ></app-sentence-row>
 </div>

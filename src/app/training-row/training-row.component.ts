@@ -35,7 +35,7 @@ export class TrainingRowComponent implements OnInit, OnDestroy {
     this.subscription = this.externalCommand
       .subscribe(command => this.cellInputsCommand.next(command));
     this.resizeSubscription = fromEvent(window, 'resize')
-      .pipe(map(_ => this.isDesktop()))
+      .pipe(map(() => this.isDesktop()))
       .pipe(distinctUntilChanged())
       .subscribe(desktop => this.updateCellWith(desktop));
     this.usageModeService.getCurrentUsageMode()
