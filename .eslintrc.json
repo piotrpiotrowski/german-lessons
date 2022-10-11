@@ -3,7 +3,30 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
+  "globals": {
+    "localStorage": true,
+    "fetch": true,
+    "console": true
+  },
   "overrides": [
+    {
+      "env": {
+        "jasmine": true
+      },
+      "files": [
+        "**/*.spec.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.spec.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+      ],
+      "rules": {
+      }
+    },
     {
       "files": [
         "*.ts"
@@ -15,6 +38,7 @@
         "createDefaultProgram": true
       },
       "extends": [
+        "eslint:recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
@@ -34,6 +58,12 @@
             "prefix": "app",
             "style": "kebab-case"
           }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "argsIgnorePattern": "_"
+          }
         ]
       }
     },
@@ -42,9 +72,12 @@
         "*.html"
       ],
       "extends": [
-        "plugin:@angular-eslint/template/recommended"
+        "plugin:@angular-eslint/template/recommended",
+        "plugin:prettier/recommended"
       ],
-      "rules": {}
+      "rules": {
+        "prettier/prettier": ["error", { "parser": "angular" }]
+      }
     }
   ]
 }
