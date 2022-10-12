@@ -2,6 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {VerbsConjunctionsComponent} from './verbs-conjunctions.component';
+import {of} from 'rxjs';
 
 describe('VerbsConjunctionsComponent', () => {
   let component: VerbsConjunctionsComponent;
@@ -22,7 +23,7 @@ describe('VerbsConjunctionsComponent', () => {
   it('should create', () => {
     // given
     const finderService = jasmine.createSpyObj('finderService', ['find']);
-    finderService.find.and.returnValue([]);
+    finderService.find.and.returnValue(of([]));
     component.finderService = finderService;
 
     // when

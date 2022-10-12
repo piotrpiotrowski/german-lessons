@@ -1,4 +1,7 @@
-export const rawPresentSimpleVerbsConjunctions = `bake;piec;Indikativ Präsens;ich backe;du bäckst;er/sie/es bäckt;wir backen;ihr backt;Sie backen;2
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const presentSimpleVerbsConjunctions = new CsvParser().parseToMatrix(of(`bake;piec;Indikativ Präsens;ich backe;du bäckst;er/sie/es bäckt;wir backen;ihr backt;Sie backen;2
 command;rozkazywać;Indikativ Präsens;ich befehle;du befiehlst;er/sie/es befiehlt;wir befehlen;ihr befehlt;Sie befehlen;2
 salvage;zbawiać;Indikativ Präsens;ich berge;du birgst;er/sie/es birgt;wir bergen;ihr bergt;Sie bergen;3
 burst;pękać;Indikativ Präsens;ich berste;du birst;er/sie/es birst;wir bersten;ihr berstet;Sie bersten;4
@@ -61,4 +64,4 @@ become;stać się, zostać;Indikativ Präsens;ich werde;du wirst;er/sie/es wird;
 throw;rzucać;Indikativ Präsens;ich werfe;du wirfst;er/sie/es wirft;wir werfen;ihr werft;Sie werfen;2
 know;wiedzieć;Indikativ Präsens;ich weiß;du weißt;er/sie/es weiß;wir wissen;ihr wisst;Sie wissen
 Indikativ Präsens;ich weiß;du weißt;er/sie/es weiß;wir wissen;ihr wißt;Sie wissen;1
-want;chcieć;Indikativ Präsens;ich will;du willst;er/sie/es will;wir wollen;ihr wollt;Sie wollen;4`;
+want;chcieć;Indikativ Präsens;ich will;du willst;er/sie/es will;wir wollen;ihr wollt;Sie wollen;4`));

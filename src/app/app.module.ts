@@ -49,6 +49,7 @@ import {AdjectiveSentenceComplementComponent} from './adjective-sentence-complem
 import {UsageModeSwitcherComponent} from './usage-mode/usage-mode-switcher/usage-mode-switcher.component';
 import {LanguageSwitcherComponent} from './language/language-switcher/language-switcher.component';
 import {VocabularyComponent} from './vocabulary/vocabulary.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import {VocabularyComponent} from './vocabulary/vocabulary.component';
     RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatSidenavModule,
     MatMenuModule,
     MatToolbarModule,

@@ -2,18 +2,19 @@ import {Injectable, Predicate} from '@angular/core';
 import {TrainingRowModel} from '../training-row/training-row.model';
 import {Answer} from '../training-row/answer.model';
 import {Language} from '../language/language';
-import {CsvFinderService} from '../shared/csv-finder.service';
+import {MatrixFinderService} from '../shared/matrix-finder.service';
 import {FinderService} from '../shared/finder.service';
-import {rawPastSimpleVerbsConjunctions} from './past-simple-verbs-conjunctions.datasource';
+import {pastSimpleVerbsConjunctions} from './past-simple-verbs-conjunctions.datasource';
+import {of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PastSimpleVerbsConjunctionsService implements FinderService<TrainingRowModel> {
 
-  private finderService = new CsvFinderService<TrainingRowModel>(rawPastSimpleVerbsConjunctions, (columns) => {
+  private finderService = new MatrixFinderService<TrainingRowModel>(pastSimpleVerbsConjunctions, (columns) => {
       const extractVerb = (definition: string) => definition.substring(definition.indexOf(' ') + 1);
-      return new TrainingRowModel(new Map<Language, string>([[Language.ENGLISH, columns[0]], [Language.POLISH, columns[1]], [Language.GERMAN, extractVerb(columns[2])]]),
+      return of(new TrainingRowModel(new Map<Language, string>([[Language.ENGLISH, columns[0]], [Language.POLISH, columns[1]], [Language.GERMAN, extractVerb(columns[2])]]),
         +columns[10],
         [
           new Answer('i', extractVerb(columns[4])),
@@ -21,7 +22,7 @@ export class PastSimpleVerbsConjunctionsService implements FinderService<Trainin
           new Answer('heSheIt', extractVerb(columns[6])),
           new Answer('we', extractVerb(columns[7])),
           new Answer('youPlural', extractVerb(columns[8]))
-        ]);
+        ]));
     }
   );
 

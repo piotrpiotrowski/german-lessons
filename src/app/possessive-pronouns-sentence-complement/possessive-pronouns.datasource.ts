@@ -1,4 +1,7 @@
-export const rawPossessivePronouns = `mein;mine (m);mój;mein;1
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const possessivePronouns = new CsvParser().parseToMatrix(of(`mein;mine (m);mój;mein;1
 meines;mine (m);mój;meines;1
 meinen;mine (m);mój;meinen;1
 meinem;mine (m);mój;meinem;1
@@ -39,4 +42,4 @@ unserer;ours (f);nasza;unserer;3
 eure;yours (f);wasza;eure;4
 eurer;yours (f);wasza;eurer;4
 ihre;theirs (f);ich (ż);ihre;3
-ihrer;theirs (f);ich (ż);ihrer;3`;
+ihrer;theirs (f);ich (ż);ihrer;3`));

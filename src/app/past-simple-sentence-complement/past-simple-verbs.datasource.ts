@@ -1,4 +1,7 @@
-export const rawPastSimpleVerbs = `backte;bake;piec;backen;2
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const pastSimpleVerbs = new CsvParser().parseToMatrix(of(`backte;bake;piec;backen;2
 backten;bake;piec;backen;2
 backtest;bake;piec;backen;2
 backtet;bake;piec;backen;2
@@ -754,4 +757,4 @@ schaffte;create;tworzyć;schaffen;2
 schafften;create;tworzyć;schaffen;2
 schoß;shoot;strzelać;schießen;3
 wendete;turn;odwracać;wenden;2
-wendeten;turn;odwracać;wenden;2`;
+wendeten;turn;odwracać;wenden;2`));

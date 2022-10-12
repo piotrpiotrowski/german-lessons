@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BehaviorSubject, of} from 'rxjs';
+import {BehaviorSubject, NEVER, Observable} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
 import {finalize} from 'rxjs/operators';
@@ -14,7 +14,7 @@ import {LanguageService} from '../language/language.service';
 export class PersonalPronounsComponent implements OnInit {
 
   command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
-  pronouns: TrainingRowModel[] = [];
+  pronouns: Observable<TrainingRowModel[]> = NEVER;
   loading: boolean = false;
 
   constructor(private personalPronounsService: PersonalPronounsService, public languageService: LanguageService) {
@@ -26,13 +26,8 @@ export class PersonalPronounsComponent implements OnInit {
 
   loadPronouns(): void {
     this.loading = true;
-    of(this.personalPronounsService.find(() => true))
-      .pipe(finalize(() => this.loading = false))
-      .subscribe({
-          next: pronouns => this.pronouns = pronouns,
-          error: console.error
-        }
-      );
+    this.pronouns = this.personalPronounsService.find(() => true)
+      .pipe(finalize(() => this.loading = false));
   }
 
   onCommandSelect(selectedCommand: InputCellCommand): void {

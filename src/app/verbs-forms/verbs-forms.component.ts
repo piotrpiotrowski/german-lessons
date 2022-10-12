@@ -1,12 +1,13 @@
 import {Component, OnInit, Predicate} from '@angular/core';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
-import {BehaviorSubject, of} from 'rxjs';
+import {BehaviorSubject, NEVER, Observable} from 'rxjs';
 import {VerbsFormsService} from './verbs-forms.service';
 import {LanguageService} from '../language/language.service';
 import {Option} from '../responsive-button-toggle-group/option.model';
 import {DrawingService} from '../shared/drawing.service';
 import {Language} from '../language/language';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-verbs-forms',
@@ -15,8 +16,8 @@ import {Language} from '../language/language';
 })
 export class VerbsFormsComponent implements OnInit {
 
+  verbs: Observable<TrainingRowModel[]> = NEVER;
   command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
-  verbs: TrainingRowModel[] = [];
   difficultyLevelOptions = [
     new Option('all', '0'),
     new Option('beginner', '1'),
@@ -45,25 +46,31 @@ export class VerbsFormsComponent implements OnInit {
     ['RANDOM_10', verbs => this.drawingService.filterRandomEntries<TrainingRowModel>(10, verbs)]
   ]);
 
-  constructor(private verbsFormsService: VerbsFormsService, public languageService: LanguageService, private drawingService: DrawingService) {
+  constructor(private verbsFormsService: VerbsFormsService,
+              public languageService: LanguageService,
+              private drawingService: DrawingService) {
   }
 
   ngOnInit(): void {
     this.loadVerbsForms();
   }
 
-  loadVerbsForms(): void {
+  loadVerbsForms() {
     this.command.next(InputCellCommand.CLEAR);
-    of(this.verbsFormsService.find(this.buildSearchPredicate()))
-      .subscribe({
-        next: verbs => this.verbs = this.filterByCategory(verbs),
-        error: console.error
-      });
+    this.verbs = this.loadVerbs();
   }
 
   trackVerbs(index: number, item: TrainingRowModel): any {
     return item.getTranslation(Language.GERMAN);
   }
+
+  onCommandSelect(selectedCommand: InputCellCommand): void {
+    this.command.next(selectedCommand);
+  }
+
+  private loadVerbs = () =>
+    this.verbs = this.verbsFormsService.find(this.buildSearchPredicate())
+      .pipe(map(verbs => this.filterByCategory(verbs)));
 
   private filterByCategory(verbs: TrainingRowModel[]): TrainingRowModel[] {
     return this.filtersForCategories.get(this.filteringCategory)!(verbs);
@@ -84,9 +91,5 @@ export class VerbsFormsComponent implements OnInit {
 
   private auxiliaryVerbCondition(verbForm: TrainingRowModel): boolean {
     return this.auxiliaryVerb === 'both' || verbForm.answers[3].value.startsWith(this.auxiliaryVerb);
-  }
-
-  onCommandSelect(selectedCommand: InputCellCommand): void {
-    this.command.next(selectedCommand);
   }
 }

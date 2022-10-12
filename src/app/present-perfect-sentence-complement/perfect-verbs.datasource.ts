@@ -1,4 +1,7 @@
-export const rawPerfectVerbs = `gebacken;bake;piec;backen;2
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const perfectVerbs = new CsvParser().parseToMatrix(of(`gebacken;bake;piec;backen;2
 befohlen;command;rozkazywać;befehlen;2
 begonnen;begin;zaczynać;beginnen;2
 gebissen;bite;gryźć;beißen;3
@@ -182,4 +185,4 @@ gewusst;know;wiedzieć;wissen;1
 gewollt;want;chcieć;wollen;4
 gewrungen;wring;wyżymać;wringen;4
 gezogen;pull, move;ciągnąć;ziehen;2
-gezwungen;force;zmuszać;zwingen;3`;
+gezwungen;force;zmuszać;zwingen;3`));

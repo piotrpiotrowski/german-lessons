@@ -1,4 +1,7 @@
-export const rawPrepositions = `aus;out of;z, ze środka;aus;1
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const prepositions = new CsvParser().parseToMatrix(of(`aus;out of;z, ze środka;aus;1
 außer;except for;oprócz;außer;1
 bei;at;u, przy, koło;bei;1
 gegenüber;opposite of, toward someone, across from;naprzeciwko;gegenüber;1
@@ -48,4 +51,4 @@ im;in (+ article);do, we wnętrzu (+ rodzajnik);in dem;4
 zur;to (+ article);do, ku (+ rodzajnik);zu der;4
 zum;to (+ article);do, ku (+ rodzajnik);zu dem;4
 aufs;into, onto, up  (+ article);na, w poziomie (+ rodzajnik);auf das;3
-vom;from (+ article);od, o, z (+ rodzajnik);von dem;4`;
+vom;from (+ article);od, o, z (+ rodzajnik);von dem;4`));

@@ -1,4 +1,7 @@
-export const rawNounDictionary = `das Abendessen;dinner,supper;kolacja;Abendessen;1
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const nounDictionary = new CsvParser().parseToMatrix(of(`das Abendessen;dinner,supper;kolacja;Abendessen;1
 das Alter;age;wiek;Alter;1
 das Auge;eye;oko;Auge;1
 das Auto;car;samochód, auto;Auto;1
@@ -1164,4 +1167,4 @@ der Zitrone;lemon;cytryna;Zitrone;1
 der Zukunft;future;przyszłość;Zukunft;1
 der Zunge;tongue;język;Zunge;1
 der Zwetsch;plum;Śliwka;Zwetsch;1
-der Zwiebel;onion;cebula;Zwiebel;1`;
+der Zwiebel;onion;cebula;Zwiebel;1`));

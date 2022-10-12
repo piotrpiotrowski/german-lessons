@@ -3,10 +3,10 @@
   <mat-expansion-panel-header>
     <mat-panel-title>
       {{
-      languageService.getLabel("lessonSummary") +
-      (pronouns ? pronouns.length : 0) +
-      " " +
-      languageService.getLabel("pronouns")
+        languageService.getLabel("lessonSummary") +
+          (pronouns | async)?.length +
+          " " +
+          languageService.getLabel("pronouns")
       }}
     </mat-panel-title>
   </mat-expansion-panel-header>
@@ -25,7 +25,7 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div *ngIf="!loading">
   <app-training-row
-    *ngFor="let pronoun of pronouns"
+    *ngFor="let pronoun of pronouns | async"
     [command]="command"
     [trainingRowModel]="pronoun"
   ></app-training-row>

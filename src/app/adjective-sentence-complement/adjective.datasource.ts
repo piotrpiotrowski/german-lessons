@@ -1,4 +1,7 @@
-export const rawAdjective = `verängstigt;scared;wystraszony, zatrwożony;verängstigt;1
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const adjective = new CsvParser().parseToMatrix(of(`verängstigt;scared;wystraszony, zatrwożony;verängstigt;1
 horizontal;horizontal;horyzontalny;horizontal;1
 kindlich;like a child, childlike;dziecięco, dziecinnie;kindlich;1
 dickköpfig;stubbornly, pigheadedly, bullishly;twardogłowy;dickköpfig;1
@@ -992,4 +995,4 @@ beleidigt;offended;obrażony, urażony;beleidigt;1
 mies;mean,nasty;brzydki, kiepski, podły, lichy;mies;1
 hoffnungsvoll;hopeful;pełen nadziei;hoffnungsvoll;1
 redlich;honest, sincere, has integrity;słowny, rzetelny, prawidłowy, godny zaufania, rzeczowy;redlich;1
-teamfähig;be a team player;zdolny do pracy zespołowej;teamfähig;1`;
+teamfähig;be a team player;zdolny do pracy zespołowej;teamfähig;1`));

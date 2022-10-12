@@ -3,10 +3,11 @@ import {Sentence} from '../sentence-complement/sentence-row/sentence.model';
 import {FinderService} from '../shared/finder.service';
 import {SentenceMapper} from '../shared/sentence.mapper';
 import {WordDefinitionsFactory} from '../shared/word-definitions.factory';
-import {InmemoryFinderService} from '../shared/inmemory-finder.service';
-import {sentences} from '../shared/sentences.datasource';
-import {rawAdjective} from './adjective.datasource';
+import {adjective} from './adjective.datasource';
 import {AdjectiveMultiplierService} from './adjective-multiplier.service';
+import {MatrixFinderService} from '../shared/matrix-finder.service';
+import {SentencesLoaderService} from '../shared/sentences-loader.service';
+import {CsvParser} from '../shared/csv-parser';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,16 @@ import {AdjectiveMultiplierService} from './adjective-multiplier.service';
 export class AdjectiveSentenceService implements FinderService<Sentence> {
 
   private finderService: FinderService<Sentence>;
-  private wordDefinitionsFactory: WordDefinitionsFactory;
 
-  constructor(private sentenceMapper: SentenceMapper, private adjectiveMultiplierService: AdjectiveMultiplierService) {
-    this.wordDefinitionsFactory = new WordDefinitionsFactory(rawAdjective, adjectiveMultiplierService.multiply);
-    this.finderService = new InmemoryFinderService<Sentence>(sentences, columns => this.sentenceMapper.map(columns, this.wordDefinitionsFactory.create()));
+  constructor(private sentenceMapper: SentenceMapper,
+              private adjectiveMultiplierService: AdjectiveMultiplierService,
+              private sentencesLoaderService: SentencesLoaderService) {
+    const wordDefinitionsFactory = new WordDefinitionsFactory(adjective, adjectiveMultiplierService.multiply);
+    const wordsDefinitions = wordDefinitionsFactory.create();
+    this.finderService = new MatrixFinderService(
+      new CsvParser().parseToMatrix(this.sentencesLoaderService.load()),
+      columns => this.sentenceMapper.map(columns, wordsDefinitions)
+    );
   }
 
   find = (predicate: Predicate<Sentence>) => this.finderService.find(predicate);

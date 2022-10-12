@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { NounsPluralFormComponent } from './nouns-plural-form.component';
+import {NounsPluralFormComponent} from './nouns-plural-form.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('NounsPluralFormComponent', () => {

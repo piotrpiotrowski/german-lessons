@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 
 import {VocabularyService} from './vocabulary.service';
-import {count, reduce, take, toArray} from 'rxjs/operators';
+import {count, reduce, switchMap, take, toArray} from 'rxjs/operators';
 import {Language} from '../language/language';
 import {from} from 'rxjs';
 
@@ -13,9 +13,10 @@ describe('VocabularyService', () => {
     service = TestBed.inject(VocabularyService);
   });
 
-  it('should take two from list', (done: DoneFn) => {
+  it('should take two from list', (done) => {
     // when
-    from(service.find(() => true))
+    service.find(() => true)
+      .pipe(switchMap(from))
       .pipe(take(2))
       .pipe(toArray())
       .subscribe({
@@ -30,9 +31,10 @@ describe('VocabularyService', () => {
       });
   });
 
-  it('should count elements on the list', (done: DoneFn) => {
+  it('should count elements on the list', (done) => {
     // when
-    from(service.find(() => true))
+    service.find(() => true)
+      .pipe(switchMap(from))
       .pipe(count())
       .subscribe({
         // then
@@ -44,9 +46,10 @@ describe('VocabularyService', () => {
       });
   });
 
-  it('should not have duplicated english translations', (done: DoneFn) => {
+  it('should not have duplicated english translations', (done) => {
     // when
-    from(service.find(() => true))
+    service.find(() => true)
+      .pipe(switchMap(from))
       .pipe(reduce((accumulator, value) => accumulator.set(value.getTranslation(Language.ENGLISH), (accumulator.get(value.getTranslation(Language.ENGLISH)) || 0) + 1), new Map<any, number>()))
       .subscribe({
         // then
@@ -59,9 +62,10 @@ describe('VocabularyService', () => {
       });
   });
 
-  it('should not have duplicated polish translations', (done: DoneFn) => {
+  it('should not have duplicated polish translations', (done) => {
     // when
-    from(service.find(() => true))
+    service.find(() => true)
+      .pipe(switchMap(from))
       .pipe(reduce((accumulator, value) => accumulator.set(value.getTranslation(Language.POLISH), (accumulator.get(value.getTranslation(Language.POLISH)) || 0) + 1), new Map<any, number>()))
       .subscribe({
         // then

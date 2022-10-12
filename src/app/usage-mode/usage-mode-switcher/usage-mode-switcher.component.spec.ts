@@ -31,7 +31,7 @@ describe('UsageModeSwitcherComponent', () => {
     fixture.detectChanges();
 
     // then
-    expect(fixture.nativeElement.querySelectorAll('mat-icon')[0].textContent).toEqual('model_training');
+    expect(fixture.nativeElement.querySelectorAll('mat-icon')[0].textContent).toEqual('model_training ');
   });
 
   it('should display a play icon', () => {
@@ -39,7 +39,7 @@ describe('UsageModeSwitcherComponent', () => {
     fixture.detectChanges();
 
     // then
-    expect(fixture.nativeElement.querySelectorAll('mat-icon')[1].textContent).toEqual('casino');
+    expect(fixture.nativeElement.querySelectorAll('mat-icon')[1].textContent).toEqual('casino ');
   });
 
   it('should have usage mode UNLIMITED by default', () => {

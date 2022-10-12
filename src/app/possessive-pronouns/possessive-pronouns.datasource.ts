@@ -1,4 +1,7 @@
-export const rawPossessivePronouns = `I sing. m;ja lp. r.m;mein;meines;meinen;meinem;1;ich sing. m
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const possessivePronouns = new CsvParser().parseToMatrix(of(`I sing. m;ja lp. r.m;mein;meines;meinen;meinem;1;ich sing. m
 you sing. m;ty lp. r.m;dein;deines;deinen;deinem;1;du sing. m.
 he sing. m.;on lp. r.m;sein;seines;seinen;seinem;1;er sing. m.
 she sing. m.;ona lp. r.m;ihr;ihres;ihren;ihrem;1;sie sing. m.
@@ -33,4 +36,4 @@ it plur.;ono lm;seine;seiner;seine;seinen;4;es plur.
 we plur.;my lm;unsere;unserer;unsere;unseren;4;wir plur.
 you plur.;wy lm;eure;eurer;eure;euren;4;ihr plur.
 they plur.;oni lm;ihre;ihrer;ihre;ihren;4;sie plur.
-they formal plur.;Państwo lm;Ihre;Ihrer;Ihre;Ihren;4;Sie plur.`;
+they formal plur.;Państwo lm;Ihre;Ihrer;Ihre;Ihren;4;Sie plur.`));

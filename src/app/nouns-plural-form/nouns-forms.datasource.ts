@@ -1,4 +1,7 @@
-export const rawNounsForms = `das Abendessen;die Abendessen;Dinner;4;kolacja
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const nounsForms = new CsvParser().parseToMatrix(of(`das Abendessen;die Abendessen;Dinner;4;kolacja
 das Abenteuer;die Abenteuer;Adventure;4;Przygoda
 das Abzeichen;die Abzeichen;Badge;4;Odznaka
 das Ahorn;die Ahorne;Maple;2;Klon
@@ -1707,4 +1710,4 @@ die Überraschung;die Überraschungen;Surprise;4;Niespodzianka
 die Übersetzung;die Übersetzungen;Translation;4;Tłumaczenie
 die Übertragungs;die Übertragungen;Transmission;4;Przenoszenie
 die Überzeugung;die Überzeugungen;Conviction;4;Przekonanie
-die Übung;die Übungen;Exercise;2;Ćwiczenie`;
+die Übung;die Übungen;Exercise;2;Ćwiczenie`));

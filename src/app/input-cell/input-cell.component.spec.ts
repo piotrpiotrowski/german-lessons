@@ -58,7 +58,7 @@ describe('InputCellComponent', () => {
     expect(fixture.nativeElement.querySelector('mat-icon').textContent).toEqual('done');
   });
 
-  it('should emit a correctlyAnswered event when the state is CORRECT', (done: DoneFn) => {
+  it('should emit a correctlyAnswered event when the state is CORRECT', (done) => {
     // given
     component.answer = 'geben';
     component.value = 'geben';

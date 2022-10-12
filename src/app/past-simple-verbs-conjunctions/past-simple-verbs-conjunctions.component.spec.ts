@@ -1,7 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 
-import { PastSimpleVerbsConjunctionsComponent } from './past-simple-verbs-conjunctions.component';
+import {PastSimpleVerbsConjunctionsComponent} from './past-simple-verbs-conjunctions.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('PastSimpleVerbsConjunctionsComponent', () => {
   let component: PastSimpleVerbsConjunctionsComponent;
@@ -9,6 +10,7 @@ describe('PastSimpleVerbsConjunctionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [PastSimpleVerbsConjunctionsComponent],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();

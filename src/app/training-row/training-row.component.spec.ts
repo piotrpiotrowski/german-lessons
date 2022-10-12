@@ -54,7 +54,7 @@ describe('TrainingRowComponent', () => {
     // then
     const button = fixture.nativeElement.querySelector('button');
     expect(button).toBeTruthy();
-    expect(button.textContent).toEqual('Check');
+    expect(button.textContent).toEqual(' Check ');
   });
 
   it('should emit a command to CHECK when a check button was clicked', () => {
@@ -101,7 +101,7 @@ describe('TrainingRowComponent', () => {
     expect(expectedCellInputsCommand).toEqual(InputCellCommand.REVEAL);
   });
 
-  it('should set command to CLEAR', (done: DoneFn) => {
+  it('should set command to CLEAR', (done) => {
     // given
     component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
@@ -141,7 +141,7 @@ describe('TrainingRowComponent', () => {
     // then
     const label = fixture.nativeElement.querySelector('.foreign-translation');
     expect(label).toBeTruthy();
-    expect(label.textContent).toEqual('begin');
+    expect(label.textContent).toEqual(' begin ');
   });
 
   it('should have a english label when a selected language is ENGLISH', () => {
@@ -163,7 +163,7 @@ describe('TrainingRowComponent', () => {
     // then
     const label = fixture.nativeElement.querySelector('.foreign-translation');
     expect(label).toBeTruthy();
-    expect(label.textContent).toEqual('begin');
+    expect(label.textContent).toEqual(' begin ');
   });
 
   it('should set a polish label when a selected language is  POLISH', () => {
@@ -185,7 +185,7 @@ describe('TrainingRowComponent', () => {
     // then
     const label = fixture.nativeElement.querySelector('.foreign-translation');
     expect(label).toBeTruthy();
-    expect(label.textContent).toEqual('zacząć');
+    expect(label.textContent).toEqual(' zacząć ');
   });
 
   it('should have four input-cells', () => {

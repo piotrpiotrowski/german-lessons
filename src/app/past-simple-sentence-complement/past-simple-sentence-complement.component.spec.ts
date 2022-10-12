@@ -1,7 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PastSimpleSentenceComplementComponent } from './past-simple-sentence-complement.component';
+import {PastSimpleSentenceComplementComponent} from './past-simple-sentence-complement.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('PastSimpleSentenceComplementComponent', () => {
   let component: PastSimpleSentenceComplementComponent;
@@ -9,7 +10,8 @@ describe('PastSimpleSentenceComplementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PastSimpleSentenceComplementComponent ],
+      imports: [HttpClientTestingModule],
+      declarations: [PastSimpleSentenceComplementComponent],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   });

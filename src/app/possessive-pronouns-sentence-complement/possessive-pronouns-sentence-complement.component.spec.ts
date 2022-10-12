@@ -2,6 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PossessivePronounsSentenceComplementComponent} from './possessive-pronouns-sentence-complement.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('PossessivePronounsSentenceComplementComponent', () => {
   let component: PossessivePronounsSentenceComplementComponent;
@@ -9,6 +10,7 @@ describe('PossessivePronounsSentenceComplementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [PossessivePronounsSentenceComplementComponent],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();

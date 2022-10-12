@@ -1,9 +1,9 @@
 import {Component, Input, OnInit, Predicate} from '@angular/core';
 import {Sentence} from './sentence-row/sentence.model';
 import {LanguageService} from '../language/language.service';
-import {BehaviorSubject, of} from 'rxjs';
+import {BehaviorSubject, NEVER, Observable} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
-import {finalize} from 'rxjs/operators';
+import {finalize, map} from 'rxjs/operators';
 import {Option} from '../responsive-button-toggle-group/option.model';
 import {DrawingService} from '../shared/drawing.service';
 import {FinderService} from '../shared/finder.service';
@@ -16,7 +16,7 @@ import {FinderService} from '../shared/finder.service';
 export class SentenceComplementComponent implements OnInit {
 
   command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
-  sentences: Sentence[] = [];
+  sentences: Observable<Sentence[]> = NEVER;
   loading: boolean = false;
   difficultyLevelOptions = [
     new Option('all', '0'),
@@ -62,12 +62,9 @@ export class SentenceComplementComponent implements OnInit {
 
   loadSentences(): void {
     this.loading = true;
-    of(this.finderService.find(this.buildSearchPredicate()))
-      .pipe(finalize(() => this.loading = false))
-      .subscribe(
-        sentences => this.sentences = this.filterByCategory(sentences),
-        console.error
-      );
+    this.sentences = this.finderService.find(this.buildSearchPredicate())
+      .pipe(map(sentences => this.filterByCategory(sentences)))
+      .pipe(finalize(() => this.loading = false));
   }
 
   onCommandSelect(selectedCommand: InputCellCommand): void {

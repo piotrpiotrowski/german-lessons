@@ -1,12 +1,12 @@
-<h3>{{ languageService.getLabel("verbsConjunctionsTitle") }}</h3>
+<h3>{{ title }}</h3>
 <mat-expansion-panel class="control-panel">
   <mat-expansion-panel-header>
     <mat-panel-title class="panel-title">
       {{
-      languageService.getLabel("lessonSummary") +
-      (verbsConjunctions ? verbsConjunctions.length : 0) +
-      " " +
-      languageService.getLabel("verbs")
+        languageService.getLabel("lessonSummary") +
+          (verbsConjunctions | async)?.length +
+          " " +
+          languageService.getLabel("verbs")
       }}
     </mat-panel-title>
   </mat-expansion-panel-header>
@@ -31,7 +31,7 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div *ngIf="!loading">
   <app-training-row
-    *ngFor="let verbConjunctions of verbsConjunctions"
+    *ngFor="let verbConjunctions of verbsConjunctions | async"
     [command]="command"
     [trainingRowModel]="verbConjunctions"
   ></app-training-row>

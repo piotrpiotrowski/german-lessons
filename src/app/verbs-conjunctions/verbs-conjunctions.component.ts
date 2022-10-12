@@ -1,8 +1,8 @@
 import {Component, Input, OnInit, Predicate} from '@angular/core';
-import {BehaviorSubject, of} from 'rxjs';
+import {BehaviorSubject, NEVER, Observable} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
-import {finalize} from 'rxjs/operators';
+import {finalize, map} from 'rxjs/operators';
 import {LanguageService} from '../language/language.service';
 import {Option} from '../responsive-button-toggle-group/option.model';
 import {FinderService} from '../shared/finder.service';
@@ -16,7 +16,7 @@ import {DrawingService} from '../shared/drawing.service';
 export class VerbsConjunctionsComponent implements OnInit {
 
   command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
-  verbsConjunctions: TrainingRowModel[] = [];
+  verbsConjunctions: Observable<TrainingRowModel[]> = NEVER;
   loading: boolean = false;
   difficultyLevelOptions = [
     new Option('all', '0'),
@@ -53,12 +53,9 @@ export class VerbsConjunctionsComponent implements OnInit {
   loadVerbsConjunctions(): void {
     this.loading = true;
     this.command.next(InputCellCommand.CLEAR);
-    of(this.finderService.find(this.buildSearchPredicate()))
+    this.verbsConjunctions = this.finderService.find(this.buildSearchPredicate())
+      .pipe(map(verbsConjunctions => this.filterByCategory(verbsConjunctions)))
       .pipe(finalize(() => this.loading = false))
-      .subscribe({
-        next: verbsConjunctions => this.verbsConjunctions = this.filterByCategory(verbsConjunctions),
-        error: console.error
-      });
   }
 
   private filterByCategory(verbsConjunctions: TrainingRowModel[]): TrainingRowModel[] {

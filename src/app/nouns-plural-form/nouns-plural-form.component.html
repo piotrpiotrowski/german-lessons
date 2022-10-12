@@ -3,10 +3,10 @@
   <mat-expansion-panel-header>
     <mat-panel-title class="panel-title">
       {{
-      languageService.getLabel("lessonSummary") +
-      (nounsForms ? nounsForms.length : 0) +
-      " " +
-      languageService.getLabel("nouns")
+        languageService.getLabel("lessonSummary") +
+          (nounsForms | async)?.length +
+          " " +
+          languageService.getLabel("nouns")
       }}
     </mat-panel-title>
   </mat-expansion-panel-header>
@@ -31,7 +31,7 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div *ngIf="!loading">
   <app-training-row
-    *ngFor="let nounForms of nounsForms"
+    *ngFor="let nounForms of nounsForms | async"
     [command]="command"
     [trainingRowModel]="nounForms"
   ></app-training-row>

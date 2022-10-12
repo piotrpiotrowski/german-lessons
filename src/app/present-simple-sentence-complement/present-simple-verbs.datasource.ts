@@ -1,4 +1,7 @@
-export const rawPresentSimpleVerbs = `backe;bake;piec;backen;2
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const presentSimpleVerbs = new CsvParser().parseToMatrix(of(`backe;bake;piec;backen;2
 backen;bake;piec;backen;2
 backt;bake;piec;backen;2
 bäckst;bake;piec;backen;2
@@ -764,4 +767,4 @@ zieht;pull, move;ciągnąć;ziehen;2
 zwinge;force;zmuszać;zwingen;3
 zwingen;force;zmuszać;zwingen;3
 zwingst;force;zmuszać;zwingen;3
-zwingt;force;zmuszać;zwingen;3`;
+zwingt;force;zmuszać;zwingen;3`));

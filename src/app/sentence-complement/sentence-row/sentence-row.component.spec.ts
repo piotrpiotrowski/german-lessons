@@ -52,7 +52,7 @@ describe('SentenceRowComponent', () => {
     // then
     const label = fixture.nativeElement.querySelector('.foreign-translation');
     expect(label).toBeTruthy();
-    expect(label.textContent).toEqual('bake (1. M2:5)');
+    expect(label.textContent).toEqual(' bake (1. M2:5) ');
   });
 
   it('should display an input-cell', () => {

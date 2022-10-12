@@ -1,10 +1,11 @@
 import {Component, OnInit, Predicate} from '@angular/core';
-import {BehaviorSubject, of} from 'rxjs';
+import {BehaviorSubject, NEVER, Observable} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
 import {finalize} from 'rxjs/operators';
 import {PossessivePronounsService} from './possessive-pronouns.service';
 import {LanguageService} from '../language/language.service';
+import {Option} from '../responsive-button-toggle-group/option.model';
 
 @Component({
   selector: 'app-possessive-pronouns',
@@ -14,7 +15,7 @@ import {LanguageService} from '../language/language.service';
 export class PossessivePronounsComponent implements OnInit {
 
   command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
-  pronouns: TrainingRowModel[] = [];
+  pronouns: Observable<TrainingRowModel[]> = NEVER;
   loading: boolean = false;
   formTypeOptions = [
     new Option('all', '0'),
@@ -34,20 +35,16 @@ export class PossessivePronounsComponent implements OnInit {
 
   loadPronouns(): void {
     this.loading = true;
-    of(this.possessivePronounsService.find(this.buildSearchPredicate()))
-      .pipe(finalize(() => this.loading = false))
-      .subscribe({
-        next: pronouns => this.pronouns = pronouns,
-        error: console.error
-      });
+    this.pronouns = this.possessivePronounsService.find(this.buildSearchPredicate())
+      .pipe(finalize(() => this.loading = false));
+  }
+
+  onCommandSelect(selectedCommand: InputCellCommand): void {
+    this.command.next(selectedCommand);
   }
 
   private buildSearchPredicate(): Predicate<TrainingRowModel> {
     const classification = +this.formType;
     return pronoun => classification === 0 || pronoun.classification === classification;
-  }
-
-  onCommandSelect(selectedCommand: InputCellCommand): void {
-    this.command.next(selectedCommand);
   }
 }

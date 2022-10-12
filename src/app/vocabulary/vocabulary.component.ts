@@ -1,12 +1,13 @@
 import {Component, OnInit, Predicate} from '@angular/core';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
-import {BehaviorSubject, of} from 'rxjs';
+import {BehaviorSubject, NEVER, Observable} from 'rxjs';
 import {VocabularyService} from './vocabulary.service';
 import {LanguageService} from '../language/language.service';
 import {Option} from '../responsive-button-toggle-group/option.model';
 import {DrawingService} from '../shared/drawing.service';
 import {Language} from '../language/language';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-vocabulary',
@@ -16,7 +17,7 @@ import {Language} from '../language/language';
 export class VocabularyComponent implements OnInit {
 
   command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
-  words: TrainingRowModel[] = [];
+  words: Observable<TrainingRowModel[]> = NEVER;
   difficultyLevelOptions = [
     new Option('all', '0'),
     new Option('beginner', '1'),
@@ -48,11 +49,8 @@ export class VocabularyComponent implements OnInit {
 
   loadVocabulary(): void {
     this.command.next(InputCellCommand.CLEAR);
-    of(this.vocabularyService.find(this.buildSearchPredicate()))
-      .subscribe({
-        next: verbs => this.words = this.filterByCategory(verbs),
-        error: console.error
-      });
+    this.words = this.vocabularyService.find(this.buildSearchPredicate())
+      .pipe(map(words => this.filterByCategory(words)));
   }
 
   trackWords(index: number, item: TrainingRowModel): any {

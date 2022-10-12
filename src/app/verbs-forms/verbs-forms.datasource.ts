@@ -1,4 +1,7 @@
-export const rawVerbsForms = `bake;piec;backen;bäckt;backte;hat gebacken;2
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const verbsForms = new CsvParser().parseToMatrix(of(`bake;piec;backen;bäckt;backte;hat gebacken;2
 command;rozkazywać;befehlen;befiehlt;befahl;hat befohlen;2
 begin;zaczynać;beginnen;beginnt;begann;hat begonnen;2
 bite;gryźć;beißen;beißt;biss;hat gebissen;3
@@ -181,4 +184,4 @@ know;wiedzieć;wissen;weiß;wusste;hat gewusst;1
 want;chcieć;wollen;will;wollte;hat gewollt;4
 wring;wyżymać;wringen;wringt;wrang;hat gewrungen;4
 pull, move;ciągnąć;ziehen;zieht;zog;ist gezogen;2
-force;zmuszać;zwingen;zwingt;zwang;hat gezwungen;3`;
+force;zmuszać;zwingen;zwingt;zwang;hat gezwungen;3`));

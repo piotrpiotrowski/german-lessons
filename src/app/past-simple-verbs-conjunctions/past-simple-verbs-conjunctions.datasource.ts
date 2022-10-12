@@ -1,4 +1,7 @@
-export const rawPastSimpleVerbsConjunctions = `bake;piec;backen;Indikativ Präteritum;ich backte;du backtest;er/sie/es backte;wir backten;ihr backtet;Sie backten;2
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const pastSimpleVerbsConjunctions = new CsvParser().parseToMatrix(of(`bake;piec;backen;Indikativ Präteritum;ich backte;du backtest;er/sie/es backte;wir backten;ihr backtet;Sie backten;2
 command;rozkazywać;befehlen;Indikativ Präteritum;ich befahl;du befahlst;er/sie/es befahl;wir befahlen;ihr befahlt;Sie befahlen;2
 begin;zaczynać;beginnen;Indikativ Präteritum;ich begann;du begannst;er/sie/es begann;wir begannen;ihr begannt;Sie begannen;2
 bite;gryźć;beißen;Indikativ Präteritum;ich biss;du bisst;er/sie/es biss;wir bissen;ihr bisst;Sie bissen;3
@@ -181,4 +184,4 @@ know;wiedzieć;wissen;Indikativ Präteritum;ich wusste;du wusstest;er/sie/es wus
 want;chcieć;wollen;Indikativ Präteritum;ich wollte;du wolltest;er/sie/es wollte;wir wollten;ihr wolltet;Sie wollten;4
 wring;wyżymać;wringen;Indikativ Präteritum;ich wrang;du wrangst;er/sie/es wrang;wir wrangen;ihr wrangt;Sie wrangen;4
 pull, move;ciągnąć;ziehen;Indikativ Präteritum;ich zog;du zogst;er/sie/es zog;wir zogen;ihr zogt;Sie zogen;2
-force;zmuszać;zwingen;Indikativ Präteritum;ich zwang;du zwangst;er/sie/es zwang;wir zwangen;ihr zwangt;Sie zwangen;3`;
+force;zmuszać;zwingen;Indikativ Präteritum;ich zwang;du zwangst;er/sie/es zwang;wir zwangen;ihr zwangt;Sie zwangen;3`));

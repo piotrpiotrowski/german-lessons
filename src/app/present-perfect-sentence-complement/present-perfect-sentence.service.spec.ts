@@ -1,23 +1,36 @@
 import {TestBed} from '@angular/core/testing';
 
-import {filter, map, mergeMap, take, toArray} from 'rxjs/operators';
+import {switchMap, take, toArray} from 'rxjs/operators';
 import {Language} from '../language/language';
 import {PresentPerfectSentenceService} from './present-perfect-sentence.service';
-import {Sentence} from '../sentence-complement/sentence-row/sentence.model';
-import {from, Observable} from 'rxjs';
-import {SentencePartType} from '../sentence-complement/sentence-row/sentence-part-type.enum';
+import {from, of} from 'rxjs';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {NounSentenceService} from '../noun-sentence-complement/noun-sentence.service';
 
 describe('PresentPerfectSentenceService', () => {
-  let service: PresentPerfectSentenceService;
+  let sentencesLoaderService: any;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(PresentPerfectSentenceService);
+    sentencesLoaderService = jasmine.createSpyObj('SentencesLoaderService', ['load']);
+
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
   });
 
-  it('should take two from list', (done: DoneFn) => {
+  it('should take two from list', (done) => {
+// given
+    sentencesLoaderService.load.and.returnValue(of(
+      `1CH.1.14;Die Satz in Deutsch vater vater;1 Chr 1.14;1 Krn 1.14;1 Chr 1.14;The sentence in english fater father;Zdanie po polsku ojciec
+1CH.1.14;Die Satz in Deutsch land;1 Chr 1.14;1 Krn 1.14;1 Chr 1.14;The sentence in english country;Zdanie po polsku kraj`
+    ));
+
+    //and
+    const service = TestBed.inject(NounSentenceService);
+
     // when
-    from(service.find(() => true))
+    service.find(() => true)
+      .pipe(switchMap(from))
       .pipe(take(2))
       .pipe(toArray())
       .subscribe({
@@ -26,48 +39,6 @@ describe('PresentPerfectSentenceService', () => {
           expect(sentences.length).toEqual(2);
           expect(sentences[0].getInfinitiveTranslations(Language.ENGLISH)).toEqual('become');
           expect(sentences[1].getInfinitiveTranslations(Language.ENGLISH)).toEqual('flee | die');
-          done();
-        },
-        error: done.fail
-      });
-  });
-
-  it('should find sentences with only single part', (done: DoneFn) => {
-    // when
-    from(service.find(() => true))
-      .pipe(filter(sentence => sentence.parts.length === 1))
-      .pipe(map(sentence => sentence.bookId + ' ' + sentence.chapterNumer + '.' + sentence.verseNumer))
-      .pipe(toArray())
-      .subscribe({
-        // then
-        next: sentences => {
-          expect(sentences).toEqual([]);
-          done();
-        },
-        error: done.fail
-      });
-  });
-
-  it('should find case sensitive hidden word in text', (done: DoneFn) => {
-    // given
-    const findRiddlesNotExistingInText = (sentence: Sentence): Observable<string[]> => {
-      const riddles = sentence.parts.filter(sentencePart => sentencePart.type === SentencePartType.RIDDLE)
-        .map(sentencePart => sentencePart.value);
-      const text = sentence.getTextTranslations(Language.GERMAN);
-      const missingRiddlesInText = riddles.filter(riddle => !text.includes(riddle))
-        .map(riddle => [riddle, sentence.getReferencesTranslations(Language.ENGLISH)]);
-      return from(missingRiddlesInText);
-    };
-
-    // when
-    from(service.find(() => true))
-      .pipe(mergeMap(sentence => findRiddlesNotExistingInText(sentence)))
-      .pipe(filter(pair => !pair[1].includes(pair[0])))
-      .pipe(toArray())
-      .subscribe({
-        // then
-        next: sentences => {
-          expect(sentences).toEqual([]);
           done();
         },
         error: done.fail

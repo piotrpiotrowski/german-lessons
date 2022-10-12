@@ -6,15 +6,13 @@
       unlimited: !isUsageModeUnlimited(),
       selected: isUsageModeUnlimited()
     }"
-  >model_training
-  </mat-icon
-  >
+    >model_training
+  </mat-icon>
   <span class="spliter">|</span>
   <mat-icon
     aria-hidden="true"
     (click)="switchToUsageModeSingle()"
     [ngClass]="{ single: !isUsageModeSingle(), selected: isUsageModeSingle() }"
-  >casino
-  </mat-icon
-  >
+    >casino
+  </mat-icon>
 </div>

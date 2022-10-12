@@ -1,4 +1,7 @@
-export const rawVocabulary = `bake;piec;backen;2
+import {of} from 'rxjs';
+import {CsvParser} from '../shared/csv-parser';
+
+export const vocabulary = new CsvParser().parseToMatrix(of(`bake;piec;backen;2
 command;rozkazywać;befehlen;2
 begin;zaczynać;beginnen;2
 bite;gryźć;beißen;3
@@ -181,4 +184,4 @@ know;wiedzieć;wissen;1
 want;chcieć;wollen;4
 wring;wyżymać;wringen;4
 pull, move;ciągnąć;ziehen;2
-force;zmuszać;zwingen;3`;
+force;zmuszać;zwingen;3`));

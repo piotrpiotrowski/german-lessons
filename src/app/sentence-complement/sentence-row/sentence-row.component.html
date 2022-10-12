@@ -1,14 +1,14 @@
 <div class="row-question">
   <div class="foreign-translation">
     {{
-    currentSentence.getInfinitiveTranslations(
-      languageService.getCurrentLanguage()
-    )
+      currentSentence.getInfinitiveTranslations(
+        languageService.getCurrentLanguage()
+      )
     }}
     ({{
-    currentSentence.getReferencesTranslations(
-      languageService.getCurrentLanguage()
-    )
+      currentSentence.getReferencesTranslations(
+        languageService.getCurrentLanguage()
+      )
     }})
   </div>
   <div class="sentence-row">
@@ -29,6 +29,6 @@
 </div>
 <div *ngIf="foundAnswers.length >= numberOfAnswers" class="answer-row">
   {{
-  currentSentence.getTextTranslations(languageService.getCurrentLanguage())
+    currentSentence.getTextTranslations(languageService.getCurrentLanguage())
   }}
 </div>

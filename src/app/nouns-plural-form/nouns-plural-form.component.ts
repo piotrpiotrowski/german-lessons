@@ -1,11 +1,11 @@
 import {Component, OnInit, Predicate} from '@angular/core';
-import {BehaviorSubject, of} from 'rxjs';
+import {BehaviorSubject, NEVER, Observable} from 'rxjs';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from '../training-row/training-row.model';
 import {Option} from '../responsive-button-toggle-group/option.model';
 import {LanguageService} from '../language/language.service';
 import {DrawingService} from '../shared/drawing.service';
-import {finalize} from 'rxjs/operators';
+import {finalize, map} from 'rxjs/operators';
 import {NounsFormsService} from './nouns-forms.service';
 
 @Component({
@@ -16,7 +16,7 @@ import {NounsFormsService} from './nouns-forms.service';
 export class NounsPluralFormComponent implements OnInit {
 
   command = new BehaviorSubject<InputCellCommand>(InputCellCommand.NOOP);
-  nounsForms: TrainingRowModel[] = [];
+  nounsForms: Observable<TrainingRowModel[]> = NEVER;
   loading: boolean = false;
   difficultyLevelOptions = [
     new Option('all', '0'),
@@ -50,21 +50,21 @@ export class NounsPluralFormComponent implements OnInit {
   loadNounsForms(): void {
     this.loading = true;
     this.command.next(InputCellCommand.CLEAR);
-    of(this.nounsFormsService.find(this.buildSearchPredicate()))
-      .pipe(finalize(() => this.loading = false))
-      .subscribe({
-          next: nounsForms => this.nounsForms = this.filterByCategory(nounsForms),
-          error: console.error
-        }
-      );
+    this.nounsForms = this.nounsFormsService.find(this.buildSearchPredicate())
+      .pipe(map(nounsForms => this.filterByCategory(nounsForms)))
+      .pipe(finalize(() => this.loading = false));
   }
 
-  private filterByCategory(nounsForms: TrainingRowModel[]): TrainingRowModel[] {
-    return this.filtersForCategories.get(this.filteringCategory)!(nounsForms);
+  onCommandSelect(selectedCommand: InputCellCommand): void {
+    this.command.next(selectedCommand);
   }
 
   private extractFirstLetterOfTranslation(trainingRowModel: TrainingRowModel): string {
     return trainingRowModel.getTranslation(this.languageService.getCurrentLanguage()).charAt(0);
+  }
+
+  private filterByCategory(nounsForms: TrainingRowModel[]): TrainingRowModel[] {
+    return this.filtersForCategories.get(this.filteringCategory)!(nounsForms);
   }
 
   private buildSearchPredicate(): Predicate<TrainingRowModel> {
@@ -74,9 +74,5 @@ export class NounsPluralFormComponent implements OnInit {
   private difficultyLevelCondition(verbConjunctions: TrainingRowModel): boolean {
     const classification = +this.difficultyLevel;
     return classification === 0 || verbConjunctions.classification === classification;
-  }
-
-  onCommandSelect(selectedCommand: InputCellCommand): void {
-    this.command.next(selectedCommand);
   }
 }
