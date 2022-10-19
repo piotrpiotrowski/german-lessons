@@ -9,34 +9,30 @@ import {UsageModeService} from '../usage-mode.service';
 })
 export class UsageModeSwitcherComponent {
 
-  usageMode: UsageMode = UsageMode.UNLIMITED;
-
   constructor(private usageModeService: UsageModeService) {
   }
 
   isUsageModeSingle() {
-    return this.usageMode === UsageMode.SINGLE;
+    return this.usageModeService.get() === UsageMode.SINGLE;
   }
 
   isUsageModeUnlimited() {
-    return this.usageMode === UsageMode.UNLIMITED;
+    return this.usageModeService.get() === UsageMode.UNLIMITED;
   }
 
   switchToUsageModeSingle() {
     if (!this.isUsageModeSingle()) {
-      this.usageMode = UsageMode.SINGLE;
-      this.emitEvent();
+      this.emitEvent(UsageMode.SINGLE);
     }
   }
 
   switchToUsageModeUnlimited() {
     if (!this.isUsageModeUnlimited()) {
-      this.usageMode = UsageMode.UNLIMITED;
-      this.emitEvent();
+      this.emitEvent(UsageMode.UNLIMITED);
     }
   }
 
-  private emitEvent() {
-    this.usageModeService.select(this.usageMode);
+  private emitEvent(usageMode: UsageMode) {
+    this.usageModeService.select(usageMode);
   }
 }

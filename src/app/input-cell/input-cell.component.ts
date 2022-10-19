@@ -100,10 +100,12 @@ export class InputCellComponent implements OnInit, OnDestroy {
 
   private switchModeToSingle(): void {
     this.usageMode = UsageMode.SINGLE;
+    this.clear();
   }
 
   private switchModeToUnlimited(): void {
     this.usageMode = UsageMode.UNLIMITED;
+    this.clear();
   }
 
   private clear(): void {

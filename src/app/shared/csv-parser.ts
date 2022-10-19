@@ -9,7 +9,7 @@ export class CsvParser {
 
   parseToMatrix = (lines: Observable<string>): Observable<string[][]> =>
     lines.pipe(switchMap(lines => from(lines.split(this.lineSeparator))))
-      .pipe(map(line => line.split(this.columnSeparator)))
+      .pipe(map(line => line.trimEnd().split(this.columnSeparator)))
       .pipe(toArray())
       .pipe(shareReplay({bufferSize: 1, refCount: false}));
 }

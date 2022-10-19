@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from './training-row.model';
-import {BehaviorSubject, fromEvent, Subscription} from 'rxjs';
+import {BehaviorSubject, fromEvent, startWith, Subscription} from 'rxjs';
 import {LanguageService} from '../language/language.service';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {Answer} from './answer.model';
@@ -38,7 +38,8 @@ export class TrainingRowComponent implements OnInit, OnDestroy {
       .pipe(map(() => this.isDesktop()))
       .pipe(distinctUntilChanged())
       .subscribe(desktop => this.updateCellWith(desktop));
-    this.usageModeService.getCurrentUsageMode()
+    this.usageModeService.getEmitter()
+      .pipe(startWith(this.usageModeService.get()))
       .subscribe(usageMode => this.dispatchUsageModeCommand(usageMode));
   }
 

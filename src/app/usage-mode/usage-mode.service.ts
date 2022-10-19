@@ -6,13 +6,14 @@ import {UsageMode} from './usage-mode';
 })
 export class UsageModeService {
 
-  private currentUsageMode = new EventEmitter<UsageMode>();
+  private usageModeEmitter = new EventEmitter<UsageMode>();
+  private usageMode: UsageMode = UsageMode.UNLIMITED;
 
-  getCurrentUsageMode(): EventEmitter<UsageMode> {
-    return this.currentUsageMode;
-  }
+  getEmitter = (): EventEmitter<UsageMode> => this.usageModeEmitter;
+  get = (): UsageMode => this.usageMode;
 
   select(usageMode: UsageMode): void {
-    this.currentUsageMode.emit(usageMode);
+    this.usageMode = usageMode;
+    this.usageModeEmitter.emit(usageMode);
   }
 }

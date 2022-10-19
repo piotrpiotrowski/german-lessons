@@ -5,8 +5,6 @@ import {Language} from '../language/language';
 import {PresentSimpleSentenceService} from './present-simple-sentence.service';
 import {from, of} from 'rxjs';
 import {SentencesLoaderService} from '../shared/sentences-loader.service';
-import {PastSimpleSentenceService} from '../past-simple-sentence-complement/past-simple-sentence.service';
-import {NounSentenceService} from '../noun-sentence-complement/noun-sentence.service';
 
 describe('PresentSimpleSentenceService', () => {
   let sentencesLoaderService: any;
@@ -18,20 +16,20 @@ describe('PresentSimpleSentenceService', () => {
     TestBed.configureTestingModule({
       providers: [
         {provide: SentencesLoaderService, useValue: sentencesLoaderService},
-        PastSimpleSentenceService
+        PresentSimpleSentenceService
       ]
     });
   });
 
   it('should take two from list', (done) => {
-// given
+  // given
     sentencesLoaderService.load.and.returnValue(of(
-      `1CH.1.14;Die Satz in Deutsch vater vater;1 Chr 1.14;1 Krn 1.14;1 Chr 1.14;The sentence in english fater father;Zdanie po polsku ojciec
-1CH.1.14;Die Satz in Deutsch land;1 Chr 1.14;1 Krn 1.14;1 Chr 1.14;The sentence in english country;Zdanie po polsku kraj`
+      `1CH.1.14;Die Satz ist Deutsch vater vater;1 Chr 1.14;1 Krn 1.14;1 Chr 1.14;The sentence in english fater father;Zdanie po polsku ojciec
+1CH.1.14;Die Satz lasse Deutsch land;1 Chr 1.14;1 Krn 1.14;1 Chr 1.14;The sentence in english country;Zdanie po polsku kraj`
     ));
 
     //and
-    const service = TestBed.inject(NounSentenceService);
+    const service = TestBed.inject(PresentSimpleSentenceService);
 
     // when
     service.find(() => true)

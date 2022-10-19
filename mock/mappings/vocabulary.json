@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/vocabulary.csv"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "vocabulary.csv",
+    "headers": {
+      "Content-Type": "text/csv; charset=UTF-8"
+    }
+  }
+}

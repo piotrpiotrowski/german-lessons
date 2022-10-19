@@ -6,26 +6,35 @@ import {By} from '@angular/platform-browser';
 import {InputCellCommand} from '../input-cell/input-cell-command';
 import {TrainingRowModel} from './training-row.model';
 import {Answer} from './answer.model';
-import {BehaviorSubject, skip} from 'rxjs';
+import {BehaviorSubject, NEVER} from 'rxjs';
 import {Language} from '../language/language';
 import {LanguageService} from '../language/language.service';
+import {take, toArray} from 'rxjs/operators';
+import {UsageModeService} from '../usage-mode/usage-mode.service';
+import {UsageMode} from '../usage-mode/usage-mode';
 
 describe('TrainingRowComponent', () => {
   let component: TrainingRowComponent;
   let fixture: ComponentFixture<TrainingRowComponent>;
   let languageService: any;
+  let usageModeService: any;
 
   beforeEach(async () => {
     languageService = jasmine.createSpyObj('LanguageService', ['getLabel', 'getCurrentLanguage']);
+    usageModeService = jasmine.createSpyObj('UsageModeService', ['getEmitter', 'get']);
 
     languageService.getLabel.and.returnValue(null);
     languageService.getCurrentLanguage.and.returnValue(Language.ENGLISH);
+
+    usageModeService.getEmitter.and.returnValue(NEVER);
+    usageModeService.get.and.returnValue(UsageMode.UNLIMITED);
 
     await TestBed.configureTestingModule({
       declarations: [TrainingRowComponent],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
-        {provide: LanguageService, useValue: languageService}
+        {provide: LanguageService, useValue: languageService},
+        {provide: UsageModeService, useValue: usageModeService},
       ]
     }).compileComponents();
   });
@@ -81,9 +90,8 @@ describe('TrainingRowComponent', () => {
     expect(expectedCellInputsCommand).toEqual(InputCellCommand.CHECK);
   });
 
-  it('should set command to REVEAL', () => {
+  it('should set command to REVEAL', (done) => {
     // given
-    let expectedCellInputsCommand = InputCellCommand.REVEAL;
     component.trainingRowModel = new TrainingRowModel(new Map([[Language.ENGLISH, 'begin'], [Language.POLISH, 'zacząć']]), 1, [
       new Answer('infinitive', 'beginnen'),
       new Answer('presentSimple', 'beginnt'),
@@ -91,14 +99,22 @@ describe('TrainingRowComponent', () => {
       new Answer('pastParticiple', 'hat begonnen')
     ]);
     component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.REVEAL);
-    component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
-
 
     // when
-    fixture.detectChanges();
+    component.cellInputsCommand
+      .pipe(take(3))
+      .pipe(toArray())
+      .subscribe({
+        next: cellInputsCommand => {
+        // then
+          expect(cellInputsCommand.includes(InputCellCommand.REVEAL)).toBeTrue();
+          done();
+        },
+        error: done.fail
+      });
 
-    // then
-    expect(expectedCellInputsCommand).toEqual(InputCellCommand.REVEAL);
+    // and
+    fixture.detectChanges();
   });
 
   it('should set command to CLEAR', (done) => {
@@ -111,11 +127,12 @@ describe('TrainingRowComponent', () => {
     ]);
     component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.CLEAR);
     component.cellInputsCommand
-      .pipe(skip(1))
+      .pipe(take(3))
+      .pipe(toArray())
       .subscribe({
-        // then
-        next: expectedCellInputsCommand => {
-          expect(expectedCellInputsCommand).toEqual(InputCellCommand.CLEAR);
+        next: cellInputsCommands => {
+          // then
+          expect(cellInputsCommands.includes(InputCellCommand.CLEAR)).toBeTrue();
           done();
         },
         error: done.fail

@@ -9,6 +9,7 @@ import {Sentence} from './sentence.model';
 import {LanguageService} from '../../language/language.service';
 import {SentencePart} from './part.model';
 import {SentencePartType} from './sentence-part-type.enum';
+import {take, toArray} from 'rxjs/operators';
 
 describe('SentenceRowComponent', () => {
   let component: SentenceRowComponent;
@@ -112,23 +113,30 @@ describe('SentenceRowComponent', () => {
     expect(textCells[1].textContent).toEqual(' and gegessen.');
   });
 
-  it('should set command to REVEAL', () => {
+  it('should set command to REVEAL', (done) => {
     // given
     const sentenceParts = [
       new SentencePart('Ich habe die Kuchen ', SentencePartType.TEXT),
       new SentencePart('gebacken', SentencePartType.RIDDLE),
       new SentencePart(' and gegessen.', SentencePartType.TEXT)
     ];
-    let expectedCellInputsCommand = InputCellCommand.REVEAL;
     component.sentence = new Sentence(sentenceParts, new Map([[Language.ENGLISH, 'bake']]), 2, new Map<Language, string>([[Language.ENGLISH, '1. M2:5']]), new Map<Language, string>(), 'ABC', 1, 1);
     component.command = new BehaviorSubject<InputCellCommand>(InputCellCommand.REVEAL);
-    component.cellInputsCommand.subscribe(value => expectedCellInputsCommand = value);
-
 
     // when
-    fixture.detectChanges();
+    component.cellInputsCommand
+      .pipe(take(2))
+      .pipe(toArray())
+      .subscribe({
+        next: cellInputsCommand => {
+          // then
+          expect(cellInputsCommand.includes(InputCellCommand.REVEAL)).toBeTrue();
+          done();
+        },
+        error: done.fail
+      });
 
-    // then
-    expect(expectedCellInputsCommand).toEqual(InputCellCommand.REVEAL);
+    //and
+    fixture.detectChanges();
   });
 });

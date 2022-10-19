@@ -12,7 +12,7 @@ describe('UsageModeSwitcherComponent', () => {
   let usageModeService: any;
 
   beforeEach(async () => {
-    usageModeService = jasmine.createSpyObj('UsageModeService', ['select']);
+    usageModeService = new UsageModeService();
 
     await TestBed.configureTestingModule({
       declarations: [UsageModeSwitcherComponent],
@@ -21,7 +21,6 @@ describe('UsageModeSwitcherComponent', () => {
         {provide: UsageModeService, useValue: usageModeService}
       ]
     }).compileComponents();
-
     fixture = TestBed.createComponent(UsageModeSwitcherComponent);
     component = fixture.componentInstance;
   });
@@ -42,14 +41,6 @@ describe('UsageModeSwitcherComponent', () => {
     expect(fixture.nativeElement.querySelectorAll('mat-icon')[1].textContent).toEqual('casino ');
   });
 
-  it('should have usage mode UNLIMITED by default', () => {
-    // when
-    fixture.detectChanges();
-
-    // then
-    expect(component.usageMode).toEqual(UsageMode.UNLIMITED);
-  });
-
   it('should display a training icon as selected by default', () => {
     // when
     fixture.detectChanges();
@@ -60,7 +51,7 @@ describe('UsageModeSwitcherComponent', () => {
 
   it('should display a play icon as selected by default', () => {
     // given
-    component.usageMode = UsageMode.SINGLE;
+    usageModeService.select(UsageMode.SINGLE);
 
     // when
     fixture.detectChanges();
@@ -87,7 +78,7 @@ describe('UsageModeSwitcherComponent', () => {
 
   it('should do not switch when usage mode is SINGLE and play icon was clicked', () => {
     // given
-    component.usageMode = UsageMode.SINGLE;
+    usageModeService.select(UsageMode.SINGLE);
 
     // when
     fixture.debugElement
@@ -123,7 +114,7 @@ describe('UsageModeSwitcherComponent', () => {
 
   it('should switch to usage mode UNLIMITED when usage mode is SINGLE and training icon was clicked', () => {
     // given
-    component.usageMode = UsageMode.SINGLE;
+    usageModeService.select(UsageMode.SINGLE);
 
     // when
     fixture.debugElement

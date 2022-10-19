@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Sentence} from './sentence.model';
 import {LanguageService} from '../../language/language.service';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, startWith} from 'rxjs';
 import {InputCellCommand} from '../../input-cell/input-cell-command';
 import {SentencePartType} from './sentence-part-type.enum';
 import {UsageModeService} from '../../usage-mode/usage-mode.service';
@@ -36,7 +36,8 @@ export class SentenceRowComponent implements OnInit {
   ngOnInit(): void {
     this.externalCommand
       .subscribe(command => this.handleCommand(command));
-    this.usageModeService.getCurrentUsageMode()
+    this.usageModeService.getEmitter()
+      .pipe(startWith(this.usageModeService.get()))
       .subscribe(usageMode => this.dispatchUsageModeCommand(usageMode));
   }
 
