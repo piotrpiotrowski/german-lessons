@@ -26,4 +26,6 @@ export class MenuComponent {
   public buildTranslationKey(path: string): string {
     return path.replace(/-/g, '') + 'MenuItem';
   }
+
+  isSelected = (path: string) => document.URL.includes(path);
 }
