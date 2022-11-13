@@ -30,14 +30,14 @@ export class VerbsConjunctionsComponent implements OnInit {
     new Option('allAvailable', 'ALL_AVAILABLE'),
     new Option('randomLetter', 'BY_RANDOM_LETTER'),
     new Option('random5', 'RANDOM_5'),
-    new Option('random10', 'RANDOM_10')
+    new Option('unknown5', 'UNKNOWN_5')
   ];
   filteringCategory = this.filteringCategoryOptions[0].value;
   filtersForCategories = new Map<string, (verbs: TrainingRowModel[]) => TrainingRowModel[]>([
     ['ALL_AVAILABLE', verbs => verbs],
     ['BY_RANDOM_LETTER', verbs => this.drawingService.filterByRandomValueOfAttribute<TrainingRowModel>(verbs, model => this.extractFirstLetterOfTranslation(model))],
-    ['RANDOM_5', verbs => this.drawingService.filterRandomEntries(5, verbs)],
-    ['RANDOM_10', verbs => this.drawingService.filterRandomEntries(10, verbs)]
+    ['RANDOM_5', verbs => this.drawingService.filterRandomEntries(verbs)],
+    ['UNKNOWN_5', verbs => this.drawingService.filterBySmallestWeight(verbs, model => model.calculateWeight(localStorage))]
   ]);
 
   constructor(public languageService: LanguageService, private drawingService: DrawingService) {

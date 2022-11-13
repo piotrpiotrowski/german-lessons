@@ -1,5 +1,6 @@
 import {Language} from '../../language/language';
 import {SentencePart} from './part.model';
+import {SentencePartType} from './sentence-part-type.enum';
 
 export class Sentence {
   constructor(public parts: SentencePart[],
@@ -15,4 +16,9 @@ export class Sentence {
   getInfinitiveTranslations = (currentLanguage: Language) => this.infinitiveTranslations.get(currentLanguage)!;
   getReferencesTranslations = (currentLanguage: Language) => this.referencesTranslations.get(currentLanguage)!;
   getTextTranslations = (currentLanguage: Language) => this.textTranslations.get(currentLanguage)!;
+
+  calculateWeight(localStorage: Storage): number {
+    let riddles = this.parts.filter(part => part.type === SentencePartType.RIDDLE);
+    return riddles.reduce((sum, answer) => sum + +(localStorage.getItem(answer.value) || '0'), 0) / riddles.length;
+  }
 }

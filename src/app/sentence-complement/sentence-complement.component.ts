@@ -28,15 +28,15 @@ export class SentenceComplementComponent implements OnInit {
   difficultyLevel = this.difficultyLevelOptions[0].value;
   filteringCategoryOptions = [
     new Option('random5', 'RANDOM_5'),
-    new Option('random10', 'RANDOM_10'),
+    new Option('unknown5', 'UNKNOWN_5'),
     new Option('randomLetter', 'BY_RANDOM_LETTER'),
     new Option('randomBookId', 'RANDOM_BOOK_ID')
   ];
   filteringCategory = this.filteringCategoryOptions[0].value;
   filtersForCategories = new Map<string, (sentences: Sentence[]) => Sentence[]>([
     ['BY_RANDOM_LETTER', sentences => this.drawingService.filterByRandomValueOfAttribute<Sentence>(sentences, model => this.extractFirstLetterOfTranslation(model))],
-    ['RANDOM_5', sentences => this.drawingService.filterRandomEntries<Sentence>(5, sentences)],
-    ['RANDOM_10', sentences => this.drawingService.filterRandomEntries<Sentence>(10, sentences)],
+    ['RANDOM_5', sentences => this.drawingService.filterRandomEntries<Sentence>(sentences)],
+    ['UNKNOWN_5', sentences => this.drawingService.filterBySmallestWeight<Sentence>(sentences, model => model.calculateWeight(localStorage))],
     ['RANDOM_BOOK_ID', sentences => this.sortByChapterNumberAndVerseNumer(this.drawingService.filterByRandomValueOfAttribute<Sentence>(sentences, model => model.bookId))]
   ]);
   partOptions = [

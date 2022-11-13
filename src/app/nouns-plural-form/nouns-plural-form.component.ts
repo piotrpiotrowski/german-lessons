@@ -30,14 +30,14 @@ export class NounsPluralFormComponent implements OnInit {
     new Option('allAvailable', 'ALL_AVAILABLE'),
     new Option('randomLetter', 'BY_RANDOM_LETTER'),
     new Option('random5', 'RANDOM_5'),
-    new Option('random10', 'RANDOM_10')
+    new Option('unknown5', 'UNKNOWN_5')
   ];
   filteringCategory = this.filteringCategoryOptions[3].value;
   filtersForCategories = new Map<string, (nouns: TrainingRowModel[]) => TrainingRowModel[]>([
     ['ALL_AVAILABLE', nouns => nouns],
     ['BY_RANDOM_LETTER', nouns => this.drawingService.filterByRandomValueOfAttribute<TrainingRowModel>(nouns, model => this.extractFirstLetterOfTranslation(model))],
-    ['RANDOM_5', nouns => this.drawingService.filterRandomEntries(5, nouns)],
-    ['RANDOM_10', nouns => this.drawingService.filterRandomEntries(10, nouns)]
+    ['RANDOM_5', nouns => this.drawingService.filterRandomEntries(nouns)],
+    ['UNKNOWN_5', nouns => this.drawingService.filterBySmallestWeight(nouns, model => model.calculateWeight(localStorage))]
   ]);
 
   constructor(private nounsFormsService: NounsFormsService, public languageService: LanguageService, private drawingService: DrawingService) {

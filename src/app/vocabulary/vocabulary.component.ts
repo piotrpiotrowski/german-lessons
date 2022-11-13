@@ -30,14 +30,14 @@ export class VocabularyComponent implements OnInit {
     new Option('allAvailable', 'ALL_AVAILABLE'),
     new Option('randomLetter', 'BY_RANDOM_LETTER'),
     new Option('random5', 'RANDOM_5'),
-    new Option('random10', 'RANDOM_10')
+    new Option('unknown5', 'UNKNOWN_5')
   ];
   filteringCategory = this.filteringCategoryOptions[0].value;
   filtersForCategories = new Map<string, (verbs: TrainingRowModel[]) => TrainingRowModel[]>([
     ['ALL_AVAILABLE', verbs => verbs],
     ['BY_RANDOM_LETTER', verbs => this.drawingService.filterByRandomValueOfAttribute<TrainingRowModel>(verbs, model => this.extractFirstLetterOfTranslation(model))],
-    ['RANDOM_5', verbs => this.drawingService.filterRandomEntries<TrainingRowModel>(5, verbs)],
-    ['RANDOM_10', verbs => this.drawingService.filterRandomEntries<TrainingRowModel>(10, verbs)]
+    ['RANDOM_5', verbs => this.drawingService.filterRandomEntries<TrainingRowModel>(verbs)],
+    ['UNKNOWN_5', verbs => this.drawingService.filterBySmallestWeight<TrainingRowModel>(verbs, model => model.calculateWeight(localStorage))]
   ]);
 
   constructor(private vocabularyService: VocabularyService, public languageService: LanguageService, private drawingService: DrawingService) {

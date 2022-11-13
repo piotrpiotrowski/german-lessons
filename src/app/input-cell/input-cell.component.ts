@@ -15,6 +15,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
   state: InputCellState = InputCellState.UNCERTAIN;
   value: string = '';
   usageMode: UsageMode = UsageMode.UNLIMITED;
+  historyUpdatedAlready = false;
 
   @Input() answer: string = '';
   @Input() label: string = '';
@@ -93,9 +94,14 @@ export class InputCellComponent implements OnInit, OnDestroy {
 
   private check(): void {
     this.state = this.value === this.answer ? InputCellState.CORRECT : InputCellState.INCORRECT;
-    if (this.state === InputCellState.CORRECT) {
+    if (this.isStateCorrect()) {
       this.correctlyAnswered.emit(this.value);
     }
+    this.updateHistory();
+  }
+
+  private isStateCorrect() {
+    return this.state === InputCellState.CORRECT;
   }
 
   private switchModeToSingle(): void {
@@ -124,5 +130,17 @@ export class InputCellComponent implements OnInit, OnDestroy {
 
   private isAsciiLetter(code: number) {
     return (code >= 'a'.charCodeAt(0) && code <= 'z'.charCodeAt(0)) || (code >= 'A'.charCodeAt(0) && code <= 'Z'.charCodeAt(0)) || this.germanLetters.includes(String.fromCharCode(code));
+  }
+
+  private updateHistory() {
+    if (!this.historyUpdatedAlready) {
+      this.historyUpdatedAlready = true;
+      localStorage.setItem(this.value, this.calculateWeight().toString());
+    }
+  }
+
+  private calculateWeight() {
+    const weight = localStorage.getItem(this.value) || '0';
+    return weight + (this.isStateCorrect() ? 1 : -1) * 0.2;
   }
 }
