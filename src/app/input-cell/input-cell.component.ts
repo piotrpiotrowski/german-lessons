@@ -135,12 +135,23 @@ export class InputCellComponent implements OnInit, OnDestroy {
   private updateHistory() {
     if (!this.historyUpdatedAlready) {
       this.historyUpdatedAlready = true;
-      localStorage.setItem(this.value, this.calculateWeight().toString());
+      localStorage.setItem(this.answer, this.calculateWeight().toString());
     }
   }
 
   private calculateWeight() {
-    const weight = localStorage.getItem(this.value) || '0';
-    return weight + (this.isStateCorrect() ? 1 : -1) * 0.2;
+    try {
+      const weight = +(localStorage.getItem(this.value) || '0');
+      const newWeight = weight + (this.isStateCorrect() ? 1 : -1) * 0.2;
+      if (newWeight > 1) {
+        return 1;
+      }
+      if (newWeight < 0) {
+        return 0;
+      }
+      return newWeight;
+    } catch (err) {
+      return 0;
+    }
   }
 }
