@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {InputCellState} from './input-cell-state';
 import {InputCellCommand} from './input-cell-command';
-import {BehaviorSubject, Subscription} from 'rxjs';
+import {BehaviorSubject, distinct, Subscription} from 'rxjs';
 import {UsageMode} from '../usage-mode/usage-mode';
+import {SpeechRecognitionService} from '../shared/speech/speech-recognition.service';
 
 @Component({
   selector: 'app-input-cell',
@@ -16,13 +17,15 @@ export class InputCellComponent implements OnInit, OnDestroy {
   value: string = '';
   usageMode: UsageMode = UsageMode.UNLIMITED;
   historyUpdatedAlready = false;
+  showMic = false;
 
   @Input() answer: string = '';
   @Input() label: string = '';
   @Input() command!: BehaviorSubject<InputCellCommand>;
   @Output() correctlyAnswered = new EventEmitter<string>();
 
-  private subscription!: Subscription;
+  private commandSubscription!: Subscription;
+  private recordingSubscription!: Subscription;
   private strategies = new Map<InputCellCommand, () => void>(
     [
       [InputCellCommand.REVEAL, () => this.reveal()],
@@ -35,15 +38,19 @@ export class InputCellComponent implements OnInit, OnDestroy {
     ]
   );
 
+  constructor(private speechRecognitionService: SpeechRecognitionService) {
+  }
+
   ngOnInit(): void {
-    this.subscription = this.command.subscribe({
+    this.commandSubscription = this.command.subscribe({
       next: command => this.executeCommand(command),
       error: error => console.error(error)
     });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.commandSubscription.unsubscribe();
+    this.recordingSubscription.unsubscribe();
   }
 
   onValueChanged(event: any): void {
@@ -153,5 +160,25 @@ export class InputCellComponent implements OnInit, OnDestroy {
     } catch (err) {
       return 0;
     }
+  }
+
+  record(textInput: HTMLInputElement) {
+    if (this.state === InputCellState.CORRECT) {
+      return;
+    }
+    this.showMic = true;
+    this.recordingSubscription = this.speechRecognitionService.recognizeWords()
+      .pipe(distinct())
+      .subscribe({
+        next: word => this.value = word.toLowerCase(),
+        error: () => this.speechRecognitionService.stop(),
+        complete: () => {
+          this.showMic = false;
+          this.executeCommand(InputCellCommand.CHECK);
+          this.recordingSubscription.unsubscribe();
+          console.log(this.state);
+          textInput.blur();
+        }
+      });
   }
 }

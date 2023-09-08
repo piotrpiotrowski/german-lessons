@@ -3,24 +3,21 @@
   <input
     matInput
     type="text"
+    #textInput
     [(ngModel)]="value"
     (keyup)="onValueChanged($event)"
     (dblclick)="onDoubleClick()"
     autocomplete="off"
     [disabled]="isReadOnly()"
     enterkeyhint="done"
+    (click)="record(textInput)"
   />
   <span matSuffix class="icons-span">
+    <mat-icon *ngIf="showMic" aria-hidden="false" aria-label="Sag es einfach" fontIcon="mic" class="microphone-button"></mat-icon>
     <ng-container [ngSwitch]="state">
-      <mat-icon *ngSwitchCase="'UNCERTAIN'" aria-hidden="true" [ngClass]="state"
-        >fiber_manual_record</mat-icon
-      >
-      <mat-icon *ngSwitchCase="'CORRECT'" aria-hidden="true" [ngClass]="state"
-        >done</mat-icon
-      >
-      <mat-icon *ngSwitchCase="'INCORRECT'" aria-hidden="true" [ngClass]="state"
-        >clear</mat-icon
-      >
+      <mat-icon *ngSwitchCase="'UNCERTAIN'" aria-hidden="true" [ngClass]="state">fiber_manual_record</mat-icon>
+      <mat-icon *ngSwitchCase="'CORRECT'" aria-hidden="true" [ngClass]="state">done</mat-icon>
+      <mat-icon *ngSwitchCase="'INCORRECT'" aria-hidden="true" [ngClass]="state">clear</mat-icon>
     </ng-container>
   </span>
 </mat-form-field>
