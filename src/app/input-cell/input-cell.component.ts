@@ -62,6 +62,20 @@ export class InputCellComponent implements OnInit, OnDestroy {
     }
   }
 
+  record(textInput: HTMLInputElement) {
+    if (this.state === InputCellState.CORRECT) {
+      return;
+    }
+    this.showMic = true;
+    this.recordingSubscription = this.speechRecognitionService.recognizeWords()
+      .pipe(distinct())
+      .subscribe({
+        next: word => this.value = word.toLowerCase(),
+        error: () => this.speechRecognitionService.stop(),
+        complete: () => this.refreshState(textInput)
+      });
+  }
+
   onDoubleClick(): void {
     this.executeCommand(InputCellCommand.REVEAL);
   }
@@ -103,6 +117,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
     this.state = this.value === this.answer ? InputCellState.CORRECT : InputCellState.INCORRECT;
     if (this.isStateCorrect()) {
       this.correctlyAnswered.emit(this.value);
+      this.hideMic();
     }
     this.updateHistory();
   }
@@ -133,6 +148,11 @@ export class InputCellComponent implements OnInit, OnDestroy {
   private reveal(): void {
     this.state = InputCellState.CORRECT;
     this.value = this.answer;
+    this.hideMic();
+  }
+
+  private hideMic(): void {
+    this.showMic = false;
   }
 
   private isAsciiLetter(code: number) {
@@ -162,23 +182,11 @@ export class InputCellComponent implements OnInit, OnDestroy {
     }
   }
 
-  record(textInput: HTMLInputElement) {
-    if (this.state === InputCellState.CORRECT) {
-      return;
-    }
-    this.showMic = true;
-    this.recordingSubscription = this.speechRecognitionService.recognizeWords()
-      .pipe(distinct())
-      .subscribe({
-        next: word => this.value = word.toLowerCase(),
-        error: () => this.speechRecognitionService.stop(),
-        complete: () => {
-          this.showMic = false;
-          this.executeCommand(InputCellCommand.CHECK);
-          this.recordingSubscription.unsubscribe();
-          console.log(this.state);
-          textInput.blur();
-        }
-      });
+  private refreshState(textInput: HTMLInputElement) {
+    this.hideMic();
+    this.executeCommand(InputCellCommand.CHECK);
+    this.recordingSubscription.unsubscribe();
+    console.log(this.state);
+    textInput.blur();
   }
 }
