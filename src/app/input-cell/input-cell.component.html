@@ -11,6 +11,7 @@
     [disabled]="isReadOnly()"
     enterkeyhint="done"
     (click)="record(textInput)"
+    (focusout)="cancelRecording()"
   />
   <span matSuffix class="icons-span">
     <mat-icon *ngIf="showMic" aria-hidden="false" aria-label="Sag es einfach" fontIcon="mic" class="microphone-button"></mat-icon>

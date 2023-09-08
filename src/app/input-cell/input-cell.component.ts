@@ -4,6 +4,7 @@ import {InputCellCommand} from './input-cell-command';
 import {BehaviorSubject, distinct, Subscription} from 'rxjs';
 import {UsageMode} from '../usage-mode/usage-mode';
 import {SpeechRecognitionService} from '../shared/speech/speech-recognition.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-input-cell',
@@ -69,10 +70,11 @@ export class InputCellComponent implements OnInit, OnDestroy {
     this.showMic = true;
     this.recordingSubscription = this.speechRecognitionService.recognizeWords()
       .pipe(distinct())
+      .pipe(finalize(() => this.refreshState(textInput)))
       .subscribe({
         next: word => this.value = word.toLowerCase(),
         error: () => this.speechRecognitionService.stop(),
-        complete: () => this.refreshState(textInput)
+        complete: () => this.executeCommand(InputCellCommand.CHECK)
       });
   }
 
@@ -82,6 +84,11 @@ export class InputCellComponent implements OnInit, OnDestroy {
 
   isReadOnly(): boolean {
     return this.usageMode === UsageMode.SINGLE && this.state !== InputCellState.UNCERTAIN;
+  }
+
+  cancelRecording() {
+    this.speechRecognitionService.stop();
+    this.hideMic();
   }
 
   private executeCommand(command: InputCellCommand): void {
@@ -184,9 +191,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
 
   private refreshState(textInput: HTMLInputElement) {
     this.hideMic();
-    this.executeCommand(InputCellCommand.CHECK);
     this.recordingSubscription.unsubscribe();
-    console.log(this.state);
     textInput.blur();
   }
 }
