@@ -1,4 +1,6 @@
 import {EventEmitter, Injectable} from '@angular/core';
+import {delay, of} from 'rxjs';
+import {finalize} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -37,8 +39,11 @@ export class SpeechRecognitionService {
       wordEmitter.complete();
     }
     this.recognition.onspeechend = () => {
-      this.recognition.stop();
-      wordEmitter.complete();
+        this.recognition.stop();
+        of(this.recognition)
+          .pipe(delay(2000))
+          .pipe(finalize(() => wordEmitter.complete()))
+          .subscribe();
     };
     this.recognition.onnomatch = (event: SpeechRecognitionEvent) => wordEmitter.error(new Error('Match not found for ' + event.results[0][0].transcript));
     this.recognition.onerror = (event: SpeechRecognitionErrorEvent) => wordEmitter.error(event);
