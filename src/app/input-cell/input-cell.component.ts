@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {InputCellState} from './input-cell-state';
 import {InputCellCommand} from './input-cell-command';
-import {BehaviorSubject, distinct, Subscription} from 'rxjs';
+import {BehaviorSubject, delay, distinct, filter, mergeMap, of, Subscription} from 'rxjs';
 import {UsageMode} from '../usage-mode/usage-mode';
 import {SpeechRecognitionService} from '../shared/speech/speech-recognition.service';
 import {finalize} from 'rxjs/operators';
@@ -18,7 +18,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
   value: string = '';
   usageMode: UsageMode = UsageMode.UNLIMITED;
   historyUpdatedAlready = false;
-  showMic = false;
+  recording = false;
 
   @Input() answer: string = '';
   @Input() label: string = '';
@@ -68,8 +68,11 @@ export class InputCellComponent implements OnInit, OnDestroy {
     if (this.state === InputCellState.CORRECT) {
       return;
     }
-    this.showMic = true;
-    this.recordingSubscription = this.speechRecognitionService.recognizeWords()
+    this.recording = true;
+    this.recordingSubscription = of(textInput)
+      .pipe(delay(200))
+      .pipe(filter(_ => this.recording))
+      .pipe(mergeMap(_ => this.speechRecognitionService.recognizeWords()))
       .pipe(distinct())
       .pipe(finalize(() => this.refreshState(textInput)))
       .subscribe({
@@ -80,6 +83,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
   }
 
   onDoubleClick(): void {
+    this.hideMic();
     this.executeCommand(InputCellCommand.REVEAL);
   }
 
@@ -160,7 +164,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
   }
 
   private hideMic(): void {
-    this.showMic = false;
+    this.recording = false;
   }
 
   private isAsciiLetter(code: number) {
