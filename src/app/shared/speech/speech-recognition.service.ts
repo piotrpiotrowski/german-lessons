@@ -33,14 +33,15 @@ export class SpeechRecognitionService {
     const wordEmitter = new EventEmitter<string>()
     this.recognition.onresult = (event: SpeechRecognitionEvent) => {
       console.log('Confidence: ' + event.results[0][0].confidence);
-      wordEmitter.emit(this.toCapitalString(event.results[0][0].transcript));
+      wordEmitter.emit(event.results[0][0].transcript);
       wordEmitter.complete();
     }
-    this.recognition.onspeechend = () => this.recognition.stop();
+    this.recognition.onspeechend = () => {
+      this.recognition.stop();
+      wordEmitter.complete();
+    };
     this.recognition.onnomatch = (event: SpeechRecognitionEvent) => wordEmitter.error(new Error('Match not found for ' + event.results[0][0].transcript));
     this.recognition.onerror = (event: SpeechRecognitionErrorEvent) => wordEmitter.error(event);
     return wordEmitter;
   }
-
-  private toCapitalString = (text: string) => text && text.length >= 1 ? text[0].toUpperCase() + text.slice(1) : "";
 }

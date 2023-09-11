@@ -76,7 +76,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
       .pipe(distinct())
       .pipe(finalize(() => this.refreshState(textInput)))
       .subscribe({
-        next: word => this.value = word.toLowerCase(),
+        next: word => this.value = word,
         error: () => this.speechRecognitionService.stop(),
         complete: () => this.executeCommand(InputCellCommand.CHECK)
       });
