@@ -41,7 +41,7 @@ export class SpeechRecognitionService {
     this.recognition.onspeechend = () => {
         this.recognition.stop();
         of(this.recognition)
-          .pipe(delay(2000))
+          .pipe(delay(200))
           .pipe(finalize(() => wordEmitter.complete()))
           .subscribe();
     };
