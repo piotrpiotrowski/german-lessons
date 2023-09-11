@@ -50,12 +50,13 @@ export class InputCellComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.commandSubscription.unsubscribe();
-    this.recordingSubscription.unsubscribe();
+    this.commandSubscription && this.commandSubscription.unsubscribe();
+    this.recordingSubscription && this.recordingSubscription.unsubscribe();
   }
 
   onValueChanged(event: any): void {
     const keyCode = event.keyCode;
+    this.cancelRecording()
     if (this.isAsciiLetter(keyCode) || keyCode === 8 || keyCode === 46 || keyCode === 229) {
       this.state = InputCellState.UNCERTAIN;
     } else {
@@ -191,7 +192,6 @@ export class InputCellComponent implements OnInit, OnDestroy {
 
   private refreshState(textInput: HTMLInputElement) {
     this.hideMic();
-    this.recordingSubscription.unsubscribe();
     textInput.blur();
   }
 }
