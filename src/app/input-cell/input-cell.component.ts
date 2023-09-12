@@ -74,12 +74,17 @@ export class InputCellComponent implements OnInit, OnDestroy {
       .pipe(filter(_ => this.recording))
       .pipe(mergeMap(_ => this.speechRecognitionService.recognizeWords()))
       .pipe(distinct())
-      .pipe(finalize(() => this.refreshState(textInput)))
+      .pipe(finalize(() => this.hideMic()))
       .subscribe({
-        next: word => this.value = word,
+        next: word => this.updateState(word, textInput),
         error: () => this.speechRecognitionService.stop(),
         complete: () => this.executeCommand(InputCellCommand.CHECK)
       });
+  }
+
+  private updateState(word: string, textInput: HTMLInputElement) {
+    this.value = word;
+    textInput.blur();
   }
 
   onDoubleClick(): void {
@@ -192,10 +197,5 @@ export class InputCellComponent implements OnInit, OnDestroy {
     } catch (err) {
       return 0;
     }
-  }
-
-  private refreshState(textInput: HTMLInputElement) {
-    this.hideMic();
-    textInput.blur();
   }
 }
