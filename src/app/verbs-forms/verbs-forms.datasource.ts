@@ -8,7 +8,7 @@ bite;gryźć;beißen;beißt;biss;hat gebissen;3
 salvage;zbawiać;bergen;birgt;barg;hat geborgen;3
 burst;pękać;bersten;birst;barst;ist geborsten;4
 induce;nakłaniać;bewegen;bewegt;bewog;hat bewogen;2
-cheat;oszukiwać;betrügen;betrügt;betrog;hat betrogen;4
+cheat;oszukiwać;betrügen;betrügt;betrog;hat betrogen;3
 bend, turn;giąć;biegen;biegt;bog;hat gebogen;4
 offer;oferować;bieten;bietet;bot;hat geboten;1
 bind, tie;wiązać;binden;bindet;band;hat gebunden;3
@@ -28,7 +28,8 @@ recommend;polecać;empfehlen;empfiehlt;empfahl;hat empfohlen;1
 go out of light;wygasać;erlöschen;erlischt;erlosch;ist erloschen;4
 choose, elect;wybierać coś, kogoś;erkiesen;erkiest;erkor;hat erkoren;2
 scale, climb;wspinać się;erklimmen;erklimmt;erklomm;hat erklommen;4
-be startled;wystraszyć się;erschrecken;erschrickt;erschrak;ist erschrocken;4
+be startled;wystraszyć się;erschrecken;erschrickt;erschrak;ist erschrocken;3
+be startled by somebody;wystraszyć kogoś;erschrecken;erschreckt;erschrak;hat erschreckt;3
 consider;rozważać;erwägen;erwägt;erwog;hat erwogen;2
 eat;jeść;essen;isst;aß;hat gegessen;1
 drive, go;jechać, zawozić;fahren;fährt;fuhr;ist gefahren;1
@@ -62,7 +63,7 @@ seize;chwytać;greifen;greift;griff;hat gegriffen;3
 have;mieć;haben;hat;hatte;hat gehabt;1
 hold;trzymać;halten;hält;hielt;hat gehalten;2
 be hanging;wisieć;hängen;hängt;hing;hat gehangen;2
-hit;bić, lać;hauen;haut;hieb;hat gehauen;3
+hit;bić, lać;hauen;haut;haute;hat gehauen;3
 lift;podnosić;heben;hebt;hob;hat gehoben;3
 be called;nazywać się;heißen;heißt;hieß;hat geheißen;1
 help;pomagać;helfen;hilft;half;hat geholfen;1
@@ -139,7 +140,7 @@ sing;śpiewać;singen;singt;sang;hat gesungen;2
 sink;tonąć;sinken;sinkt;sank;ist gesunken;3
 meditate;rozmyślać;sinnen;sinnt;sann;hat gesonnen;4
 sit, be sitting;siedzieć;sitzen;sitzt;saß;hat gesessen;1
-shall, be supposed to;mieć powinność;sollen;soll;sollte;hat gesollt;4
+shall, be supposed to;mieć powinność;sollen;soll;sollte;hat gesollt;1
 split, cleave;dzielić, rozłupywać;spalten;spaltet;spaltete;hat gespalten;4
 spit;zionąć, buchać, pluć;speien;speit;spie;hat gespieen;4
 spin, be stupid;prząść, pleść;spinnen;spinnt;spann;hat gesponnen;4
@@ -181,7 +182,7 @@ become;stać się, zostać;werden;wird;wurde;ist geworden;1
 throw;rzucać;werfen;wirft;warf;hat geworfen;2
 wind;wić, wplatać;winden;windet;wand;hat gewunden;3
 know;wiedzieć;wissen;weiß;wusste;hat gewusst;1
-want;chcieć;wollen;will;wollte;hat gewollt;4
+want;chcieć;wollen;will;wollte;hat gewollt;1
 wring;wyżymać;wringen;wringt;wrang;hat gewrungen;4
 pull, move;ciągnąć;ziehen;zieht;zog;ist gezogen;2
 force;zmuszać;zwingen;zwingt;zwang;hat gezwungen;3`));
