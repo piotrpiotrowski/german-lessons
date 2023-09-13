@@ -83,7 +83,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
   }
 
   private updateState(word: string, textInput: HTMLInputElement) {
-    this.value = word;
+    this.value = word.toLowerCase();
     textInput.blur();
   }
 
