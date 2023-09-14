@@ -16,23 +16,20 @@
     ></app-command-buttons>
     <div>
       <app-responsive-button-toggle-group
-        [title]="languageService.getLabel('levelChoose')"
-        [options]="difficultyLevelOptions"
-        [(model)]="difficultyLevel"
-        (selectOption)="loadVerbsForms()"
-      ></app-responsive-button-toggle-group>
+        [title]="languageService.getLabel('show')"
+        [options]="filteringCategoryOptions"
+        [(model)]="filteringCategory"
+        (selectOption)="loadVerbsForms()"></app-responsive-button-toggle-group>
       <app-responsive-button-toggle-group
         [title]="languageService.getLabel('auxiliaryVerbChoose')"
         [options]="auxiliaryVerbOptions"
         [(model)]="auxiliaryVerb"
-        (selectOption)="loadVerbsForms()"
-      ></app-responsive-button-toggle-group>
+        (selectOption)="loadVerbsForms()"></app-responsive-button-toggle-group>
       <app-responsive-button-toggle-group
-        [title]="languageService.getLabel('show')"
-        [options]="filteringCategoryOptions"
-        [(model)]="filteringCategory"
-        (selectOption)="loadVerbsForms()"
-      ></app-responsive-button-toggle-group>
+        [title]="languageService.getLabel('levelChoose')"
+        [options]="difficultyLevelOptions"
+        [(model)]="difficultyLevel"
+        (selectOption)="loadVerbsForms()"></app-responsive-button-toggle-group>
     </div>
   </div>
 </mat-expansion-panel>
