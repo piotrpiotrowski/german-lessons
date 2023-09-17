@@ -158,6 +158,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
     this.value = '';
     this.hideMic();
     this.historyUpdatedAlready = false;
+    this.recordingSubscription && this.recordingSubscription.unsubscribe();
   }
 
   private resetState(): void {

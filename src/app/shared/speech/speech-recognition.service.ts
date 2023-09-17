@@ -16,7 +16,7 @@ export class SpeechRecognitionService {
     this.recognition = new webkitSpeechRecognition();
     this.recognition.grammars = speechRecognitionList;
     this.recognition.continuous = false;
-    this.recognition.lang = 'de-DE';
+    this.recognition.lang = 'de-de';
     this.recognition.interimResults = false;
     this.recognition.maxAlternatives = 1;
   }
