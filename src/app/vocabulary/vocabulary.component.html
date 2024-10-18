@@ -4,7 +4,7 @@
     <mat-panel-title>
       {{
         languageService.getLabel("lessonSummary") +
-          (words | async)?.length +
+        ((words | async)?.length ?? 0) +
           " " +
           languageService.getLabel("words")
       }}

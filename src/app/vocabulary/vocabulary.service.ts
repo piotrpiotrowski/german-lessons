@@ -16,7 +16,7 @@ export class VocabularyService implements FinderService<TrainingRowModel> {
   constructor(private vocabularyLoaderService: VocabularyLoaderService) {
   }
 
-  private finderService = new MatrixFinderService<TrainingRowModel>(new CsvParser('\n', '\t').parseToMatrix(this.vocabularyLoaderService.load()), (columns: string[]) =>
+  private finderService = new MatrixFinderService<TrainingRowModel>(new CsvParser('\n', ';').parseToMatrix(this.vocabularyLoaderService.load()), (columns: string[]) =>
     of(new TrainingRowModel(
       new Map<Language, string>([[Language.ENGLISH, columns[0]], [Language.POLISH, columns[1]], [Language.GERMAN, columns[2]]]),
       +columns[3],

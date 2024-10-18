@@ -1,44 +1,1754 @@
-dismiss	zwolnić, uwolnić	entlassen	3
-industry association	stowarzyszenie branżowe	Branchenverband	4
-prevented	zapobiegać	verhindert	2
-offer	oferować	bieten	1
-stay	pozostawać	bleiben	1
-think	myśleć	denken	1
-may, be allowed	móc, mieć pozwolenie	dürfen	1
-recommend	polecać	empfehlen	1
-eat	jeść	essen	1
-drive, go	jechać, zawozić	fahren	1
-fall	upadać	fallen	1
-find	znajdować	finden	1
-give	dawać	geben	1
-walk, go	iść	gehen	1
-have	mieć	haben	1
-be called	nazywać się	heißen	1
-help	pomagać	helfen	1
-know somebody	znać	kennen	1
-come	przychodzić	kommen	1
-can, be able to	móc, umieć	können	1
-load	ładować	laden	1
-let	kazać, zostawiać, pozwolić	lassen	1
-run	biec	laufen	1
-read	czytać	lesen	1
-lie, be lying	leżeć	liegen	1
-like	lubić	mögen	1
-must, have to	musieć	müssen	1
-take	brać	nehmen	1
-call, cry out	wołać	rufen	1
-sleep	spać	schlafen	1
-close, shut	zamykać	schließen	1
-write	pisać	schreiben	1
-see	widzieć	sehen	1
-be	być	sein	1
-send	wysyłać	senden	1
-sit, be sitting	siedzieć	sitzen	1
-speak	mówić, rozmawiać	sprechen	1
-stand	stać	stehen	1
-wear, carry	nosić	tragen	1
-meet	spotykać	treffen	1
-drink	pić	trinken	1
-forget	zapominać	vergessen	1
-become	stać się, zostać	werden	1
-know	wiedzieć	wissen	1
+dismiss;zwolnić, uwolnić;entlassen;3
+industry association;stowarzyszenie branżowe;Branchenverband;4
+prevented;zapobiegać;verhindert;2
+offer;oferować;bieten;1
+stay;pozostawać;bleiben;1
+think;myśleć;denken;1
+may, be allowed;móc, mieć pozwolenie;dürfen;1
+recommend;polecać;empfehlen;1
+eat;jeść;essen;1
+drive, go;jechać, zawozić;fahren;1
+fall;upadać;fallen;1
+find;znajdować;finden;1
+give;dawać;geben;1
+walk, go;iść;gehen;1
+have;mieć;haben;1
+be called;nazywać się;heißen;1
+help;pomagać;helfen;1
+know somebody;znać;kennen;1
+come;przychodzić;kommen;1
+can, be able to;móc, umieć;können;1
+load;ładować;laden;1
+let;kazać, zostawiać, pozwolić;lassen;1
+run;biec;laufen;1
+read;czytać;lesen;1
+lie, be lying;leżeć;liegen;1
+like;lubić;mögen;1
+must, have to;musieć;müssen;1
+take;brać;nehmen;1
+call, cry out;wołać;rufen;1
+sleep;spać;schlafen;1
+close, shut;zamykać;schließen;1
+write;pisać;schreiben;1
+see;widzieć;sehen;1
+be;być;sein;1
+send;wysyłać;senden;1
+sit, be sitting;siedzieć;sitzen;1
+speak;mówić, rozmawiać;sprechen;1
+stand;stać;stehen;1
+wear, carry;nosić;tragen;1
+meet;spotykać;treffen;1
+drink;pić;trinken;1
+forget;zapominać;vergessen;1
+become;stać się, zostać;werden;1
+know;wiedzieć;wissen;1
+width;szerokość;die Weite;3
+loading;załadunek;die Ladung;3
+exclamation;okrzyk;der Ruf;3
+year;rok;das Jahr;3
+writing;Pismo;das Schreiben;3
+wrist;Nadgarstek;das Handgelenk;3
+wrinkle;Zmarszczka;die Falten;3
+wren;Strzyżyk;der Zaunkönig;3
+wreck;Wrak;das Wrack;3
+wound;Rana;die Wunde;3
+worry;Martwić się;die Sorge;3
+worm;Robak;der Wurm;3
+world;świat;die Welt;3
+worker;Pracownik;der Arbeiter;3
+word;słowo;das Wort;3
+wool;wełna;die Wolle;3
+wonder;Zastanawiać się;das Wunder;3
+wizard;Czarodziej;der Zauberer;3
+witness;Świadek;der Zeuge;3
+witch;Czarownica;die Hexe;3
+wish;Życzenie;der Wunsch;3
+wisdom;Mądrość;die Weisheit;3
+winner;Zwycięzca;der Gewinner;3
+wink;Puścić oczko;die Zuzwinkern;3
+wing;Skrzydło;der Flügel;3
+wine;wino;der Wein;3
+windshield;Przednia szyba;die Windschutzscheibe;3
+window;okno;das Fenster;3
+wilderness;dźicz;die Wildnis;3
+wig;Peruka;die Perücke;3
+wife;żona;die Ehefrau;3
+widow;Wdowa;die Witwe;3
+whore;Kurwa;die Hure;3
+white;biały;das Weiß;3
+whistle;Gwizdać;die Pfeife;3
+whiskey;Whisky;der Whisky;3
+whip;Bicz;die Peitsche;3
+wheelchair;Wózek inwalidzki;der Rollstuhl;3
+wheel;koło;das Rad;3
+wheat;Pszenica;der Weizen;3
+whale;Wieloryb;der Wal;3
+west;zachód;der Westen;3
+welcome;Witamy;das Willkommen;3
+weight;Waga;das Gewicht;3
+weekend;Weekend;das Wochenende;3
+week;tydzień;die Woche;3
+weed;Chwast;das Unkraut;3
+wedding;wesele;die Hochzeit;3
+weather;pogoda;das Wetter;3
+wealth;Bogactwo;der Reichtum;3
+weakness;Słabość;die Schwäche;3
+way;droga;der Weg;3
+wax;Wosk;das Wachs;3
+wave;Fala;die Welle;3
+water;woda;das Wasser;3
+watch;zegarek;die Uhr;3
+wash;Myć się;die Wasch;3
+warrior;Wojownik;der Krieger;3
+warning;Ostrzeżenie;die Warnung;3
+warmth;Ciepło;die Wärme;3
+war;Wojna;der Krieg;3
+walkway;ścieżka;der Gehweg;3
+walker;Piechur;der Wanderer;3
+walk;Spacerować;das Wandern;3
+waiter;kelner;der Kellner;3
+wait;Czekać;das Warten;3
+waist;Talia;die Taille;3
+wagon;wóz;der Wagen;3
+volunteer;Wolontariusz;die Freiwillige;3
+volume;Tom;das Volumen;3
+volcano;Wulkan;der Vulkan;3
+voice;Głos;die Stimme;3
+vodka;wódka;der Wodka;3
+visitor;odwiedzający;der Besucher;3
+visit;Odwiedzać;der Besuch;3
+virtue;Cnota;die Tugend;3
+virgin;dziewica;die Jungfrau;3
+violet;Fioletowy;das Violett;3
+violence;Przemoc;die Gewalt;3
+villager;Wieśniak;der Dorfbewohner;3
+village;wieś;das Dorf;3
+view;Pogląd;die Aussicht;3
+victory;Zwycięstwo;der Sieg;3
+victor;triumpfator;der Sieger;3
+victim;Ofiara;das Opfer;3
+vet;Weterynarz;der Tierarzt;3
+vest;Kamizelka;die Weste;3
+verse;Werset;der Vers;3
+vein;Żyła;die Vene;3
+veil;Welon;der Schleier;3
+vehicle;Pojazd;das Fahrzeug;3
+vegetable;Warzywo;das Gemüse;3
+vanity;próżność;die Eitelkeit;3
+vampire;Wampir;der Vampir;3
+value;Wartość;der Wert;3
+valley;Dolina;das Tal;3
+vacation;Wakacje;der Urlaub;3
+use;Posługiwać się;die Verwendung;3
+urgency;Pilna sprawa;die Dringlichkeit;3
+university;Uniwersytet;die Universität;3
+universe;Wszechświat;das Universum;3
+unit;Jednostka;die Einheit;3
+underwear;bielizna;die Unterwäsche;3
+uncle;wuj;der Onkel;3
+type;Rodzaj;der Typ;3
+twin;Bliźniak;der Zwilling;3
+twig;Gałązka;der Zweig;3
+turtle;żółw;die Schildkröte;3
+turn;Zakręt;die Wende;3
+turkey;indyk;der Truthahn;3
+tunic;Tunika;die Tunika;3
+tune;Melodia;die Melodie;3
+tug;Holownik;der Schlepper;3
+tub;Wanna;die Wanne;3
+truth;Prawda;die Wahrheit;3
+trout;Pstrąg;die Forelle;3
+troop;trupa;die Truppe;3
+trigger;Cyngiel;der Abzug;3
+tribe;Plemię;der Stamm;3
+triangle;Trójkąt;das Dreieck;3
+tree;drzewo;der Baum;3
+treatment;Leczenie;die Behandlung;3
+treasure;Skarb;der Schatz;3
+traveler;Podróżny;der Reisende;3
+trap;Pułapka;die Falle;3
+transmission;Przenoszenie;die Übertragungs;3
+translator;Tłumacz;der Übersetzer;3
+translation;Tłumaczenie;die Übersetzung;3
+train;pociąg;der Zug;3
+trailer;Zwiastun filmu;der Anhänger;3
+tragedy;Tragedia;die Tragödie;3
+traffic;Ruch drogowy;der Verkehr;3
+trade;Handel;der Handel;3
+tractor;Ciągnik;der Traktor;3
+track;odcinek;die Strecke;3
+trace;Namierzać;die Spur;3
+toy;Zabawka;das Spielzeug;3
+tower;wieża;der Turm;3
+towel;Ręcznik;das Handtuch;3
+touch;Dotykać;die Berührung;3
+torch;Pochodnia;die Fackel;3
+topic;Temat;das Thema;3
+top;Szczyt;die Spitze;3
+tool;Narzędzie;das Werkzeug;3
+tongue;język;die Zunge;3
+tone;Ton;der Ton;3
+tomato;pomidor;die Tomate;3
+toilet;toaleta;die Toilette;3
+toe;palec u nogi;die Zehe;3
+tobacco;Tytoń;die Tabak;3
+tissue;Papierowa chusteczka;das Gewebe;3
+time;czas;die Zeit;3
+tile;Płytka;die Fliese;3
+tide;pływy;die Gezeiten;3
+thunder;grzmot;der Donner;3
+thumb;kciuk;der Daumen;3
+thug;Bandyta;der Schläger;3
+throne;Tron;der Thron;3
+thrill;Dreszczyk;der Nervenkitzel;3
+thread;nić;der Faden;3
+thought;Myśl;der Gedanke;3
+thorn;Cierń;der Dorn;3
+thing;Rzecz;das Ding;3
+thief;Złodziej;der Dieb;3
+therapy;Terapia;die Therapie;3
+therapist;Terapeuta;der Therapeut;3
+theory;Teoria;die Theorie;3
+thanksgiving;święto Dziękczynienia;die Danksagung;3
+testimony;Świadectwo;das Zeugnis;3
+terror;Terror;der Schrecken;3
+terrace;Taras;die Terrasse;3
+term;Semestr;der Begriff;3
+tentacle;Macka;die Tentakel;3
+tent;Namiot;das Zelt;3
+tension;Napięcie;die Spannung;3
+temple;Świątynia;der Tempel;3
+temperature;Temperatura;die Temperatur;3
+television;Telewizja;das Fernsehen;3
+telescope;Teleskop;das Teleskop;3
+technique;Technika;die Technik;3
+technician;Technik;der Techniker;3
+teaching;Nauczanie;das Lehren;3
+teacher;nauczyciel;der Lehrer;3
+tea;herbata;der Tee;3
+tavern;Tawerna;die Taverne;3
+tattoo;Tatuaż;die Tätowierung;3
+taste;Smak;der Geschmack;3
+task;zadanie;die Aufgabe;3
+target;cel;das Ziel;3
+tape;Taśma;das Band;3
+tap;Uzyskiwać;der Wasserhahn;3
+talk;Rozmowa;das Gespräch;3
+tail;Ogon;der Schweif;3
+table;stół;der Tisch;3
+sympathy;Współczucie;die Sympathie;3
+syllable;Sylaba;die Silbe;3
+sword;Miecz;das Schwert;3
+switch;Przełącznik;der Schalter;3
+swing;Huśtać się;die Schaukel;3
+swimming;Pływanie;das Schwimmen;3
+sweet;Słodki;die Süße;3
+sweater;Sweter;der Pullover;3
+swan;Łabędź;der Schwan;3
+swamp;Bagno;der Sumpf;3
+swallow;Jaskółka;die Schwalbe;3
+suspicion;Podejrzenie;der Verdacht;3
+suspect;Podejrzany;der Verdächtige;3
+survivor;Niedobitek;der Überlebende;3
+survival;Przetrwanie;die Überlebens;3
+surprise;Niespodzianka;die Überraschung;3
+surgery;Chirurgia;die Operation;3
+surgeon;Chirurg;der Chirurg;3
+surface;Powierzchnia;die Oberfläche;3
+surf;Surfować;die Brandung;3
+supermarket;Supermarket;der Supermarkt;3
+sunshine;Światło blask;der Sonnenschein;3
+sunset;Zachód słońca;der Sonnenuntergang;3
+sunrise;wschód słońca;der Sonnenaufgang;3
+sunlight;Światło słoneczne;das Sonnenlicht;3
+sunglasses;Okulary słoneczne;die Sonnenbrille;3
+sun;słońce;die Sonne;3
+summer;lato;der Sommer;3
+sum;Suma;die Summe;3
+suitcase;Walizka;der Koffer;3
+suit;garnitur;der Anzug;3
+suicide;Samobójstwo;die Selbstmord;3
+suggestion;propozycja;der Vorschlag;3
+sugar;cukier;der Zucker;3
+suffering;Cierpienie;das Leiden;3
+success;Powodzenie;der Erfolg;3
+subway;Metro;die UBahn;3
+substance;Substancja;die Substanz;3
+style;Styl;der Stil;3
+stump;Kikut;der Stumpf;3
+structure;Struktura;die Struktur;3
+strip;Rozebrać się;der Streifen;3
+string;Strunowy;die Schnur;3
+strike;Strajk;der Streik;3
+strength;Wytrzymałość;die Stärke;3
+street;ulica;die Straße;3
+stream;Strumień;der Strom;3
+strawberry;truskawka;die Erdbeere;3
+strategy;Strategia;die Strategie;3
+strap;pas;der Gurt;3
+stranger;Nieznajomy;der Fremde;3
+story;Fabuła;die Geschichte;3
+storm;burza;der Sturm;3
+storage;Składowanie;das Speicher;3
+stone;kamień;der Stein;3
+stocking;Pończocha;der Strumpf;3
+stick;Kij;der Stock;3
+stew;Gulasz;der Eintopf;3
+stern;rufa;das Heck;3
+step;Krok;der Schritt;3
+stench;Smród;der Gestank;3
+steel;stal;der Stahl;3
+steam;Parowy;der Dampf;3
+stay;Zostać;der Aufenthalt;3
+statement;Oświadczenie;die Aussage;3
+state;Stan;der Staat;3
+starling;Szpak;der Star;3
+star;gwiazda;der Stern;3
+stamp;znaczek pocztowy;die Briefmarke;3
+stake;Stawka;der Einsatz;3
+staircase;Klatka schodowa;das Treppenhaus;3
+stair;Schodek;die Treppen;3
+stain;Plama;der Fleck;3
+stack;Stos;der Stapel;3
+squirrel;Wiewiórka;das Eichhörnchen;3
+square;Kwadrat;das Quadrat;3
+spy;Szpieg;der Spion;3
+spring;wiosna;der Frühling;3
+spoon;łyżka;der Löffel;3
+splash;Pluśnięcie;der Spritz;3
+spit;Pluć;der Spieß;3
+spider;Pająk;die Spinne;3
+spell;Zaklęcie;der Zauber;3
+speed;Prędkość;die Geschwindigkeit;3
+speech;Przemówienie;die Rede;3
+specimen;Próbka;die Probe;3
+spear;Włócznia;der Speer;3
+speaker;Głośnik;der Lautsprecher;3
+sparrow;Wróbel;der Spatz;3
+spark;Iskra;der Funke;3
+space;Przestrzeń;der Raum;3
+south;południe;der Süden;3
+source;Źródło;die Quelle;3
+soup;zupa;die Suppe;3
+soul;Dusza;die Seele;3
+song;Utwór muzyczny;das Lied;3
+son;syn;der Sohn;3
+solution;Rozwiązanie;die Lösung;3
+soldier;Żołnierz;der Soldat;3
+sock;Skarpetka;die Socke;3
+society;społeczeństwo;die Gesellschaft;3
+soap;mydło;die Seife;3
+snow;śnieg;der Schnee;3
+snake;wąż;die Schlange;3
+smoke;Palić;der Rauch;3
+smile;Uśmiechnij się;das Lächeln;3
+smell;Zapach;der Geruch;3
+slot;Otwór;der Schlitz;3
+slope;Nachylenie;die Piste;3
+slice;Plasterek;die Scheibe;3
+sleep;Spać;der Schlaf;3
+sky;niebo;der Himmel;3
+skull;Czaszka;der Schädel;3
+skirt;spódnica;der Rock;3
+skin;skóra;die Haut;3
+sketch;Naszkicować;die Skizze;3
+skeleton;Szkielet;das Skelett;3
+size;Rozmiar;die Größe;3
+sister;siostra;die Schwester;3
+siren;Syrena;die Sirene;3
+sink;Tonąć;das Waschbecken;3
+singing;Śpiewanie;der Gesang;3
+singer;Piosenkarz;der Sänger;3
+sin;grzech;die Sünde;3
+silver;srebro;das Silber;3
+silk;Jedwab;die Seide;3
+silence;Cisza;die Stille;3
+signature;Podpis;die Unterschrift;3
+sight;Wzrok;die Sehenswürdigkeit;3
+sigh;Westchnienie;der Seufzer;3
+sidewalk;Chodnik;der Bürgersteig;3
+sidebar;Pasek boczny;die Seitenleiste;3
+side;strona;die Seite;3
+sickness;choroba;die Krankheit;3
+sibling;Rodzeństwo;die Geschwister;3
+shuffling;Shuffling.;das Schlurfen;3
+shower;Kabina prysznicowa;die Dusche;3
+shovel;Łopata;die Schaufel;3
+shoulder;ramię;die Schulter;3
+shotgun;Strzelba;die Schrotflinte;3
+shot;Strzał;der Schuss;3
+shopping;Zakupy;das Einkaufen;3
+shoe;but;der Schuh;3
+shock;Zaszokować;der Schock;3
+shiver;Dreszcz;das Zittern;3
+shit;Gówno;die Scheiße;3
+shirt;koszula;das Hemd;3
+ship;statek;das Schiff;3
+shift;Zmiana;die Verschiebung;3
+shepherd;Pasterz;der Hirte;3
+shelf;regał;das Regal;3
+sheep;Owce;das Schaf;3
+shed;Szopa;der Schuppen;3
+shark;Rekin;der Hai;3
+shard;Czerep;die Scherbe;3
+shape;kształt;die Form;3
+shame;Wstyd;die Schande;3
+shadow;cień;der Schatten;3
+shade;odcień;die Schattierung;3
+settlement;Osada;die Siedlung;3
+setting;Ustawienie;die Einstellung;3
+set;Ustawić;der Satz;3
+session;Sesja;die Sitzung;3
+servant;Sługa;der Diener;3
+sequence;Sekwencja;die Sequenz;3
+sense;Sens;der Sinn;3
+seed;Nasionko;die Saat;3
+secretary;Sekretarz;der Sekretär;3
+secret;Sekret;das Geheimnis;3
+season;Pora roku;die Jahreszeit;3
+search;Szukaj;die Suche;3
+seam;Szew;die Naht;3
+seal;Foka;die Dichtung;3
+sea;morze;das Meer;3
+sculpture;Rzeźba;die Skulptur;3
+scream;Krzyk;der Schrei;3
+scratch;Zadrapanie;die Kratz;3
+scissors;nożyce;die Schere;3
+scientist;Naukowiec;der Wissenschaftler;3
+science;nauka;die Wissenschaft;3
+school;szkołaszkoła;die Schule;3
+scholar;Uczony;der Gelehrte;3
+scent;aromat, woń;der Duft;3
+scene;Scena;die Szene;3
+scenario;Scenariusz;das Szenario;3
+scarf;Szalik;der Schal;3
+scar;Blizna;die Narbe;3
+scalp;Oskalpować;die Kopfhaut;3
+saying;Powiedzenie;das Sprichwort;3
+saw;Piła;die Säge;3
+saving;Oszczędność;die Einsparung;3
+sausage;kiełbasa;die Wurst;3
+saucer;Spodek;die Untertasse;3
+satisfaction;Zadowolenie;die Zufriedenheit;3
+satellite;Satelita;der Satellit;3
+sandal;Sandał;die Sandale;3
+salt;sól;das Salz;3
+salmon;Łosoś;der Lachs;3
+sale;Sprzedaż;der Verkauf;3
+salary;Pensja;das Gehalt;3
+salad;sałatka;der Salat;3
+sake;Wzgląd;das Wohl;3
+saint;Święty;der Heilige;3
+sail;Żagiel;das Segel;3
+sage;szałwia;der Weise;3
+safety;Bezpieczeństwo;die Sicherheit;3
+sadness;Smutek;die Traurigkeit;3
+saddle;Siodło;der Sattel;3
+russian;Rosyjski;der Russe;3
+runner;Biegacz;der Läufer;3
+run;Biegać;die Lauf;3
+rumor;Plotka;das Gerücht;3
+rule;Reguła;die Regel;3
+ruin;Ruina;die Ruine;3
+ruby;Rubin;der Rubin;3
+rubble;Gruz;die Trümmer;3
+row;rząd czegoś;die Reihe;3
+round;Okrągły;die Runde;3
+rope;lina;das Seil;3
+roommate;Współlokator;der Mitbewohner;3
+room;Pokój;die Raum;3
+rooftop;Dachu;die Dach;3
+roof;dach;das Dach;3
+romance;Romans;die Romantik;3
+roman;rzymski;die Römisch;3
+role;Rola;die Rolle;3
+rod;Pręt;die Stange;3
+rocket;Rakieta;die Rakete;3
+robot;Robot;der Roboter;3
+robin;Rudzik;das Rotkehlchen;3
+river;rzeka;der Fluss;3
+risk;Ryzyko;das Risiko;3
+rise;Podwyżka;der Aufgang;3
+ripple;Marszczyć;die Welligkeit;3
+right;prawo;das Recht;3
+rifle;karabin;das Gewehr;3
+ridge;Grzbiet;der Grat;3
+ride;Jeździć;die Fahrt;3
+rice;Ryż;der Reis;3
+rib;Żebro;die Rippe;3
+rhythm;Rytm;der Rhythmus;3
+reward;Nagroda;die Belohnung;3
+reverend;Czcigodny;der Pfarrer;3
+revenge;Zemsta;die Rache;3
+return;Powrót;die Rückkehr;3
+result;Wynik;das Ergebnis;3
+rest;Odpoczynek;die Rast;3
+resistance;Opór;der Widerstand;3
+resident;Mieszkaniec;der Bewohner;3
+residence;Rezydencja;die Residenz;3
+reservation;Rezerwacja;die Reservierung;3
+research;Badania;die Forschung;3
+rescue;Ratunek;die Rettung;3
+request;Wniosek;die Anforderung;3
+republic;Republika;die Republik;3
+report;Raport;das Bericht;3
+repair;Naprawic;die Reparatur;3
+rental;Wynajem;die Vermietung;3
+rent;czynsz;die Miete;3
+reminder;Przypomnienie;die Erinnerung;3
+remark;spostrzeżenie;die Bemerkung;3
+relation;Relacja;die Beziehung;3
+refugee;Uchodźca;der Flüchtling;3
+refrigerator;lodówka;der Kühlschrank;3
+reflection;Odbicie;die Reflexion;3
+recording;Nagranie;die Aufnahme;3
+record;Nagrywać;der Datensatz;3
+recipe;Przepis;das Rezept;3
+receiver;Odbiorca;der Empfänger;3
+rebel;Buntownik;der Rebell;3
+reason;powód;der Grund;3
+rear;Tył;der Hinter;3
+reader;Czytelnik;der Leser;3
+reaction;Reakcja;die Reaktion;3
+reach;Osiągać;die Reichweite;3
+razor;Brzytwa;das Rasiermesser;3
+ray;Promień;der Strahl;3
+raven;Kruk;der Rabe;3
+rat;Szczur;die Ratte;3
+rank;Ranga;der Rang;3
+range;Zasięg;der Bereich;3
+ramp;Rampa;die Rampe;3
+rainbow;Tęcza;der Regenbogen;3
+rain;deszcz;der Regen;3
+railroad;Popędzać;die Eisenbahn;3
+railing;Balustrada;das Geländer;3
+rail;Szyna;die Schiene;3
+rage;Wściekłość;die Wut;3
+rag;Szmata;die Lappen;3
+raft;Tratwa;das Floß;3
+radiation;Promieniowanie;die Strahlung;3
+race;Wyścigi;das Rennen;3
+rabbit;Królik;der Hase;3
+question;Pytanie;die Frage;3
+quarter;Jedna czwarta;das Viertel;3
+quality;Jakość;die Qualität;3
+pyramid;Piramida;die Pyramide;3
+pussy;Kiciuś;die Fotze;3
+purse;Portmonetka;der Geldbeutel;3
+purchase;Zakup;der Kauf;3
+puppy;Szczeniak;der Welpe;3
+pupil;Uczeń;der Schüler;3
+punishment;Kara;die Strafe;3
+pumpkin;Dynia;der Kürbis;3
+pump;Pompa;die Pumpe;3
+puddle;Kałuża;die Pfütze;3
+publisher;Wydawca;der Verlag;3
+public;Publiczny;die Öffentlichkeit;3
+psychiatrist;Psychiatra;der Psychiater;3
+protection;Ochrona;der Schutz;3
+property;Nieruchomość;die Eigenschaft;3
+promise;Obietnica;das Versprechen;3
+progress;Postęp;der Fortschritt;3
+program;Program;das Programm;3
+profit;Zysk;der Gewinn;3
+profile;Profil;das Profil;3
+profession;Zawód;der Beruf;3
+production;Produkcja;die Produktion;3
+product;Produkt;das Produkt;3
+procession;Procesja;die Prozession;3
+process;Proces;der Prozess;3
+procedure;Procedura;das Verfahren;3
+privacy;Prywatność;der Privatsphäre;3
+prisoner;Więzień;der Gefangene;3
+prison;Więzienie;das Gefängnis;3
+print;Wydrukować;die Druck;3
+priest;Kapłan;der Priester;3
+price;cena;der Preis;3
+prey;trofeum, zdobycz;die Beute;3
+pressure;Nacisk;der Druck;3
+press;naciskać;die Presse;3
+president;Prezydent;der Präsident;3
+preparation;Przygotowanie;die Vorbereitung;3
+pregnancy;Ciąża;die Schwangerschaft;3
+preacher;Kaznodzieja;der Prediger;3
+prayer;Modlitwa;das Gebet;3
+praise;Pochwała;das Lob;3
+prairie;Preria;die Prärie;3
+powder;Proszek;das Pulver;3
+pound;Funt;das Pfund;3
+potato;ziemniak;die Kartoffel;3
+pot;garnek;der Topf;3
+posture;Postawa;die Haltung;3
+poster;Plakat;das Plakat;3
+postcard;kart;die Postkarte;3
+possibility;Możliwość;die Möglichkeit;3
+portrait;Portret;das Porträt;3
+porch;Ganek;die Vorhalle;3
+poppy;mak;der Mohn;3
+pope;Papież;der Papst;3
+ponytail;Koński ogon;der Pferdeschwanz;3
+pond;Staw;der Teich;3
+politician;Polityk;der Politiker;3
+police;Policja;die Polizei;3
+pole;Polak;der Pol;3
+poison;trucizna;das Gift;3
+point;Punkt;der Punkt;3
+poem;Wiersz;das Gedicht;3
+pocket;torba;die Tasche;3
+plum;śliwka;die Pflaume;3
+pleasure;radość;die Freude;3
+plea;Zarzut;der Rechtsmittelgrund;3
+plaza;miejsce do siedzenia;der Platz;3
+playground;Plac zabaw;der Spielplatz;3
+player;Gracz;der Spieler;3
+platter;Talerz;der Plattenteller;3
+plastic;Plastikowy;der Kunststoff;3
+plaster;Gips;das Pflaster;3
+plant;roślina;die Pflanze;3
+plank;Deska;das Brett;3
+plane;samolot;das Flugzeug;3
+plain;Zwykły;die Ebene;3
+plague;Plaga;die Pest;3
+place;miejsce;der Ort;3
+pitcher;Dzban;der Krug;3
+pit;Dół;die Grube;3
+pistol;Pistolet;die Pistole;3
+pirate;Pirat;der Pirat;3
+pipe;Rura;das Rohr;3
+pine;sosna;die Kiefer;3
+pillow;Poduszka;das Kissen;3
+pillar;Filar;die Säulen;3
+pill;Pigułka;die Pille;3
+pilgrim;Pielgrzym;der Pilger;3
+pike;Szczupak;der Hecht;3
+pigeon;Gołąb;die Taube;3
+pig;świnia;das Schwein;3
+piece;kawałek;das Stück;3
+picture;obraz;das Bild;3
+picnic;Piknik;das Picknick;3
+piano;Fortepian;das Klavier;3
+photographer;Fotograf;der Fotograf;3
+photo;Zdjęcie;das Foto;3
+phone;telefon;das Telefon;3
+philosophy;Filozofia;die Philosophie;3
+phenomenon;Zjawisko;das Phänomen;3
+petal;Płatek kwiatu;die Blütenblatt;3
+pet;Zwierzak domowy;das Haustier;3
+perspective;Perspektywiczny;die Perspektive;3
+personnel;Personel;das Personal;3
+personality;Osobowość;die Persönlichkeit;3
+permission;Pozwolenie;die Erlaubnis;3
+period;Okres;die Periode;3
+perimeter;Obwód;der Umfang;3
+perception;Postrzeganie;die Wahrnehmung;3
+pepper;Pieprz;der Pfeffer;3
+people;Ludzie;das Volk;3
+penguin;Pingwin;der Pinguin;3
+pen;Długopis;der Stift;3
+peg;Kołek;der Zapfen;3
+pearl;Perła;die Perle;3
+peanut;Arachid;die Erdnuss;3
+peach;Brzoskwinia;der Pfirsich;3
+pea;groszek;die Erbse;3
+pay;Płacić;die Zahlung;3
+paw;Łapa;die Pfote;3
+pattern;Wzór;das Muster;3
+patrol;Patrol;die Patrouille;3
+pasture;Pastwisko;die Weide;3
+past;przeszłość;die Vergangenheit;3
+passport;paszport;der Pass;3
+passion;Pasja;die Leidenschaft;3
+passerBy;Przechodzień;der Passant;3
+passenger;Pasażer;der Passagier;3
+passage;Przejście;der Durchgang;3
+part;cześć;der Teil;3
+parent;Rodzic;das Elternteil;3
+pardon;Pardon;die Begnadigung;3
+paradise;raj;das Paradies;3
+pant;spodnie;die Hose;3
+panic;Panika;die Panik;3
+pang;Ostry ból;der Stich;3
+panel;Płyta;die Platte;3
+pancake;Naleśnik;der Pfannkuchen;3
+pan;Patelnia;die Pfanne;3
+palace;Pałac;der Palast;3
+pair;para;das Paar;3
+painting;malunek;das Gemälde;3
+painter;Malarz;der Maler;3
+pain;Ból;der Schmerz;3
+package;paczka;das Paket;3
+oxygen;Tlen;die Sauerstoff;3
+owl;Sowa;die Eule;3
+outline;Zarys;der Umriss;3
+others;Inni;die Anderen;3
+orphan;Sierota;die Waise;3
+origin;pochodzenie;der Ursprung;3
+organization;Organizacja;die Organisation;3
+organ;Organ;die Orgel;3
+orchard;sad owocowy;der Obstgarten;3
+opponent;Przeciwnik;der Gegner;3
+operator;Operator;der Betreiber;3
+opera;Opera;die Oper;3
+onion;cebula;die Zwiebel;3
+oil;olej;das Öl;3
+officer;Oficer;der Offizier;3
+office;biuro;das Büro;3
+offer;Oferta;das Angebot;3
+offense;Wykroczenie;die Straftat;3
+ocean;Ocean;der Ozean;3
+observation;Obserwacja;die Beobachtung;3
+obligation;Obowiązek;die Verpflichtung;3
+objection;Sprzeciw;der Einwand;3
+object;Obiekt;das Objekt;3
+oak;dąb;die Eiche;3
+nurse;pielęgniarka;die Krankenschwester;3
+nun;Siostra zakonna;die Nonne;3
+novel;Powieść;der Roman;3
+note;Notatka;die Notiz;3
+nostril;Nozdrze;das Nasenloch;3
+nose;nos;die Nase;3
+north;północ;der Norden;3
+nonsense;Nonsens;der Unsinn;3
+noise;Hałas;das Geräusch;3
+nightmare;Koszmar;der Albtraum;3
+nightgown;Koszula nocna;das Nachthemd;3
+night;noc;die Nacht;3
+niece;Siostrzenica;die Nichte;3
+nickname;Przezwisko;der Spitzname;3
+newspaper;gazeta;die Zeitung;3
+news;wiadomości;die Nachrichten;3
+network;Sieć;das Netzwerk;3
+nerve;Nerw;der Nerv;3
+nephew;Siostrzeniec;der Neffe;3
+neighborhood;Sąsiedztwo;die Nachbarschaft;3
+neighbor;sąsiad;der Nachbar;3
+needle;igła;die Nadel;3
+need;Potrzebować;das Bedürfnis;3
+necklace;Naszyjnik;die Halskette;3
+neck;szyja;der Hals;3
+necessity;Konieczność;die Notwendigkeit;3
+navy;Marynarka wojenna;die Marine;3
+nature;natura;die Natur;3
+native;Rodzinny;der Einheimische;3
+narrator;Narrator;der Erzähler;3
+napkin;serwetka;die Serviette;3
+nail;gwóźdź;der Nagel;3
+myth;Mit;der Mythos;3
+mustache;Wąsy;der Schnurrbart;3
+musician;Muzyk;der Musiker;3
+music;Muzyka;die Musik;3
+mushroom;Grzyb;der Pilz;3
+muscle;Mięsień;der Muskel;3
+murmur;Szmer;das Murmeln;3
+murder;Morderstwo;der Mord;3
+mule;Muł;das Maultier;3
+mug;Kubek;der Becher;3
+mud;Błoto;der Schlamm;3
+movement;Ruch;die Bewegung;3
+mouth;usta;der Mund;3
+mouse;mysz;die Maus;3
+mountain;góra;der Berg;3
+motorcycle;Motocykl;das Motorrad;3
+motive;Motyw;das Motiv;3
+moss;Mech;das Moos;3
+mosquito;komar;die Mücke;3
+morning;ranek;der Morgen;3
+moonlight;światło księżyca;das Mondlicht;3
+moon;księżyc;der Mond;3
+mood;Nastrój;die Stimmung;3
+month;miesiąc;der Monat;3
+monkey;Małpa;der Affe;3
+monk;Mnich;der Mönch;3
+money;pieniądze;das Geld;3
+mom;Mama;die Mama;3
+mole;Kret;der Maulwurf;3
+mode;Tryb;der Modus;3
+mixture;Mieszanina;die Mischung;3
+mistake;błąd;der Fehler;3
+mirror;lustro;der Spiegel;3
+miner;Górnik;der Bergmann;3
+mind;Umysł;der Geist;3
+miller;Młynarz;der Müller;3
+mill;Młyn;die Mühle;3
+milk;mleko;die Milch;3
+midst;Środek;die Mitten;3
+midnight;środek nocy;die Mitternachts;3
+middle;Środkowy;die Mitte;3
+microphone;Mikrofon;das Mikrofon;3
+metaphor;Metafora;die Metapher;3
+metal;metal;das Metall;3
+messenger;Posłaniec;der Bote;3
+message;Wiadomość;die Nachricht;3
+mercy;miłosierdzie;die Barmherzigkeit;3
+menu;Menu;das Menü;3
+mention;Wzmianka;die Erwähnung;3
+media;Głoska bezdźwięczna;die Medien;3
+medal;Medal;die Medaille;3
+mechanic;Mechanik;der Mechaniker;3
+meantime;W międzyczasie;die Zwischenzeit;3
+meaning;Oznaczający;die Bedeutung;3
+meadow;łąka;die Wiese;3
+maze;Labirynt;das Labyrinth;3
+mayor;Burmistrz;der Bürgermeister;3
+mattress;Materac;die Matratze;3
+math;Matematyka;die Mathematik;3
+mat;Mata;die Matte;3
+master;mistrz;der Meister;3
+mass;Masa;die Masse;3
+mason;Mason;der Maurer;3
+mask;Maska;die Maske;3
+marriage;Małżeństwo;die Ehe;3
+market;Rynek;der Markt;3
+mark;ocena;die Note;3
+mare;Klacz;die Stute;3
+march;Marsz;der Marsch;3
+marble;Marmur;der Marmor;3
+maple;Klon;das Ahorn;3
+manor;Dwór;das Herrenhaus;3
+man;mężczyzna;der Mann;3
+mall;Centrum handlowe;die Einkaufshalle;3
+maker;Producent;der Macher;3
+majesty;Majestat;die Majestät;3
+maintenance;Utrzymanie;die Wartung;3
+main;Główny;die Haupt;3
+magic;magia;die Magie;3
+mage;Mag;der Magier;3
+madness;Szaleństwo;die Verrücktheit;3
+machinery;Maszyneria;die Maschinen;3
+machine;maszyna;die Maschine;3
+lung;Płuco;die Lunge;3
+lunch;obiad;das Mittagessen;3
+lump;Bryła;der Klumpen;3
+luggage;bagaż;das Gepäck;3
+lover;Kochanek;der Liebhaber;3
+lovemaking;Uprawianie miłości;das Liebesspiel;3
+love;miłość;die Liebe;3
+lot;Działka;das Los;3
+loss;Strata;der Verlust;3
+loser;Nieudacznik;der Verlierer;3
+loop;Pętla;die Schleife;3
+longing;Tęsknota;die Sehnsucht;3
+loneliness;Samotność;die Einsamkeit;3
+logic;Logika;die Logik;3
+locker;Szafka;das Schließfach;3
+lock;Zamek;das Schloss;3
+lizard;Jaszczurka;die Eidechse;3
+living;Żyjący;die Lebenden;3
+liver;Wątroba;die Leber;3
+litter;Śmieci;der Wurf;3
+literature;Literatura;die Literatur;3
+list;Lista;die Liste;3
+liquor;Trunek;die Flotte;3
+liquid;Płyn;die Flüssigkeit;3
+lipstick;Pomadka;der Lippenstift;3
+lip;warga;die Lippe;3
+lion;Lew;der Löwe;3
+limp;Utykać;das Hinken;3
+limo;Limuzyny;die Limousine;3
+lily;Lilia;die Lilie;3
+lighting;Oświetlenie;die Beleuchtung;3
+lighter;zapalniczka;das Feuerzeug;3
+light;swiatło;das Licht;3
+lifetime;Dożywotni;die Lebensdauer;3
+life;życie;das Leben;3
+lieutenant;Porucznik;der Leutnant;3
+lie;Kłamać;die Lüge;3
+lid;Pokrywa;der Deckel;3
+license;Licencja;die Lizenz;3
+library;Biblioteka;die Bibliothek;3
+liar;kłamca;der Lügner;3
+letter;list;der Brief;3
+lens;Obiektyw;die Linse;3
+length;Długość;die Länge;3
+lemon;cytryna;die Zitrone;3
+legend;Legenda;die Legende;3
+leg;noga;das Bein;3
+left;Lewo;die Linke;3
+ledge;Półka;die Leiste;3
+lecture;Wykład;der Vortrag;3
+leather;materiał skóra;das Leder;3
+leash;Smycz;die Leine;3
+league;Liga;die Liga;3
+leaf;Liść;das Blatt;3
+leader;Lider;der Führer;3
+layer;Warstwa;die Schicht;3
+lawyer;Prawnik;der Anwalt;3
+lawn;Trawnik;der Rasen;3
+law;Ustawa;das Gesetz;3
+lavender;Lawenda;der Lavendel;3
+laurel;Laur;der Lorbeer;3
+laundry;Pranie;die Wäsche;3
+launch;start;der Start;3
+laughter;Śmiech;das Gelächter;3
+laugh;uśmiech;das Lachen;3
+lap;Okrążenie;die Runden;3
+lantern;latarnia;die Laterne;3
+language;język, mowa;die Sprache;3
+landscape;Krajobraz;die Landschaft;3
+landing;Lądowanie;die Landung;3
+lance;Lanca;die Lanze;3
+lamp;lampa;die Lampe;3
+lamb;owieczka;das Lamm;3
+lake;jezioro;der See;3
+lady;Dama;die Dame;3
+ladder;drabina;die Leiter;3
+label;Etykieta;das Etikett;3
+lab;Laboratorium;das Labor;3
+knot;Węzeł;der Knoten;3
+knight;Rycerz;der Ritter;3
+knife;nóż;das Messer;3
+knee;kolano;das Knie;3
+kitten;Kotek;das Kätzchen;3
+kitchen;kuchnia;die Küche;3
+kiss;pocałunek;der Kuss;3
+kingdom;Królestwo;das Königreich;3
+king;król;der König;3
+kindness;Życzliwość;die Freundlichkeit;3
+kind;gatunek;die Art;3
+killer;Zabójca;der Mörder;3
+key;klucz;der Schlüssel;3
+jungle;Dżungla;der Dschungel;3
+jump;Skok;der Sprung;3
+juice;sok;der Saft;3
+judgment;Osąd;das Urteil;3
+judge;Sędzia;der Richter;3
+journey;podróż;die Reise;3
+joke;Żart;der Witz;3
+jewelry;Biżuteria;der Schmuck;3
+jewel;Klejnot;das Juwel;3
+jersey;Golf;das Trikot;3
+jealousy;Zazdrość;die Eifersucht;3
+jasmine;Jaśmin;der Jasmin;3
+jar;Słoik;das Gefäss;3
+japanese;język japoński;die Japaner;3
+jam;marmolada;die Marmelade;3
+jacket;kurtka;die Jacke;3
+ivy;Bluszcz;der Efeu;3
+item;Przedmiot;der Gegenstand;3
+italian;Włoski;die Italienische;3
+island;wyspa;die Insel;3
+irony;Ironia;die Ironie;3
+invitation;Zaproszenie;die Einladung;3
+investment;Inwestycja;die Investition;3
+investigator;Badacz;der Ermittler;3
+intruder;Intruz;der Eindringling;3
+introduction;Wstęp;die Einleitung;3
+intimacy;Intymność;die Intimität;3
+interval;Interwał;das Intervall;3
+intersection;Skrzyżowanie;der Schnittpunkt;3
+interior;Wnętrze;der Innenraum;3
+interest;Zainteresowanie;die Interesse;3
+intercom;Awiofon;die Gegensprechanlage;3
+intention;Zamiar;die Absicht;3
+intensity;Intensywność;die Intensität;3
+intelligence;Inteligencja;die Intelligenz;3
+insurance;Ubezpieczenie;die Versicherung;3
+insult;Znieważenie;die Beleidigung;3
+instruction;Instrukcja;die Anleitung;3
+institute;Instytut;das Institut;3
+instinct;Instynkt;der Instinkt;3
+inspector;Inspektor;der Inspektor;3
+inspection;Kontrola;die Inspektion;3
+insight;Wgląd;die Einsicht;3
+insect;Owad;das Insekt;3
+inn;Zajazd;das Gasthaus;3
+ink;Atrament;die Tinten;3
+injury;Obrażenia;die Verletzung;3
+influence;Wpływ;der Einfluss;3
+indian;indyjski;die Indische;3
+independence;Niezależność;die Unabhängigkeit;3
+income;Dochód;das Einkommen;3
+incident;Incydent;der Vorfall;3
+impulse;Impuls;der Impuls;3
+impression;Wrażenie;der Eindruck;3
+importance;Znaczenie;die Wichtigkeit;3
+impact;Uderzenie;der Aufprall;3
+ignorance;Ignorancja;die Unwissenheit;3
+identity;Tożsamość;die Identität;3
+idea;Pomysł;die Idee;3
+hut;Chata;die Hütte;3
+husband;mąż;der Ehemann;3
+hurry;Spieszyć się;die Eile;3
+hurricane;Huragan;der Hurrikan;3
+hunter;Łowca;der Jäger;3
+hunt;Polowanie;die Jagd;3
+human;człowiek;der Mensch;3
+hull;kadłub;der Rumpf;3
+hug;Przytulać;die Umarmung;3
+hue;barwa;der Farbton;3
+household;Gospodarstwo domowe;der Haushalt;3
+house;dom;das Haus;3
+hour;godzina;die Stunde;3
+hostage;Zakładnik;die Geisel;3
+host;Gospodarz;der Gastgeber;3
+hospital;szpital;das Krankenhaus;3
+hose;Wąż gumowy;der Schlauch;3
+horse;koń;das Pferd;3
+horizon;Horyzont;der Horizont;3
+hope;Mieć nadzieję;die Hoffnung;3
+hook;Hak;der Haken;3
+hoof;Kopyto;der Huf;3
+hood;kaptur;die Haube;3
+honor;Zaszczyt;die Ehre;3
+honey;Miód;der Honig;3
+homework;Zadanie domowe;die Hausaufgabe;3
+hole;dziura;das Loch;3
+hiss;Syk;das Zischen;3
+hip;Biodro;die Hüfte;3
+hint;Wskazówka;der Hinweis;3
+hinge;Zawias;das Scharnier;3
+hillside;Stok;die Hang;3
+hill;Wzgórze;der Hügel;3
+highway;Autostrada;die Autobahn;3
+hero;Bohater;der Held;3
+herd;Stado;die Herde;3
+herb;Ziele;das Kraut;3
+hen;Kura;die Henne;3
+hem;Brzeg;der Saum;3
+help;pomoc;die Hilfe;3
+helmet;Kask;der Helm;3
+hell;Piekło;die Hölle;3
+helicopter;Śmigłowiec;der Hubschrauber;3
+heir;Dziedzic;der Erbe;3
+height;Wzrost, wysokośc;die Höhe;3
+heel;Obcas;die Ferse;3
+hedge;Żywopłot;die Hecke;3
+heat;gorąco;die Hitze;3
+heartbeat;Bicie serca;der Herzschlag;3
+heart;serce;das Herz;3
+hearing;Przesłuchanie;die Anhörung;3
+headquarters;Siedziba;das Hauptquartier;3
+headline;Nagłówek;die Schlagzeile;3
+headlight;Reflektor;der Scheinwerfer;3
+headache;Bół głowy;der Kopfschmerz;3
+head;głowa;der Kopf;3
+haze;zakłócenie;die Trübung;3
+hatred;Nienawiść;der Hass;3
+hatch;Właz;die Luke;3
+hat;kapelusz;der Hut;3
+harness;Uprząż;der Kabelbaum;3
+harmony;Harmonia;die Harmonie;3
+harbor;Port;der Hafen;3
+handkerchief;chusteczka;das Taschentuch;3
+handful;Garść;die Handvoll;3
+ham;szynka;der Schinken;3
+hallway;Korytarz;der Flur;3
+hall;hala;die Halle;3
+half;Połowa;die Hälfte;3
+hair;włos;das Haar;3
+gypsy;cygański;der Zigeuner;3
+gym;siłownia;das Fitnesscenter;3
+guy;Facet;der Kerl;3
+gut;Jelito;die Eingeweide;3
+gust;Poryw;die Böen;3
+gun;broń;die Waffe;3
+gum;Guma;die Gummi;3
+guitar;Gitara;die Gitarre;3
+guilt;Wina;die Schuld;3
+guest;Gość;der Gast;3
+guess;Odgadnąć;die Vermutung;3
+guard;Strażnik;der Wächter;3
+growth;Wzrost;das Wachstum;3
+grownUp;Dorosły;der Erwachsene;3
+grove;Gaj;der Hain;3
+group;Grupa;die Gruppe;3
+grocery;Sklep spożywczy;das Lebensmittel;3
+groan;Jęk;das Stöhnen;3
+grip;Chwyt;der Griff;3
+grin;Szeroki uśmiech;das Grinsen;3
+greek;grecki;der Grieche;3
+gravel;Żwir;der Kies;3
+grave;Mogiła;das Grab;3
+gratitude;Wdzięczność;die Dankbarkeit;3
+grass;trawa;das Gras;3
+grape;Winogrono;die Traube;3
+grant;Dotacja;der Zuschuss;3
+granny;Babunia;die Oma;3
+granite;Granit;der Granit;3
+grandparent;Dziadkowie;die Großeltern;3
+grandmother;Babcia;die Großmutter;3
+grandfather;Dziadek;der Großvater;3
+granddaughter;Wnuczka;die Enkelin;3
+grandchild;Wnuczkek;der Enkel;3
+grain;Ziarno;das Korn;3
+grace;łaska;die Gnade;3
+governor;Gubernator;der Gouverneur;3
+government;Rząd kraju;die Regierung;3
+goose;gęś;die Gans;3
+good;Dobro;das Gute;3
+god;bóg;der Gott;3
+goat;Koza;die Ziege;3
+glow;Blask;das Glühen;3
+glove;Rękawica;der Handschuh;3
+glory;Chwała;die Herrlichkeit;3
+gloom;Mrok;das Dunkel;3
+girl;dziewczynka;das Mädchen;3
+ginger;Imbir;der Ingwer;3
+gift;prezent;das Geschenk;3
+ghost;Duch;das Gespenst;3
+gesture;Gest;die Geste;3
+german;Niemiecki;der Deutsche;3
+genius;Geniusz;das Genie;3
+gene;Gen;das Gen;3
+gaze;Spojrzenie;der Blick;3
+gathering;Zgromadzenie;die Versammlung;3
+gasp;Łapanie tchu;das Keuchen;3
+garment;Część garderoby;das Kleidungsstück;3
+garden;ogród;der Garten;3
+gap;Luka;die Lücke;3
+game;Gra;das Spiel;3
+gallery;Galeria;die Gallerie;3
+galaxy;Galaktyka;die Galaxie;3
+future;przyszłość;die Zukunft;3
+furniture;Meble;die Möbel;3
+fur;Futro;das Fell;3
+funeral;Pogrzeb;das Begräbnis;3
+function;Funkcjonować;die Funktion;3
+fuel;Paliwo;die Kraftstoff;3
+fuck;Pierdolić;der Teufel;3
+frown;Marszczyć brwi;das Stirnrunzeln;3
+frog;Żaba;der Frosch;3
+fringe;Grzywka;die Fransen;3
+friendship;Przyjaźń;die Freundschaft;3
+friend;przyjacieł;der Freund;3
+french;Francuski;die Franzosen;3
+freezer;Zamrażarka;das Gefrier;3
+freedom;Wolność;die Freiheit;3
+frame;Rama;der Rahmen;3
+fraction;Frakcja;die Fraktion;3
+fox;lis;der Fuchs;3
+fountain;studnia;der Brunnen;3
+foundation;Fundacja;die Grundlage;3
+fortune;szczęście;das Glück;3
+fort;Fort;die Festung;3
+fork;widelec;die Gabel;3
+forest;las;der Wald;3
+foreigner;Cudzoziemiec;der Ausländer;3
+forehead;Czoło;die Stirn;3
+forefinger;Palec wskazujący;der Zeigefinger;3
+forearm;Przedramię;der Unterarm;3
+force;Zmuszać;die Kraft;3
+football;Piłka nożna;der Fußball;3
+foot;Stopa;der Fuß;3
+fold;Zginać;die Falte;3
+fog;Mgła;der Nebel;3
+foam;Pianka;der Schaum;3
+flying;Latający;die Flug;3
+flute;flet prosty;die Flöte;3
+flower;kwiat;die Blume;3
+flow;Pływ;die Strömung;3
+flour;Mąka;das Mehl;3
+floor;ziemia;der Boden;3
+float;Pływak;der Schwimmer;3
+flight;Lot;der Flug;3
+flicker;Migotanie;das Flimmern;3
+flashlight;Latarka;die Taschenlampe;3
+flash;Lampa błyskowa;der Blitz;3
+flap;Klapka;die Klappe;3
+flame;Płomień;die Flamme;3
+flake;Płatek;die Flocke;3
+flag;Flaga;die Flagge;3
+fist;Pięść;die Faust;3
+fisherman;Rybak;der Fischer;3
+fish;Ryba;der Fisch;3
+firm;Solidny;die Firma;3
+fireplace;Kominek;der Kamin;3
+fire;ogień;das Feuer;3
+fingernail;Paznokieć;der Fingernagel;3
+file;Plik;die Datei;3
+figure;figura;die Figur;3
+fighting;Walczący;die Kämpfe;3
+fighter;zawodnik sportów walki;der Kämpfer;3
+fight;Bić się;der Kampf;3
+field;Pole;das Feld;3
+fiction;Fikcja;die Fiktion;3
+fever;Gorączka;das Fieber;3
+festival;Festiwal;das Fest;3
+ferry;Prom;die Fähre;3
+fence;Ogrodzenie;der Zaun;3
+female;Płeć żeńska;das Weibchen;3
+feeling;Uczucie;das Gefühl;3
+fee;Opłata;die Gebühr;3
+feather;Pióro;die Feder;3
+feast;Święto;das Festmahl;3
+favorite;Ulubiony;der Favorit;3
+favor;Przysługa;die Gunst;3
+father;ojciec;der Vater;3
+fate;Los;das Schicksal;3
+fat;tłuszcz;das Fett;3
+fashion;Moda;die Mode;3
+farmhouse;Dom wiejski;das Bauernhaus;3
+farmer;Rolnik;der Bauer;3
+farm;gospodarstwo rolne;der Bauernhof;3
+family;rodzina;die Familie;3
+faith;Wiara;der Glaube;3
+fairy;Wróżka;die Fee;3
+faculty;Wydział;die Fakultät;3
+factory;fabryka;die Fabrik;3
+factor;Czynnik;der Faktor;3
+facility;placówka;die Einrichtung;3
+face;twarz;das Gesicht;3
+eyelid;Powieka;das Augenlid;3
+eyebrow;Brew;die Augenbraue;3
+eye;oko;das Auge;3
+extent;Zakres;das Ausmaß;3
+expression;Wyrażenie;der Ausdruck;3
+explanation;Wyjaśnienie;die Erklärung;3
+expert;Ekspert;der Experte;3
+experience;Doświadczenie;das Erlebnis;3
+expectation;Oczekiwanie;die Erwartung;3
+exit;wyjście;der Ausgang;3
+existence;Istnienie;die Existenz;3
+exhaustion;Wyczerpanie;die Erschöpfung;3
+exercise;Ćwiczenie;die Übung;3
+excitement;Podniecenie;die Aufregung;3
+exception;Wyjątek;die Ausnahme;3
+example;przykład;das Beispiel;3
+examination;Badanie;die Untersuchung;3
+exam;Egzamin;die Prüfung;3
+evidence;Dowód;der Beweis;3
+event;Wydarzenie;das Ereignis;3
+evening;wieczór;der Abend;3
+eternity;Wieczność;die Ewigkeit;3
+essence;Istota;die Essenz;3
+essay;Praca pisemna;der Aufsatz;3
+escape;Ucieczka;die Flucht;3
+errand;sprawunek;die Besorgung;3
+equipment;Ekwipunek;die Ausrüstung;3
+environment;Środowisko;die Umgebung;3
+envelope;Koperta;der Umschlag;3
+entry;Wejście;der Eintritt;3
+enthusiasm;Entuzjazm;die Begeisterung;3
+entertainment;Zabawa;die Unterhaltung;3
+enterprise;Przedsiębiorstwo;das Unternehmen;3
+english;język angielski;das Englisch;3
+engineer;Inżynier;der Ingenieur;3
+engine;Silnik;der Motor;3
+energy;Energia;die Energie;3
+enemy;wróg;der Feind;3
+end;koniec;das Ende;3
+encounter;mecz;die Begegnung;3
+employer;Pracodawca;der Arbeitgeber;3
+employee;zatrudniony;der Angestellte;3
+empire;Imperium;das Reich;3
+emperor;cesarz;der Kaiser;3
+emerald;Szmaragd;der Smaragd;3
+embassy;Ambasada;die Botschaft;3
+elevator;Winda;der Aufzug;3
+elephant;słoń;der Elefant;3
+election;Wybór;die Wahl;3
+elder;Starszy;der Ältere;3
+elbow;łokieć;der Ellbogen;3
+egg;jajo;das Ei;3
+effort;Wysiłek;der Aufwand;3
+effect;Efekt;der Effekt;3
+edition;Wydanie;die Ausgabe;3
+eave;Okapować;die Traufe;3
+eating;Jedzenie;das Essen;3
+earthquake;Trzęsienie ziemi;das Erdbeben;3
+earth;planeta ziemia;die Erde;3
+earring;Kolczyk;der Ohrring;3
+earl;Hrabia;der Graf;3
+ear;ucho;das Ohr;3
+eagle;Orzeł;der Adler;3
+eMail;E-mail;die Email;3
+dwarf;Krasnolud;der Zwerg;3
+dust;Pył;das Staub;3
+dusk;Zmierzch;die Dämmerung;3
+dune;Wydma;die Düne;3
+duke;Książę;der Herzog;3
+duck;kaczka;die Ente;3
+drum;Bęben;die Trommel;3
+driver;Kierowca;der Fahrer;3
+drink;napój;das Getränk;3
+drill;Wiertarka;der Bohrer;3
+dressing;Ubieranie się;der Verband;3
+dresser;Kredens;die Kommode;3
+dress;sukienka;das Kleid;3
+dream;sen;der Traum;3
+drawing;rysunek;die Zeichnung;3
+drawer;szuflada;die Schublade;3
+dragon;smok;der Drache;3
+draft;Projekt;der Entwurf;3
+dough;Ciasto;der Teig;3
+doubt;Wątpliwość;der Zweifel;3
+double;Podwójnie;der Doppelgänger;3
+dose;Dawka;die Dosis;3
+doorway;ościeże drzwiowe;die Türöffnung;3
+doorbell;Dzwonek do drzwi;die Türklingel;3
+door;drzwi;die Tür;3
+dome;Kopuła;die Kuppel;3
+dolphin;Delfin;der Delfin;3
+doll;Lalka;die Puppe;3
+dog;pies;der Hund;3
+document;Dokument;das Dokument;3
+doctor;Lekarz;der Doktor;3
+divorce;Rozwód;die Scheidung;3
+ditch;Rów;der Graben;3
+distress;awarja;die Not;3
+distraction;Roztargnienie;die Ablenkung;3
+dismay;Przerażenie;die Bestürzung;3
+disgust;Niesmak;der Ekel;3
+discussion;Dyskusja;die Diskussion;3
+discomfort;Dyskomfort;das Unbehagen;3
+discipline;Dyscyplina;die Disziplin;3
+disbelief;Niedowierzanie;der Unglaube;3
+disappointment;Rozczarowanie;die Enttäuschung;3
+dirt;Brud;der Dreck;3
+director;Dyrektor;der Direktor;3
+direction;kierunek;die Richtung;3
+dinosaur;Dinozaur;der Dinosaurier;3
+dinner;kolacja;das Abendessen;3
+difficulty;trudność;die Schwierigkeit;3
+difference;Różnica;der Unterschied;3
+diet;Dieta;die Diät;3
+dictionary;słownik;das Wörterbuch;3
+diary;Dziennik;das Tagebuch;3
+diaper;Pielucha;die Windel;3
+diamond;Diament;der Diamant;3
+dialogue;Dialog;der Dialog;3
+dial;Wybierz;das Zifferblatt;3
+development;Rozwój;die Entwicklung;3
+determination;Determinacja;die Bestimmung;3
+detective;Detektyw;der Detektiv;3
+destruction;Zniszczenie;die Zerstörung;3
+despair;Rozpacz;die Verzweiflung;3
+desk;Biurko;der Schreibtisch;3
+desert;pustynia;die Wüste;3
+description;Opis;die Beschreibung;3
+descent;Zejście;der Abstieg;3
+depth;Głębokość;die Tiefe;3
+departure;odjazd;die Abfahrt;3
+department;dział;die Abteilung;3
+dentist;dentysta;der Zahnarzt;3
+demon;Demon;der Dämon;3
+delay;Opóźnienie;die Verzögerung;3
+degree;stopień;der Grad;3
+defeat;Pokonać;die Niederlage;3
+deed;Czyn;die Tat;3
+decision;Decyzja;die Entscheidung;3
+decade;Dekada;das Jahrzehnt;3
+debate;Debata;die Debatte;3
+death;Śmierć;der Tod;3
+dean;Dziekan;der Dekan;3
+dealer;Kupiec;der Händler;3
+deacon;Diakon;der Diakon;3
+day;dzień;der Tag;3
+dawn;Świt;die Morgendämmerung;3
+daughter;córka;die Tochter;3
+date;data;das Datum;3
+data;Dane;die Daten;3
+darling;kochanie;der Liebling;3
+dark;Ciemny;die Dunkelheit;3
+danger;niebezpieczeństwo;die Gefahr;3
+dancer;Tancerz;die Tänzerin;3
+dance;Taniec;der Tanz;3
+damage;Szkoda;der Schaden;3
+dam;Zapora;der Damm;3
+dagger;Sztylet;der Dolch;3
+cycle;Cykl;der Kreislauf;3
+cut;Skaleczenie;der Schnitt;3
+customer;Klient;der Kunden;3
+curve;Krzywa;die Kurve;3
+curse;Przekleństwo;der Fluch;3
+curl;Kędzior;die Locke;3
+cure;Leczyć;die Heilung;3
+cup;filiżanka;die Tasse;3
+culture;Kultura;die Kultur;3
+cuff;Mankiet;die Manschette;3
+cube;Sześcian;der Würfel;3
+crystal;Kryształ;der Kristall;3
+crust;Skorupa;die Kruste;3
+crumb;Miękisz;die Krume;3
+cruiser;Krążownik;der Kreuzer;3
+crown;korona;die Krone;3
+crowd;Tłum;die Menge;3
+crow;Wrona;die Krähe;3
+cross;Krzyż;das Kreuz;3
+crop;Przyciąć;die Ernte;3
+critic;Krytyk;der Kritiker;3
+crisis;Kryzys;die Krise;3
+crime;przestępstwo;das Verbrechen;3
+cricket;Krykiet;die Grille;3
+crib;Kołyska;die Krippe;3
+crew;Załoga;die Besatzung;3
+creek;zatoczka;der Bach;3
+credit;Kredyt;der Kredit;3
+creation;kreacja;die Kreation;3
+cream;Krem;die Creme;3
+crater;Krater;der Krater;3
+crate;Skrzynia;die Kiste;3
+crash;Rozbić się;der Absturz;3
+crane;Dźwig;der Kran;3
+craft;Rękodzieło;das Handwerk;3
+cradle;Kolebka;die Wiege;3
+crack;Pękać;der Riss;3
+crab;Krab;die Krabbe;3
+coyote;Kojot;der Kojote;3
+coward;tchórz;der Feigling;3
+cow;krowa;die Kuh;3
+courtyard;Dziedziniec;der Hof;3
+courthouse;Budynek sądu;das Gerichtsgebäude;3
+courtesy;Kurtuazja;die Höflichkeit;3
+court;Sąd;das Gericht;3
+course;kurs;der Kurs;3
+country;kraj;das Land;3
+counter;Licznik;der Zähler;3
+council;rada;der Rat;3
+cotton;Bawełna;die Baumwolle;3
+cot;Łóżko składane;das Kinderbett;3
+costume;Kostium;das Kostüm;3
+cost;Koszt;die Kosten;3
+corpse;Zwłoki;die Leiche;3
+corner;kąt;die Ecke;3
+core;Rdzeń;der Kern;3
+copyright;prawa autorskie;der Urheberrechts;3
+copy;Kopiuj;die Kopie;3
+copper;Miedź;das Kupfer;3
+cop;Policjant;der Polizist;3
+cooler;Chłodnica;der Kühler;3
+cookie;Ciastko;der Keks;3
+cook;kocharz;der Koch;3
+conviction;Przekonanie;die Überzeugung;3
+convention;Konwencja;die Konvention;3
+convenience;Wygoda;die Bequemlichkeit;3
+contract;Kontrakt;der Vertrag;3
+continent;Kontynent;der Kontinent;3
+context;Kontekst;der Kontext;3
+contest;Konkurs;der Wettbewerb;3
+content;Zadowolony;der Inhalt;3
+contact;Kontakt;der Kontakt;3
+construction;Budowa;die Konstruktion;3
+console;Konsola;die Konsole;3
+consideration;Namysł;die Überlegung;3
+consequence;Konsekwencja;die Konsequenz;3
+consciousness;Świadomość;das Bewusstsein;3
+conscience;Sumienie;das Gewissen;3
+connection;związek;die Verbindung;3
+congress;Kongres;das Kongress;3
+confusion;Dezorientacja;die Verwirrung;3
+conflict;Konflikt;der Konflikt;3
+confidence;Zaufanie;das Vertrauen;3
+conference;Konferencja;die Konferenz;3
+cone;Stożek;der Konus;3
+condition;warunek;die Bedingung;3
+concrete;Beton;der Beton;3
+concert;Koncert;das Konzert;3
+concept;Pojęcie;das Konzept;3
+concentration;Stężenie;die Konzentration;3
+comrade;Towarzysz;der Genosse;3
+compliment;Komplement;das Kompliment;3
+complaint;Reklamacja;die Beschwerde;3
+comparison;Porównanie;der Vergleich;3
+community;Społeczność;die Gemeinde;3
+communication;Komunikacja;die Kommunikation;3
+commission;zamawiać;die Kommission;3
+comment;Komentarz;der Kommentar;3
+commander;Dowódca;der Kommandant;3
+command;Komenda;der Befehl;3
+comb;grzebień;der Kamm;3
+color;kolor;die Farbe;3
+colony;Kolonia;die Kolonie;3
+colonel;Pułkownik;der Oberst;3
+collection;Kolekcja;die Sammlung;3
+colleague;Współpracownik;der Kollege;3
+collar;kołnierz;der Kragen;3
+coke;Koks;der Koks;3
+coincidence;Zbieg okoliczności;das Zusammentreffen;3
+coin;Moneta;die Münze;3
+coffin;Trumna;der Sarg;3
+coffee;kawa;der Kaffee;3
+coat;płaszcz;der Mantel;3
+coast;Wybrzeże;die Küste;3
+coal;Węgiel;die Kohlen;3
+coach;Trener;der Trainer;3
+cloud;chmura;die Wolke;3
+closet;szafa;der Schrank;3
+clinic;Klinika;die Klinik;3
+climb;Wspiąć się;der Anstieg;3
+cliff;Klif;die Klippe;3
+click;Kliknij;der Klick;3
+cleaning;Czyszczenie;die Reinigung;3
+cleaner;Odkurzacz;der Reiniger;3
+claw;Pazur;die Klaue;3
+classroom;sala, klasa;das Klassenzimmer;3
+classmate;Kolega z klasy;die Klassenkameraden;3
+class;Klasa;die Klasse;3
+clarity;Przejrzystość;die Klarheit;3
+claim;pretensja, roszczenie;der Anspruch;3
+civilization;Cywilizacja;die Zivilisation;3
+city;miasto;die Stadt;3
+citizen;Obywatel;der Bürger;3
+circus;Cyrk;der Zirkus;3
+circumstance;Okoliczność;der Umstand;3
+circuit;obwód elektryczny;die Schaltung;3
+circle;okrąg;der Kreis;3
+cigarette;papieros;die Zigarette;3
+cigar;Cygaro;die Zigarre;3
+church;kościół;die Kirche;3
+chuck;Gdakanie;das Spannfutter;3
+chorus;Chór;der Chor;3
+chin;podbródek;das Kinn;3
+chimney;Komin;der Schornstein;3
+childhood;Dzieciństwo;die Kindheit;3
+child;dziecko;das Kind;3
+chicken;kurczak;das Huhn;3
+chick;Pisklę;das Küken;3
+cherry;wiśnia;die Kirsche;3
+chemical;Chemiczny;die Chemische;3
+chef;Szef kuchni;der Küchenchef;3
+cheese;Ser;der Käse;3
+cheekbone;Kość policzkowa;die Wangenknochen;3
+cheek;policzek;die Wange;3
+character;Postać;der Charakter;3
+chapter;Rozdział;das Kapitel;3
+chapel;Kaplica;die Kapelle;3
+channel;Kanał;der Kanal;3
+champagne;szampan;der Champagner;3
+chamber;Izba;die Kammer;3
+challenge;Wyzwanie;die Herausforderung;3
+chair;krzesło;der Stuhl;3
+chain;Łańcuch;die Kette;3
+certainty;Pewność;die Gewissheit;3
+ceremony;Ceremonia;die Zeremonie;3
+century;stulecie;das Jahrhundert;3
+center;centrum;das Zentrum;3
+cemetery;Cmentarz;der Friedhof;3
+cement;Cement;der Zement;3
+cell;Komórka;die Zelle;3
+celebration;Uroczystość;der Feier;3
+ceiling;sufit;die Decke;3
+cedar;Cedr;die Zeder;3
+cave;Jaskinia;die Höhle;3
+cathedral;katedra;die Kathedrale;3
+catch;Łapać;der Fang;3
+cat;kot;die Katze;3
+case;przypadek;der Fall;3
+cartoon;Kreskówka;die Karikatur;3
+carter;Furman;der Fuhrmann;3
+carrot;Marchewka;die Karotte;3
+carrier;Przewoźnik;der Träger;3
+carpet;dywan;der Teppich;3
+carpenter;stolarz;der Zimmermann;3
+carol;kolęda;das Weihnachtslied;3
+career;Kariera zawodowa;die Karriere;3
+card;karta;die Karte;3
+captain;Kapitan;der Kapitän;3
+cape;Peleryna;der Umhang;3
+capacity;Pojemność;die Kapazität;3
+cap;Czapka;die Kappe;3
+canyon;Kanion;die Schlucht;3
+canvas;Płótno;die Leinwand;3
+canopy;Daszek;der Baldachin;3
+canoe;Kajak;das Kanu;3
+cannon;Armata;die Kanone;3
+candle;świeca;die Kerze;3
+candidate;Kandydat;der Kandidat;3
+cancer;Nowotwór;der Krebs;3
+can;Mogą;die Dose;3
+campaign;Kampania;die Kampagne;3
+camera;Kamera;die Kamera;3
+camel;Wielbłąd;das Kamel;3
+caller;dzwoniący;der Anrufer;3
+call;Połączenie;der Anruf;3
+calf;cielak;das Kalb;3
+calendar;Kalendarz;der Kalender;3
+cake;placek;der Kuchen;3
+cage;Klatka szybowa;der Käfig;3
+cable;Kabel;das Kabel;3
+cabin;Kabina;die Kajüte;3
+button;guzik;der Knopf;3
+butterfly;motyl;der Schmetterling;3
+butcher;rzeźnik;der Metzger;3
+bush;Krzak;der Busch;3
+burn;Oparzenie;die Verbrennung;3
+burden;Ciężar;die Last;3
+bundle;plik czegoś;das Bündel;3
+bullet;Pocisk;die Kugel;3
+bull;Byk;der Bulle;3
+building;budynek;das Gebäude;3
+buffalo;Bawół;der Büffel;3
+bud;Pączek;die Knospe;3
+bucket;Wiaderko;der Eimer;3
+bubble;Bańka;die Blase;3
+bruise;Siniak;der Bluterguss;3
+brother;brat;der Bruder;3
+broom;miotła;der Besen;3
+briefcase;Aktówka;die Aktentasche;3
+bridge;mostpod mostem;die Brücke;3
+bride;Panna młoda;die Braut;3
+brick;Cegła;die Ziegel;3
+breath;Oddech;der Atem;3
+breast;pierś;die Brust;3
+breakfast;śniadanie;das Frühstück;3
+break;Przerwa;die Pause;3
+brand;Marka;die Marke;3
+brake;hamulec;die Bremse;3
+brain;mózg;das Gehirn;3
+bracelet;Bransoletka;das Armband;3
+bowl;salaterka;die Schale;3
+bow;Kokarda;der Bogen;3
+bottle;butelka;die Flasche;3
+border;Granica;die Grenze;3
+bookstore;Księgarnia;der Bücherladen;3
+book;książka;das Buch;3
+bone;kość;der Knochen;3
+bomb;Bomba;die Bombe;3
+bolt;Śruba;der Bolzen;3
+body;ciało;der Körper;3
+boat;łódź;das Boot;3
+blur;rozmycie;die Unschärfe;3
+blow;Cios;der Schlag;3
+blouse;bluzka;die Bluse;3
+blossom;Kwitnąć;die Blüte;3
+blood;krew;das Blut;3
+blessing;Błogosławieństwo;der Segen;3
+blade;Ostrze;die Klinge;3
+blackness;Czerń;die Schwärze;3
+black;Czarny;die Schwarze;3
+bite;Ugryzienie;der Biss;3
+bishop;Biskup;der Bischof;3
+birthday;urodziny;der Geburtstag;3
+birth;Narodziny;die Geburt;3
+bird;ptak;der Vogel;3
+birch;Brzozowy;die Birke;3
+bill;rachunek;die Rechnung;3
+bike;rower;das Fahrrad;3
+bible;Biblia;die Bibel;3
+betrayal;Zdrada;der Verrat;3
+bet;zakład;die Wette;3
+berry;Jagoda;die Beere;3
+bend;schylać się;die Biegung;3
+bench;ławkabank;die Bank;3
+belt;Pasek;der Gürtel;3
+belly;Brzuch;der Bauch;3
+bell;dzwon;die Glocke;3
+behavior;Zachowanie;das Verhalten;3
+beginning;początek;der Anfang;3
+beetle;Chrząszcz;der Käfer;3
+beer;piwo;das Bier;3
+beef;wołowina;das Rindfleisch;3
+bee;pszczoła;die Biene;3
+bedroom;sypialnia;das Schlafzimmer;3
+bed;łóżko;das Bett;3
+beauty;Piękno;die Schönheit;3
+beating;Bicie;das Schlagen;3
+beard;broda;der Bart;3
+bear;niedźwiedź;der Bär;3
+bean;fasola;die Bohne;3
+beak;Dziób;der Schnabel;3
+beach;plaża;der Strand;3
+bay;Zatoka;die Bucht;3
+battery;Bateria;die Batterie;3
+bathrobe;Szlafrok;der Bademantel;3
+bath;kąpiel;das Bad;3
+bat;Nietoperz;die Fledermaus;3
+basket;kosz;der Korb;3
+basin;Basen;das Becken;3
+basement;piwnica;der Keller;3
+bartender;Barman;der Barkeeper;3
+barrier;Bariera;die Barriere;3
+barn;Stodoła;die Scheune;3
+bark;Szczekać;die Rinde;3
+bargain;Okazja;das Schnäppchen;3
+barber;Fryzjer;der Barbier;3
+banana;banan;die Banane;3
+balloon;Balon;der Ballon;3
+balcony;Balkon;der Balkon;3
+bakery;piekarnia;die Bäckerei;3
+baker;piekarz;der Bäcker;3
+badge;Odznaka;das Abzeichen;3
+bacon;słonina;der Speck;3
+backup;Kopia zapasowa;die Sicherungs;3
+backseat;Tylne siedzenie;der Rücksitz;3
+backpack;Plecak;der Rucksack;3
+background;Tło;der Hintergrund;3
+back;plecy;der Rücken;3
+award;wyróżnienie;die Auszeichnung;3
+autumn;jesień;der Herbst;3
+author;Autor;der Autor;3
+aunt;ciocia;die Tante;3
+audience;Publiczność;das Publikum;3
+attraction;Atrakcja;die Attraktion;3
+attic;Strych;der Dachboden;3
+attention;Uwaga;die Aufmerksamkeit;3
+attempt;próba;der Versuch;3
+attack;Atak;der Angriff;3
+atmosphere;Atmosfera;die Atmosphäre;3
+assistant;Asystent;der Assistent;3
+assignment;przydzielone zadanie;die Zuordnung;3
+asshole;Dupek;das Arschloch;3
+assassin;Morderca;der Attentäter;3
+ass;osioł;der Esel;3
+aspect;Aspekt;das Aspekt;3
+ashtray;Popielniczka;der Aschenbecher;3
+ash;Popiół;die Asche;3
+artifact;Artefakt;das Artefakt;3
+article;Artykuł;der Artikel;3
+art;sztuka;die Kunst;3
+arrow;Strzałka;der Pfeil;3
+arrival;przybycie;die Ankunft;3
+arrangement;Układ;die Vereinbarung;3
+army;armia;die Armee;3
+armor;Zbroja;die Rüstung;3
+armchair;fotel;der Sessel;3
+archer;Łucznik;der Bogenschütze;3
+arc;Łuk;die Bogen;3
+apron;Fartuch;die Schürze;3
+approval;Aprobata;die Zulassung;3
+approach;Zbliżać się;der Ansatz;3
+appointment;Spotkanie;der Termin;3
+appetite;apetyt;der Appetit;3
+appearance;Wygląd zewnętrzny;die Erscheinung;3
+apology;Przeprosiny;die Entschuldigung;3
+apartment;mieszkanie;die Wohnung;3
+antenna;Antena;die Antennen;3
+ant;mrówka;die Ameise;3
+answer;odpowiedź;die Antwort;3
+announcer;Spiker;der Ansager;3
+announcement;Zapowiedź;die Ankündigung;3
+anniversary;Rocznica;der Jahrestag;3
+ankle;kostka;der Knöchel;3
+animal;zwierze;das Tier;3
+angle;Kąt, narożnik;der Winkel;3
+angel;Anioł;der Engel;3
+anchor;Kotwica;die Anker;3
+ancestor;Przodek;der Vorfahr;3
+amusement;Rozrywka;der Vergnügungspark;3
+american;amerykański;die Amerikaner;3
+ambulance;Ambulans;der Krankenwagen;3
+ambassador;Ambasador;der Botschafter;3
+aluminum;Aluminium;die Aluminium;3
+ally;Sprzymierzyć;der Verbündete;3
+alley;Aleja;die Gasse;3
+alcohol;alkohol;der Alkohol;3
+alarm;budzik;der Wecker;3
+aisle;Nawa;der Gang;3
+airport;lotnisko;der Flughafen;3
+airlock;Airlock.;die Luftschleuse;3
+air;powietrze;die Luft;3
+aid;pierwsza pomoc;die Beihilfen;3
+agony;Agonia;die Qual;3
+agency;Agencja;die Agentur;3
+age;wiek;das Alter;3
+afternoon;popołudnie;der Nachmittag;3
+affiliation;Przynależność;die Zugehörigkeit;3
+affection;Sympatia;die Neigung;3
+advice;porada;der Ratschlag;3
+adventure;Przygoda;das Abenteuer;3
+advantage;Korzyść;der Vorteil;3
+admiration;Podziw;die Bewunderung;3
+administration;Administracja;die Verwaltung;3
+address;adres;die Adresse;3
+ad;Ogłoszenie;die Anzeige;3
+activity;Działalność;die Aktivität;3
+action;Akcja;die Aktion;3
+acquaintance;Znajomy;die Bekanntschaft;3
+acid;Kwas;die Säure;3
+accusation;Oskarżenie;der Vorwurf;3
+accident;wypadek;der Unfall;3
+access;Dostęp;die Zugriffs;3
+accent;Akcent;der Akzent;3
+academy;Akademia;die Akademie;3
+abuse;Nadużywać;der Missbrauch;3
+absence;Brak;die Abwesenheit;3

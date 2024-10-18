@@ -3,8 +3,8 @@
 }
 
 .mat-icon {
-  width: 16px;
-  height: 16px;
+  width: 25px;
+  height: 25px;
 }
 
 .INCORRECT {
@@ -21,6 +21,11 @@
 
 .mat-form-field {
   width: 100%;
+}
+
+:host ::ng-deep {
+    --mdc-filled-text-field-container-color: transparent;
+    --mdc-filled-text-field-active-container-color: transparent;
 }
 
 .microphone-button {
