@@ -56,7 +56,7 @@ export class InputCellComponent implements OnInit, OnDestroy {
 
   onValueChanged(event: any): void {
     const keyCode = event.keyCode;
-    this.cancelRecording()
+    this.cancelRecording();
     if (this.isAsciiLetter(keyCode) || keyCode === 8 || keyCode === 46 || keyCode === 229) {
       this.state = InputCellState.UNCERTAIN;
     } else {
@@ -82,8 +82,13 @@ export class InputCellComponent implements OnInit, OnDestroy {
       });
   }
 
-  private updateState(word: string, textInput: HTMLInputElement) {
-    this.value = word.toLowerCase();
+  private updateState(text: string, textInput: HTMLInputElement) {
+    const words = text.split(' ');
+    if (words.length == 2) {
+      this.value = words[0] + ' ' + this.capitalize(words[1]);
+    } else {
+      this.value = text.toLowerCase();
+    }
     textInput.blur();
   }
 
@@ -99,6 +104,10 @@ export class InputCellComponent implements OnInit, OnDestroy {
   cancelRecording() {
     this.speechRecognitionService.stop();
     this.hideMic();
+  }
+
+  private capitalize(text: string) {
+    return String(text[0]).toUpperCase() + String(text).slice(1);
   }
 
   private executeCommand(command: InputCellCommand): void {
